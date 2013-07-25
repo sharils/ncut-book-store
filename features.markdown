@@ -170,6 +170,14 @@ A shop keeper can cancel an order.
 - Carol can cancel an order.
 - The system remembers who canceled the order.
 
+A shop keeper can give books in an order to a student separately.
+
+- Carol goes to the order listing page.
+- Carol chooses an order.
+- Carol sees the detail info of an order.
+- Carol chooses books that she wants to give Eve.
+- The system will remember who gives and who takes books.
+
 ### Messenging ###
 
 A shop keeper can send bulk messages.
@@ -226,8 +234,16 @@ A student can submit an order any time.
 
 A student can cancel an order. TODO: the restriction needs to be specified.
 
-TODO
+- Eve goes to the order listing page.
+- Eve clicks on an order.
+- if the book has arrived, Eve won't see a cancel button.
+  otherwise, Eve sees a cancel button.
+- Eve clicks on the cancel button.
 
-A student will be warned if the same book exists in multiple orders.
+Note: A student will be warned if the same book exists in multiple orders.
 
 A student can see historical order
+
+- Eve goes to the order listing page.
+- Eve clicks on an order.
+- Eve sees detail info of the order.
