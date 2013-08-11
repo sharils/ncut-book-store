@@ -1,2 +1,2 @@
 <?php
-require 'Password.php';
+require 'models/user/Password.php';
