@@ -1,5 +1,5 @@
 <?php
-require_once '../model/Password.php';
+require_once 'Password.php';
 
 class User
 {
@@ -66,10 +66,18 @@ class User
 			)
 		);
 	}
-	public static function changePassword ($password, $new_password)
+	public function changePassword ($password, $new_password)
 	{
+		$result = Database::execute(
+			" SELECT `user`.id, pwd, salt
+			FROM `user` INNER JOIN `$type` ON `user`.id = `$type`.user_id
+			WHERE `$type`.sn = :sn ",
+			array(
+				':sn' => $sn
+			)
+		);
 		$user = new self();
-		$user->id = $result[0]['id'];
+		$user->id = $result[0]['id';
 		$pwd = Password::from($result[0]['pwd'], $result[0]['salt']);
 
 		if ($pwd->verify($password) === FALSE) {
