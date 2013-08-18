@@ -66,6 +66,25 @@ class User
 			)
 		);
 	}
+	public static function changePassword ($password, $new_password)
+	{
+		$user = new self();
+		$user->id = $result[0]['id'];
+		$pwd = Password::from($result[0]['pwd'], $result[0]['salt']);
+
+		if ($pwd->verify($password) === FALSE) {
+			throw new Exception('Password is wrong');
+		};
+		$password = $new_password;
+		$pwd->create($password);
+		Database::execute(
+			"UPDATE `user` SET `pwd` = :pwd WHERE `id` = :id",
+			array(
+				':pwd' => $password,
+				':id' => $user->id
+			)
+		);
+	}
 
 	public function id()
 	{
