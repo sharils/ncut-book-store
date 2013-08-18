@@ -68,16 +68,14 @@ class User
 	}
 	public function changePassword ($password, $new_password)
 	{
+		$user = new self();
 		$result = Database::execute(
-			" SELECT `user`.id, pwd, salt
-			FROM `user` INNER JOIN `$type` ON `user`.id = `$type`.user_id
-			WHERE `$type`.sn = :sn ",
+			" SELECT `user`.pwd, salt
+			FROM `user` WHERE `User_id` = :id ",
 			array(
-				':sn' => $sn
+				':id' => $user->id()
 			)
 		);
-		$user = new self();
-		$user->id = $result[0]['id';
 		$pwd = Password::from($result[0]['pwd'], $result[0]['salt']);
 
 		if ($pwd->verify($password) === FALSE) {
