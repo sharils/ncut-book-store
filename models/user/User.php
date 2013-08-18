@@ -68,12 +68,10 @@ class User
 	}
 	public function changePassword ($password, $new_password)
 	{
-		$user = new self();
 		$result = Database::execute(
-			" SELECT `user`.pwd, salt
-			FROM `user` WHERE `User_id` = :id ",
+			" SELECT `user`.pwd, salt FROM `user` WHERE `id` = :id ",
 			array(
-				':id' => $user->id()
+				':id' => $this->id()
 			)
 		);
 		$pwd = Password::from($result[0]['pwd'], $result[0]['salt']);
@@ -81,13 +79,13 @@ class User
 		if ($pwd->verify($password) === FALSE) {
 			throw new Exception('Password is wrong');
 		};
-		$password = $new_password;
-		$pwd->create($password);
+		$new_pwd = Password::create($new_password);
 		Database::execute(
-			"UPDATE `user` SET `pwd` = :pwd WHERE `id` = :id",
+			"UPDATE `user` SET `pwd` = :pwd, `salt` = :salt WHERE `id` = :id",
 			array(
-				':pwd' => $password,
-				':id' => $user->id
+				':pwd' => $new_pwd->password(),
+				':id' => $this->id,
+				':salt' => $new_pwd->salt()
 			)
 		);
 	}
