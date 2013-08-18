@@ -1,15 +1,13 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-<form action="../controller/login.php" method="post">
+<form action="../controllers/login.php" method="post">
 	<fieldset>
-		<label>帳號：<input type="text" name="user_name"/></label>
-		<label>密碼：<input type="password" name="password"/></label>
-		<select name="role">
-			<option value="teacher">老師</option>
-			<option value="student">學生</option>
-			<option value="clerk">員生社</option>
-			<option value="admin">管理者</option>
-		</select>
+		<label>帳號：<input name="user_name" type="text" /></label>
+		<label>密碼：<input name="password" type="password" /></label>
+		<label><input name="role" type="radio" value="admin" />管理者</label>
+		<label><input name="role" type="radio" value="clerk" />員生社</label>
+		<label><input name="role" type="radio" value="student" />學生</label>
+		<label><input name="role" type="radio" value="teacher" />老師</label>
 		<input type="submit" value="登入"/>
 	</fieldset>
 </form>
