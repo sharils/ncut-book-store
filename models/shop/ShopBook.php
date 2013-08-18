@@ -51,20 +51,20 @@ class ShopBook
         return $ShopBook;
     }
 
-    public function availability($availability)
+    public function availability($availability = null)
     {
-        if (empty($availability) {
+        if ($availability === null) {
             return $this->availability;
         }else {
-            return $this->availability = $availability;
+            $this->availability = $availability;
         }
     }
-    public function number($number)
+    public function number($number = null)
     {
-        if (empty($number) {
+        if ($number === null) {
             return $this->number;
         }else {
-            return $this->number = $number;
+            $this->number = $number;
         }
     }
     public function update()
