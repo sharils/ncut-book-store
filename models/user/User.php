@@ -21,10 +21,10 @@ class User
 			throw new Exception('No result');
 		}
 		$user = new self();
-		$uesr->id = $result[0]['id'];
+		$user->id = $result[0]['id'];
 		$pwd = Password::from($result[0]['pwd'], $result[0]['salt']);
 
-		if ($pwd->verify($password) === FLASE) {
+		if ($pwd->verify($password) === FALSE) {
 			throw new Exception('Password is wrong');
 		};
 		return $user;
@@ -65,7 +65,6 @@ class User
 				':id' => $this->id
 			)
 		);
-
 	}
 
 	public function id()
