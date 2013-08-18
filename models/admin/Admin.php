@@ -48,6 +48,14 @@ class Admin
 		return $admin;
 	}
 
+	public function create_user()
+	{
+		$args = func_get_args();
+		$user = User::create($args[0]);
+		$input = array_splice($args, 0, 2, array($user));
+		return call_user_func_array(array($input[1],'create'), $args);
+	}
+
 	public function delete()
 	{
 		Database::execute(
