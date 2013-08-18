@@ -11,6 +11,10 @@ Admin from(User user)
 This static method returns an admin object representing the record in the admin
 table with the user id stored.
 
+RoleClass createUser(String role, String email, ... etc)
+--------------------------------------------------------
+This instance method returns an object of the role.
+
 delete()
 --------
 This instance method deletes the record in the admin table with the user id
