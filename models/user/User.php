@@ -32,15 +32,17 @@ class User
 
 	public static function create($password)
 	{
+		$pwd = Password::create($password);
 		$user = new self();
 		$id = time();
 		$user->id = $id;
 
 		Database::execute(
-			" INSERT INTO `user`(id, pwd) VALUE (:id, :pwd)",
+			"INSERT INTO `user`(id, pwd, salt) VALUE (:id, :pwd, :salt)",
 			array(
 				':id' => $id,
-				':pwd' => $password
+				':pwd' => $pwd->password(),
+				':salt' => $pwd->salt()
 			)
 		);
 		return $user;
@@ -52,9 +54,34 @@ class User
 		$row = Database::execute(
 			" SELECT * FROM `user` WHERE id = :id ", array(':id' => $id)
 		);
-
 		$user->id = $row[0]['id'];
 		return $user;
+	}
+
+	public function changePassword($password, $new_password)
+	{
+		$result = Database::execute(
+			" SELECT `user`.pwd, salt
+			FROM `user` WHERE `id` = :id ",
+			array(
+				':id' => $this->id()
+			)
+		);
+		$pwd = Password::from($result[0]['pwd'], $result[0]['salt']);
+
+		if ($pwd->verify($password) === FALSE) {
+			throw new Exception('Password is wrong');
+		};
+
+		$new_pwd = Password::create($new_password);
+		Database::execute(
+			"UPDATE `user` SET `pwd` = :pwd, `salt` = :salt WHERE `id` = :id",
+			array(
+				':pwd' => $new_pwd->password(),
+				':id' => $this->id,
+				':salt' => $new_pwd->salt()
+			)
+		);
 	}
 
 	public function delete()
@@ -94,4 +121,5 @@ class User
 	{
 		return $this->id;
 	}
+
 }
