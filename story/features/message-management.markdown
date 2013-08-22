@@ -8,7 +8,8 @@ We need to allow an user to write a message to another user.
 Message Listing
 ---------------
 We need to allow an user to see all messages he has sent and received. Sent
-messages and received messages are separated.
+messages and received messages are separated. Message from black users are
+separated.
 
 This page must pass the W3C Markup Validation Service. http://validator.w3.org/
 
