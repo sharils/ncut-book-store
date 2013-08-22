@@ -1,9 +1,9 @@
 <?php
 class Book
 {
-	const _DELETION = " DELETE FROM `book` WHERE `id` = :id ";
-	const _ID_SELECTION = " SELECT * FROM `book` WHERE `id` = :id ";
-	const _INSERTION = " INSERT INTO `book`(
+	private static $DELETION = " DELETE FROM `book` WHERE `id` = :id ";
+	private static $ID_SELECTION = " SELECT * FROM `book` WHERE `id` = :id ";
+	private static $INSERTION = " INSERT INTO `book`(
 			`id`,
 			`author`,
 			`isbn`,
@@ -25,7 +25,7 @@ class Book
 			:version
 		) ";
 
-	const _KEYWORD_SELECTION =" SELECT * FROM `book`
+	private static $KEYWORD_SELECTION =" SELECT * FROM `book`
 		WHERE `id` LIKE :KW
 		OR `author` LIKE :KW
 		OR `isbn` LIKE :KW
@@ -37,7 +37,7 @@ class Book
 		OR `type` LIKE :KW
 		OR `version` LIKE :KW ";
 
-	const _UPDATE = " UPDATE `book` SET `publisher_id` = :publisher_id WHERE id = :id ";
+	private static $UPDATE = " UPDATE `book` SET `publisher_id` = :publisher_id WHERE id = :id ";
 
 	private $author;
 	private $id;
@@ -53,7 +53,7 @@ class Book
 	{
 		$id = time();
 		Database::execute(
-			self::_INSERTION,
+			self::$INSERTION,
 			array(
 				':id' => $id,
 				':author' => $author,
@@ -72,7 +72,7 @@ class Book
 	public static function find($keyword)
 	{
 		$result = Database::execute(
-			self::_KEYWORD_SELECTION,
+			self::$KEYWORD_SELECTION,
 			array(
 				':KW' => "%$keyword%",
 				':KW' => "%$keyword%",
@@ -92,7 +92,7 @@ class Book
 	public static function from($id)
 	{
 		$result = Database::execute(
-			self::_ID_SELECTION,
+			self::$ID_SELECTION,
 			array(
 				':id' => $id
 			)
@@ -141,7 +141,7 @@ class Book
 	public function delete()
 	{
 		Database::execute(
-			self::_DELETION,
+			self::$DELETION,
 			array(
 				':id' => $this->id()
 			)
@@ -186,7 +186,7 @@ class Book
 	public function update()
 	{
 		Database::execute(
-			self::_UPDATE,
+			self::$UPDATE,
 			array(
 				':publisher_id' => $publisher_id,
 				':id' => $this->id()
