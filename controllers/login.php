@@ -1,6 +1,6 @@
 <?php
-require_once '../model/Database.php';
-require_once '../model/User.php';
+require_once '../models/Database.php';
+require_once '../models/User.php';
 session_start();
 
 Database::initialise('localhost', 'root', '123456', 'ncut');
