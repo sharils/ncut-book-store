@@ -1,6 +1,16 @@
 <?php
 class Blacklist
 {
+	private static $DELETION ="DELETE FROM blacklist WHERE user_id = :id AND black_user_id = :black_user";
+	private static $INSERTION = "INSERT INTO blacklist(
+			user_id,
+			black_user_id
+		) VALUE (
+			:id,
+			:black_user
+		)";
+	private static $SELECTION ="SELECT black_user_id FROM blacklist WHERE user_id = :id";
+
 	private $id;
 	public static function from($user)
 	{
@@ -12,8 +22,7 @@ class Blacklist
 	public function add($black_user)
 	{
 		Database::execute(
-			" INSERT INTO blacklist(user_id, black_user_id)
-			VALUE (:id, :black_user) ",
+			self::$INSERTION,
 			array(
 				':id' => $this->id,
 				':black_user' => $black_user->id()
@@ -25,7 +34,7 @@ class Blacklist
 	{
 		$users = array();
 		$result = Database::execute(
-			" SELECT black_user_id FROM blacklist WHERE user_id = :id ",
+			self::$SELECTION,
 			array(
 				':id' => $this->id
 			)
@@ -41,7 +50,7 @@ class Blacklist
 	public function remove($black_user)
 	{
 		Database::execute(
-			" DELETE FROM blacklist WHERE user_id = :id AND black_user_id = :black_user ",
+			self::$DELETION,
 			array(
 				':id' => $this->id,
 				':black_user' => $black_user->id()
