@@ -158,7 +158,7 @@ class User
 		return $this->role;
 	}
 
-	public function torole()
+	public function toRole()
 	{
 		$role = $this->role();
 		$role = ucfirst($role);
