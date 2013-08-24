@@ -6,6 +6,14 @@ Course create(Teacher teacher, String type, String name, String year)
 This static method inserts a record into the course table and returns a course
 object representing the record.
 
+Courses find(Student student)
+-----------------------------
+This static method returns an array of courses that the student takes.
+
+Courses find(Teacher teacher)
+-----------------------------
+This static method returns an array of courses that the teacher teaches.
+
 Course from(Int course\_id)
 ---------------------------
 This static method returns a course object representing the record in the
