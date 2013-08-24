@@ -1,11 +1,11 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-<form action="../../controllers/create_user.php" method="post">
+<form action="../../controllers/user/create_user.php" method="post">
 	<fieldset>
 		<label>角色：<input name="role" readonly="readonly" type="text" value="Clerk"/></label>
 		<label>帳號：<input name="sn" type="text" /></label>
-		<label>密碼：<input name="pwd" type="text" /></label>
-		<label>確認密碼：<input name="confirmpassword" type="text" /></label>
+		<label>密碼：<input name="pwd" type="password" /></label>
+		<label>確認密碼：<input name="confirmpassword" type="password" /></label>
 		<label>姓名：<input name="name" type="text" /></label>
 		<label>Email：<input name="email" type="text" /></label>	
 		<label>電話：<input name="phone" type="text" /></label>
