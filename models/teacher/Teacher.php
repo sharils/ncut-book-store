@@ -24,7 +24,7 @@ class Teacher
 		);
 
 		$teacher = new self();
-		$teacher->save($id, $sn, $email, $name, $phone, $phone_ext);
+		$teacher->save($user->id(), $sn, $email, $name, $phone, $phone_ext);
 		return $teacher;
 	}
 
