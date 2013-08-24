@@ -1,17 +1,19 @@
 <?php
 Class Course
 {
-	private static  $COURSEID_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";
-	private static  $DELETION = "DELETE FROM `course` WHERE `id` = :id";
-	private static  $INSERTION = "INSERT INTO `course`(
+	private static $COURSEID_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";
+	private static $DELETION = "DELETE FROM `course` WHERE `id` = :id";
+	private static $INSERTION = "INSERT INTO `course`(
 			`id`,
 			`teacher_user_id`,
+			`sn`,
 			`type`,
 			`name`,
 			`year`
 		) VALUE (
 			:id,
 			:teacher_id,
+			:sn,
 			:type,
 			:name,
 			:year
@@ -19,11 +21,12 @@ Class Course
 
 	private $course_id;
 	private $name;
+	private $sn;
 	private $teacher;
 	private $type;
 	private $year;
 
-	public static function create(Teacher $teacher, $type, $name, $year)
+	public static function create(Teacher $teacher, $sn, $type, $name, $year)
 	{
 		$course_id = time();
 		Database::execute(
@@ -31,12 +34,13 @@ Class Course
 			array(
 				':id' => $course_id,
 				':teacher_id' => $teacher->id(),
+				':sn' => $sn,
 				':type' => $type,
 				':name' => $name,
 				':year' => $year
 			)
 		);
-		return new self($course_id, $teacher, $type, $name, $year);
+		return new self($course_id, $teacher, $sn, $type, $name, $year);
 	}
 
 	public static function from($course_id)
@@ -50,13 +54,14 @@ Class Course
 
 		$user = User::from($result[0]['teacher_user_id']);
 		$teacher = Teacher::from($user);
-		return new self($course_id, $teacher, $result[0]['type'], $result[0]['name'], $result[0]['year']);
+		return new self($course_id, $teacher, $result[0]['sn'], $result[0]['type'], $result[0]['name'], $result[0]['year']);
 	}
 
-	private function __construct($course_id, $teacher, $type, $name, $year)
+	private function __construct($course_id, $teacher, $sn, $type, $name, $year)
 	{
 		$this->course_id = $course_id;
 		$this->teacher = $teacher;
+		$this->sn = $sn;
 		$this->type = $type;
 		$this->name = $name;
 		$this->year = $year;
@@ -85,6 +90,11 @@ Class Course
 	public function name()
 	{
 		return $this->name;
+	}
+
+	public function sn()
+	{
+		return $this->sn;
 	}
 
 	public function teacher()

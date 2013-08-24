@@ -28,10 +28,30 @@ class Teacher
 		return $teacher;
 	}
 
+	public static function find()
+	{
+		$result = Database::execute("SELECT * FROM `teacher`");
+		$teachers = array();
+
+		foreach ($result as $row) {
+			$teacher = new self();
+			$teacher->save(
+				$row['user_id'],
+				$row['sn'],
+				$row['email'],
+				$row['name'],
+				$row['phone'],
+				$row['phone_ext']
+			);
+			$teachers[] = $teacher;
+		}
+		return $teachers;
+	}
+
 	public static function from($user)
 	{
 		$result = Database::execute(
-			" SELECT * FROM teacher WHERE user_id = :id ",
+			"SELECT * FROM teacher WHERE user_id = :id",
 			array(
 				':id' => $user->id()
 			)

@@ -3,73 +3,90 @@ require_once 'User.php';
 
 class Message
 {
+	private static $DELETION = "DELETE FROM `message` WHERE `id` = :id";
+	private static $FIND_SELECTION = "SELECT * FROM `message` WHERE `receiver_user_id` = :user_receiver";
+	private static $FROM_SELECTION = "SELECT * FROM `message` WHERE `id` = :id";
+	private static $INSERTION = "INSERT INTO `message`(
+			`id`,
+			`sender_user_id`,
+			`receiver_user_id`,
+			`content`
+		) VALUE (
+			:id,
+			:user_sender,
+			:user_receiver,
+			:content
+		)";
 	private $content;
+	private $date;
 	private $id;
 	private $messages;
 	private $user_receiver;
 	private $user_sender;
 
-	public static function create($user_sender, $user_receiver, $content)
+	public static function create(User $sender, User $receiver, $content)
 	{
-		$message = new self();
-
 		$id = time();
 		Database::execute(
-			" INSERT INTO message(id, sender_user_id, receiver_user_id, content)
-			VALUE (:id, :user_sender, :user_receiver, :content )",
+			self::$INSERTION,
 			array(
 				':id' => $id,
-				':user_sender' => $user_sender->id(),
-				':user_receiver' => $user_receiver->id(),
+				':user_sender' => $sender->id(),
+				':user_receiver' => $receiver->id(),
 				':content' => $content
 			)
 		);
-		$message->save($id, $user_sender->id(), $user_receiver->id(), $content);
-		return $message;
+		return new self($id, $sender, $receiver, $content);
 	}
 
-	public static function find($user_sender)
+	public static function find(User $receiver)
 	{
 		$messages = array();
 		$selected = Database::execute(
-			" SELECT * FROM message WHERE sender_user_id = :user_sender ",
+			self::$FIND_SELECTION,
 			array(
-				':user_sender' => $user_sender->id()
+				':user_receiver' => $receiver->id()
 			)
 		);
-
-		foreach ($selected as $result) {
-			$message = new self();
-			$messages[] = $message;
-			$message->save(
-				$result['id'],
-				$result['sender_user_id'],
-				$result['receiver_user_id'],
-				$result['content']
-			);
-		}
-		return $messages;
+		return self::refine($selected);
 	}
 
 	public static function from($id)
 	{
-		$message = new self();
 		$selected = Database::execute(
-			" SELECT * FROM message WHERE id = :id ",
+			self::$FROM_SELECTION,
 			array(
 				':id' => $id
 			)
 		);
 
+		$messages = self::refine($selected);
+		return $messages[0];
+	}
+
+	private static function refine($selected)
+	{
+		$messages = array();
 		foreach ($selected as $result) {
-			$message->save(
+			$messages[] = new self(
 				$result['id'],
-				$result['sender_user_id'],
-				$result['receiver_user_id'],
-				$result['content']
+				User::from($result['sender_user_id']),
+				User::from($result['receiver_user_id']),
+				$result['content'],
+				$result['date']
 			);
 		}
-		return $message;
+		return $messages;
+	}
+
+	private function __construct($id, $sender, $receive, $content, $date='')
+	{
+		
+		$this->content = $content;
+		$this->date = $date;
+		$this->id = $id;
+		$this->receive = $receive;
+		$this->sender = $sender;
 	}
 
 	public function content()
@@ -77,16 +94,20 @@ class Message
 		return $this->content;
 	}
 
+	public function date()
+	{
+		return $this->date;
+	}
+
 	public function delete()
 	{
 		Database::execute(
-			" DELETE FROM message WHERE id = :id ",
+			self::$DELETION,
 			array(
 				':id' => $this->id()
 			)
 		);
 	}
-
 
 	public function id()
 	{
@@ -95,19 +116,11 @@ class Message
 
 	public function receiver()
 	{
-		return User::from($this->receive);
-	}
-
-	private function save($id, $receive, $sender, $content)
-	{
-		$this->id = $id;
-		$this->receive = $receive;
-		$this->sender = $sender;
-		$this->content = $content;
+		return $this->receive;
 	}
 
 	public function sender()
 	{
-		return User::from($this->sender);
+		return $this->sender;
 	}
 }

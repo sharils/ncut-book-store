@@ -1,6 +1,22 @@
 <?php
 class Admin
 {
+	private static $DELETION = "DELETE FROM admin WHERE user_id = :id";
+	private static $FROM_SELECTION = "SELECT * FROM admin WHERE user_id = :id";
+	private static $INSERTION = "INSERT INTO admin(
+			user_id,
+			sn,
+			email,
+			phone,phone_ext
+		) VALUE (
+			:id,
+			:sn,
+			:email,
+			:phone,
+			:phone_ext
+		)";
+	private static $UPDATE = "UPDATE admin SET email = :email WHERE user_id = :id";
+
 	private $email;
 	private $id;
 	private $phone;
@@ -10,8 +26,7 @@ class Admin
 	public static function create($user, $sn, $email, $phone, $phone_ext)
 	{
 		Database::execute(
-			" INSERT INTO admin(user_id, sn, email, phone, phone_ext)
-			VALUE (:id, :sn, :email, :phone, :phone_ext)",
+			self::$INSERTION,
 			array(
 				':id' => $user->id(),
 				':sn' => $sn,
@@ -20,24 +35,21 @@ class Admin
 				':phone_ext' => $phone_ext
 			)
 		);
-
-		$admin = new self();
-		$admin->save($user->id(), $sn, $email, $phone, $phone_ext);
+		$admin = new self($user->id(), $sn, $email, $phone, $phone_ext);
 		return $admin;
 	}
 
 	public static function from($user)
 	{
 		$result = Database::execute(
-			" SELECT * FROM admin WHERE user_id = :id ",
+			self::$FROM_SELECTION,
 			array(
 				':id' => $user->id()
 			)
 		);
 
-		$admin = new self();
 		foreach ($result as $row) {
-			$admin->save(
+			$admin = new self(
 				$row['user_id'],
 				$row['sn'],
 				$row['email'],
@@ -48,10 +60,27 @@ class Admin
 		return $admin;
 	}
 
+	public function create_user()
+	{
+		$args = func_get_args();
+		$user = User::create($args[1]);
+		$input = array_splice($args, 0, 2, array($user));
+		return call_user_func_array(array($input[0],'create'), $args);
+	}
+
+	public function __construct($id, $sn, $email, $phone, $phone_ext)
+	{
+		$this->id = $id;
+		$this->sn = $sn;
+		$this->email = $email;
+		$this->phone = $phone;
+		$this->phone_ext = $phone_ext;
+	}
+
 	public function delete()
 	{
 		Database::execute(
-			" DELETE FROM admin WHERE user_id = :id ",
+			self::$DELETION,
 			array(
 				':id' => $this->id
 			)
@@ -60,7 +89,7 @@ class Admin
 
 	public function email($email=NULL)
 	{
-		if (empty($email)) {
+		if ($email === NULL) {
 			return $this->email;
 		} else {
 			return $this->email = $email;
@@ -82,15 +111,6 @@ class Admin
 		return $this->phone_ext;
 	}
 
-	private function save($id, $sn, $email, $phone, $phone_ext)
-	{
-		$this->id = $id;
-		$this->sn = $sn;
-		$this->email = $email;
-		$this->phone = $phone;
-		$this->phone_ext = $phone_ext;
-	}
-
 	public function sn()
 	{
 		return $this->sn;
@@ -99,7 +119,7 @@ class Admin
 	public function update()
 	{
 		Database::execute(
-			" UPDATE admin SET email = :email WHERE user_id = :id ",
+			self::$UPDATE,
 			array(
 				':email' => $this->email,
 				':id' => $this->id
