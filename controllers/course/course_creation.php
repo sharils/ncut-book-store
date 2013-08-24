@@ -1,8 +1,8 @@
 <?php
-require_once '../models/Database.php';
-require_once '../models/Course.php';
-require_once '../models/Teacher.php';
-require_once '../models/User.php';
+require_once '../../models/Database.php';
+require_once '../../models/Course.php';
+require_once '../../models/Teacher.php';
+require_once '../../models/User.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 $args = $_POST;
 

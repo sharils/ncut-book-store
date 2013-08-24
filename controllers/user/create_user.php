@@ -1,16 +1,16 @@
 <?php 
-require_once '../models/Admin.php';
-require_once "../models/Clerk.php";
-require_once "../models/Database.php";
-require_once "../models/Student.php";
-require_once "../models/Teacher.php";
-require_once "../models/User.php";
+require_once "../../models/Admin.php";
+require_once "../../models/Clerk.php";
+require_once "../../models/Database.php";
+require_once "../../models/Student.php";
+require_once "../../models/Teacher.php";
+require_once "../../models/User.php";
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
 if ($_POST['pwd'] === $_POST['confirmpassword']) {
 	$args = $_POST;
-	$admin = Admin::from(User::from('6666666666'));
-
+	$admin = Admin::from(User::from('3273891391')); 
+	//$admin = Admin::from(User::from($_SESSION['user_id']));
 	if ($args['role'] === 'Teacher') {
 		$admin->create_user(
 			'Teacher',
