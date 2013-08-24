@@ -124,29 +124,6 @@ class User
 			array(':id' => $this->id)
 		);
 	}
-	public function changePassword ($password, $new_password)
-	{
-		$result = Database::execute(
-			" SELECT `user`.pwd, salt FROM `user` WHERE `id` = :id ",
-			array(
-				':id' => $this->id()
-			)
-		);
-		$pwd = Password::from($result[0]['pwd'], $result[0]['salt']);
-
-		if ($pwd->verify($password) === FALSE) {
-			throw new Exception('Password is wrong');
-		};
-		$new_pwd = Password::create($new_password);
-		Database::execute(
-			"UPDATE `user` SET `pwd` = :pwd, `salt` = :salt WHERE `id` = :id",
-			array(
-				':pwd' => $new_pwd->password(),
-				':id' => $this->id,
-				':salt' => $new_pwd->salt()
-			)
-		);
-	}
 
 	public function id()
 	{
