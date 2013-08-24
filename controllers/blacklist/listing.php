@@ -1,8 +1,8 @@
 <?php
-require_once '../../models/Database.php';
-require_once '../../models/Message.php';
-require_once '../../models/User.php';
 require_once '../../models/Blacklist.php';
+require_once '../../models/Database.php';
+require_once '../../models/User.php';
+
 session_start();
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
