@@ -1,3 +1,6 @@
+<?php
+chdir('..');
 
-<a href="student.php">roledata</a>
-<a href="querybook.php">queryb</a>
+require_once 'models/router/Router.php';
+
+Router::route($_SERVER['REQUEST_URI']);

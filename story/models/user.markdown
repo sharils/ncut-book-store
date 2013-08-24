@@ -1,6 +1,15 @@
 User Module
 ===========
 
+User authenticate(String sn, String sn, String password)
+--------------------------------------------------------
+
+	$user = User::authenticate($sn, $type, $password);
+
+This method uses $sn and $type to find $user\_id, and check if $user\_id and
+$password forms a pair it returns an instance of User. Otherwise it throws an
+exception. What's thrown is yet to be defined.
+
 User create(String password)
 ----------------------------
 This static method should insert data into the user table and return a user
@@ -19,3 +28,7 @@ database.
 Int id()
 --------
 This instance method returns the id of this user.
+
+RoleClass toRole()
+------------------
+This instance method returns a RoleClass object representing the user.
