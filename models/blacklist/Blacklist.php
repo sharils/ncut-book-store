@@ -41,8 +41,7 @@ class Blacklist
 		);
 
 		foreach ($result as $row) {
-			$user = User::from($row['black_user_id']);
-			$users[] = $user;
+			$users[] = User::from($row['black_user_id']);
 		}
 		return $users;
 	}
