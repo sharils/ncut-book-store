@@ -28,3 +28,7 @@ database.
 Int id()
 --------
 This instance method returns the id of this user.
+
+RoleClass toRole()
+------------------
+This instance method returns a RoleClass object representing the user.
