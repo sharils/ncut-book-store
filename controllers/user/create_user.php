@@ -1,10 +1,10 @@
 <?php 
-require_once "../../models/Admin.php";
-require_once "../../models/Clerk.php";
-require_once "../../models/Database.php";
-require_once "../../models/Student.php";
-require_once "../../models/Teacher.php";
-require_once "../../models/User.php";
+require_once "../../models/admin/Admin.php";
+require_once "../../models/clerk/Clerk.php";
+require_once "../../models/database/Database.php";
+require_once "../../models/student/Student.php";
+require_once "../../models/teacher/Teacher.php";
+require_once "../../models/user/User.php";
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
 if ($_POST['pwd'] === $_POST['confirmpassword']) {
