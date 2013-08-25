@@ -1,20 +1,14 @@
 <?php
-require_once '../../models/Database.php';
-require_once '../../models/Message.php';
-require_once '../../models/User.php';
-require_once '../../models/Blacklist.php';
+require_once '../../models/blacklist/Blacklist.php';
+require_once '../../models/database/Database.php';
+require_once '../../models/user/User.php';
 session_start();
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
-// $rows = Blacklist::find(User::from($_SESSION['user_id']));
-$blacklist = Blacklist::from(User::from('1377323782'));
-$blackusers = $blacklist->blackUsers();
-$usersn = array();
-$username = array();
+$blacklist = Blacklist::from(User::from($_SESSION['user_id']));
+$black_users = $blacklist->blackUsers();
+$black_araay = array();
 
-foreach ($blackusers as $blackuser) {
-	$user = User::find($blackuser->id());
-	$role = $user->toRole();
-	$usersn[$role->id()] = $role->sn();
-	$username[$role->id()] = $role->name();
+foreach ($black_users as $black_user) {
+	$black_araay[] = $black_user->id();
 }

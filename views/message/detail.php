@@ -1,11 +1,17 @@
+<?php require_once '../../controllers/message/detail.php'; ?>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-<form action="../../controllers/create_user.php" method="post">
-	<fieldset>
-		<label>寄件人：<input name="role" readonly="readonly" type="text" value="Student"/></label>
-		<label>時間：<input name="sn" type="text" /></label>
-		<label>內容：<input name="pwd" type="text" /></label>
-		<input type="submit" value="返回"/>
-		<input type="submit" value="刪除"/>
-	</fieldset>
-</form>
+<table>
+	<caption>詳細訊息</caption>
+	<tr>
+		<th>寄件人</th>
+		<td><?= $message->sender()->toRole()->sn() ?></td>
+	</tr>
+	<tr>
+		<th>內容</th>
+		<td><?= $message->content() ?></td>
+	</tr>
+	<tr>
+		<th>時間</th>
+		<td><?= $message->date() ?></td>
+	</tr>
+</table>

@@ -1,10 +1,9 @@
 <?php
-require_once 'User.php';
+require_once '../../models/user/User.php';
 
 class Message
 {
 	private static $DELETION = "DELETE FROM `message` WHERE `id` = :id";
-	private static $FIND_SELECTION = "SELECT * FROM `message` WHERE `receiver_user_id` = :user_receiver";
 	private static $FROM_SELECTION = "SELECT * FROM `message` WHERE `id` = :id";
 	private static $INSERTION = "INSERT INTO `message`(
 			`id`,
@@ -39,13 +38,13 @@ class Message
 		return new self($id, $sender, $receiver, $content);
 	}
 
-	public static function find(User $receiver)
+	public static function find(User $user, $field='receiver_user_id')
 	{
 		$messages = array();
 		$selected = Database::execute(
-			self::$FIND_SELECTION,
+			"SELECT * FROM `message` WHERE `$field` = :find_user",
 			array(
-				':user_receiver' => $receiver->id()
+				':find_user' => $user->id()
 			)
 		);
 		return self::refine($selected);

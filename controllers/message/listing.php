@@ -1,20 +1,30 @@
 <?php
-require_once '../../models/Database.php';
-require_once '../../models/Message.php';
-require_once '../../models/User.php';
-require_once '../../models/Blacklist.php';
-session_start();
+require_once '../../models/database/Database.php';
+require_once '../../models/message/Message.php';
+require_once '../../models/user/User.php';
+require_once '../../controllers/blacklist/listing.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
-//$rows = Message::find(User::from($_SESSION['user_id']));
-$messages = Message::find(User::from('1377323782'));
-// 取得轉換id成sn的陣列
+if ($_GET['page'] === 'send') {
+	$messageslist = Message::find(User::from($_SESSION['user_id'])), 'sender_user_id');
+} else {
+	$messages = Message::find(User::from($_SESSION['user_id'])));
+	$badlist = array();
+	$list = array();
+	$userdata = array();
 
-$badlist = array();
-$list = array();
-$userdata = array();
-foreach ($messages as $message) {
-	$user = User::find($message->sender()->id());
-	$role = $user->toRole();
-	$userdata[$role->id()] = $role->sn();
+	//區分一般和垃圾筒
+	foreach ($messages as $message) {
+		if(in_array($message->sender()->toRole()->id(), $black_araay)) {
+			$badlist[] = $message;
+		} else {
+			$list[] = $message;
+		}
+	}
+
+	if ($_GET['page'] === 'receive') {
+		$messageslist = $list;
+	} else {
+		$messageslist = $badlist;
+	}
 }

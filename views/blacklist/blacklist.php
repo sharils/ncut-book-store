@@ -5,17 +5,17 @@
 		<th>帳號</th>
 		<th>名稱</th>
 	</tr>
-	<?php foreach($blackusers as $blackuser): ?>
+	<?php foreach($black_users as $black_user): ?>
 		<tr>
-			<td><?= $usersn[$blackuser->id()] ?></td>
-			<td><?= $username[$blackuser->id()] ?></td>
+			<td><?= $black_user->toRole()->sn() ?></td>
+			<td><?= $black_user->toRole()->name() ?></td>
 		</tr>
 	<?php endforeach; ?>
 </table>
-<form action="../../controllers/create_user.php" method="post">
+<form action="../../controllers/blacklist/add_remove.php" method="post">
 	<fieldset>
-		<label>新增使用者：<input name="add_user" type="text" /></label>
-		<label>移除使用者：<input name="black_user" type="text" /></label>
+		<label>新增黑名單：<input name="add_user" type="text" /></label>
+		<label>移除黑名單：<input name="remove_user" type="text" /></label>
 		<input type="submit" value="送出"/>
 	</fieldset>
 </form>
