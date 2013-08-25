@@ -7,7 +7,9 @@ class Admin
 			user_id,
 			sn,
 			email,
-			phone,phone_ext
+			name,
+			phone,
+			phone_ext
 		) VALUE (
 			:id,
 			:sn,
@@ -19,11 +21,12 @@ class Admin
 
 	private $email;
 	private $id;
+	private $name;
 	private $phone;
 	private $phone_ext;
 	private $sn;
 
-	public static function create($user, $sn, $email, $phone, $phone_ext)
+	public static function create($user, $sn, $email, $name, $phone, $phone_ext)
 	{
 		Database::execute(
 			self::$INSERTION,
@@ -31,11 +34,12 @@ class Admin
 				':id' => $user->id(),
 				':sn' => $sn,
 				':email' => $email,
+				':name' => $name,
 				':phone' => $phone,
 				':phone_ext' => $phone_ext
 			)
 		);
-		$admin = new self($user->id(), $sn, $email, $phone, $phone_ext);
+		$admin = new self($user->id(), $sn, $email, $name, $phone, $phone_ext);
 		return $admin;
 	}
 
@@ -53,6 +57,7 @@ class Admin
 				$row['user_id'],
 				$row['sn'],
 				$row['email'],
+				$row['name'],
 				$row['phone'],
 				$row['phone_ext']
 			);
@@ -68,11 +73,12 @@ class Admin
 		return call_user_func_array(array($input[0],'create'), $args);
 	}
 
-	public function __construct($id, $sn, $email, $phone, $phone_ext)
+	public function __construct($id, $sn, $email, $name, $phone, $phone_ext)
 	{
 		$this->id = $id;
 		$this->sn = $sn;
 		$this->email = $email;
+		$this->name = $name;
 		$this->phone = $phone;
 		$this->phone_ext = $phone_ext;
 	}
@@ -109,6 +115,11 @@ class Admin
 	public function phone_ext()
 	{
 		return $this->phone_ext;
+	}
+
+	public function name()
+	{
+		return $this->name;
 	}
 
 	public function sn()
