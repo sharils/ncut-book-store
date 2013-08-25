@@ -1,9 +1,9 @@
 <?php
-require_once '../../models/Admin.php';
-require_once '../../models/Clerk.php';
-require_once '../../models/Password.php';
-require_once '../../models/Student.php';
-require_once '../../models/Teacher.php';
+require_once '../../models/admin/Admin.php';
+require_once '../../models/clerk/Clerk.php';
+require_once 'Password.php';
+require_once '../../models/student/Student.php';
+require_once '../../models/teacher/Teacher.php';
 class User
 {
 	private static $CHANGEPWD_SELECTION = "SELECT `user`.pwd, salt FROM `user` WHERE `id` = :id";
@@ -58,26 +58,12 @@ class User
 		return $user;
 	}
 
-	public static function find($idorsn)
+	public static function find($id_or_sn)
 	{
-		$table = array('teacher', 'student', 'admin', 'clerk');
-		foreach ($table as $type) {
-			$result = Database::execute(
-				"SELECT `user`.id FROM `user`
-				INNER JOIN `$type` ON `user`.id = `$type`.user_id
-				WHERE `$type`.sn = :sn OR `$type`.user_id = :user_id ",
-				array(
-					':sn' => $idorsn,
-					':user_id' => $idorsn
-				)
-			);
-			if (!empty($result)){
-				$user = new self();
-				$user->role = $type;
-				$user->id = $result[0]['id'];
-				break;
-			}
-		}
+		$user = new self();
+		$data = $user->getRole($id_or_sn);
+		$user->id = $data['id'];
+		$user->role = $data['role'];
 		return $user;
 	}
 
@@ -125,6 +111,28 @@ class User
 		);
 	}
 
+	public function getRole($id_or_sn)
+	{
+		$table = array('teacher', 'student', 'admin', 'clerk');
+		foreach ($table as $type) {
+			$result = Database::execute(
+				"SELECT `user`.id FROM `user`
+				INNER JOIN `$type` ON `user`.id = `$type`.user_id
+				WHERE `$type`.sn = :sn OR `$type`.user_id = :user_id ",
+				array(	
+					':sn' => $id_or_sn,
+					':user_id' => $id_or_sn
+				)
+			);
+			if (!empty($result)){
+				return array(
+					'role' => $type,
+					'id' => $result[0]['id']
+				);
+			}
+		}
+	}
+
 	public function id()
 	{
 		return $this->id;
@@ -132,7 +140,12 @@ class User
 
 	public function role()
 	{
-		return $this->role;
+		$role = $this->role;
+		if ($role === null) {
+			$data = $this->getRole($this->id);
+			$role = $this->role = $data['role'];
+		}
+		return $role;
 	}
 
 	public function toRole()
