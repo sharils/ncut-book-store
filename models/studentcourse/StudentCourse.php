@@ -1,4 +1,5 @@
 <?php
+require_once '../../models/Course.php';
 class StudentCourse
 {
 	private static $DELETION = "DELETE FROM `student_course`
@@ -28,7 +29,7 @@ class StudentCourse
 
 		$StudentCourses = array();
 		if(empty($result)) {
-			$StudentCourse[]= new self('', $student);
+			$StudentCourse = Null;
 		} else {
 			foreach ($result as $row) {
 				$StudentCourse[] = new self(Course::from($row['course_id']), $student);
@@ -50,7 +51,7 @@ class StudentCourse
 
 	private function __construct($course, $student)
 	{
-		$thic->course = $course;
+		$this->course = $course;
 		$this->student = $student;
 	}
 
