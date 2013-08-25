@@ -29,7 +29,7 @@ class StudentCourse
 
 		$StudentCourses = array();
 		if(empty($result)) {
-			$StudentCourse = Null;
+			$StudentCourse[] = new self(Null, $student);
 		} else {
 			foreach ($result as $row) {
 				$StudentCourse[] = new self(Course::from($row['course_id']), $student);
