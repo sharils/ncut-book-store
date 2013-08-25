@@ -1,11 +1,10 @@
 <?php 
-require_once '../../models/Blacklist.php';
-require_once '../../models/Database.php';;
-require_once '../../models/User.php';
+require_once '../../models/blacklist/Blacklist.php';
+require_once '../../models/database/Database.php';
+require_once '../../models/user/User.php';
 
 Database::initialise('localhost', 'root', '123456', 'ncut');
-// $rows = Blacklist::find(User::from($_SESSION['user_id']));
-$blacklist = Blacklist::from(User::from('1377323782'));
+$blacklist = Blacklist::from(User::from($_SESSION['user_id']));
 
 if(!empty($_POST['add_user'])) {
 	$blacklist->add(user::find($_POST['add_user']));
