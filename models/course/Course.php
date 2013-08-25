@@ -2,6 +2,8 @@
 Class Course
 {
 	private static $COURSEID_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";
+	private static $FIND_COURSE_SELECTION ="SELECT * FROM  `course`
+		WHERE  `sn` = :sn OR `name` = :name";
 	private static $DELETION = "DELETE FROM `course` WHERE `id` = :id";
 	private static $FIND_SELECTION = "SELECT * FROM `course` WHERE  `teacher_user_id` = :teacher_id";
 	private static $INSERTION = "INSERT INTO `course`(
@@ -42,6 +44,17 @@ Class Course
 			)
 		);
 		return new self($course_id, $teacher, $sn, $type, $name, $year);
+	}
+	public static function findCourse($sn_or_name)
+	{
+		$result = Database::execute(
+			self::$FIND_COURSE_SELECTION,
+			array(
+				':sn' => $sn_or_name,
+				':name' => $sn_or_name,
+			)
+		);
+		return new self($result[0]['id'], $result[0]['teacher_user_id'], $result[0]['sn'], $result[0]['type'], $result[0]['name'], $result[0]['year']);
 	}
 
 	public static function from($course_id)
