@@ -5,10 +5,10 @@
 		<th>帳號</th>
 		<th>名稱</th>
 	</tr>
-	<?php foreach($blackusers as $blackuser): ?>
+	<?php foreach($black_users as $black_user): ?>
 		<tr>
-			<td><?= $usersn[$blackuser->id()] ?></td>
-			<td><?= $username[$blackuser->id()] ?></td>
+			<td><?= $black_user->toRole()->sn() ?></td>
+			<td><?= $black_user->toRole()->name() ?></td>
 		</tr>
 	<?php endforeach; ?>
 </table>
