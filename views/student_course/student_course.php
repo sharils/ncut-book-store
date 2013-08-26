@@ -10,7 +10,7 @@
 		<th>學年度</th>
 	</tr>
 	<?php if ($student_courses[0]->course() !== null): ?>
-		<?php foreach($student_courses as $student_course): ?>
+		<?php foreach ($student_courses as $student_course): ?>
 			<tr>
 				<td><?= $student_course->course()->sn() ?></td>
 				<td><?= $student_course->course()->name() ?></td>
