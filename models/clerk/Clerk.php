@@ -28,6 +28,26 @@ class Clerk
 		return $clerk;
 	}
 
+	public static function find()
+	{
+		$result = Database::execute("SELECT * FROM `clerk`");
+		$clerks = array();
+
+		foreach ($result as $row) {
+			$clerk = new self();
+			$clerk->save(
+				$row['user_id'],
+				$row['sn'],
+				$row['email'],
+				$row['name'],
+				$row['phone'],
+				$row['phone_ext']
+			);
+			$clerks[] = $clerk;
+		}
+		return $clerks;
+	}
+
 	public static function from($user)
 	{
 		$result = Database::execute(
