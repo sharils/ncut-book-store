@@ -60,7 +60,7 @@ class StudentOrderDetail
 		return $student_order_details[0];
 	}
 
-	private function refine($result)
+	private static function refine($result)
 	{
 		$student_order_details = array();
 
