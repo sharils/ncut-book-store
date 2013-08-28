@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- 主機: localhost
--- 建立日期: Aug 18, 2013, 06:49 AM
+-- 建立日期: Aug 28, 2013, 02:18 PM
 -- 伺服器版本: 5.0.51
 -- PHP 版本: 5.2.6
 
@@ -23,6 +23,7 @@ CREATE TABLE `admin` (
   `user_id` char(10) collate utf8_bin NOT NULL,
   `sn` char(50) collate utf8_bin NOT NULL,
   `email` varchar(50) collate utf8_bin NOT NULL,
+  `name` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `phone` char(10) collate utf8_bin NOT NULL,
   `phone_ext` char(5) collate utf8_bin NOT NULL,
   PRIMARY KEY  (`user_id`),
@@ -33,7 +34,7 @@ CREATE TABLE `admin` (
 -- 列出以下資料庫的數據： `admin`
 -- 
 
-INSERT INTO `admin` VALUES (0x33323733383931333931, 0x61646d696e, 0x61646d696e407961686f6f2e636f6d2e747777, 0x30393131313233313131, 0x3132333431);
+INSERT INTO `admin` VALUES (0x33323733383931333931, 0x61646d696e, 0x61646d696e407961686f6f2e636f6d2e747777, '', 0x30393131313233313131, 0x3132333431);
 
 -- --------------------------------------------------------
 
@@ -65,9 +66,9 @@ CREATE TABLE `book` (
   `author` varchar(50) collate utf8_bin NOT NULL,
   `isbn` char(15) collate utf8_bin NOT NULL,
   `market_price` int(4) NOT NULL,
-  `name` varchar(50) collate utf8_bin NOT NULL,
+  `name` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `price` int(4) NOT NULL,
-  `remark` varchar(50) collate utf8_bin NOT NULL,
+  `remark` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `type` char(50) collate utf8_bin NOT NULL,
   `version` char(10) collate utf8_bin NOT NULL,
   PRIMARY KEY  (`id`),
@@ -90,7 +91,7 @@ CREATE TABLE `clerk` (
   `user_id` char(10) collate utf8_bin NOT NULL,
   `sn` char(50) collate utf8_bin NOT NULL,
   `email` varchar(50) collate utf8_bin NOT NULL,
-  `name` varchar(50) collate utf8_bin NOT NULL,
+  `name` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `phone` char(10) collate utf8_bin NOT NULL,
   `phone_ext` char(5) collate utf8_bin NOT NULL,
   PRIMARY KEY  (`user_id`),
@@ -110,9 +111,10 @@ CREATE TABLE `clerk` (
 
 CREATE TABLE `course` (
   `id` char(10) collate utf8_bin NOT NULL,
+  `sn` char(10) collate utf8_bin NOT NULL,
   `teacher_user_id` char(10) collate utf8_bin NOT NULL,
-  `type` enum('') collate utf8_bin NOT NULL,
-  `name` char(50) collate utf8_bin NOT NULL,
+  `type` enum('required','optional') collate utf8_bin NOT NULL,
+  `name` char(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `year` int(4) NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `teacher_user_id` (`teacher_user_id`)
@@ -132,7 +134,7 @@ CREATE TABLE `course` (
 CREATE TABLE `course_book` (
   `course_id` char(10) collate utf8_bin NOT NULL,
   `book_id` char(10) collate utf8_bin NOT NULL,
-  `sample` enum('') collate utf8_bin NOT NULL,
+  `sample` enum('','1') collate utf8_bin NOT NULL,
   PRIMARY KEY  (`course_id`,`book_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -151,6 +153,7 @@ CREATE TABLE `message` (
   `id` char(10) collate utf8_bin NOT NULL,
   `sender_user_id` char(10) collate utf8_bin NOT NULL,
   `receiver_user_id` char(10) collate utf8_bin NOT NULL,
+  `date` datetime NOT NULL,
   `content` text collate utf8_bin NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `sender_user_id` (`sender_user_id`),
@@ -173,8 +176,8 @@ CREATE TABLE `publisher` (
   `email` varchar(50) collate utf8_bin NOT NULL,
   `account` char(50) collate utf8_bin NOT NULL,
   `address` varchar(50) collate utf8_bin NOT NULL,
-  `name` char(50) collate utf8_bin NOT NULL,
-  `person` varchar(50) collate utf8_bin NOT NULL,
+  `name` char(50) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `person` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `phone` char(10) collate utf8_bin NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -210,7 +213,7 @@ CREATE TABLE `shop_book` (
 CREATE TABLE `shop_order` (
   `id` char(10) collate utf8_bin NOT NULL,
   `clerk_user_id` char(10) collate utf8_bin NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY  (`clerk_user_id`),
   KEY `clerk_user_id` (`clerk_user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -226,6 +229,7 @@ CREATE TABLE `shop_order` (
 -- 
 
 CREATE TABLE `shop_order_detail` (
+  `id` char(10) collate utf8_bin NOT NULL,
   `shop_order_id` char(10) collate utf8_bin NOT NULL,
   `book_id` char(10) collate utf8_bin NOT NULL,
   `num` int(4) NOT NULL,
@@ -250,7 +254,7 @@ CREATE TABLE `student` (
   `email` varchar(50) collate utf8_bin NOT NULL,
   `class` enum('') collate utf8_bin NOT NULL,
   `department` varchar(50) collate utf8_bin NOT NULL,
-  `name` varchar(50) collate utf8_bin NOT NULL,
+  `name` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `type` enum('') collate utf8_bin NOT NULL,
   `phone` char(10) collate utf8_bin NOT NULL,
   `year` int(4) NOT NULL,
@@ -290,9 +294,9 @@ CREATE TABLE `student_order` (
   `id` char(10) collate utf8_bin NOT NULL,
   `student_user_id` char(10) collate utf8_bin NOT NULL,
   `clerk_user_id` char(10) collate utf8_bin NOT NULL,
-  `date` int(10) NOT NULL,
+  `date` datetime NOT NULL,
   `outdate` int(10) NOT NULL,
-  `status` enum('') collate utf8_bin NOT NULL,
+  `status` enum('shopping','submitted','processing','ordered','shipping','arrived') collate utf8_bin NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `student_user_id` (`student_user_id`),
   KEY `clerk_user_id` (`clerk_user_id`)
@@ -310,10 +314,11 @@ CREATE TABLE `student_order` (
 -- 
 
 CREATE TABLE `student_order_detail` (
+  `id` char(10) collate utf8_bin NOT NULL,
   `student_order_id` char(10) collate utf8_bin NOT NULL,
   `book_id` char(10) collate utf8_bin NOT NULL,
   `num` int(4) NOT NULL,
-  PRIMARY KEY  (`student_order_id`),
+  PRIMARY KEY  (`id`),
   KEY `book_id` (`book_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=FIXED;
 
@@ -332,7 +337,7 @@ CREATE TABLE `teacher` (
   `user_id` char(10) collate utf8_bin NOT NULL,
   `sn` varchar(50) collate utf8_bin NOT NULL,
   `email` varchar(50) collate utf8_bin NOT NULL,
-  `name` varchar(50) collate utf8_bin NOT NULL,
+  `name` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `phone` char(10) collate utf8_bin NOT NULL,
   `phone_ext` char(5) collate utf8_bin NOT NULL,
   PRIMARY KEY  (`user_id`),
