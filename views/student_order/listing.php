@@ -21,6 +21,9 @@ require_once '../../controllers/Method.php';
 			<td><?= $student_order->status() ?></td>
 			<td>
 				<a href="detail.php?id=<?= $student_order->id() ?>">詳細</a>
+				<a href="../../controllers/student_order/cancel.php?id=<?= $student_order->id() ?>">
+					<?= ($student_order->status() === 'submitted') ? '取消訂單' : '' ?>
+				</a>
 			</td>
 		</tr>
 	<?php endforeach; ?>
