@@ -11,6 +11,7 @@ require_once '../../controllers/Method.php';
 		<th>版本</th>
 		<th>種類</th>
 		<th>作者</th>
+		<th>出版社</th>
 		<th>價格</th>
 		<th>數量</th>
 	</tr>
@@ -22,6 +23,7 @@ require_once '../../controllers/Method.php';
 			<td><?= $student_order_detail->book()->version() ?></td>
 			<td><?= $student_order_detail->book()->type() ?></td>
 			<td><?= $student_order_detail->book()->author() ?></td>
+			<td><?= $student_order_detail->book()->publisher()->name() ?></td>
 			<td><?= $student_order_detail->book()->marketPrice() ?></td>
 			<td><?= $student_order_detail->number() ?></td>
 		</tr>
