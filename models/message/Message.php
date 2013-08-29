@@ -1,6 +1,5 @@
 <?php
 require_once '../../models/user/User.php';
-
 class Message
 {
 	private static $DELETION = "DELETE FROM `message` WHERE `id` = :id";
