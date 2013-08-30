@@ -31,7 +31,7 @@ class ShopBook
         $raw_book = Database::execute(
             self::_SELECTION,
             array(
-                ':id' => $book->id();
+                ':id' => $book->id()
             )
         );
         $ShopBook = self::refine($raw_book);

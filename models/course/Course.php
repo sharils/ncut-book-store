@@ -1,11 +1,14 @@
 <?php
+require_once '../../models/user/User.php';
+require_once '../../models/teacher/Teacher.php';
 Class Course
 {
-	private static $COURSEID_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";
-	private static $FIND_COURSE_SELECTION ="SELECT * FROM  `course`
+	private static $FROM_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";
+	private static $FIND_COURSE_SELECTION ="SELECT * FROM `course`
 		WHERE  `sn` = :sn OR `name` = :name";
 	private static $DELETION = "DELETE FROM `course` WHERE `id` = :id";
-	private static $FIND_SELECTION = "SELECT * FROM `course` WHERE  `teacher_user_id` = :teacher_id";
+	private static $FIND_SELECTION = "SELECT * FROM `course`
+		WHERE  `teacher_user_id` = :teacher_id";
 	private static $INSERTION = "INSERT INTO `course`(
 			`id`,
 			`teacher_user_id`,
@@ -54,26 +57,42 @@ Class Course
 				':name' => $sn_or_name,
 			)
 		);
-		return new self($result[0]['id'], $result[0]['teacher_user_id'], $result[0]['sn'], $result[0]['type'], $result[0]['name'], $result[0]['year']);
+		$courses = self::refine($result);
+		return $courses[0];
 	}
 
 	public static function from($course_id)
 	{
 		$result = Database::execute(
-			self::$COURSEID_SELECTION,
+			self::$FROM_SELECTION,
 			array(
 				':id' => $course_id
 			)
 		);
-
-		$user = User::from($result[0]['teacher_user_id']);
-		$teacher = Teacher::from($user);
-		return new self($course_id, $teacher, $result[0]['sn'], $result[0]['type'], $result[0]['name'], $result[0]['year']);
+		$courses = self::refine($result);
+		return $courses[0];
 	}
 
-	private function __construct($course_id, $teacher, $sn, $type, $name, $year)
+	private static function refine($result)
 	{
-		$this->course_id = $course_id;
+		$courses = array();
+		foreach ($result as $row) {
+			$teacher = Teacher::from(User::from($row['teacher_user_id']));
+			$courses[] = new self(
+				$row['id'],
+				$teacher,
+				$row['sn'],
+				$row['type'],
+				$row['name'],
+				$row['year']
+			);
+		}
+		return $courses;
+	}
+
+	private function __construct($id, $teacher, $sn, $type, $name, $year)
+	{
+		$this->course_id = $id;
 		$this->teacher = $teacher;
 		$this->sn = $sn;
 		$this->type = $type;
@@ -114,7 +133,7 @@ Class Course
 	{
 		return $this->name;
 	}
-	
+
 	public static function refine($rows)
 	{
 		$course = array();

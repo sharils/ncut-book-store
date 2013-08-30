@@ -6,18 +6,19 @@ class StudentCourse
 		WHERE `student_user_id` = :student_id
 		AND `course_id` = :course_id";
 
-	private static $INSERTION = "INSERT INTO `student_course`(
+	private static $INSERTION = "INSERT INTO `student_course` (
 			`student_user_id`,
 			`course_id`
 		) VALUE (
 			:student_id,
 			:course_id
 		)";
-	private static $FIND_SELECTION = "SELECT course_id FROM `student_course` WHERE `student_user_id` = :student_id";
-	
+	private static $FIND_SELECTION = "SELECT `course_id` FROM `student_course`
+		WHERE `student_user_id` = :student_id";
+
 	private $student;
 	private $course;
-	
+
 	public static function from(Student $student)
 	{
 		$result = Database::execute(
@@ -32,7 +33,10 @@ class StudentCourse
 			$StudentCourse[] = new self(Null, $student);
 		} else {
 			foreach ($result as $row) {
-				$StudentCourse[] = new self(Course::from($row['course_id']), $student);
+				$StudentCourse[] = new self(
+					Course::from($row['course_id']),
+					$student
+				);
 			}
 		}
 		return $StudentCourse;

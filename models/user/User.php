@@ -6,12 +6,23 @@ require_once '../../models/student/Student.php';
 require_once '../../models/teacher/Teacher.php';
 class User
 {
-	private static $CHANGEPWD_SELECTION = "SELECT `user`.pwd, salt FROM `user` WHERE `id` = :id";
-	private static $DELETION = "DELETE FROM `user` WHERE id = :id";
-	private static $FIND_SELECTION = "SELECT * FROM `user` WHERE id = :id";
-	private static $INSERTION = "INSERT INTO `user` (id, pwd, salt) VALUE (:id, :pwd, :salt)";
-	private static $UPDATE = "UPDATE `user` SET `pwd` = :pwd, `salt` = :salt WHERE `id` = :id";
-	
+	private static $CHANGEPWD_SELECTION = "SELECT `user`.pwd, salt
+		FROM `user`
+		WHERE `id` = :id";
+	private static $DELETION = "DELETE FROM `user` WHERE `id` = :id";
+	private static $FIND_SELECTION = "SELECT * FROM `user` WHERE `id` = :id";
+	private static $INSERTION = "INSERT INTO `user` (
+			`id`,
+			`pwd`,
+			`salt`
+		) VALUE (
+			:id,
+			:pwd,
+			:salt
+		)";
+	private static $UPDATE = "UPDATE `user`
+		SET `pwd` = :pwd, `salt` = :salt
+		WHERE `id` = :id";
 
 	private $id;
 	private $role;
@@ -119,7 +130,7 @@ class User
 				"SELECT `user`.id FROM `user`
 				INNER JOIN `$type` ON `user`.id = `$type`.user_id
 				WHERE `$type`.sn = :sn OR `$type`.user_id = :user_id ",
-				array(	
+				array(
 					':sn' => $id_or_sn,
 					':user_id' => $id_or_sn
 				)

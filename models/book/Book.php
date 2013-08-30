@@ -4,7 +4,7 @@ class Book
 {
 	private static $DELETION = " DELETE FROM `book` WHERE `id` = :id ";
 	private static $ID_SELECTION = " SELECT * FROM `book` WHERE `id` = :id ";
-	private static $INSERTION = " INSERT INTO `book`(
+	private static $INSERTION = " INSERT INTO `book` (
 			`id`,
 			`publisher_id`,
 			`author`,
@@ -40,7 +40,9 @@ class Book
 		OR `type` LIKE :KW
 		OR `version` LIKE :KW ";
 
-	private static $UPDATE = " UPDATE `book` SET `publisher_id` = :publisher_id WHERE id = :id ";
+	private static $UPDATE = " UPDATE `book`
+		SET `publisher_id` = :publisher_id
+		WHERE `id` = :id ";
 
 	private $author;
 	private $id;

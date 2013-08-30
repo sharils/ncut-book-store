@@ -71,6 +71,7 @@ Class CourseBook
 		$course_books = array();
 		foreach ($result as $row) {
 			$book = Book::from($row['book_id']);
+
 			$course = Course::from($row['course_id']);
 			$course_books[] = new self(
 				$book,

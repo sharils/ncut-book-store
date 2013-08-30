@@ -3,10 +3,13 @@ require_once '../../models/book/Book.php';
 require_once '../../models/studentorder/StudentOrder.php';
 class StudentOrderDetail
 {
-	private static $DELETION ="DELETE FROM `student_order_detail` WHERE `id` = :id";
-	private static $FIND_SELECTION = "SELECT * FROM `student_order_detail` WHERE `student_order_id` = :student_order_id";
-	private static $FROM_SELECTION = "SELECT * FROM `student_order_detail` WHERE `id` = :id";
-	private static $INSERTION = "INSERT INTO `student_order_detail`(
+	private static $DELETION ="DELETE FROM `student_order_detail`
+		WHERE `id` = :id";
+	private static $FIND_SELECTION = "SELECT * FROM `student_order_detail`
+		WHERE `student_order_id` = :student_order_id";
+	private static $FROM_SELECTION = "SELECT * FROM `student_order_detail`
+		WHERE `id` = :id";
+	private static $INSERTION = "INSERT INTO `student_order_detail` (
 			`student_order_id`,
 			`id`,
 			`book_id`,
@@ -17,7 +20,8 @@ class StudentOrderDetail
 			:book_id,
 			:num
 		)";
-	private static $UPDATE = "UPDATE `student_order_detail` SET `num` = :num WHERE `id` = :id";
+	private static $UPDATE = "UPDATE `student_order_detail` SET `num` = :num
+		WHERE `id` = :id";
 
 	private $book;
 	private $id;

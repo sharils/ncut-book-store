@@ -2,7 +2,7 @@
 class Publisher
 {
 	private static $DELETION = "DELETE FROM `publisher` WHERE `id` = :id";
-	private static $INSERTION = "INSERT INTO `publisher`(
+	private static $INSERTION = "INSERT INTO `publisher` (
 			`id`,
 			`email`,
 			`account`,
@@ -21,7 +21,12 @@ class Publisher
 		)";
 	private static $FIND_SELECTION = "SELECT * FROM `publisher`";
 	private static $FROM_SELECTION = "SELECT * FROM `publisher` WHERE `id` = :id";
-	private static $UPDATE= "UPDATE `publisher` SET `email` = :email AND `address` = :address AND `person` = :person AND `phone` = :phone WHERE `id` = :id";
+	private static $UPDATE= "UPDATE `publisher`
+		SET `email` = :email,
+		`address` = :address,
+		`person` = :person,
+		`phone` = :phone
+		WHERE `id` = :id";
 
 	private $account;
 	private $address;
@@ -46,7 +51,15 @@ class Publisher
 				':phone' => $phone
 			)
 		);
-		return new self($id, $email, $account, $address, $name, $person, $phone);
+		return new self(
+			$id,
+			$email,
+			$account,
+			$address,
+			$name,
+			$person,
+			$phone
+		);
 	}
 
 	public static function find()

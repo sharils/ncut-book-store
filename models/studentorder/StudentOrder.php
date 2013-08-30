@@ -4,9 +4,11 @@ require_once '../../models/student/Student.php';
 require_once '../../models/user/User.php';
 class StudentOrder
 {
-	private static $FIND_SELECTION = "SELECT * FROM `student_order` WHERE `student_user_id` = :student_id";
-	private static $FROM_SELECTION = "SELECT * FROM `student_order` WHERE `id` = :id";
-	private static $INSERTION = "INSERT INTO `student_order`(
+	private static $FIND_SELECTION = "SELECT * FROM `student_order`
+		WHERE `student_user_id` = :student_id";
+	private static $FROM_SELECTION = "SELECT * FROM `student_order`
+		WHERE `id` = :id";
+	private static $INSERTION = "INSERT INTO `student_order` (
 			`id`,
 			`student_user_id`,
 			`date`
@@ -73,10 +75,17 @@ class StudentOrder
 
 			$suser = Student::from(USER::from($row['student_user_id']));
 			$cuser = NULL ;
+
 			if (!empty($row['clerk_user_id'])) {
 				$cuser = Clerk::from(USER::from($row['clerk_user_id']));
 			}
-			$StudentOrders[] = new self($cuser, $row['date'], $row['id'], $row['status'], $suser);
+
+			$StudentOrders[] = new self(
+				$cuser,
+				$row['date'],
+				$row['id'],
+				$row['status'],
+				$suser);
 		}
 		return $StudentOrders;
 	}

@@ -1,6 +1,29 @@
 <?php
 class Teacher
 {
+	private static $DELETION = "DELETE FROM `teacher` WHERE `user_id` = :id";
+	private static $INSERTION = "INSERT INTO `teacher` (
+			`user_id`,
+			`sn`,
+			`email`,
+			`name`,
+			`phone`,
+			`phone_ext`
+		) VALUE (
+			:id,
+			:sn,
+			:email,
+			:name,
+			:phone,
+			:phone_ext
+		)";
+	private static $FIND_SELECTION = "SELECT * FROM `teacher`";
+	private static $FROM_SELECTION = "SELECT * FROM `teacher`
+		WHERE `user_id` = :id";
+	private static $UPDATE = "UPDATE `teacher`
+		SET `email` = :email
+		WHERE `user_id` = :id";
+
 	private $email;
 	private $id;
 	private $name;
@@ -11,8 +34,7 @@ class Teacher
 	public static function create($user, $sn, $email, $name, $phone, $phone_ext)
 	{
 		Database::execute(
-			" INSERT INTO teacher(user_id, sn, email, name, phone, phone_ext)
-			VALUE (:id, :sn, :email, :name, :phone, :phone_ext) ",
+			self::$INSERTION,
 			array(
 				':id' => $user->id(),
 				':sn' => $sn,
@@ -23,43 +45,33 @@ class Teacher
 			)
 		);
 
-		$teacher = new self();
-		$teacher->save($user->id(), $sn, $email, $name, $phone, $phone_ext);
-		return $teacher;
+		return new self($user->id(), $sn, $email, $name, $phone, $phone_ext);
 	}
 
 	public static function find()
 	{
-		$result = Database::execute("SELECT * FROM `teacher`");
-		$teachers = array();
+		$result = Database::execute(self::$FIND_SELECTION);
 
-		foreach ($result as $row) {
-			$teacher = new self();
-			$teacher->save(
-				$row['user_id'],
-				$row['sn'],
-				$row['email'],
-				$row['name'],
-				$row['phone'],
-				$row['phone_ext']
-			);
-			$teachers[] = $teacher;
-		}
-		return $teachers;
+		return self::refine($result);
 	}
 
 	public static function from($user)
 	{
 		$result = Database::execute(
-			"SELECT * FROM teacher WHERE user_id = :id",
+			self::$FROM_SELECTION,
 			array(
 				':id' => $user->id()
 			)
 		);
+		$teachers = self::refine($result);
+		return $teachers[0];
+	}
 
-		$teacher = new self();
+	private static function refine($result)
+	{
+		$teachers = array();
 		foreach ($result as $row) {
-			$teacher->save(
+			$teachers[] = new self(
 				$row['user_id'],
 				$row['sn'],
 				$row['email'],
@@ -68,13 +80,23 @@ class Teacher
 				$row['phone_ext']
 			);
 		}
-		return $teacher;
+		return $teachers;
+	}
+
+	private function __construct($id, $sn, $email, $name, $phone, $phone_ext)
+	{
+		$this->email = $email;
+		$this->id = $id;
+		$this->name = $name;
+		$this->phone = $phone;
+		$this->phone_ext = $phone_ext;
+		$this->sn = $sn;
 	}
 
 	public function delete()
 	{
 		Database::execute(
-			" DELETE FROM teacher WHERE user_id = :id ",
+			self::$DELETION,
 			array(
 				':id' => $this->id
 			)
@@ -110,16 +132,6 @@ class Teacher
 		return $this->phone_ext;
 	}
 
-	private function save($id, $sn, $email, $name, $phone, $phone_ext)
-	{
-		$this->id = $id;
-		$this->sn = $sn;
-		$this->email = $email;
-		$this->name = $name;
-		$this->phone = $phone;
-		$this->phone_ext = $phone_ext;
-	}
-
 	public function sn()
 	{
 		return $this->sn;
@@ -128,7 +140,7 @@ class Teacher
 	public function update()
 	{
 		Database::execute(
-			" UPDATE teacher SET email = :email WHERE user_id = :id ",
+			self::$UPDATE,
 			array (
 				':email' => $this->email,
 				':id' => $this->id

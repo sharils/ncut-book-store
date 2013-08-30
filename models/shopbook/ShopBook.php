@@ -3,7 +3,7 @@ require_once '../../models/book/Book.php';
 class ShopBook
 {
 	private static $DELETION = "DELETE FROM `shop_book` WHERE `book_id` = :id";
-	private static $INSERTION = "INSERT INTO `shop_book`(
+	private static $INSERTION = "INSERT INTO `shop_book` (
 			`book_id`,
 			`num`,
 			`shelf`
@@ -13,8 +13,11 @@ class ShopBook
 			:shelf
 		)";
 	private static $FIND_SELECTION = "SELECT * FROM `shop_book`";
-	private static $FROM_SELECTION = "SELECT * FROM `shop_book` WHERE `book_id` = :id";
-	private static $UPDATE= "UPDATE `shop_book` SET `num` = :num, `shelf` = :shelf WHERE `book_id` = :id";
+	private static $FROM_SELECTION = "SELECT * FROM `shop_book`
+		WHERE `book_id` = :id";
+	private static $UPDATE= "UPDATE `shop_book`
+		SET `num` = :num, `shelf` = :shelf
+		WHERE `book_id` = :id";
 
 	private $book;
 	private $number;
@@ -30,7 +33,7 @@ class ShopBook
 				':shelf' => $shelf
 			)
 		);
-		return new self ($book, $number, $shelf);
+		return new self($book, $number, $shelf);
 	}
 
 	public static function find()

@@ -1,15 +1,16 @@
 <?php
 class Admin
 {
-	private static $DELETION = "DELETE FROM admin WHERE user_id = :id";
-	private static $FROM_SELECTION = "SELECT * FROM admin WHERE user_id = :id";
-	private static $INSERTION = "INSERT INTO admin(
-			user_id,
-			sn,
-			email,
-			name,
-			phone,
-			phone_ext
+	private static $DELETION = "DELETE FROM `admin` WHERE `user_id` = :id";
+	private static $FROM_SELECTION = "SELECT * FROM `admin`
+		WHERE `user_id` = :id";
+	private static $INSERTION = "INSERT INTO `admin` (
+			`user_id`,
+			`sn`,
+			`email`,
+			`name`,
+			`phone`,
+			`phone_ext`
 		) VALUE (
 			:id,
 			:sn,
@@ -17,7 +18,9 @@ class Admin
 			:phone,
 			:phone_ext
 		)";
-	private static $UPDATE = "UPDATE admin SET email = :email WHERE user_id = :id";
+	private static $UPDATE = "UPDATE `admin`
+		SET `email` = :email
+		WHERE `user_id` = :id";
 
 	private $email;
 	private $id;
@@ -52,17 +55,14 @@ class Admin
 			)
 		);
 
-		foreach ($result as $row) {
-			$admin = new self(
-				$row['user_id'],
-				$row['sn'],
-				$row['email'],
-				$row['name'],
-				$row['phone'],
-				$row['phone_ext']
-			);
-		}
-		return $admin;
+		return new self(
+			$row[0]['user_id'],
+			$row[0]['sn'],
+			$row[0]['email'],
+			$row[0]['name'],
+			$row[0]['phone'],
+			$row[0]['phone_ext']
+		);
 	}
 
 	public function create_user()
@@ -93,7 +93,7 @@ class Admin
 		);
 	}
 
-	public function email($email=NULL)
+	public function email($email = NULL)
 	{
 		if ($email === NULL) {
 			return $this->email;
