@@ -1,10 +1,6 @@
 Student Order Management
 ========================
 
-Student Order Creation
-----------------------
-We need to allow a student to create a new order.
-
 Student Order Listing
 ---------------------
 We need to allow a student to see all orders he has.
