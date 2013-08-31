@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Database.php';
-require_once 'User.php';
+require_once 'models/database/Database.php';
+require_once 'models/database/User.php';
 
 Database::initialise('localhost', 'root', '123456', 'ncut');
 

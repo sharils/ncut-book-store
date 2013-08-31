@@ -1,5 +1,5 @@
 <?php
-require_once '../controllers/teacher_coursedetail.php';
+require_once 'controllers/teacher_coursedetail.php';
 ?>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <form action="" method="post">

@@ -1,7 +1,7 @@
 <?php
-require_once '../../models/clerk/Clerk.php';
-require_once '../../models/student/Student.php';
-require_once '../../models/user/User.php';
+require_once 'models/clerk/Clerk.php';
+require_once 'models/student/Student.php';
+require_once 'models/user/User.php';
 class StudentOrder
 {
 	private static $FIND_SELECTION = "SELECT * FROM `student_order`

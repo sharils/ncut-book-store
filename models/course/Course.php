@@ -1,6 +1,6 @@
 <?php
-require_once '../../models/user/User.php';
-require_once '../../models/teacher/Teacher.php';
+require_once 'models/user/User.php';
+require_once 'models/teacher/Teacher.php';
 Class Course
 {
 	private static $FROM_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";

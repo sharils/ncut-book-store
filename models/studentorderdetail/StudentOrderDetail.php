@@ -1,6 +1,6 @@
 <?php
-require_once '../../models/book/Book.php';
-require_once '../../models/studentorder/StudentOrder.php';
+require_once 'models/book/Book.php';
+require_once 'models/studentorder/StudentOrder.php';
 class StudentOrderDetail
 {
 	private static $DELETION ="DELETE FROM `student_order_detail`

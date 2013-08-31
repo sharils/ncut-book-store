@@ -1,6 +1,6 @@
 <?php
-require_once 'Method.php';
-require_once '../../controllers/course/select_list.php';
+require_once 'controllers/Method.php';
+require_once 'controllers/course/select_list.php';
 ?>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <form action="../../controllers/course/course_creation.php" method="post">

@@ -1,5 +1,5 @@
 <?php
-require_once '../../models/book/Book.php';
+require_once 'models/book/Book.php';
 class ShopBook
 {
 	private static $DELETION = "DELETE FROM `shop_book` WHERE `book_id` = :id";
