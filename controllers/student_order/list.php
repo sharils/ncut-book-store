@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once 'models/database/Database.php';
 require_once 'models/student/Student.php';
 require_once 'models/studentorder/StudentOrder.php';

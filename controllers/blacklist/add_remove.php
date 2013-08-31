@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once 'models/blacklist/Blacklist.php';
 require_once 'models/database/Database.php';
 require_once 'models/user/User.php';
