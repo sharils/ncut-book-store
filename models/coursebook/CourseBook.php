@@ -1,13 +1,18 @@
 <?php
+require_once '../models/book/Book.php';
+require_once '../models/course/Course.php';
 Class CourseBook
 {
-	private static $DELETION = "DELETE FROM `course_book` WHERE `book_id` = :book_id";
-	private static $FIND_SELECTION = "SELECT * FROM `course_book` WHERE  `course_id` = :course_id";
+	private static $DELETION = "DELETE FROM `course_book`
+		WHERE `book_id` = :book_id
+		AND `course_id` = :course_id ";
+	private static $FIND_SELECTION = "SELECT * FROM `course_book`
+		WHERE `course_id` = :course_id";
 	private static $FROM_SELECTION = "SELECT * FROM `course_book`
 		WHERE `course_id` = :course_id
 		AND `book_id` = :book_id";
 
-	private static $INSERTION = "INSERT INTO `course_book`(
+	private static $INSERTION = "INSERT INTO `course_book` (
 			`course_id`,
 			`book_id`,
 			`sample`
@@ -17,9 +22,11 @@ Class CourseBook
 			:sample
 		)";
 
-	private static $UPDATE = "UPDATE `course_book` SET `sample` = :sample WHERE book_id = :book_id";
+	private static $UPDATE = "UPDATE `course_book`
+		SET `sample` = :sample WHERE `book_id` = :book_id";
 
 	private $book;
+	private $course;
 	private $sample;
 
 	public static function create(Course $course, Book $book, $sample)
@@ -32,8 +39,7 @@ Class CourseBook
 				':sample' => $sample
 			)
 		);
-
-		return new self($book, $sample);
+		return new self($book, $course, $sample);
 	}
 
 	public static function find($course)
@@ -56,8 +62,23 @@ Class CourseBook
 				':book_id' => $book->id()
 			)
 		);
-		$course_books =  self::refine($result);
+		$course_books = self::refine($result);
 		return $course_books[0];
+	}
+
+	private static function refine($result)
+	{
+		$course_books = array();
+		foreach ($result as $row) {
+			$book = Book::from($row['book_id']);
+			$course = Course::from($row['course_id']);
+			$course_books[] = new self(
+				$book,
+				$course,
+				$row['sample']
+			);
+		}
+		return $course_books;
 	}
 
 	public function book()
@@ -65,10 +86,16 @@ Class CourseBook
 		return $this->book;
 	}
 
-	private function __construct(Book $book, $sample)
+	private function __construct(Book $book, $course, $sample)
 	{
 		$this->book = $book;
+		$this->course = $course;
 		$this->sample = $sample;
+	}
+
+	private function course()
+	{
+		return $this->course;
 	}
 
 	public function delete()
@@ -76,30 +103,16 @@ Class CourseBook
 		Database::execute(
 			self::$DELETION,
 			array(
-				':book_id' => $this->book->id()
+				':book_id' => $this->book->id(),
+				':course_id' => $this->course->id()
 			)
 		);
-	}
-
-	private function refine($rows)
-	{
-		$course_books = array();
-		foreach ($rows as $row) {
-
-			$book = Book::from($row['book_id']);
-
-			$course_books[]= new self(
-				$book,
-				$row['sample']
-			);
-		}
-		return $course_books;
 	}
 
 	public function sample($needed = NULL)
 	{
 		if ($needed === NULL) {
-			return $this->sample == false ? '0' : $this->sample;
+			return $this->sample == false ? false : true;
 		} else {
 			return $this->sample = $needed;
 		}
@@ -110,7 +123,7 @@ Class CourseBook
 		Database::execute(
 			self::$UPDATE,
 			array(
-				':sample' => $this->sample(),
+				':sample' => $this->sample == false ? '' : '1',
 				':book_id' => $this->book->id()
 			)
 		);
