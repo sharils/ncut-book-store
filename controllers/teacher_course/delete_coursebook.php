@@ -10,6 +10,8 @@ $get = $_GET;
 if (in_array('', $get)){
 	echo 'Have null value';
 } else {
-	$coursebook = CourseBook::from($get['book-id']);
-	$delete = $coursebook->delete();
+	$course = Course::from($get['course-id']);
+	$book = Book::from($get['book-id']);
+	$coursebook = CourseBook::from($course,$book);
+	$coursebook->delete();
 }
