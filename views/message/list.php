@@ -1,6 +1,6 @@
 <?php require_once '../../controllers/message/listing.php'; ?>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<a href="list.php?page=spam">[垃圾筒]</a>
+<a href="list.php?page=spam">[垃圾匣]</a>
 <a href="list.php?page=receive">[收件匣]</a>
 <a href="list.php?page=send">[寄件匣]</a>
 <table>

@@ -1,6 +1,6 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-<form action="../controllers/login.php" method="post">
+<form action="../../controllers/login/login.php" method="post">
 	<fieldset>
 		<label>帳號：<input name="user_name" type="text" /></label>
 		<label>密碼：<input name="password" type="password" /></label>

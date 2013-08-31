@@ -6,9 +6,9 @@ require_once '../../controllers/blacklist/listing.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
 if ($_GET['page'] === 'send') {
-	$messageslist = Message::find(User::from($_SESSION['user_id'])), 'sender_user_id');
+	$messageslist = Message::find(User::from($_SESSION['user_id']), 'sender_user_id');
 } else {
-	$messages = Message::find(User::from($_SESSION['user_id'])));
+	$messages = Message::find(User::from($_SESSION['user_id']));
 	$badlist = array();
 	$list = array();
 	$userdata = array();

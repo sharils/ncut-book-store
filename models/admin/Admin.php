@@ -56,12 +56,12 @@ class Admin
 		);
 
 		return new self(
-			$row[0]['user_id'],
-			$row[0]['sn'],
-			$row[0]['email'],
-			$row[0]['name'],
-			$row[0]['phone'],
-			$row[0]['phone_ext']
+			$result[0]['user_id'],
+			$result[0]['sn'],
+			$result[0]['email'],
+			$result[0]['name'],
+			$result[0]['phone'],
+			$result[0]['phone_ext']
 		);
 	}
 
