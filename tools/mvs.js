@@ -41,6 +41,11 @@ javascript:(function() {
         documentFragment = document.createDocumentFragment();
 
         iframe = document.createElement( 'iframe' );
+        iframe.onload = function() {
+            // closure: form
+            form.parentNode.removeChild( form );
+        };
+        iframe.setAttribute( 'name', id );
         iframe.setAttribute( 'id', id );
         iframe.style.width = '100%';
         iframe.style.height = '20em';
@@ -50,6 +55,8 @@ javascript:(function() {
         form.setAttribute( 'action', 'http://validator.w3.org/check' );
         form.setAttribute( 'method', 'post' );
         form.setAttribute( 'target', id );
+        form.style.display = 'none';
+        documentFragment.appendChild( form );
 
         fieldset = document.createElement( 'fieldset' );
         form.appendChild( fieldset );
