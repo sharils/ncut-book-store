@@ -1,5 +1,5 @@
 <?php
-require 'views/html-table/HtmlTable.php';
+require_once 'views/html-table/HtmlTable.php';
 
 $table = new HtmlTable(12, 4, function ($row, $col) {
   	if ($row === 0) {

@@ -39,11 +39,7 @@ class Router
         header("Location: $url");
     }
 
-    public static function hostName(
-        $protocol,
-        $host,
-        $port
-    ) {
+    public static function hostName($protocol, $host, $port) {
         $port = $port === 80 ? '' : ":$port";
 
         self::$hostName = "$protocol://$host$port/";

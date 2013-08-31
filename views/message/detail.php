@@ -1,4 +1,4 @@
-<?php require_once '../../controllers/message/detail.php'; ?>
+<?php require_once 'controllers/message/detail.php'; ?>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <table>
 	<caption>詳細訊息</caption>
