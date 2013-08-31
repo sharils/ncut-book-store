@@ -3,6 +3,7 @@ Class Course
 {
 	private static $COURSEID_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";
 	private static $DELETION = "DELETE FROM `course` WHERE `id` = :id";
+	private static $FIND_SELECTION = "SELECT * FROM `course` WHERE  `teacher_user_id` = :teacher_id";
 	private static $INSERTION = "INSERT INTO `course`(
 			`id`,
 			`teacher_user_id`,
@@ -81,7 +82,16 @@ Class Course
 			)
 		);
 	}
-
+	public static function find($teacher)
+	{
+		$result = Database::execute(
+			self::$FIND_SELECTION,
+			array(
+				':teacher_id' => $teacher->id()
+			)
+		);
+		return self::refine($result);
+	}
 	public function id()
 	{
 		return $this->course_id;
@@ -90,6 +100,22 @@ Class Course
 	public function name()
 	{
 		return $this->name;
+	}
+	
+	public static function refine($rows)
+	{
+		$course = array();
+		foreach ($rows as $row) {
+
+			$course[] = new self(
+				$course_id,
+				$teacher,
+				$type,
+				$name,
+				$year
+			);
+		}
+		return $course;
 	}
 
 	public function sn()
