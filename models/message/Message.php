@@ -1,11 +1,10 @@
 <?php
 require_once '../../models/user/User.php';
-
 class Message
 {
 	private static $DELETION = "DELETE FROM `message` WHERE `id` = :id";
 	private static $FROM_SELECTION = "SELECT * FROM `message` WHERE `id` = :id";
-	private static $INSERTION = "INSERT INTO `message`(
+	private static $INSERTION = "INSERT INTO `message` (
 			`id`,
 			`sender_user_id`,
 			`receiver_user_id`,
@@ -80,7 +79,7 @@ class Message
 
 	private function __construct($id, $sender, $receive, $content, $date='')
 	{
-		
+
 		$this->content = $content;
 		$this->date = $date;
 		$this->id = $id;

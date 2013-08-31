@@ -1,9 +1,14 @@
 <?php
+require_once '../../models/clerk/Clerk.php';
+require_once '../../models/student/Student.php';
+require_once '../../models/user/User.php';
 class StudentOrder
 {
-	private static $FIND_SELECTION = "SELECT * FROM `student_order` WHERE `student_user_id` = :student_id";
-	private static $FROM_SELECTION = "SELECT * FROM `student_order` WHERE `id` = :id";
-	private static $INSERTION = "INSERT INTO `student_order`(
+	private static $FIND_SELECTION = "SELECT * FROM `student_order`
+		WHERE `student_user_id` = :student_id";
+	private static $FROM_SELECTION = "SELECT * FROM `student_order`
+		WHERE `id` = :id";
+	private static $INSERTION = "INSERT INTO `student_order` (
 			`id`,
 			`student_user_id`,
 			`date`
@@ -24,9 +29,10 @@ class StudentOrder
 	private $status;
 	private $student;
 
-	public static function create(Student $student, $date)
+	public static function create(Student $student)
 	{
 		$id = time();
+		$date = date("Y-m-d H:i:s");
 		Database::execute(
 			self::$INSERTION,
 			array(
@@ -66,17 +72,27 @@ class StudentOrder
 	{
 		$StudentOrders = array();
 		foreach ($result as $row) {
-			$suser = USER::from($row['student_user_id']);
-			$cuser = USER::from($row['student_user_id']);
-			$StudentOrders[] = new self(Clerk::from($cuser), $row['date'], $row['id'], $row['status'], Student::from($suser));
-			
+
+			$suser = Student::from(USER::from($row['student_user_id']));
+			$cuser = NULL ;
+
+			if (!empty($row['clerk_user_id'])) {
+				$cuser = Clerk::from(USER::from($row['clerk_user_id']));
+			}
+
+			$StudentOrders[] = new self(
+				$cuser,
+				$row['date'],
+				$row['id'],
+				$row['status'],
+				$suser);
 		}
 		return $StudentOrders;
-	} 
+	}
 
 	public function clerk(Clerk $clerk = NULL)
 	{
-		if (empty($clerk)) {
+		if ($clerk === NULL) {
 			return $this->clerk;
 		} else {
 			return $this->clerk = $clerk;
@@ -94,7 +110,7 @@ class StudentOrder
 
 	public function date($date = NULL)
 	{
-		if (empty($date)) {
+		if ($date === NULL ) {
 			return $this->date;
 		} else {
 			return $this->date = $date;
@@ -108,7 +124,7 @@ class StudentOrder
 
 	public function status($status = NULL)
 	{
-		if (empty($status)) {
+		if ($status === NULL) {
 			return $this->status;
 		} else {
 			return $this->status = $status;

@@ -1,15 +1,19 @@
 <?php
 class Blacklist
 {
-	private static $DELETION ="DELETE FROM blacklist WHERE user_id = :id AND black_user_id = :black_user";
-	private static $INSERTION = "INSERT INTO blacklist(
-			user_id,
-			black_user_id
+	private static $DELETION ="DELETE FROM `blacklist`
+		WHERE `user_id` = :id
+		AND `black_user_id` = :black_user";
+	private static $INSERTION = "INSERT INTO `blacklist` (
+			`user_id`,
+			`black_user_id`
 		) VALUE (
 			:id,
 			:black_user
 		)";
-	private static $SELECTION ="SELECT black_user_id FROM blacklist WHERE user_id = :id";
+	private static $SELECTION ="SELECT `black_user_id`
+		FROM `blacklist`
+		WHERE `user_id` = :id";
 
 	private $id;
 	public static function from($user)

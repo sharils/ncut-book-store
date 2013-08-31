@@ -1,9 +1,9 @@
-<?php 
+<?php
 require_once 'Method.php';
-require_once '../controllers/select_list.php'; 
+require_once '../../controllers/course/select_list.php';
 ?>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<form action="../controllers/course_creation.php" method="post">
+<form action="../../controllers/course/course_creation.php" method="post">
 	<fieldset>
 		<label>老師<?php Method::select('teacher_id',$args); ?></label>
 		<label>課程代碼<input name="sn" type="text" /></label>

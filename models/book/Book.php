@@ -1,10 +1,12 @@
 <?php
+require_once '../../models/publisher/Publisher.php';
 class Book
 {
 	private static $DELETION = " DELETE FROM `book` WHERE `id` = :id ";
 	private static $ID_SELECTION = " SELECT * FROM `book` WHERE `id` = :id ";
-	private static $INSERTION = " INSERT INTO `book`(
+	private static $INSERTION = " INSERT INTO `book` (
 			`id`,
+			`publisher_id`,
 			`author`,
 			`isbn`,
 			`market_price`,
@@ -15,6 +17,7 @@ class Book
 			`version`
 		) VALUE (
 			:id,
+			:publisher_id,
 			:author,
 			:isbn,
 			:market_price,
@@ -37,7 +40,9 @@ class Book
 		OR `type` LIKE :KW
 		OR `version` LIKE :KW ";
 
-	private static $UPDATE = " UPDATE `book` SET `publisher_id` = :publisher_id WHERE id = :id ";
+	private static $UPDATE = " UPDATE `book`
+		SET `publisher_id` = :publisher_id
+		WHERE `id` = :id ";
 
 	private $author;
 	private $id;
@@ -45,17 +50,19 @@ class Book
 	private $market_price;
 	private $name;
 	private $price;
+	private $publisher;
 	private $remark;
 	private $type;
 	private $version;
 
-	public static function create($author, $isbn, $market_price, $name, $price, $remark, $type, $version)
+	public static function create(Publisher $publisher, $author, $isbn, $market_price, $name, $price, $remark, $type, $version)
 	{
 		$id = time();
 		Database::execute(
 			self::$INSERTION,
 			array(
 				':id' => $id,
+				':publisher_id' => $publisher->id(),
 				':author' => $author,
 				':isbn' => $isbn,
 				':market_price' => $market_price,
@@ -66,7 +73,18 @@ class Book
 				':version' => $version
 			)
 		);
-		return new self($author, $id, $isbn, $market_price, $name, $price, $remark, $type, $version);
+		return new self(
+			$publisher,
+			$author,
+			$id,
+			$isbn,
+			$market_price,
+			$name,
+			$price,
+			$remark,
+			$type,
+			$version
+		);
 	}
 
 	public static function find($keyword)
@@ -106,6 +124,7 @@ class Book
 		$books = array();
 		foreach ($rows as $row) {
 			$books[] = new self(
+				Publisher::from($row['publisher_id']),
 				$row['author'],
 				$row['id'],
 				$row['isbn'],
@@ -125,7 +144,7 @@ class Book
 		return $this->author;
 	}
 
-	private function __construct($author, $id, $isbn, $market_price, $name, $price, $remark, $type, $version)
+	private function __construct($publisher, $author, $id, $isbn, $market_price, $name, $price, $remark, $type, $version)
 	{
 		$this->author = $author;
 		$this->id = $id;
@@ -133,6 +152,7 @@ class Book
 		$this->market_price = $market_price;
 		$this->name = $name;
 		$this->price = $price;
+		$this->publisher = $publisher;
 		$this->remark = $remark;
 		$this->type = $type;
 		$this->version = $version;
@@ -171,6 +191,11 @@ class Book
 	public function price()
 	{
 		return $this->price;
+	}
+
+	public function publisher()
+	{
+		return $this->publisher;
 	}
 
 	public function remark()
