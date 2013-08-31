@@ -3,18 +3,25 @@ class Router
 {
     private static $DOCUMENT_ROOT = '/ncut-book-store/';
 
-    public static function route($path)
+    public static function route($redirect_url)
     {
         static $occurrence = 1;
 
-        $path = str_replace(self::$DOCUMENT_ROOT, '', $path, $occurrence);
+        $redirect_url = $redirect_url();
 
-        if (!file_exists($path)) {
+        $redirect_url = str_replace(
+            self::$DOCUMENT_ROOT,
+            '',
+            $redirect_url,
+            $occurrence
+        );
+
+        if (!file_exists($redirect_url)) {
             self::notFound();
             exit;
         }
 
-        require_once $path;
+        require_once $redirect_url;
     }
 
     public static function rediect($url)
