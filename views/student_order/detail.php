@@ -24,7 +24,7 @@ require_once 'controllers/Method.php';
 			<td><?= $student_order_detail->book()->type() ?></td>
 			<td><?= $student_order_detail->book()->author() ?></td>
 			<td><?= $student_order_detail->book()->publisher()->name() ?></td>
-			<td><?= $student_order_detail->book()->marketPrice() ?></td>
+			<td><?= $student_order_detail->book()->price() ?></td>
 			<td><?= $student_order_detail->number() ?></td>
 		</tr>
 	<?php endforeach; ?>
