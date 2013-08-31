@@ -1,7 +1,7 @@
 StudentOrder Module
 ===================
 
-Student create(Student student, Timestamp date)
+StudentOrder create(Student student, Timestamp date)
 -----------------------------------------------
 This static method inserts a record into the student\_order table and returns
 a a StudentOrder object representing the record.
