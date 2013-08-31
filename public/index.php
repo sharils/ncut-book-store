@@ -3,6 +3,12 @@ chdir('..');
 
 require_once 'models/router/Router.php';
 
+Router::hostName(
+    isset($_SERVER['HTTPS']) ? 'https' : 'http',
+    $_SERVER['SERVER_NAME'],
+    $_SERVER['SERVER_PORT']
+);
+
 Router::route(function () {
     $query_string = array();
     parse_str($_SERVER['QUERY_STRING'], $query_string);
