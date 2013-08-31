@@ -1,13 +1,9 @@
 <?php
 class Router
 {
-    private static $DOCUMENT_ROOT = '/ncut-book-store/';
-
     public static function route($path)
     {
-        static $occurrence = 1;
-
-        $path = str_replace(self::$DOCUMENT_ROOT, '', $path, $occurrence);
+        $path = ltrim($path, '/');
 
         if (!file_exists($path)) {
             self::notFound();
@@ -15,6 +11,12 @@ class Router
         }
 
         require_once $path;
+    }
+
+    public static function rediect($url)
+    {
+        header("HTTP/1.1 302 Found");      
+        header("Location: $url");
     }
 
     private static function notFound()
