@@ -1,4 +1,4 @@
-<?php require_once '../../controllers/blacklist/listing.php'; ?>
+<?php require_once 'controllers/blacklist/listing.php'; ?>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <table>
 	<tr>
@@ -12,7 +12,7 @@
 		</tr>
 	<?php endforeach; ?>
 </table>
-<form action="../../controllers/blacklist/add_remove.php" method="post">
+<form action="controllers/blacklist/add_remove.php" method="post">
 	<fieldset>
 		<label>新增黑名單：<input name="add_user" type="text" /></label>
 		<label>移除黑名單：<input name="remove_user" type="text" /></label>

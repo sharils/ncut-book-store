@@ -1,4 +1,4 @@
-<?php require_once '../../controllers/message/listing.php'; ?>
+<?php require_once 'controllers/message/listing.php'; ?>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <a href="<?= Router::toUrl('views/message/list.php?page=spam'); ?>">[垃圾匣]</a>
 <a href="<?= Router::toUrl('views/message/list.php?page=receive'); ?>">[收件匣]</a>
