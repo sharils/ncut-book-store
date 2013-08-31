@@ -41,10 +41,10 @@ javascript:(function() {
         documentFragment = document.createDocumentFragment();
 
         iframe = document.createElement( 'iframe' );
-        documentFragment.appendChild( iframe );
         iframe.setAttribute( 'id', id );
         iframe.style.width = '100%';
         iframe.style.height = '20em';
+        documentFragment.appendChild( iframe );
 
         form = document.createElement( 'form' );
         form.setAttribute( 'action', 'http://validator.w3.org/check' );
