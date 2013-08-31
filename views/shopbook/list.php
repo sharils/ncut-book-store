@@ -26,7 +26,7 @@
 			<td><?= $shopbook->book()->price() ?></td>
 			<td><?= $shopbook->number() ?></td>
 			<td><?= ($shopbook->shelf() == true) ? '上架中' : '下架中' ?></td>
-			<td><a href="../../controllers/shopbook/change_shelf.php?id=<?=$shopbook->book()->id()?>">修改狀態</a></td>
+			<td><a href="<?= Router::toUrl("controllers/shopbook/change_shelf.php?id={$shopbook->book()->id()}"); ?>">修改狀態</a></td>
 		</tr>
 	<?php endforeach; ?>
 </table>

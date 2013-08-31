@@ -16,7 +16,7 @@ require_once 'controllers/teacher_coursedetail.php';
 				<td><?php echo $coursebook->book()->remark() ?></td>
 				<td><?php echo $coursebook->book()->isbn(); ?></td>
 				<td><?php echo $coursebook->book()->author() ?></td>
-				<td><label><a href="../controllers/delete_coursebook.php?course-id=<?= $course->id();?> & book-id=<?= $coursebook->book()->id(); ?>" >刪除</a></label></td>
+				<td><label><a href="<?= Router::toUrl("controllers/delete_coursebook.php?course-id={$course->id()} & book-id={$coursebook->book()->id()}"); ?>" >刪除</a></label></td>
 			</tr>
  		<?php endforeach; ?>
 			<tr>

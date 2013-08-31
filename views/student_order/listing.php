@@ -20,8 +20,8 @@ require_once '../../controllers/Method.php';
 			</td>
 			<td><?= $student_order->status() ?></td>
 			<td>
-				<a href="detail.php?id=<?= $student_order->id() ?>">詳細</a>
-				<a href="../../controllers/student_order/cancel.php?id=<?= $student_order->id() ?>">
+				<a href="<?= Router::toUrl("views/student_order/detail.php?id={$student_order->id()}"); ?>">詳細</a>
+				<a href="<?= Router::toUrl("controllers/student_order/cancel.php?id={$student_order->id()}"); ?>">
 					<?= ($student_order->status() === 'submitted') ? '取消訂單' : '' ?>
 				</a>
 			</td>
