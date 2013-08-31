@@ -47,6 +47,6 @@ class Router
 
     public static function toUrl($path)
     {
-        return self::$hostName . $path;
+        return self::$hostName . self::$documentRoot . $path;
     }
 }
