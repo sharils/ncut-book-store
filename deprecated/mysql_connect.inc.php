@@ -1,3 +1,3 @@
 <?php
-include("config.php"); 
+include("config.php");
 $db = new PDO($dsn, $user, $password);

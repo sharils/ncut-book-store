@@ -1,14 +1,14 @@
 <?php
-require_once '../controllers/teacher_coursedetail.php';
+require_once 'controllers/teacher_coursedetail.php';
 ?>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <form action="" method="post">
 	<table>
 		<tr>
-			<th><label>書籍名稱</label></th>		
+			<th><label>書籍名稱</label></th>
 			<th><label>版本</label></th>
 			<th><label>ISBN</label></th>
-			<th><label>作者</label></th>		
+			<th><label>作者</label></th>
 		</tr>
 		<?php foreach( $coursebooks as $coursebook ): ?>
 			<tr>

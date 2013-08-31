@@ -1,6 +1,6 @@
 <?php
-require_once '../../controllers/student_order/detail.php';
-require_once '../../controllers/Method.php';
+require_once 'controllers/student_order/detail.php';
+require_once 'controllers/Method.php';
 ?>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <table>

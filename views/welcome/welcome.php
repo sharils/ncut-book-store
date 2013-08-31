@@ -1,5 +1,5 @@
 <?php
-require_once '../../controllers/welcome/welcome.php';
+require_once 'controllers/welcome/welcome.php';
 class Welcome
 {
 	public static function newSelf($role){

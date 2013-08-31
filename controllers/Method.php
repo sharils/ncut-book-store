@@ -1,5 +1,5 @@
 <?php
-require_once '../../models/clerk/clerk.php';
+require_once 'models/clerk/clerk.php';
 class Method
 {
 	public static function selectList($role)

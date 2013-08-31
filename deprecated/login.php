@@ -8,7 +8,7 @@
 		<p><label>帳號：<input type="text" name="user_id" /></label></p>
 		<p><label>密碼：<input type="text" name="user_pwd"/></label></p>
 		<p><input type="submit" name="submit" value="登入" /></p>
-	</form>	
+	</form>
 
 
 </BODY>

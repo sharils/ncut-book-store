@@ -7,7 +7,7 @@
 		<label>密碼：<input name="pwd" type="password" /></label>
 		<label>確認密碼：<input name="confirmpassword" type="password" /></label>
 		<label>姓名：<input name="name" type="text" /></label>
-		<label>Email：<input name="email" type="text" /></label>	
+		<label>Email：<input name="email" type="text" /></label>
 		<label>電話：<input name="phone" type="text" /></label>
 		<label>傳真號碼：<input name="phone_ext" type="text" /></label>
 		<input type="reset" value="重填"/>

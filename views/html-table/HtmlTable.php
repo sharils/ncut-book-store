@@ -6,7 +6,7 @@ class HtmlTable
 	private $isTh;
 	private $row;
 	private $rowGroup;
-	private static function toRowGroupTag($group) {		
+	private static function toRowGroupTag($group) {
     	if ($group === 0) {
     		return "thead";
     	} elseif ($group === 1) {
@@ -25,12 +25,12 @@ class HtmlTable
 	}
 	private function getCellTag($row, $col) {
     	$is_th = $this->isTh;
-	    return $is_th($row, $col) ? "th" : "td";		
+	    return $is_th($row, $col) ? "th" : "td";
 	}
 	private function getCellHtml($row, $col) {
     	$tag = $this->getCellTag($row, $col);
     	$data = $this->getData($row, $col);
-    	return "<$tag>$data</$tag>";  		
+    	return "<$tag>$data</$tag>";
 	}
 	private function getData($row, $col) {
 		$data_provider = $this->dataProvider;
@@ -67,4 +67,4 @@ class HtmlTable
     	$html = "<table>$groups_html</table>";
         return $html;
     }
-} 
+}

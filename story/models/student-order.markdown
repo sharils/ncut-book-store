@@ -1,7 +1,7 @@
 StudentOrder Module
 ===================
 
-Student create(Student student, Timestamp date)
+StudentOrder create(Student student, Timestamp date)
 -----------------------------------------------
 This static method inserts a record into the student\_order table and returns
 a a StudentOrder object representing the record.
@@ -10,6 +10,10 @@ StudentOrders find(Student student)
 -----------------------------------
 This static method returns an array of StudentOrder objects belonging to the
 student.
+
+StudentOrder findCart(Student student)
+----------------------------------
+This static method returns a StudentOrder object representing the shopping cart.
 
 StudentOrder from(Int student\_order\_id)
 -----------------------------------------

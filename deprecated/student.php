@@ -10,7 +10,7 @@
 include("login_model.php");
 
 /*透過ID,ROLE找相關人的資料*/
-if($_SESSION['user_id'] != null){ 
+if($_SESSION['user_id'] != null){
 	$id = $_SESSION['user_id'];
 	$role = $_SESSION['user_role'];
 	$rows = read_roledata($id,$role);

@@ -1,9 +1,9 @@
 <?php
-require_once '../../models/admin/Admin.php';
-require_once '../../models/clerk/Clerk.php';
-require_once 'Password.php';
-require_once '../../models/student/Student.php';
-require_once '../../models/teacher/Teacher.php';
+require_once 'models/admin/Admin.php';
+require_once 'models/clerk/Clerk.php';
+require_once 'models/user/Password.php';
+require_once 'models/student/Student.php';
+require_once 'models/teacher/Teacher.php';
 class User
 {
 	private static $CHANGEPWD_SELECTION = "SELECT `user`.pwd, salt

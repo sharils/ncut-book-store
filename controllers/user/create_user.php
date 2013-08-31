@@ -1,10 +1,10 @@
 <?php
-require_once "../../models/admin/Admin.php";
-require_once "../../models/clerk/Clerk.php";
-require_once "../../models/database/Database.php";
-require_once "../../models/student/Student.php";
-require_once "../../models/teacher/Teacher.php";
-require_once "../../models/user/User.php";
+require_once "models/admin/Admin.php";
+require_once "models/clerk/Clerk.php";
+require_once "models/database/Database.php";
+require_once "models/student/Student.php";
+require_once "models/teacher/Teacher.php";
+require_once "models/user/User.php";
 Database::initialise('localhost', 'root', '123456', 'ncut');
 session_start();
 if ($_POST['pwd'] === $_POST['confirmpassword']) {
@@ -48,7 +48,7 @@ if ($_POST['pwd'] === $_POST['confirmpassword']) {
 			$args['phone_ext']
 		);
 	}
-	echo '<meta http-equiv=REFRESH CONTENT=2;url=../../views/create_user/create_user.php>';
+	echo '<meta http-equiv=REFRESH CONTENT=2;url=views/create_user/create_user.php>';
 } else {
 	echo 'Two Passwrods are different.';
 }

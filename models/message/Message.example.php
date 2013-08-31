@@ -1,5 +1,5 @@
 <?php
-require_once 'User.php';
+require_once 'models/user/User.php';
 
 class Message
 {

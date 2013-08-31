@@ -1,5 +1,5 @@
 <?php
-require_once '../../models/course/Course.php';
+require_once 'models/course/Course.php';
 class StudentCourse
 {
 	private static $DELETION = "DELETE FROM `student_course`
