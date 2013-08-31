@@ -1,7 +1,7 @@
 <?php
 class Router
 {
-    private static $DOCUMENT_ROOT = '/ncut-book-store/';
+    private static $DOCUMENT_ROOT = 'ncut-book-store/';
     private static $hostName = null;
 
     public static function route($redirect_url)
@@ -11,7 +11,7 @@ class Router
         $redirect_url = $redirect_url();
 
         $redirect_url = str_replace(
-            self::$DOCUMENT_ROOT,
+            '/' . self::$DOCUMENT_ROOT,
             '',
             $redirect_url,
             $occurrence
