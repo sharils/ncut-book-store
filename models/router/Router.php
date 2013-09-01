@@ -45,6 +45,34 @@ class Router
         require_once $redirect_url;
     }
 
+    public static function above()
+    {
+        ?>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>I AM YOUR DOCUMENT TITLE REPLACE ME</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</head>
+<body>
+        <?php
+    }
+    public static function below()
+    {
+        ?>
+                </body>
+            </html>
+        <?php
+    }
+    public static function hostName($protocol, $host, $port) {
+        $port = $port === 80 ? '' : ":$port";
+
+        self::$hostName = "$protocol://$host$port/";
+    }
+
     public static function toUrl($path)
     {
         return self::$hostName . self::$DOCUMENT_ROOT . $path;
