@@ -1,7 +1,8 @@
 <?php
-require_once 'controllers/teacher_coursedetail.php';
+require_once 'controllers/teacher_course/teacher_coursedetail.php';
 ?>
-<form action="" method="post">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<form action="<?= Router::toUrl("controllers/teacher_course/add_remove.php")?>" method="post">
 	<table>
 		<tr>
 			<th><label>書籍名稱</label></th>
@@ -9,17 +10,19 @@ require_once 'controllers/teacher_coursedetail.php';
 			<th><label>ISBN</label></th>
 			<th><label>作者</label></th>
 		</tr>
+		<input name="course" type="hidden" value="<?= $course->id(); ?>" />
 		<?php foreach( $coursebooks as $coursebook ): ?>
 			<tr>
 				<td><?php echo $coursebook->book()->name(); ?></td>
 				<td><?php echo $coursebook->book()->remark() ?></td>
 				<td><?php echo $coursebook->book()->isbn(); ?></td>
 				<td><?php echo $coursebook->book()->author() ?></td>
-				<td><label><a href="<?= Router::toUrl("controllers/delete_coursebook.php?course-id={$course->id()} & book-id={$coursebook->book()->id()}"); ?>" >刪除</a></label></td>
+				<td><button name="remove_book" value="<?= $coursebook->book()->id() ?>">刪除書籍</button></label></td>
 			</tr>
  		<?php endforeach; ?>
 			<tr>
-			<td><label><input name="AddBook" type="submit" value="新增書籍"></label></td>
+			<td><button name="add_book" value="<?= $coursebook->book()->id() ?>">新增書籍</button></td>
+				<!-- <a href="../controllers/delete_coursebook.php?course-id=<?= $course->id();?> & book-id=<?= $coursebook->book()->id(); ?>" >刪除</a></label></td> -->
 			</tr>
 	</table>
 </form>
