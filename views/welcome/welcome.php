@@ -39,7 +39,6 @@ class Welcome
 	private static  function common()
 	{
 		?>
-			<meta http-equiv="content-type" content="text/html; charset=utf-8">
 			<ul>
 				<li><a href="<?= Router::toUrl('views/message/creation.php'); ?>">寫信</a></li>
 				<li><a href="<?= Router::toUrl('views/message/list.php?page=receive'); ?>">收件匣</a></li>

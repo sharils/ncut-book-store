@@ -1,5 +1,4 @@
 <?php require_once 'controllers/student_order/cart.php'; ?>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <?php if ($student_order !== NULL): ?>
 <form action="../../controllers/student_order/cart_form.php" method="post">
 	<fieldset>

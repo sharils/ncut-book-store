@@ -1,5 +1,4 @@
 <?php require_once 'controllers/student_course/list.php'; ?>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <table>
 	<tr>
 		<th>課程代號</th>

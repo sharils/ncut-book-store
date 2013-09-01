@@ -1,5 +1,4 @@
 <?php require_once 'controllers/student_order/confirmation.php'; ?>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <form action ="../../controllers/student_order/confirmation_form.php" method="post">
 	<fieldset>
 		<table>

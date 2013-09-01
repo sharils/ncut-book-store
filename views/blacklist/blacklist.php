@@ -1,5 +1,4 @@
 <?php require_once 'controllers/blacklist/listing.php'; ?>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <table>
 	<tr>
 		<th>帳號</th>

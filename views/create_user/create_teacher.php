@@ -1,4 +1,3 @@
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
 <form action="../../controllers/user/create_user.php" method="post">
 	<fieldset>
