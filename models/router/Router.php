@@ -28,6 +28,26 @@ class Router
         <?php
     }
 
+    public static function hostName($protocol, $host, $port) {
+        $port = $port === 80 ? '' : ":$port";
+
+        self::$hostName = "$protocol://$host$port/";
+    }
+
+    private static function notFound()
+    {
+        $status = "404 Not Found";
+
+        header("HTTP/1.0 $status");
+        echo $status;
+    }
+
+    public static function redirect($url)
+    {
+        header("HTTP/1.1 302 Found");
+        header("Location: $url");
+    }
+
     public static function route($redirect_url)
     {
         static $occurrence = 1;
@@ -46,29 +66,9 @@ class Router
             exit;
         }
 
-	self::above();
+        self::above();
         require_once $redirect_url;
-	self::below();
-    }
-
-    private static function notFound()
-    {
-        $status = "404 Not Found";
-
-        header("HTTP/1.0 $status");
-        echo $status;
-    }
-
-    public static function redirect($url)
-    {
-        header("HTTP/1.1 302 Found");
-        header("Location: $url");
-    }
-
-    public static function hostName($protocol, $host, $port) {
-        $port = $port === 80 ? '' : ":$port";
-
-        self::$hostName = "$protocol://$host$port/";
+        self::below();
     }
 
     public static function toUrl($path)
