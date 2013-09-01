@@ -1,5 +1,5 @@
 <?php
-require_once 'controllers/teacher_courselisting.php';
+require_once 'controllers/teacher_course/teacher_courselisting.php';
 ?>
 <table>
 	<tr>

@@ -124,6 +124,16 @@ Class Course
 		);
 		return self::refine($result);
 	}
+ 
+	public function toArray()
+	{
+		return array(
+			'name' => $this->name,
+			'type' => $this->type,
+			'year' => $this->year
+		);
+	}
+
 	public function id()
 	{
 		return $this->course_id;
