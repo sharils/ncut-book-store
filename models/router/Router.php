@@ -28,6 +28,30 @@ class Router
         <?php
     }
 
+    private static function getMime($redirect_url)
+    {
+        $matches = array();
+        preg_match('/\.([^.]+)$/', $redirect_url, $matches);
+        if (!isset($matches[0])) {
+            return '';
+        }
+
+        list($extension) = $matches;
+
+        switch ($extension) {
+            case 'css':
+                return 'text/css';
+            case 'js':
+                return 'text/javascript';
+            case 'png':
+                return 'image/png';
+            case 'php':
+                return 'text/html';
+            default:
+                return '';
+        }
+    }
+
     public static function hostName($protocol, $host, $port) {
         $port = $port === 80 ? '' : ":$port";
 
@@ -61,10 +85,12 @@ class Router
             $occurrence
         );
 
-        if (!file_exists($redirect_url)) {
+        $mime = self::getMime($redirect_url);
+        if (!file_exists($redirect_url) || $mime === '') {
             self::notFound();
             exit;
         }
+        header("Content-type: $mime");
 
         self::above();
         require_once $redirect_url;
