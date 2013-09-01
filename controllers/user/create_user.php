@@ -48,7 +48,7 @@ if ($_POST['pwd'] === $_POST['confirmpassword']) {
 			$args['phone_ext']
 		);
 	}
-	echo '<meta http-equiv=REFRESH CONTENT=2;url=views/create_user/create_user.php>';
+	Router::redirect('views/create_user/create_user.php');
 } else {
 	echo 'Two Passwrods are different.';
 }

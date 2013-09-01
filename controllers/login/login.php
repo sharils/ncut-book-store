@@ -9,7 +9,7 @@ try {
 	$user = User::authenticate($args['user_name'], $args['role'], $args['password']);
 	$_SESSION['user_id'] = $user->id();
 	$_SESSION['role'] = $args['role'];
-	echo '<meta http-equiv=REFRESH CONTENT=2;url=views/welcome/welcome.php>';
+	Router::redirect('views/welcome/welcome.php');
 	exit;
 } catch (Exception $e) {
 	echo $e->getMessage();
