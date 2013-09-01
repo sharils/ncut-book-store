@@ -4,6 +4,26 @@ class Router
     private static $DOCUMENT_ROOT = 'ncut-book-store/';
     private static $hostName = null;
 
+    public static function hostName($protocol, $host, $port) {
+        $port = $port === 80 ? '' : ":$port";
+
+        self::$hostName = "$protocol://$host$port/";
+    }
+
+    private static function notFound()
+    {
+        $status = "404 Not Found";
+
+        header("HTTP/1.0 $status");
+        echo $status;
+    }
+
+    public static function rediect($url)
+    {
+        header("HTTP/1.1 302 Found");
+        header("Location: $url");
+    }
+
     public static function route($redirect_url)
     {
         static $occurrence = 1;
@@ -25,28 +45,8 @@ class Router
         require_once $redirect_url;
     }
 
-    private static function notFound()
-    {
-        $status = "404 Not Found";
-
-        header("HTTP/1.0 $status");
-        echo $status;
-    }
-
-    public static function rediect($url)
-    {
-        header("HTTP/1.1 302 Found");
-        header("Location: $url");
-    }
-
-    public static function hostName($protocol, $host, $port) {
-        $port = $port === 80 ? '' : ":$port";
-
-        self::$hostName = "$protocol://$host$port/";
-    }
-
     public static function toUrl($path)
     {
-        return self::$hostName . self::$documentRoot . $path;
+        return self::$hostName . self::$DOCUMENT_ROOT . $path;
     }
 }
