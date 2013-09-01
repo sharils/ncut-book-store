@@ -8,4 +8,4 @@ $order->date($_POST['date']);
 $order->status('submitted');
 $order->update();
 
-Router::rediect('../../views/student_order/listing.php');
+Router::redirect('../../views/student_order/listing.php');
