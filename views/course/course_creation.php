@@ -1,5 +1,5 @@
 <?php
-require_once 'controllers/Method.php';
+require_once 'Method.php';
 require_once 'controllers/course/select_list.php';
 ?>
 <form action="../../controllers/course/course_creation.php" method="post">

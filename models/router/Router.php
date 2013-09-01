@@ -12,7 +12,7 @@ class Router
  "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-<title>I AM YOUR DOCUMENT TITLE REPLACE ME</title>
+<title>國立勤益科技大學 - 線上訂書系統</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 </head>
@@ -46,7 +46,9 @@ class Router
             exit;
         }
 
+	self::above();
         require_once $redirect_url;
+	self::below();
     }
 
     private static function notFound()
@@ -57,7 +59,7 @@ class Router
         echo $status;
     }
 
-    public static function rediect($url)
+    public static function redirect($url)
     {
         header("HTTP/1.1 302 Found");
         header("Location: $url");

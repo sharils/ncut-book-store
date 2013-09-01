@@ -44,6 +44,7 @@ class Welcome
 				<li><a href="<?= Router::toUrl('views/message/list.php?page=receive'); ?>">收件匣</a></li>
 				<li><a href="<?= Router::toUrl('views/message/list.php?page=spam'); ?>">垃圾匣</a></li>
 				<li><a href="<?= Router::toUrl('views/blacklist/blacklist.php'); ?>">黑名單</a></li>
+				<li><a href="<?= Router::toUrl('views/password_update.php'); ?>">修改密碼</a></li>
 			</ul>
 		<?php
 	}

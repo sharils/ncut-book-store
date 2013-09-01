@@ -12,8 +12,7 @@ if (empty($_POST['delete'])) {
 	$id = $detail->student_order()->id();
 	Router::redirect("../../views/student_order/confirmation.php?id=$id");
 } else {
-	$id = array_keys($_POST['delete']);
-	$detail = StudentOrderDetail::from($id[0]);
+	$detail = StudentOrderDetail::from($_POST['delete'][0]);
 	$detail->delete();
 	Router::redirect('../../views/student_order/cart.php');
 }

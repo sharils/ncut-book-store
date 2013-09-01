@@ -24,14 +24,13 @@
 					<td><?= $arg->book()->publisher()->name() ?></td>
 					<td><?= $arg->book()->price() ?></td>
 					<td><input name="number[<?= $arg->id()?>]" type="text" value="<?= $arg->number() ?>"/></td>
-					<td><button name="delete[<?= $arg->id()?>]">刪除</button></td>
+					<td><button name="delete[]" value="<?= $arg->id()?>">刪除</button></td>
 				</tr>
 			<?php endforeach; ?>
 			<tr>
-				<th align="right" colspan="9">可於送出後進一步確認總金額</th>
+				<td align="right" colspan="9">可於送出後進一步確認總金額</td>
 			</tr>
 		</table>
-		<input type="reset" value="返回"/>
 		<input type="submit" value="送出"/>
 	</fieldset>
 </form>
