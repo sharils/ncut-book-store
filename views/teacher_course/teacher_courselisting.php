@@ -1,7 +1,6 @@
 <?php
 require_once 'controllers/teacher_courselisting.php';
 ?>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <table>
 	<tr>
 		<th><label>課程名稱</label></th>

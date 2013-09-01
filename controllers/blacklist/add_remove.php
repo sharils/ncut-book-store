@@ -12,3 +12,5 @@ if(!empty($_POST['add_user'])) {
 if(!empty($_POST['remove_user'])) {
 	$blacklist->remove(user::find($_POST['remove_user']));
 }
+$url = Router::toUrl('views/blacklist/blacklist.php');
+Router::redirect($url);

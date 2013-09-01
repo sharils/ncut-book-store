@@ -2,7 +2,6 @@
 require_once 'controllers/student_order/list.php';
 require_once 'controllers/Method.php';
 ?>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <table>
 	<tr>
 		<th>訂單編號</th>

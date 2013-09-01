@@ -1,5 +1,4 @@
 <?php require_once 'controllers/shopbook/list.php'; ?>
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <table>
 	<tr>
 		<th>ISBN</th>

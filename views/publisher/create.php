@@ -1,4 +1,3 @@
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <form action="../../controllers/publisher/create.php" method="post">
 	<fieldset>
 		<label>廠商名稱<input name="name" type="text"/></label>

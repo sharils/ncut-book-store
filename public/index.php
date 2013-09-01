@@ -2,7 +2,7 @@
 chdir('..');
 
 require_once 'models/router/Router.php';
-
+session_start();
 Router::hostName(
     isset($_SERVER['HTTPS']) ? 'https' : 'http',
     $_SERVER['SERVER_NAME'],

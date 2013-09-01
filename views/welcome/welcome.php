@@ -39,12 +39,12 @@ class Welcome
 	private static  function common()
 	{
 		?>
-			<meta http-equiv="content-type" content="text/html; charset=utf-8">
 			<ul>
 				<li><a href="<?= Router::toUrl('views/message/creation.php'); ?>">寫信</a></li>
 				<li><a href="<?= Router::toUrl('views/message/list.php?page=receive'); ?>">收件匣</a></li>
 				<li><a href="<?= Router::toUrl('views/message/list.php?page=spam'); ?>">垃圾匣</a></li>
 				<li><a href="<?= Router::toUrl('views/blacklist/blacklist.php'); ?>">黑名單</a></li>
+				<li><a href="<?= Router::toUrl('views/password_update.php'); ?>">修改密碼</a></li>
 			</ul>
 		<?php
 	}

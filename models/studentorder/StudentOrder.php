@@ -6,6 +6,9 @@ class StudentOrder
 {
 	private static $FIND_SELECTION = "SELECT * FROM `student_order`
 		WHERE `student_user_id` = :student_id";
+	private static $FINDCART_SELECTION ="SELECT * FROM `student_order`
+		WHERE `student_user_id` = :student_id
+		AND `status` = :status";
 	private static $FROM_SELECTION = "SELECT * FROM `student_order`
 		WHERE `id` = :id";
 	private static $INSERTION = "INSERT INTO `student_order` (
@@ -53,6 +56,24 @@ class StudentOrder
 			)
 		);
 		return self::refine($result);
+	}
+
+	public static function findcart(Student $student)
+	{
+		$result = Database::execute(
+			self::$FINDCART_SELECTION,
+			array(
+				':student_id' => $student->id(),
+				':status' => 'shopping'
+			)
+		);
+
+		if (empty($result)) {
+			return NULL;
+		}
+
+		$StudentOrders = self::refine($result);
+		return $StudentOrders[0];
 	}
 
 	public static function from($student_order_id)
