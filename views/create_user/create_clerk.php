@@ -1,5 +1,4 @@
-<?php Router::above()?>
-	<form action="../../controllers/user/create_user.php" method="post">
+	<form action="<?= Router::toUrl('controllers/user/create_user.php') ?>" method="post">
 		<div>
 			<label>角色：</label>
 			<input name="role" readonly="readonly" type="text" value="Clerk" />
@@ -14,4 +13,3 @@
 			<input type="submit" value="建立使用者"/>
 		</div>
 	</form>
-<?php Router::below()?>

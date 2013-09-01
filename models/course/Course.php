@@ -134,22 +134,6 @@ Class Course
 		return $this->name;
 	}
 
-	public static function refine($rows)
-	{
-		$course = array();
-		foreach ($rows as $row) {
-
-			$course[] = new self(
-				$course_id,
-				$teacher,
-				$type,
-				$name,
-				$year
-			);
-		}
-		return $course;
-	}
-
 	public function sn()
 	{
 		return $this->sn;

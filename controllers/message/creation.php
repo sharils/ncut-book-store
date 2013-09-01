@@ -7,3 +7,5 @@ Database::initialise('localhost', 'root', '123456', 'ncut');
 $Sender = User::from($_SESSION['user_id']);
 $Receiver = User::find($_POST['receiver']);
 $m = Message::create($Sender, $Receiver, $_POST['content']);
+$url = Router::toUrl('views/message/list.php?page=receive');
+Router::redirect($url);

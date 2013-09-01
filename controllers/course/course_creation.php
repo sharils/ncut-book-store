@@ -12,3 +12,5 @@ if (in_array('', $args)) {
 	$teacher = Teacher::from(User::from($args['teacher_id']));
 	Course::create($teacher, $args['sn'], $args['type'], $args['name'], $args['year']);
 }
+
+Router::redirect(Router::toUrl("views/course/course_creation.php"));

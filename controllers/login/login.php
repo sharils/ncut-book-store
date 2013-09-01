@@ -4,11 +4,15 @@ require_once 'models/user/User.php';
 
 Database::initialise('localhost', 'root', '123456', 'ncut');
 try {
-	$args = $_POST;
-	$user = User::authenticate($args['user_name'], $args['role'], $args['password']);
+	$user = User::authenticate(
+		$_POST['user_name'],
+		$_POST['role'],
+		$_POST['password']
+	);
 	$_SESSION['user_id'] = $user->id();
-	$_SESSION['role'] = $args['role'];
-	Router::redirect('../../views/welcome/welcome.php');
+	$_SESSION['role'] = $_POST['role'];
+	$url = Router::toUrl('views/welcome/welcome.php');
+	Router::redirect($url);
 	exit;
 } catch (Exception $e) {
 	echo $e->getMessage();

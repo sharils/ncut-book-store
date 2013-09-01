@@ -3,14 +3,15 @@ require_once "models/database/Database.php";
 require_once "models/user/User.php";
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
-$pwd = $_POST;
 try{
-	if ($pwd['newpassword'] === $pwd['confirmpassword']){
+	if ($_POST['newpassword'] === $_POST['confirmpassword']){
 		$user = User::from($_SESSION['user_id']);
-		$user->changePassword($pwd['password'], $pwd['newpassword']);
+		$user->changePassword($_POST['password'], $_POST['newpassword']);
 	}else{
 		echo '密碼輸入錯誤';
 	}
 }catch (Exception $e) {
 	echo $e->getMessage();
 }
+$url = Router::toUrl('views/password_update.php');
+Router::redirect($url);
