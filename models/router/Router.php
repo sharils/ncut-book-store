@@ -32,11 +32,10 @@ class Router
     {
         $matches = array();
         preg_match('/\.([^.]+)$/', $redirect_url, $matches);
-        if (!isset($matches[0])) {
+        if (!isset($matches[1])) {
             return '';
         }
-
-        list($extension) = $matches;
+        $extension = $matches[1];
 
         switch ($extension) {
             case 'css':
