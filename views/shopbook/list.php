@@ -1,4 +1,5 @@
 <?php require_once 'controllers/shopbook/list.php'; ?>
+<form action="<?= Router::toUrl('controllers/shopbook/change_shelf.php'); ?>" method="post">
 <table>
 	<tr>
 		<th>ISBN</th>
@@ -25,7 +26,11 @@
 			<td><?= $shopbook->book()->price() ?></td>
 			<td><?= $shopbook->number() ?></td>
 			<td><?= ($shopbook->shelf() == true) ? '上架中' : '下架中' ?></td>
-			<td><a href="<?= Router::toUrl("controllers/shopbook/change_shelf.php?id={$shopbook->book()->id()}"); ?>">修改狀態</a></td>
+			<td>
+				<button name='id' value='<?= $shopbook->book()->id() ?>'>
+					修改狀態
+				</button>
+			</td>
 		</tr>
 	<?php endforeach; ?>
 </table>
