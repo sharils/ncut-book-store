@@ -7,7 +7,7 @@ require_once 'models/user/User.php';
 
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
-$studentorder = StudentOrder::from(Student::from(User::from($_SESSION['user_id'])));
+$student_order = StudentOrder::findcart(Student::from(User::from($_SESSION['user_id'])));
 
 if ($student_order !== NULL) {
 	$student_order_details = StudentOrderDetail::find($student_order);

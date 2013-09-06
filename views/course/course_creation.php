@@ -2,13 +2,31 @@
 require_once 'Method.php';
 require_once 'controllers/course/select_list.php';
 ?>
+<div class ="col-lg-9 col-sm-9">
 <form action="../../controllers/course/course_creation.php" method="post">
-	<fieldset>
-		<label>老師<?php Method::select('teacher_id',$args); ?></label>
-		<label>課程代碼<input name="sn" type="text" /></label>
-		<label>課程名稱<input name="name" type="text" /></label>
-		<label>必選修<input name="type" type="text" /></label>
-		<label>學年度<input name="year" type="text" /></label>
-		<input type="submit" value="送出"/>
-	</fieldset>
+	<table class="center table table-bordered">
+		<tr class="active">
+			<th colspan="4">課程建立</th>
+		</tr>
+		<tr>
+			<th colspan="1">老師</th>
+			<td colspan="3"><?php Method::select('teacher_id',$args); ?></td>
+		</tr>
+		<tr>
+			<th>課程代碼</th>
+			<td><input class="form-control" name="sn" type="text" /></td>
+			<th>課程名稱</th>
+			<td><input class="form-control" name="name" type="text" /></td>
+		</tr>
+		<tr>
+			<th>必選修</th>
+			<td><input class="form-control" name="type" type="text" /></td>
+			<th>學年度</th>
+			<td><input class="form-control" name="year" type="text" /></td>
+		</tr>
+	</table>
+	<div>
+		<input class="btn btn-success" type="submit" value="送出"/>
+	</div>
 </form>
+</div>

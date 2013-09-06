@@ -15,6 +15,8 @@ class Router
 <title>國立勤益科技大學 - 線上訂書系統</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
+<!-- Bootstrap core CSS -->
+<link href="<?= Router::toUrl("vender/css/bootstrap.css")?>" rel="stylesheet" >
 </head>
 <body>
         <?php
