@@ -4,8 +4,9 @@ require_once 'models/message/Message.php';
 require_once 'models/user/User.php';
 require_once 'controllers/blacklist/listing.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
-
+$flag = TRUE;
 if ($_GET['page'] === 'send') {
+	$flag = FALSE;
 	$messageslist = Message::find(User::from($_SESSION['user_id']), 'sender_user_id');
 } else {
 	$messages = Message::find(User::from($_SESSION['user_id']));
