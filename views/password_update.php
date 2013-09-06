@@ -1,6 +1,25 @@
-<form action="<?= Router::toUrl('controllers/password_update.php') ?>" method="post">
-	<label>舊密碼<input name="password" type="password" /></label>
-	<label>新密碼<input name="newpassword" type="password" /></label>
-	<label>確認密碼<input name="confirmpassword" type="password" /></label>
-	<input type="submit" value="送出"/>
-</form>
+<div class ="col-lg-9 col-sm-9">
+	<form action="<?= Router::toUrl('controllers/password_update.php') ?>" class="form-horizontal" method="post">
+		<div class="form-group">
+			<label class="col-lg-2 col-sm-2 control-label" for="password">舊密碼</label>
+			<div class="col-lg-10 col-sm-9">
+				<input class="form-control" id="password" name="password" type="password" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 col-sm-2 control-label" for="newpassword">新密碼</label>
+			<div class="col-lg-10 col-sm-9">
+				<input class="form-control" id="newpassword" name="newpassword" type="password" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-lg-2 col-sm-2 control-label" for="confirmpassword">確認密碼</label>
+			<div class="col-lg-10 col-sm-9">
+				<input class="form-control" id="confirmpassword" name="confirmpassword" type="password" />
+			</div>
+		</div>
+		<div>
+			<input class="btn btn-warning" type="submit" value="修改"/>
+		</div>
+	</form>
+</div>

@@ -2,10 +2,10 @@
 require_once 'controllers/student_order/list.php';
 require_once 'controllers/Method.php';
 ?>
+<div class ="col-lg-9 col-sm-9">
 <form action="<?= Router::toUrl('controllers/student_order/cancel.php') ?>" method="post">
-	<div>
-	<table>
-		<tr>
+	<table class="center table table-bordered">
+		<tr class="active">
 			<th>訂單編號</th>
 			<th>日期</th>
 			<th>負責人</th>
@@ -21,13 +21,13 @@ require_once 'controllers/Method.php';
 				</td>
 				<td><?= $student_order->status() ?></td>
 				<td>
-					<a href="<?= Router::toUrl("views/student_order/detail.php?id={$student_order->id()}"); ?>">詳細</a>
+					<a class="btn btn-info" href="<?= Router::toUrl("views/student_order/detail.php?id={$student_order->id()}"); ?>">詳細</a>
 					<?php if ($student_order->status() === 'submitted'): ?>
-						<button name="cancel_id" value="<?= $student_order->id() ?>">取消訂單</button>
+						<button class="btn btn-danger" name="cancel_id" value="<?= $student_order->id() ?>">取消訂單</button>
 					<?php endif; ?>
 				</td>
 			</tr>
 		<?php endforeach; ?>
 	</table>
-	</div>
 </form>
+</div>

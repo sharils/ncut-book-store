@@ -1,9 +1,10 @@
 <?php require_once 'controllers/student_order/confirmation.php'; ?>
-<form action ="../../controllers/student_order/confirmation_form.php" method="post">
-	<div>
-		<table>
-			<input name="id" type="hidden" value="<?= $order->id() ?>"/>
-			<input name="date" type="hidden" value="<?= date("Y-m-d H:i") ?>"/>
+<div class ="col-lg-9 col-sm-9">
+	<form action ="<?= Router::toUrl('controllers/student_order/confirmation_form.php') ?>" method="post">
+		<table class="center table table-bordered">
+			<tr class="active">
+				<th colspan="2">訂單金額最後確認</th>
+			</tr>
 			<tr>
 				<th>日期</th>
 				<td>
@@ -15,7 +16,11 @@
 				<td><?= $total ?></td>
 			</tr>
 		</table>
-		<a href="<?= Router::toUrl("views/student_order/cart.php"); ?>">返回</a>
-		<input type="submit" value="確認"/>
-	</div>
-</form>
+		<div>
+			<a class="btn btn-success" href="<?= Router::toUrl("views/student_order/cart.php"); ?>">返回</a>
+			<input class="btn btn-success" type="submit" value="確認"/>
+			<input name="id" type="hidden" value="<?= $order->id() ?>"/>
+			<input name="date" type="hidden" value="<?= date("Y-m-d H:i") ?>"/>
+		</div>
+	</form>
+</div>
