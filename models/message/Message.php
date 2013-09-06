@@ -8,12 +8,14 @@ class Message
 			`id`,
 			`sender_user_id`,
 			`receiver_user_id`,
-			`content`
+			`content`,
+			`date`
 		) VALUE (
 			:id,
 			:user_sender,
 			:user_receiver,
-			:content
+			:content,
+			:datetime
 		)";
 	private $content;
 	private $date;
@@ -25,16 +27,18 @@ class Message
 	public static function create(User $sender, User $receiver, $content)
 	{
 		$id = time();
+		$date = date("Y-m-d H:i:s");
 		Database::execute(
 			self::$INSERTION,
 			array(
 				':id' => $id,
 				':user_sender' => $sender->id(),
 				':user_receiver' => $receiver->id(),
-				':content' => $content
+				':content' => $content,
+				':datetime' => $date
 			)
 		);
-		return new self($id, $sender, $receiver, $content);
+		return new self($id, $sender, $receiver, $content, $date);
 	}
 
 	public static function find(User $user, $field='receiver_user_id')
@@ -77,7 +81,7 @@ class Message
 		return $messages;
 	}
 
-	private function __construct($id, $sender, $receive, $content, $date='')
+	private function __construct($id, $sender, $receive, $content, $date)
 	{
 
 		$this->content = $content;
