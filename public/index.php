@@ -11,8 +11,13 @@ Router::hostName(
     $_SERVER['SERVER_PORT']
 );
 
-Router::map(function ($handler) {
-    return "controllers/router/$handler.php";
+Router::map(function ($handler, $resource) {
+    switch ($handler) {
+        case 'vender':
+            return "$handler/$resource";
+        default:
+            return "controllers/router/$handler.php";
+    }
 });
 
 Router::route(function () {
