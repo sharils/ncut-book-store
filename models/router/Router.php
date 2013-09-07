@@ -7,7 +7,7 @@ class Router
     private static $redirect_url = null;
     private static $resource = null;
 
-    public static function above()
+    private static function above()
     {
         ?>
 <?xml version="1.0" encoding="utf-8"?>
@@ -25,11 +25,12 @@ class Router
         <?php
     }
 
-    public static function below()
+    private static function below()
     {
         ?>
-                </body>
-            </html>
+</div>
+</body>
+</html>
         <?php
     }
 
@@ -120,11 +121,10 @@ class Router
             self::notFound();
             exit;
         }
-        header("Content-type: $mime");
-
         self::above();
-        require_once $handler_path;
+        header("Content-type: $mime");
         self::below();
+        require_once $handler_path;
     }
 
     public static function toUrl($path)

@@ -11,7 +11,7 @@ try {
 	);
 	$_SESSION['user_id'] = $user->id();
 	$_SESSION['role'] = $_POST['role'];
-	$url = Router::toUrl('views/welcome/welcome.php');
+	$url = Router::toUrl('home');
 	Router::redirect($url);
 	exit;
 } catch (Exception $e) {
