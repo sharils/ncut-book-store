@@ -17,5 +17,4 @@
 			<td colspan="4"><?= $message->content() ?></td>
 		</tr>
 	</table>
-	<a class="btn btn-default" href="<?= Router::toUrl('controllers/message/list.php?page=receive') ?>">返回</a>
 </div>

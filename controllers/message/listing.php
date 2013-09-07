@@ -5,7 +5,8 @@ require_once 'models/user/User.php';
 require_once 'controllers/blacklist/listing.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 $flag = TRUE;
-if ($_GET['page'] === 'send') {
+$page = Router::resource();
+if ($page === 'sent') {
 	$flag = FALSE;
 	$messageslist = Message::find(User::from($_SESSION['user_id']), 'sender_user_id');
 } else {
@@ -23,7 +24,7 @@ if ($_GET['page'] === 'send') {
 		}
 	}
 
-	if ($_GET['page'] === 'receive') {
+	if ($page === 'received') {
 		$messageslist = $list;
 	} else {
 		$messageslist = $badlist;

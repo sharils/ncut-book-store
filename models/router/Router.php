@@ -7,7 +7,7 @@ class Router
     private static $redirect_url = null;
     private static $resource = null;
 
-    public static function above()
+    private static function above()
     {
         ?>
 <?xml version="1.0" encoding="utf-8"?>
@@ -25,14 +25,14 @@ class Router
         <?php
     }
 
-    public static function below()
+    private static function below()
     {
         ?>
-                </body>
-            </html>
+</div>
+</body>
+</html>
         <?php
     }
-
     private static function getMime($redirect_url)
     {
         $matches = array();
