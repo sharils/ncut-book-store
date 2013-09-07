@@ -7,5 +7,5 @@ $shopbook = ShopBook::from(Book::from($_POST['id']));
 $shopbook->shelf(!$shopbook->shelf());
 $shopbook->update();
 
-$url = Router::toUrl('views/shopbook/list.php');
+$url = Router::toUrl('home/shop_book');
 Router::redirect($url);

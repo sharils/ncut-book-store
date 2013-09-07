@@ -16,6 +16,6 @@ if (isset($_POST['add_book'])) {
 	$publisher = Publisher::from($_POST['publisher']);
 	$book = Book::create($publisher, $_POST['auther'], $_POST['isbn'], '', $_POST['name'], '', $_POST['remark'],
 				 '', $_POST['version']);
-	$url = Router::toUrl("views/teacher_course/teacher_coursedetail.php?course-id={$_POST['course']}");
+	$url = Router::toUrl("home/course/{$_POST['course']}");
 	Router::redirect($url);
 }

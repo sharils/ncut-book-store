@@ -14,7 +14,7 @@ if (isset($_POST['add_book'])) {
 	$courses = Course::from($_POST['add_book']);
 	$course = $courses->toArray();
 	$link = http_build_query($course);
-	$url = Router::toUrl("views/teacher_course/add_coursebook.php?$link");
+	$url = Router::toUrl("home/course_book/new$link");
 	Router::redirect($url);
 }
 if (isset($_POST['remove_book'])) {
