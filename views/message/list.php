@@ -17,7 +17,7 @@
 				<td><?= $message->content() ?></td>
 				<td><?= $message->date() ?></td>
 				<td>
-					<a class="btn btn-info" href="<?= Router::toUrl("views/message/detail.php?id={$message->id()}"); ?>">查閱</a>
+					<a class="btn btn-info" href="<?= Router::toUrl("message/{$message->id()}"); ?>">查閱</a>
 					<button class="btn btn-danger" name="id" value="<?= $message->id() ?>">刪除</button>
 				</td>
 			</tr>

@@ -21,7 +21,7 @@ require_once 'controllers/Method.php';
 				</td>
 				<td><?= $student_order->status() ?></td>
 				<td>
-					<a class="btn btn-info" href="<?= Router::toUrl("views/student_order/detail.php?id={$student_order->id()}"); ?>">詳細</a>
+					<a class="btn btn-info" href="<?= Router::toUrl("home/order/{$student_order->id()}"); ?>">詳細</a>
 					<?php if ($student_order->status() === 'submitted'): ?>
 						<button class="btn btn-danger" name="cancel_id" value="<?= $student_order->id() ?>">取消訂單</button>
 					<?php endif; ?>

@@ -10,10 +10,10 @@ class Welcome
 	{
 		?>
 			<ul class="nav">
-				<li><a href="<?= Router::toUrl('views/course/course_creation.php'); ?>">建立課程</a></li>
-				<li><a href="<?= Router::toUrl('views/create_user/create_clerk.php'); ?>">建立員生社</a></li>
-				<li><a href="<?= Router::toUrl('views/create_user/create_student.php'); ?>">建立學生</a></li>
-				<li><a href="<?= Router::toUrl('views/create_user/create_teacher.php'); ?>">建立老師</a></li>
+				<li><a href="<?= Router::toUrl('home/course'); ?>">建立課程</a></li>
+				<li><a href="<?= Router::toUrl('home/clerk/new'); ?>">建立員生社</a></li>
+				<li><a href="<?= Router::toUrl('home/student/new'); ?>">建立學生</a></li>
+				<li><a href="<?= Router::toUrl('home/teacher/new'); ?>">建立老師</a></li>
 			</ul>
 		<?php
 	}
@@ -22,10 +22,10 @@ class Welcome
 	{
 		?>
 			<ul class="nav">
-				<li><a href="<?= Router::toUrl('views/welcome/welcome.php'); ?>">廠商資料</a></li>
-				<li><a href="<?= Router::toUrl('views/shopbook/list.php'); ?>">書籍管理</a></li>
-				<li><a href="<?= Router::toUrl('views/welcome/welcome.php'); ?>">訂單管理</a></li>
-				<li><a href="<?= Router::toUrl('views/welcome/welcome.php'); ?>">課程書單</a></li>
+				<li><a href="<?= Router::toUrl('home'); ?>">廠商資料</a></li>
+				<li><a href="<?= Router::toUrl('home/shop_book'); ?>">書籍管理</a></li>
+				<li><a href="<?= Router::toUrl('home'); ?>">訂單管理</a></li>
+				<li><a href="<?= Router::toUrl('home'); ?>">課程書單</a></li>
 			</ul>
 		<?php
 	}
@@ -42,12 +42,12 @@ class Welcome
 	{
 		?>
 			<ul class="nav">
-				<li><a href="<?= Router::toUrl('views/message/creation.php'); ?>">寫信</a></li>
-				<li><a href="<?= Router::toUrl('views/message/list.php?page=receive'); ?>">收件匣</a></li>
-				<li><a href="<?= Router::toUrl('views/message/list.php?page=spam'); ?>">垃圾匣</a></li>
-				<li><a href="<?= Router::toUrl('views/message/list.php?page=send'); ?>">寄件匣</a></li>
-				<li><a href="<?= Router::toUrl('views/blacklist/blacklist.php'); ?>">黑名單</a></li>
-				<li><a href="<?= Router::toUrl('views/password_update.php'); ?>">修改密碼</a></li>
+				<li><a href="<?= Router::toUrl('message/new'); ?>">寫信</a></li>
+				<li><a href="<?= Router::toUrl('message/received'); ?>">收件匣</a></li>
+				<li><a href="<?= Router::toUrl('message/spam'); ?>">垃圾匣</a></li>
+				<li><a href="<?= Router::toUrl('message/sent'); ?>">寄件匣</a></li>
+				<li><a href="<?= Router::toUrl('message/blacklist'); ?>">黑名單</a></li>
+				<li><a href="<?= Router::toUrl('account/update'); ?>">修改密碼</a></li>
 			</ul>
 		<?php
 	}
@@ -56,8 +56,8 @@ class Welcome
 	{
 		?>
 			<ul class="nav">
-				<li><a href="<?= Router::toUrl('views/student_order/listing.php'); ?>">訂單管理</a></li>
-				<li><a href="<?= Router::toUrl('views/student_order/cart.php'); ?>">購物車</a></li>
+				<li><a href="<?= Router::toUrl('home/order'); ?>">訂單管理</a></li>
+				<li><a href="<?= Router::toUrl('home/order/cart'); ?>">購物車</a></li>
 			</ul>
 		<?php
 	}
@@ -66,7 +66,7 @@ class Welcome
 	{
 		?>
 			<ul class="nav">
-				<li><a href="<?= Router::toUrl('views/welcome/welcome.php'); ?>">課程書單</a></li>
+				<li><a href="<?= Router::toUrl('home'); ?>">課程書單</a></li>
 			</ul>
 		<?php
 	}
