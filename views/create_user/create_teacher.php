@@ -1,15 +1,63 @@
-
+<div class ="col-lg-9 col-sm-9 center">
 <form action="../../controllers/user/create_user.php" method="post">
-	<fieldset>
-		<label>角色：<input name="role" readonly="readonly" type="text" value="Teacher"/></label>
-		<label>帳號：<input name="sn" type="text" /></label>
-		<label>密碼：<input name="pwd" type="password" /></label>
-		<label>確認密碼：<input name="confirmpassword" type="password" /></label>
-		<label>姓名：<input name="name" type="text" /></label>
-		<label>Email：<input name="email" type="text" /></label>
-		<label>電話：<input name="phone" type="text" /></label>
-		<label>傳真號碼：<input name="phone_ext" type="text" /></label>
-		<input type="reset" value="重填"/>
-		<input type="submit" value="建立使用者"/>
-	</fieldset>
+	<h3>新增老師</h3>
+	<table class="table table-bordered center">
+		<tr>
+			<td>
+			<div class="form-group">
+				<label class="col-lg-5 col-sm-5 control-label">角色</label>
+				<div class="col-lg-5 col-sm-5">
+					<input class="form-control" name="role" readonly="readonly" type="text" value="Teacher"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-5 col-sm-5 control-label">帳號</label>
+				<div class="col-lg-5 col-sm-5">
+					<input class="form-control" name="sn" type="text"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-5 col-sm-5 control-label">密碼</label>
+				<div class="col-lg-5 col-sm-5">
+					<input class="form-control" name="pwd" type="password"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-5 col-sm-5 control-label">確認密碼</label>
+				<div class="col-lg-5 col-sm-5">
+					<input class="form-control" name="confirmpassword" type="password"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-5 col-sm-5 control-label">姓名</label>
+				<div class="col-lg-5 col-sm-5">
+					<input class="form-control" name="name" type="text"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-5 col-sm-5 control-label">Email</label>
+				<div class="col-lg-5 col-sm-5">
+					<input class="form-control" name="email" type="text"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-5 col-sm-5 control-label">電話</label>
+				<div class="col-lg-5 col-sm-5">
+					<input class="form-control" name="phone" type="text"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-lg-5 col-sm-5 control-label">傳真號碼</label>
+				<div class="col-lg-5 col-sm-5">
+					<input class="form-control" name="phone_ext" type="text"/>
+				</div>
+			</div>
+		</td>
+		</tr>
+	</table>
+	<p>
+		<input class="btn btn-warning" type="reset" value="重填"/>
+		<input class="btn btn-primary" type="submit" value="新增"/>
+	</p>
 </form>
+</div>
