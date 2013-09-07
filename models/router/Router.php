@@ -33,6 +33,7 @@ class Router
 </html>
         <?php
     }
+
     private static function getMime($redirect_url)
     {
         $matches = array();
@@ -120,11 +121,10 @@ class Router
             self::notFound();
             exit;
         }
-        header("Content-type: $mime");
-
         self::above();
-        require_once $handler_path;
+        header("Content-type: $mime");
         self::below();
+        require_once $handler_path;
     }
 
     public static function toUrl($path)
