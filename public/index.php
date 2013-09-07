@@ -2,12 +2,18 @@
 chdir('..');
 
 require_once 'models/router/Router.php';
+
 session_start();
+
 Router::hostName(
     isset($_SERVER['HTTPS']) ? 'https' : 'http',
     $_SERVER['SERVER_NAME'],
     $_SERVER['SERVER_PORT']
 );
+
+Router::map(function ($handler) {
+    return "controllers/router/$handler.php";
+});
 
 Router::route(function () {
     $query_string = array();

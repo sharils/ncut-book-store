@@ -3,6 +3,9 @@ class Router
 {
     private static $DOCUMENT_ROOT = 'ncut-book-store/';
     private static $hostName = null;
+    private static $map = null;
+    private static $redirect_url = null;
+    private static $resource = null;
 
     public static function above()
     {
@@ -59,6 +62,26 @@ class Router
         self::$hostName = "$protocol://$host$port/";
     }
 
+    public static function map($map)
+    {
+        if (is_callable($map)) {
+            self::$map = $map;
+            return;
+        }
+
+        $redirect_url = (string) $map;
+
+        $map = self::$map;
+        if (!is_callable($map)) {
+            return $redirect_url;
+        }
+
+        $resources = explode('/', $redirect_url, 2) + array('', '');
+        self::$resource = $resources[1];
+
+        return call_user_func_array($map, $resources);
+    }
+
     private static function notFound()
     {
         $status = "404 Not Found";
@@ -73,28 +96,34 @@ class Router
         header("Location: $url");
     }
 
+    public static function resource()
+    {
+        return self::$resource;
+    }
+
     public static function route($redirect_url)
     {
         static $occurrence = 1;
 
         $redirect_url = $redirect_url();
 
-        $redirect_url = str_replace(
+        $redirect_url = self::$redirect_url = str_replace(
             '/' . self::$DOCUMENT_ROOT,
             '',
             $redirect_url,
             $occurrence
         );
 
-        $mime = self::getMime($redirect_url);
-        if (!file_exists($redirect_url) || $mime === '') {
+        $handler_path = self::map($redirect_url);
+        $mime = self::getMime($handler_path);
+        if (!file_exists($handler_path) || $mime === '') {
             self::notFound();
             exit;
         }
         header("Content-type: $mime");
 
         self::above();
-        require_once $redirect_url;
+        require_once $handler_path;
         self::below();
     }
 
