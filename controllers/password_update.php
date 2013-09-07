@@ -13,5 +13,5 @@ try{
 }catch (Exception $e) {
 	echo $e->getMessage();
 }
-$url = Router::toUrl('views/password_update.php');
+$url = Router::toUrl('account/update');
 Router::redirect($url);
