@@ -29,5 +29,5 @@ require_once 'controllers/Method.php';
 			</tr>
 		<?php endforeach; ?>
 	</table>
-	<a class="btn btn-default" href="<?= Router::toUrl('views/student_order/listing.php')?>">返回</a>
+	<a class="btn btn-default" href="<?= Router::toUrl('home/order')?>">返回</a>
 </div>
