@@ -1,5 +1,5 @@
 <div class ="col-lg-9 col-sm-9 center">
-<form action="../../controllers/user/create_user.php" method="post">
+<form action="<?= Router::toUrl("controllers/user/create_user.php")?>" method="post">
 	<h3>新增老師</h3>
 	<table class="table table-bordered center">
 		<tr>
