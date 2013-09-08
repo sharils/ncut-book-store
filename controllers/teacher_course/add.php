@@ -14,24 +14,34 @@ if (isset($id)) {
 	$course = Course::from($id);
 }
 if (isset($_POST['add_book'])) {
-	$publisher = Publisher::from($_POST['publisher']);
-    $book = Book::create(
+    $publisher = Publisher::from($_POST['publisher']);
+    if ($_POST['auther']!=="" && $_POST['isbn']!=="" && $_POST['name']!=="" && $_POST['version']!==""
+                                                                            && $_POST['class']!==""){
+        try {
+                $_POST['isbn'] = Book::find($_POST['isbn']);
+                var_dump($_POST['isbn']);
+                exit;
+            } catch (Exception $e) {
+                echo $e->getMessage();
+            }
+        $book = Book::create(
         $publisher,
         $_POST['auther'],
         $_POST['isbn'],
         '',
-        $_POST['name'],
+        $_POST['name']
         '',
         $_POST['remark'],
-		'',
+        '',
         $_POST['version']);
-    $course = Course::from($_POST['course']);
-    if ($_POST['sample']){
-       $sample = '1';
-    } else {
-        $sample = '';
+        $course = Course::from($_POST['course']);
+        if ($_POST['sample']){
+            $sample = '1';
+        } else {
+            $sample = '';
+        }
+        Coursebook::create($course,$book,$sample);
     }
-    Coursebook::create($course,$book,$sample);
-	$url = Router::toUrl("home/course/{$_POST['course']}");
-	Router::redirect($url);
+    $url = Router::toUrl("home/course/{$_POST['course']}");
+    Router::redirect($url);
 }
