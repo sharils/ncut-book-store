@@ -18,7 +18,8 @@ class Home
 	{
 		?>
 			<ul class="nav">
-				<li><a href="<?= Router::toUrl('views/welcome/welcome.php'); ?>">廠商資料</a></li>
+				<li><a href="<?= Router::toUrl('views/publisher/create.php'); ?>">建立廠商</a></li>
+				<li><a href="<?= Router::toUrl('views/publisher/list.php'); ?>">廠商資料</a></li>
 				<li><a href="<?= Router::toUrl('views/shopbook/list.php'); ?>">書籍管理</a></li>
 				<li><a href="<?= Router::toUrl('views/welcome/welcome.php'); ?>">訂單管理</a></li>
 				<li><a href="<?= Router::toUrl('views/welcome/welcome.php'); ?>">課程書單</a></li>

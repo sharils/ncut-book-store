@@ -1,9 +1,19 @@
 <?php
+require_once "models/database/Database.php";
+require_once "models/user/User.php";
 require_once "views/welcome/home.php";
 require_once "views/welcome/above.php";
 require_once "views/welcome/ul_top.php";
+Database::initialise('localhost', 'root', '123456', 'ncut');
 
-switch ($_SESSION['role']) {
+$user = User::from($_SESSION['user_id']);
+$role = $user->role();
+
+$resource = Router::resource();
+$resource1 = Router::resource('0');
+$resource2 = Router::resource('1');
+
+switch ($role) {
 	case 'admin':
 		require_once "views/welcome/admin.php";
 		break;
@@ -21,10 +31,8 @@ switch ($_SESSION['role']) {
 		break;
 }
 require_once "views/welcome/ul_under.php";
-$resource = Router::resource();
-$resource1 = Router::resource(0);
-$resource2 = Router::resource(1);
-switch ($_SESSION['role']) {
+
+switch ($role) {
 	case 'admin':
 		if ($resource === 'course') {
 			require_once "views/course/course_creation.php";
@@ -42,7 +50,23 @@ switch ($_SESSION['role']) {
 			require_once "views/create_user/create_teacher.php ";
 			break;
 		}
-		break;
+	case 'clerk':
+		if ($resource === 'publisher/new') {
+			require_once "views/publisher/create.php";
+			break;
+		}
+		if ($resource === 'publisher' && $resource2 === NULL) {
+			require_once "views/publisher/list.php";
+			break;
+		}
+		if ($resource1 === 'publisher') {
+			require_once "views/publisher/create.php";
+			break;
+		}
+		if ($resource === 'shop_book') {
+			require_once "views/shopbook/list.php";
+			break;
+		}
 	case 'student':
 		if ($resource === 'order' && $resource2 === NULL) {
 			require_once "views/student_order/listing.php";
@@ -75,7 +99,8 @@ switch ($_SESSION['role']) {
 			break;
 		}
 		break;
-		default:
-			return Router::notFound();
-			break;
+	default:
+		return Router::notFound();
+		break;
+
 }
