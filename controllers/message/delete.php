@@ -5,5 +5,5 @@ Database::initialise('localhost', 'root', '123456', 'ncut');
 $message = Message::from($_POST['id']);
 $message->delete();
 
-$url = Router::toUrl('views/message/received');
+$url = Router::toUrl('message/received');
 Router::redirect($url);
