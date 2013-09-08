@@ -5,9 +5,9 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">首頁</a></li>
-        <li><a href="#about">訊息</a></li>
-        <li><a href="#contact">個人資料</a></li>
+        <li class="active"><a href="<?=Router::toUrl('home')?>">首頁</a></li>
+        <li><a href="<?=Router::toUrl('message/received')?>">訊息</a></li>
+        <li><a href="<?=Router::toUrl('account/update')?>">個人資料</a></li>
       </ul>
       <form class="navbar-form navbar-right">
         <div class="form-group">
