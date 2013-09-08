@@ -34,6 +34,11 @@ require_once 'views/course/Method.php';
 			<td><input class="form-control" type="text" name="classr"/></td>
 		</tr>
 		<tr>
+			<td colspan="6"><label  class="checkbox-inline">
+				<input  class="checkbox-inline" type="checkbox" name="sample" value="true">需要樣書</label>
+			</td>
+		</tr>
+		<tr>
 			<th>備註</th>
 			<td colspan="5"><textarea class="form-control" rows="3" cols="20" name="remark"></textarea></td>
 		</tr>

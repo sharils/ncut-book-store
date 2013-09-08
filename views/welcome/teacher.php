@@ -1,3 +1,3 @@
 <ul class="nav">
-	<li><a href="<?= Router::toUrl('teacher/new'); ?>">課程書單</a></li>
+	<li><a href="<?= Router::toUrl('home/course_book'); ?>">課程書單</a></li>
 </ul>

@@ -6,7 +6,7 @@ require_once 'models/teacher/Teacher.php';
 require_once 'models/user/User.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 $post = $_POST;
-$post["ID"] = "123";
+$post["ID"] = $_SESSION['user_id'];
 if (in_array('', $post)){
 	echo 'Have null value';
 } else {

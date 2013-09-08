@@ -6,10 +6,10 @@ require_once 'models/teacher/Teacher.php';
 require_once 'models/user/User.php';
 require_once 'models/book/Book.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
-$get = $_GET;
-if (in_array('', $get)){
+$id = Router::resource(1);
+if (!isset($id)){
 	echo 'Have null value';
 } else {
-	$course = Course::from($get['course-id']);
+	$course = Course::from($id);
 	$coursebooks = CourseBook::find($course);
 }

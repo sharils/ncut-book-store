@@ -15,4 +15,6 @@ if (isset($_POST['remove_book'])) {
 	$book = Book::from($_POST['remove_book']);
 	$coursebook = CourseBook::from($course,$book);
 	$coursebook->delete();
+    $url = Router::toUrl("home/course/{$_POST['course']}");
+    Router::redirect($url);
 }
