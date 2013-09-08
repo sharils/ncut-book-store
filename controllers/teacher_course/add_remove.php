@@ -9,7 +9,7 @@ Database::initialise('localhost', 'root', '123456', 'ncut');
 
 if (in_array('', $_POST)){
 	echo 'Have null value';
-} 
+}
 if (isset($_POST['add_book'])) {
 	$courses = Course::from($_POST['add_book']);
 	$course = $courses->toArray();

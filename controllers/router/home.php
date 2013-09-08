@@ -3,7 +3,7 @@ require_once "views/welcome/home.php";
 $resource = Router::resource();
 require_once "views/welcome/above.php";
 require_once "views/welcome/ul_top.php";
-		
+
 switch ($_SESSION['role']) {
 	case 'admin':
 		require_once "views/welcome/admin.php";
