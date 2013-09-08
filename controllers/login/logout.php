@@ -1,4 +1,3 @@
 <?php
 session_destroy();
-$url = Router::toUrl('login');
-Router::redirect($url);
+Router::redirect(Router::REFERRER);

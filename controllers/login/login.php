@@ -11,8 +11,7 @@ try {
 	);
 	$_SESSION['user_id'] = $user->id();
 	$_SESSION['role'] = $_POST['role'];
-	$url = Router::toUrl('home');
-	Router::redirect($url);
+	Router::redirect(Router::REFERRER);
 	exit;
 } catch (Exception $e) {
 	echo $e->getMessage();

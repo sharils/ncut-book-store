@@ -25,6 +25,12 @@ Router::map(function ($handler, $resource) {
     return "controllers/router/$handler.php";
 });
 
+Router::referrer(function () {
+    return isset($_SERVER['HTTP_REFERER'])
+        ? $_SERVER['HTTP_REFERER']
+        : Router::REDIRECT_URL;
+});
+
 Router::route(function () {
     $query_string = array();
     parse_str($_SERVER['QUERY_STRING'], $query_string);
