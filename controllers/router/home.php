@@ -1,6 +1,5 @@
 <?php
 require_once "views/welcome/home.php";
-$resource = Router::resource();
 require_once "views/welcome/above.php";
 require_once "views/welcome/ul_top.php";
 
@@ -22,24 +21,44 @@ switch ($_SESSION['role']) {
 		break;
 }
 require_once "views/welcome/ul_under.php";
-// switch ($_SESSION['role']) {
-// 	case 'admin':
-// 		if ($resource === 'course') {
-// 			require_once "views/course/course_creation.php";
-// 		}
-// 		if ($resource === 'clerk/new') {
-// 			require_once "views/create_user/create_clerk.php ";
-// 		}
-// 		if ($resource === 'student/new') {
-// 			require_once "views/create_user/create_student.php";
-// 		}
-// 		if ($resource === 'teacher/new') {
-// 			require_once "views/create_user/create_teacher.php ";
-// 		}
-// 		break;
-// 		default:
-// 			return Router::notFound();
-// 			break;
-// }
+$resource = Router::resource();
+$resource1 = Router::resource('0');
+$resource2 = Router::resource('1');
+switch ($_SESSION['role']) {
+	case 'admin':
+		if ($resource === 'course') {
+			require_once "views/course/course_creation.php";
+		}
+		if ($resource === 'clerk/new') {
+			require_once "views/create_user/create_clerk.php ";
+		}
+		if ($resource === 'student/new') {
+			require_once "views/create_user/create_student.php";
+		}
+		if ($resource === 'teacher/new') {
+			require_once "views/create_user/create_teacher.php ";
+		}
+	case 'student':
+		if ($resource === 'order') {
+			require_once "views/student_order/listing.php";
+		}
+		if ($resource === 'order/cart') {
+			require_once "views/student_order/cart.php";
+		}
+	case 'teacher':
+		if ($resource === 'course_book') {
+			require_once "views/teacher_course/teacher_courselisting.php";
+		}
+		if ($resource2 === 'new') {
+			require_once "views/teacher_course/add_coursebook.php";
+		}
+		if ($resource1 === 'course') {
+			require_once "views/teacher_course/teacher_coursedetail.php";
+		}
+		break;
+		default:
+			return Router::notFound();
+			break;
+}
 
 ?>
