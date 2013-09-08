@@ -1,10 +1,14 @@
 <?php
 class Router
 {
+    const REFERRER = 'referrer';
+    const REDIRECT_URL = 'redirect_url';
+
     private static $DOCUMENT_ROOT = 'ncut-book-store/';
     private static $hostName = null;
     private static $map = null;
     private static $redirect_url = null;
+    private static $referrer = null;
     private static $resource = null;
 
     private static function above()
@@ -19,7 +23,7 @@ class Router
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <!-- Bootstrap core CSS -->
-<link href="<?= Router::toUrl("vender/css/bootstrap.css")?>" rel="stylesheet" >
+<link href="<?= Router::toUrl("vendor/css/bootstrap.css")?>" rel="stylesheet" >
 </head>
 <body>
         <?php
@@ -93,8 +97,26 @@ class Router
 
     public static function redirect($url)
     {
+        if ($url === self::REFERRER) {
+            $url = self::$referrer;
+        }
+
         header("HTTP/1.1 302 Found");
         header("Location: $url");
+    }
+
+    public static function referrer($referrer = null)
+    {
+        if (is_callable($referrer)) {
+            self::$referrer = (string) $referrer();
+            return;
+        }
+
+        if (self::$referrer === self::REDIRECT_URL) {
+            return self::$redirect_url;
+        }
+
+        return self::$referrer;
     }
 
     public static function resource($resource_index = null)

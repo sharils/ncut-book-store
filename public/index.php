@@ -14,13 +14,21 @@ Router::hostName(
 Router::map(function ($handler, $resource) {
     switch ($handler) {
         case 'controllers':
-        case 'vender':
+        case 'vendor':
             return "$handler/$resource";
-        case 'login':
-            return 'views/login/login.php';
-        default:
-            return "controllers/router/$handler.php";
     }
+
+    if (!isset($_SESSION['user_id'])) {
+        return 'views/login/login.php';
+    }
+
+    return "controllers/router/$handler.php";
+});
+
+Router::referrer(function () {
+    return isset($_SERVER['HTTP_REFERER'])
+        ? $_SERVER['HTTP_REFERER']
+        : Router::REDIRECT_URL;
 });
 
 Router::route(function () {
