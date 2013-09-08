@@ -1,7 +1,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Project name</a>
+      <a class="navbar-brand" href="#">NCUT Book Stroe</a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">

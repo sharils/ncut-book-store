@@ -10,8 +10,8 @@ try {
 		$_POST['password']
 	);
 	$_SESSION['user_id'] = $user->id();
-	$_SESSION['role'] = $_POST['role'];
-	Router::redirect(Router::REFERRER);
+	$url = Router::toUrl('home');
+	Router::redirect($url);
 	exit;
 } catch (Exception $e) {
 	echo $e->getMessage();

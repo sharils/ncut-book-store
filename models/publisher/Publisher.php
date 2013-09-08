@@ -9,7 +9,8 @@ class Publisher
 			`address`,
 			`name`,
 			`person`,
-			`phone`
+			`phone`,
+			`phone_ext`
 		) VALUE (
 			:id,
 			:email,
@@ -17,7 +18,8 @@ class Publisher
 			:address,
 			:name,
 			:person,
-			:phone
+			:phone,
+			:phone_ext
 		)";
 	private static $FIND_SELECTION = "SELECT * FROM `publisher`";
 	private static $FROM_SELECTION = "SELECT * FROM `publisher` WHERE `id` = :id";
@@ -25,7 +27,8 @@ class Publisher
 		SET `email` = :email,
 		`address` = :address,
 		`person` = :person,
-		`phone` = :phone
+		`phone` = :phone,
+		`phone_ext` = :phone_ext
 		WHERE `id` = :id";
 
 	private $account;
@@ -35,8 +38,9 @@ class Publisher
 	private $name;
 	private $person;
 	private $phone;
+	private $phone_ext;
 
-	public static function create($email, $account, $address, $name, $person, $phone)
+	public static function create($email, $account, $address, $name, $person, $phone, $phone_ext)
 	{
 		$id = time();
 		Database::execute(
@@ -48,7 +52,8 @@ class Publisher
 				':address' => $address,
 				':name' => $name,
 				':person' => $person,
-				':phone' => $phone
+				':phone' => $phone,
+				':phone_ext' => $phone_ext
 			)
 		);
 		return new self(
@@ -58,7 +63,8 @@ class Publisher
 			$address,
 			$name,
 			$person,
-			$phone
+			$phone,
+			$phone_ext
 		);
 	}
 
@@ -93,7 +99,8 @@ class Publisher
 				$row['address'],
 				$row['name'],
 				$row['person'],
-				$row['phone']
+				$row['phone'],
+				$row['phone_ext']
 			);
 		}
 		return $publishers;
@@ -113,7 +120,7 @@ class Publisher
 		}
 	}
 
-	private function __construct($id, $email, $account, $address, $name, $person, $phone)
+	private function __construct($id, $email, $account, $address, $name, $person, $phone, $phone_ext)
 	{
 		$this->account = $account;
 		$this->address = $address;
@@ -122,6 +129,7 @@ class Publisher
 		$this->name = $name;
 		$this->person = $person;
 		$this->phone = $phone;
+		$this->phone_ext = $phone_ext;
 	}
 
 	public function delete()
@@ -171,6 +179,15 @@ class Publisher
 		}
 	}
 
+	public function phone_ext($phone_ext = NULL)
+	{
+		if ($phone_ext === NULL) {
+			return $this->phone_ext;
+		} else {
+			return $this->phone_ext = $phone_ext;
+		}
+	}
+
 	public function update()
 	{
 		Database::execute(
@@ -180,6 +197,7 @@ class Publisher
 				':address' => $this->address,
 				':person' => $this->person,
 				':phone' => $this->phone,
+				':phone_ext' => $this->phone_ext,
 				':id' => $this->id
 			)
 		);
