@@ -8,4 +8,5 @@ $order->date($_POST['date']);
 $order->status('submitted');
 $order->update();
 
-Router::redirect('../../views/student_order/listing.php');
+$url = Router::toUrl('home/order');
+Router::redirect($url);
