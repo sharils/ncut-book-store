@@ -14,7 +14,7 @@ Router::hostName(
 Router::map(function ($handler, $resource) {
     switch ($handler) {
         case 'controllers':
-        case 'vender':
+        case 'vendor':
             return "$handler/$resource";
         case 'login':
             return 'views/login/login.php';
