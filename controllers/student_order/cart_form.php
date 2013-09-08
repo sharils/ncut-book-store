@@ -10,9 +10,11 @@ if (empty($_POST['delete'])) {
 		$detail->update();
 	}
 	$id = $detail->student_order()->id();
-	Router::redirect("../../views/student_order/confirmation.php?id=$id");
+	$url = Router::toUrl("home/order/ok/$id");
+	Router::redirect($url);
 } else {
 	$detail = StudentOrderDetail::from($_POST['delete'][0]);
 	$detail->delete();
-	Router::redirect('../../views/student_order/cart.php');
+	$url = Router::toUrl('home/order/cart');
+	Router::redirect($url);
 }

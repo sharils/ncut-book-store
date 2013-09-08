@@ -124,7 +124,7 @@ Class Course
 		);
 		return self::refine($result);
 	}
- 
+
 	public function toArray()
 	{
 		return array(

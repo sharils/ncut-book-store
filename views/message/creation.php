@@ -1,5 +1,5 @@
 <div class ="col-lg-9 col-sm-9">
-	<form action="../../controllers/message/creation.php" class="form-horizontal" method="post">
+	<form action="<?= Router::toUrl("controllers/message/creation.php")?>" class="form-horizontal" method="post">
 		<div class="form-group">
 			<label class="col-lg-2 col-sm-2 control-label" for="receiver">收信人：</label>
 			<div class="col-lg-10 col-sm-9">

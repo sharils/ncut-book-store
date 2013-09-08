@@ -8,7 +8,7 @@ require_once 'models/book/Book.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 if (in_array('', $_GET)){
 	echo 'Have null value';
-} 
+}
 if (isset($_GET['course-id'])) {
 	$course = Course::from($_GET['course-id']);
 }

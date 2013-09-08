@@ -77,7 +77,7 @@ class Router
             return $redirect_url;
         }
 
-        $resources = explode('/', $redirect_url, 2) + array('', '');
+        $resources = explode('/', $redirect_url, 2) + array(null, null);
         self::$resource = $resources[1];
 
         return call_user_func_array($map, $resources);
@@ -97,9 +97,17 @@ class Router
         header("Location: $url");
     }
 
-    public static function resource()
+    public static function resource($resource_index = null)
     {
-        return self::$resource;
+        if (func_num_args() === 0) {
+            return self::$resource;
+        }
+
+        $resources = explode('/', self::$resource);
+
+        return isset($resources[$resource_index])
+            ? $resources[$resource_index]
+            : null;
     }
 
     public static function route($redirect_url)

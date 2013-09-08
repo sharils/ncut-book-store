@@ -21,7 +21,7 @@
 		<?php endforeach; ?>
 	<?php endif; ?>
 </table>
-<form action="../../controllers/student_course/add_remove.php" method="post">
+<form action="<?= Router::toUrl('controllers/student_course/add_remove.php') ?>" method="post">
 	<fieldset>
 		<label>新增課程：<input name="add_course" type="text" /></label>
 		<label>移除課程：<input name="remove_course" type="text" /></label>

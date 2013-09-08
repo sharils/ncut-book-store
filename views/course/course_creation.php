@@ -3,7 +3,7 @@ require_once 'Method.php';
 require_once 'controllers/course/select_list.php';
 ?>
 <div class ="col-lg-9 col-sm-9">
-<form action="../../controllers/course/course_creation.php" method="post">
+<form action="<?= Router::toUrl("controllers/course/course_creation.php")?>" method="post">
 	<table class="center table table-bordered">
 		<tr class="active">
 			<th colspan="4">課程建立</th>
