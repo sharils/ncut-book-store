@@ -56,6 +56,12 @@ class Router
                 return 'image/png';
             case 'php':
                 return 'text/html';
+            case 'svg':
+                return 'image/svg+xml';
+            case 'ttf':
+                return 'font/opentype';
+            case 'woff':
+                return 'application/font-woff';
             default:
                 return '';
         }
