@@ -28,16 +28,21 @@ switch ($_SESSION['role']) {
 	case 'admin':
 		if ($resource === 'course') {
 			require_once "views/course/course_creation.php";
+			break;
 		}
 		if ($resource === 'clerk/new') {
 			require_once "views/create_user/create_clerk.php ";
+			break;
 		}
 		if ($resource === 'student/new') {
 			require_once "views/create_user/create_student.php";
+			break;
 		}
 		if ($resource === 'teacher/new') {
 			require_once "views/create_user/create_teacher.php ";
+			break;
 		}
+		break;
 	case 'student':
 		if ($resource === 'order' && $resource2 === NULL) {
 			require_once "views/student_order/listing.php";
@@ -53,16 +58,21 @@ switch ($_SESSION['role']) {
 		}
 		if ($resource1 === 'order' && $resource2 != NULL ) {
 			require_once "views/student_order/detail.php";
+			break;
 		}
+		break;
 	case 'teacher':
 		if ($resource === 'course_book') {
 			require_once "views/teacher_course/teacher_courselisting.php";
+			break;
 		}
 		if ($resource2 === 'new') {
 			require_once "views/teacher_course/add_coursebook.php";
+			break;
 		}
 		if ($resource1 === 'course') {
 			require_once "views/teacher_course/teacher_coursedetail.php";
+			break;
 		}
 		break;
 		default:

@@ -3,7 +3,7 @@ require_once 'controllers/teacher_course/teacher_coursedetail.php';
 ?>
 <div class ="col-lg-9 col-sm-9 center">
 <form action="<?= Router::toUrl("controllers/teacher_course/remove.php")?>" method="post">
-	<p><input name="course" type="hidden" value="<?= $course->id(); ?>"/></p>
+	<div><input name="course" type="hidden" value="<?= $course->id(); ?>"/></div>
 	<table class="table table-bordered center">
 		<tr class="active">
 			<th><label>書籍名稱</label></th>
@@ -15,7 +15,7 @@ require_once 'controllers/teacher_course/teacher_coursedetail.php';
 		<?php foreach( $coursebooks as $coursebook ): ?>
 			<tr>
 				<td><?= $coursebook->book()->name(); ?></td>
-				<td><?= $coursebook->book()->remark() ?></td>
+				<td><?= $coursebook->book()->version() ?></td>
 				<td><?= $coursebook->book()->isbn(); ?></td>
 				<td><?= $coursebook->book()->author() ?></td>
 				<td><button class="btn btn-danger" name="remove_book" value="<?= $coursebook->book()->id() ?>">刪除書籍</button></td>

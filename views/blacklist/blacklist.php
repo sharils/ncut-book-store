@@ -22,6 +22,6 @@
 			  <label for="remove">移除黑名單：</label>
 			  <input class="form-control" id="remove" name="remove_user" type="text" >
 			</div>
-			<div><input class="btn btn-success" type="submit" value="送出"/></div>
+			<p><input class="btn btn-success" type="submit" value="送出"/></p>
 	</form>
 </div>

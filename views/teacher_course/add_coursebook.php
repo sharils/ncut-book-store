@@ -5,7 +5,7 @@ require_once 'views/course/Method.php';
 ?>
 <div class ="col-lg-9 col-sm-9 center">
 <form action="<?= Router::toUrl("controllers/teacher_course/add.php")?>" method="post">
-	<p><input name="course" type="hidden" value="<?= $course->id(); ?>"/></p>
+	<div><input name="course" type="hidden" value="<?= $course->id(); ?>"/></div>
 	<table class="table table-bordered center">
 		<tr class="active">
 			<th colspan="6">教科用書登記表</th>
@@ -31,7 +31,7 @@ require_once 'views/course/Method.php';
 			<th>出版社/代理商</th>
 			<td><?php Method::select('publisher',$args); ?></td>
 			<th>上課班級</th>
-			<td><input class="form-control" type="text" name="classr"/></td>
+			<td><input class="form-control" type="text" name="class"/></td>
 		</tr>
 		<tr>
 			<td colspan="6"><label  class="checkbox-inline">
