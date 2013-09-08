@@ -7,5 +7,5 @@ $args = array();
 $teachers = Teacher::find();
 
 foreach ($teachers as $value) {
-	$args[$value->id()] = $value->sn().'：'.$value->name();
+    $args[$value->id()] = $value->sn().'：'.$value->name();
 }

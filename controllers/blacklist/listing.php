@@ -9,5 +9,5 @@ $black_users = $blacklist->blackUsers();
 $black_araay = array();
 
 foreach ($black_users as $black_user) {
-	$black_araay[] = $black_user->id();
+    $black_araay[] = $black_user->id();
 }

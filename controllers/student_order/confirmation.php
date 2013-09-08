@@ -9,7 +9,7 @@ $order = StudentOrder::from($id);
 $order_details = StudentOrderDetail::find($order);
 $total = 0;
 foreach ($order_details as $detail) {
-	$price = $detail->book()->price();
-	$number = $detail->number();
-	$total += ($price * $number);
+    $price = $detail->book()->price();
+    $number = $detail->number();
+    $total += ($price * $number);
 }

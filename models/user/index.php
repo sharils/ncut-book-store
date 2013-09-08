@@ -6,9 +6,9 @@ require_once 'models/database/User.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
 try {
-	$user = User::authenticate('t001', 'teacher', '00200');
+    $user = User::authenticate('t001', 'teacher', '00200');
 } catch (Exception $e) {
-	echo $e->getMessage();
+    echo $e->getMessage();
 }
 
 var_dump($user);

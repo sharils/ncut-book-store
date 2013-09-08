@@ -8,8 +8,8 @@ Database::initialise('localhost', 'root', '123456', 'ncut');
 $post = $_POST;
 $post["ID"] = $_SESSION['user_id'];
 if (in_array('', $post)){
-	echo 'Have null value';
+    echo 'Have null value';
 } else {
-	$teacher = Teacher::from(User::from($post["ID"]));
-	$courses = Course::find($teacher);
+    $teacher = Teacher::from(User::from($post["ID"]));
+    $courses = Course::find($teacher);
 }
