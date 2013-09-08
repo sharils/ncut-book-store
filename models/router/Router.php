@@ -77,7 +77,7 @@ class Router
             return $redirect_url;
         }
 
-        $resources = explode('/', $redirect_url, 2) + array('', '');
+        $resources = explode('/', $redirect_url, 2) + array(null, null);
         self::$resource = $resources[1];
 
         return call_user_func_array($map, $resources);
