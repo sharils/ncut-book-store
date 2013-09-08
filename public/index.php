@@ -22,6 +22,10 @@ Router::map(function ($handler, $resource) {
         return 'views/login/login.php';
     }
 
+    if ($handler === '') {
+        $handler = 'home';
+    }
+
     return "controllers/router/$handler.php";
 });
 
