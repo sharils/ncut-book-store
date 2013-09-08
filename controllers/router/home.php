@@ -22,8 +22,8 @@ switch ($_SESSION['role']) {
 }
 require_once "views/welcome/ul_under.php";
 $resource = Router::resource();
-$resource1 = Router::resource('0');
-$resource2 = Router::resource('1');
+$resource1 = Router::resource(0);
+$resource2 = Router::resource(1);
 switch ($_SESSION['role']) {
 	case 'admin':
 		if ($resource === 'course') {

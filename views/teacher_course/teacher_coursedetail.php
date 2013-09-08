@@ -2,7 +2,7 @@
 require_once 'controllers/teacher_course/teacher_coursedetail.php';
 ?>
 <div class ="col-lg-9 col-sm-9 center">
-<form action="<?= Router::toUrl("controllers/teacher_course/add_remove.php")?>" method="post">
+<form action="<?= Router::toUrl("controllers/teacher_course/remove.php")?>" method="post">
 	<p><input name="course" type="hidden" value="<?= $course->id(); ?>"/></p>
 	<table class="table table-bordered center">
 		<tr class="active">
@@ -22,6 +22,6 @@ require_once 'controllers/teacher_course/teacher_coursedetail.php';
 			</tr>
  		<?php endforeach; ?>
 	</table>
-	<p><a class="btn btn-primary" name="add_book" href="<?= Router::toUrl("home/course_book/new{$course->id()}")?>">新增書籍</a></p>
+	<p><a class="btn btn-primary" name="add_book" href="<?= Router::toUrl("home/course_book/new/{$course->id()}")?>">新增書籍</a></p>
 </form>
 </div>
