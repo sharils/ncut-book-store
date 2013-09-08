@@ -151,9 +151,14 @@ class Router
             self::notFound();
             exit;
         }
-        self::above();
+
+        if ($mime === 'text/html') {
+            self::above();
+        }
         header("Content-type: $mime");
-        self::below();
+        if ($mime === 'text/html') {
+            self::below();
+        }
         require_once $handler_path;
     }
 
