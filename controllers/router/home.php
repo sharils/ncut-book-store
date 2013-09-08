@@ -39,11 +39,20 @@ switch ($_SESSION['role']) {
 			require_once "views/create_user/create_teacher.php ";
 		}
 	case 'student':
-		if ($resource === 'order') {
+		if ($resource === 'order' && $resource2 === NULL) {
 			require_once "views/student_order/listing.php";
+			break;
+		}
+		if ($resource1 === 'order' && $resource2 === 'ok' ) {
+			require_once "views/student_order/confirmation.php";
+			break;
 		}
 		if ($resource === 'order/cart') {
 			require_once "views/student_order/cart.php";
+			break;
+		}
+		if ($resource1 === 'order' && $resource2 != NULL ) {
+			require_once "views/student_order/detail.php";
 		}
 	case 'teacher':
 		if ($resource === 'course_book') {
@@ -60,5 +69,3 @@ switch ($_SESSION['role']) {
 			return Router::notFound();
 			break;
 }
-
-?>
