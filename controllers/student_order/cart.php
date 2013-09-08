@@ -10,5 +10,5 @@ Database::initialise('localhost', 'root', '123456', 'ncut');
 $student_order = StudentOrder::findcart(Student::from(User::from($_SESSION['user_id'])));
 
 if ($student_order !== NULL) {
-	$student_order_details = StudentOrderDetail::find($student_order);
+    $student_order_details = StudentOrderDetail::find($student_order);
 }

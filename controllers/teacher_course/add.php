@@ -8,10 +8,10 @@ require_once 'models/book/Book.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 $id = Router::resource(2);
 if (in_array('', $_GET)){
-	echo 'Have null value';
+    echo 'Have null value';
 }
 if (isset($id)) {
-	$course = Course::from($id);
+    $course = Course::from($id);
 }
 if (isset($_POST['add_book'])) {
     $publisher = Publisher::from($_POST['publisher']);
