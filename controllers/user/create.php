@@ -1,12 +1,17 @@
 <?php
-require_once "models/admin/Admin.php";
-require_once "models/clerk/Clerk.php";
-require_once "models/database/Database.php";
-require_once "models/student/Student.php";
-require_once "models/teacher/Teacher.php";
-require_once "models/user/User.php";
-Database::initialise('localhost', 'root', '123456', 'ncut');
-if ($_POST['pwd'] === $_POST['confirmpassword']) {
+if ($_POST['role'] === 'Publisher') {
+    Publisher::create(
+        $_POST['email'],
+        $_POST['account'],
+        $_POST['address'],
+        $_POST['name'],
+        $_POST['person'],
+        $_POST['phone'],
+        $_POST['phone_ext']
+    );
+    $url = Router::toUrl('home/publisher/new');
+    Router::redirect($url);
+} else if ($_POST['pwd'] === $_POST['confirmpassword']) {
     $args = $_POST;
     $admin = Admin::from(User::from($_SESSION['user_id']));
     if ($args['role'] === 'Teacher') {

@@ -9,7 +9,10 @@ switch ($resource) {
     case 'update':
         require_once "views/password_update.php";
         break;
+    case 'modify':
+        require_once "views/create_user/user_form.php";
+        break;
     default:
-        require_once "";
+        break;
 }
 // require_once "views/welcome/below.php";
