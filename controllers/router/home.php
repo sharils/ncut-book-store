@@ -39,20 +39,20 @@ switch ($role) {
             break;
         }
         if ($resource === 'clerk/new') {
-            require_once "views/create_user/create_clerk.php ";
+            require_once "views/create_user/user_form.php";
             break;
         }
         if ($resource === 'student/new') {
-            require_once "views/create_user/create_student.php";
+            require_once "views/create_user/user_form.php";
             break;
         }
         if ($resource === 'teacher/new') {
-            require_once "views/create_user/create_teacher.php ";
+            require_once "views/create_user/user_form.php ";
             break;
         }
     case 'clerk':
         if ($resource === 'publisher/new') {
-            require_once "views/publisher/create.php";
+            require_once "views/create_user/user_form.php";
             break;
         }
         if ($resource === 'publisher' && $resource2 === NULL) {
@@ -60,7 +60,7 @@ switch ($role) {
             break;
         }
         if ($resource1 === 'publisher') {
-            require_once "views/publisher/create.php";
+            require_once "views/create_user/user_form.php";
             break;
         }
         if ($resource === 'shop_book') {
