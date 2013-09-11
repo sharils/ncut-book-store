@@ -49,6 +49,7 @@ if ($resource !== 'new') {
             $value[2] = $edit_role->$key();
         }
     }
+    unset($value);
     $id = $edit_role->id();
     $diff = ['status' => '修改', 'class' => 'btn-warning'];
 }
