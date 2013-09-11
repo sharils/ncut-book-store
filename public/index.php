@@ -2,8 +2,15 @@
 chdir('..');
 
 require_once 'models/router/Router.php';
+require_once 'models/router/Notice.php';
 
 session_start();
+
+Notice::set(function () {
+    return Router::resource();
+    return $_GET['notice'];
+});
+
 
 Router::hostName(
     isset($_SERVER['HTTPS']) ? 'https' : 'http',
@@ -46,3 +53,4 @@ Router::route(function () {
 
     return $redirect_url;
 });
+

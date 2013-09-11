@@ -7,10 +7,10 @@ Database::initialise('localhost', 'root', '123456', 'ncut');
 $args = $_POST;
 
 if (in_array('', $args)) {
-    echo 'Have null value';
+    Notice::addTo('Have null value','home/course');
 } else {
     $teacher = Teacher::from(User::from($args['teacher_id']));
     Course::create($teacher, $args['sn'], $args['type'], $args['name'], $args['year']);
-}
 
+}
 Router::redirect(Router::toUrl("home/course"));
