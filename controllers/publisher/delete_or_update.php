@@ -4,7 +4,6 @@ require_once 'models/publisher/Publisher.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
 if(isset($_POST['delete'])) {
-    echo '2';
     $publisher = Publisher::from($_POST['delete']);
     $publisher->delete();
     $url = Router::toUrl('home/publisher');

@@ -1,5 +1,11 @@
 <?php
-if ($_POST['role'] === 'Publisher') {
+$role = strtolower($_POST['role']);
+
+unset($_POST['id']);
+if (in_array('', $_POST)) {
+    $url = Notice::addTo('新增失敗：不允許空值存入！', "home/{$role}/new");
+    $url = Router::toUrl($url);
+} else if ($_POST['role'] === 'Publisher') {
     Publisher::create(
         $_POST['email'],
         $_POST['account'],
@@ -10,51 +16,51 @@ if ($_POST['role'] === 'Publisher') {
         $_POST['phone_ext']
     );
     $url = Router::toUrl('home/publisher/new');
-    Router::redirect($url);
 } else if ($_POST['pwd'] === $_POST['confirmpassword']) {
-    $args = $_POST;
+    $_POST = $_POST;
     $admin = Admin::from(User::from($_SESSION['user_id']));
-    if ($args['role'] === 'Teacher') {
+    if ($_POST['role'] === 'Teacher') {
         $admin->create_user(
             'Teacher',
-            $args['pwd'],
-            $args['sn'],
-            $args['email'],
-            $args['name'],
-            $args['phone'],
-            $args['phone_ext']
+            $_POST['pwd'],
+            $_POST['sn'],
+            $_POST['email'],
+            $_POST['name'],
+            $_POST['phone'],
+            $_POST['phone_ext']
         );
     }
 
-    if ($args['role'] === 'Student') {
+    if ($_POST['role'] === 'Student') {
         $admin->create_user(
             'Student',
-            $args['pwd'],
-            $args['sn'],
-            $args['email'],
-            $args['class'],
-            $args['department'],
-            $args['name'],
-            $args['type'],
-            $args['phone'],
-            $args['year']
+            $_POST['pwd'],
+            $_POST['sn'],
+            $_POST['email'],
+            $_POST['class'],
+            $_POST['department'],
+            $_POST['name'],
+            $_POST['type'],
+            $_POST['phone'],
+            $_POST['year']
         );
     }
 
-    if ($args['role'] === 'Clerk') {
+    if ($_POST['role'] === 'Clerk') {
         $admin->create_user(
             'Clerk',
-            $args['pwd'],
-            $args['sn'],
-            $args['email'],
-            $args['name'],
-            $args['phone'],
-            $args['phone_ext']
+            $_POST['pwd'],
+            $_POST['sn'],
+            $_POST['email'],
+            $_POST['name'],
+            $_POST['phone'],
+            $_POST['phone_ext']
         );
     }
-    $role = strtolower($args['role']);
     $url = Router::toUrl("home/{$role}/new");
-    Router::redirect($url);
 } else {
-    echo 'Two Passwrods are different.';
+    $url = Notice::addTo('新增失敗：密碼輸入不一致！',"home/{$role}/new");
+    $url = Router::toUrl($url);
 }
+
+Router::redirect($url);

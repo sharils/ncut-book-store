@@ -39,14 +39,14 @@ class User
         );
 
         if (empty($result)) {
-            throw new Exception('No result');
+            throw new Exception('登入失敗：這個帳號不存在！');
         }
         $user = new self();
         $user->id = $result[0]['id'];
         $pwd = Password::from($result[0]['pwd'], $result[0]['salt']);
 
         if ($pwd->verify($password) === FALSE) {
-            throw new Exception('Password is wrong');
+            throw new Exception('登入失敗：密碼有誤！');
         };
         return $user;
     }
@@ -100,7 +100,7 @@ class User
         $pwd = Password::from($result[0]['pwd'], $result[0]['salt']);
 
         if ($pwd->verify($password) === FALSE) {
-            throw new Exception('Password is wrong');
+            throw new Exception('修改失敗：輸入的舊密碼有誤');
         };
 
         $new_pwd = Password::create($new_password);

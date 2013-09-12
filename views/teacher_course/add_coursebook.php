@@ -4,6 +4,9 @@ require_once 'controllers/teacher_course/select_list.php';
 require_once 'views/course/Method.php';
 ?>
 <div class ="col-lg-9 col-sm-9 center">
+<?php if (null !== Notice::get()): ?>
+    <div class="alert alert-danger"><?=Notice::get()?></div>
+<?php endif; ?>
 <form action="<?= Router::toUrl("controllers/teacher_course/add.php")?>" method="post">
     <div><input name="course" type="hidden" value="<?= $course->id(); ?>"/></div>
     <table class="table table-bordered center">

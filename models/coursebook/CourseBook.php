@@ -71,7 +71,6 @@ Class CourseBook
         $course_books = array();
         foreach ($result as $row) {
             $book = Book::from($row['book_id']);
-
             $course = Course::from($row['course_id']);
             $course_books[] = new self(
                 $book,
@@ -87,7 +86,7 @@ Class CourseBook
         return $this->book;
     }
 
-    private function __construct(Book $book, $course, $sample)
+    private function __construct($book, Course $course, $sample)
     {
         $this->book = $book;
         $this->course = $course;

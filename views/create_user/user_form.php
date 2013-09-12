@@ -1,5 +1,8 @@
 <?php require_once 'controllers/user/user_form.php'; ?>
 <div class ="col-lg-9 col-sm-9 center">
+    <?php if (null !== Notice::get()): ?>
+        <div class="alert alert-danger"><?=Notice::get()?></div>
+    <?php endif; ?>
     <form action="<?= Router::toUrl('controllers/user/create_or_update.php') ?>"  method="post">
         <h3><?=$diff['status'] . Create::$title[0]?></h3>
         <table class="table table-bordered center">

@@ -14,5 +14,7 @@ try {
     Router::redirect($url);
     exit;
 } catch (Exception $e) {
-    echo $e->getMessage();
+    $url = Notice::addTo($e->getMessage(), '');
+    $redirect_url = Router::toUrl($url);
+    Router::redirect($redirect_url);
 }
