@@ -11,11 +11,7 @@ class Notice
 
     public static function addTo($notice, $url)
     {
-        $url = $url . '?notice=' . $notice;
-        echo $url;
-        $redirect_url = Router::toUrl($url);
-        Router::redirect($redirect_url);
-
+        return $url = $url . '?notice=' . $notice;
     }
 
     public static function get()
@@ -25,8 +21,7 @@ class Notice
 
     public static function set($notice)
     {
-
-        self::$notice = $notice;
+        self::$notice = $notice();
         // self::$notice = self::$msg[$notice];
     }
 }
