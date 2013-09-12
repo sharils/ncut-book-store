@@ -1,7 +1,5 @@
 <?php
-require_once 'models/database/Database.php';
 require_once 'models/studentorderdetail/StudentOrderDetail.php';
-Database::initialise('localhost', 'root', '123456', 'ncut');
 
 foreach ($_POST['number'] as $value) {
     if ($value <= 0) {

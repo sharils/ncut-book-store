@@ -1,8 +1,6 @@
 <?php
-require_once 'models/database/Database.php';
 require_once 'models/user/User.php';
 
-Database::initialise('localhost', 'root', '123456', 'ncut');
 try {
     $user = User::authenticate(
         $_POST['user_name'],

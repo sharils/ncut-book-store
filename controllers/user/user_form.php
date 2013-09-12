@@ -1,10 +1,7 @@
 <?php
 require_once "models/user/User.php";
-require_once "models/database/Database.php";
 require_once "models/publisher/Publisher.php";
 require_once "controllers/user/create_form.php";
-
-Database::initialise('localhost', 'root', '123456', 'ncut');
 
 $role = Router::resource('0');
 $resource = Router::resource('1');

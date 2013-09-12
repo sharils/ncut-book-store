@@ -1,9 +1,7 @@
 <?php
-require_once 'models/database/Database.php';
 require_once 'models/message/Message.php';
 require_once 'models/user/User.php';
 require_once 'controllers/blacklist/listing.php';
-Database::initialise('localhost', 'root', '123456', 'ncut');
 $flag = TRUE;
 $page = Router::resource();
 if ($page === 'sent') {
