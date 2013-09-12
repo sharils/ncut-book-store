@@ -25,8 +25,15 @@ class Student
             :phone,
             :year
         )";
-    private static $UPDATE = "UPDATE `student`
-        SET `email` = :email
+    private static $UPDATE = "UPDATE `student` SET
+            `sn` = :sn,
+            `email` = :email,
+            `class` = :class,
+            `department` = :department,
+            `name` = :name,
+            `type` = :type,
+            `phone` = :phone,
+            `year` = :year
         WHERE `user_id` = :id";
 
     private $class;
@@ -124,9 +131,13 @@ class Student
         );
     }
 
-    public function department()
+    public function department($department = NULL)
     {
-        return $this->department;
+         if ($department === NULL) {
+            return $this->department;
+        } else {
+            return $this->department = $department;
+        }
     }
 
     public function email($email = NULL)
@@ -143,29 +154,49 @@ class Student
         return $this->id;
     }
 
-    public function name()
+    public function name($name = NULL)
     {
-        return $this->name;
+       if ($name === NULL) {
+            return $this->name;
+        } else {
+            return $this->name = $name;
+        }
     }
 
-    public function phone()
+    public function phone($phone = NULL)
     {
-        return $this->phone;
+        if ($phone === NULL) {
+            return $this->phone;
+        } else {
+            return $this->phone = $phone;
+        }
     }
 
-    public function sn()
+    public function sn($sn = NULL)
     {
-        return $this->sn;
+        if ($sn === NULL) {
+            return $this->sn;
+        } else {
+            return $this->sn = $sn;
+        }
     }
 
-    public function team()
+    public function team($team = NULL)
     {
-        return $this->class;
+        if ($team === NULL) {
+            return $this->team;
+        } else {
+            return $this->team = $team;
+        }
     }
 
-    public function type()
+    public function type($class = NULL)
     {
-        return $this->type;
+        if ($class === NULL) {
+            return $this->class;
+        } else {
+            return $this->class = $class;
+        }
     }
 
     public function update()
@@ -173,14 +204,25 @@ class Student
         Database::execute(
             self::$UPDATE,
             array (
-                ':email' => $this->email,
+                ':sn' =>  $this->sn,
+                ':email' =>  $this->email,
+                ':class' =>  $this->class,
+                ':department' =>  $this->department,
+                ':name' =>  $this->name,
+                ':type' =>  $this->type,
+                ':phone' =>  $this->phone,
+                ':year' =>  $this->year,
                 ':id' => $this->id
             )
         );
     }
 
-    public function year()
+    public function year($year = NULL)
     {
-        return $this->year;
+        if ($year === NULL) {
+            return $this->year;
+        } else {
+            return $this->year = $year;
+        }
     }
 }
