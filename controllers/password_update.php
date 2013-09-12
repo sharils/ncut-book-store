@@ -1,7 +1,5 @@
 <?php
-require_once "models/database/Database.php";
 require_once "models/user/User.php";
-Database::initialise('localhost', 'root', '123456', 'ncut');
 
 try{
     if ($_POST['newpassword'] === $_POST['confirmpassword']){

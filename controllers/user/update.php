@@ -1,9 +1,6 @@
 <?php
 require_once "models/user/User.php";
-require_once "models/database/Database.php";
 require_once "models/publisher/Publisher.php";
-
-Database::initialise('localhost', 'root', '123456', 'ncut');
 
 if (in_array('', $_POST)) {
     $str = ($_POST['role'] === 'Publisher') ? "home/publisher/{$_POST['id']}" : "account/modify";
