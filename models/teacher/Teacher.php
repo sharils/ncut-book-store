@@ -20,8 +20,12 @@ class Teacher
     private static $FIND_SELECTION = "SELECT * FROM `teacher`";
     private static $FROM_SELECTION = "SELECT * FROM `teacher`
         WHERE `user_id` = :id";
-    private static $UPDATE = "UPDATE `teacher`
-        SET `email` = :email
+    private static $UPDATE = "UPDATE `teacher` SET
+            `sn` = :sn,
+            `email` = :email,
+            `name` = :name,
+            `phone` = :phone,
+            `phone_ext` = :phone_ext
         WHERE `user_id` = :id";
 
     private $email;
@@ -117,24 +121,40 @@ class Teacher
         return $this->id;
     }
 
-    public function name()
+    public function name($name = NULL)
     {
-        return $this->name;
+        if ($name === NULL) {
+            return $this->name;
+        } else {
+            return $this->name = $name;
+        }
     }
 
-    public function phone()
+    public function phone($phone = NULL)
     {
-        return $this->phone;
+        if ($phone === NULL) {
+            return $this->phone;
+        } else {
+            return $this->phone = $phone;
+        }
     }
 
-    public function phone_ext()
+    public function phone_ext($phone_ext = NULL)
     {
-        return $this->phone_ext;
+        if ($phone_ext === NULL) {
+            return $this->phone_ext;
+        } else {
+            return $this->phone_ext = $phone_ext;
+        }
     }
 
-    public function sn()
+    public function sn($sn = NULL)
     {
-        return $this->sn;
+        if ($sn === NULL) {
+            return $this->sn;
+        } else {
+            return $this->sn = $sn;
+        }
     }
 
     public function update()
@@ -142,7 +162,11 @@ class Teacher
         Database::execute(
             self::$UPDATE,
             array (
+                ':sn' => $this->sn,
                 ':email' => $this->email,
+                ':name' => $this->name,
+                ':phone' => $this->phone,
+                ':phone_ext' => $this->phone_ext,
                 ':id' => $this->id
             )
         );
