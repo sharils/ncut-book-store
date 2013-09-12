@@ -7,10 +7,10 @@ require_once 'models/router/Notice.php';
 session_start();
 
 Notice::set(function () {
-    return Router::resource();
-    return $_GET['notice'];
+    if (isset($_GET['notice'])) {
+        return $_GET['notice'];
+    }
 });
-
 
 Router::hostName(
     isset($_SERVER['HTTPS']) ? 'https' : 'http',
