@@ -2,6 +2,9 @@
 <form action="<?= Router::toUrl("controllers/login/login.php")?>" class="form-signin" method="post">
 
     <h2 class="form-signin-heading center">線上訂書系統</h2>
+    <?php if (null !== Notice::get()): ?>
+        <div class="alert alert-danger"><?=Notice::get()?></div>
+    <?php endif; ?>
     <p>
         <input class="form-control" name="user_name" placeholder="帳號" type="text" autofocus/>
         <input class="form-control" name="password" placeholder="密碼" type="password"/>

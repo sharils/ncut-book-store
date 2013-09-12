@@ -7,9 +7,6 @@ require_once 'models/user/User.php';
 require_once 'models/book/Book.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 $id = Router::resource(1);
-if (!isset($id)){
-    echo 'Have null value';
-} else {
-    $course = Course::from($id);
-    $coursebooks = CourseBook::find($course);
-}
+$course = Course::from($id);
+$coursebooks = CourseBook::find($course);
+

@@ -4,13 +4,13 @@ require_once 'models/database/Database.php';
 require_once 'models/teacher/Teacher.php';
 require_once 'models/user/User.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
-$args = $_POST;
 
-if (in_array('', $args)) {
-    Notice::addTo('Have null value','home/course');
+if (in_array('', $_POST)) {
+    $url = Notice::addTo('新增失敗：不允許空值存入！', 'home/course');
+    $redirect_url = Router::toUrl($url);
+    Router::redirect($redirect_url);
 } else {
-    $teacher = Teacher::from(User::from($args['teacher_id']));
-    Course::create($teacher, $args['sn'], $args['type'], $args['name'], $args['year']);
-
+    $teacher = Teacher::from(User::from($_POST['teacher_id']));
+    Course::create($teacher, $_POST['sn'], $_POST['type'], $_POST['name'], $_POST['year']);
+    Router::redirect(Router::toUrl("home/course"));
 }
-Router::redirect(Router::toUrl("home/course"));

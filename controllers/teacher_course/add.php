@@ -7,41 +7,53 @@ require_once 'models/user/User.php';
 require_once 'models/book/Book.php';
 Database::initialise('localhost', 'root', '123456', 'ncut');
 $id = Router::resource(2);
-if (in_array('', $_GET)){
-    echo 'Have null value';
-}
+
+//Load顯示時
 if (isset($id)) {
     $course = Course::from($id);
 }
+
+//按下新增扭
 if (isset($_POST['add_book'])) {
+
+    unset($_POST['add_book']);
+    $_POST['remark'] = ' ';
+    if (in_array('', $_POST)) {
+        $url = Notice::addTo('新增失敗：不允許空值存入！',"home/course_book/new/{$_POST['course']}");
+        $redirect_url = Router::toUrl($url);
+        Router::redirect($redirect_url);
+        exit;
+    }
+
+    if (Book::findIsbn($_POST['isbn']) !== FALSE) {
+        $url = Notice::addTo('新增失敗：ISBN碼重複！',"home/course_book/new/{$_POST['course']}");
+        $redirect_url = Router::toUrl($url);
+        Router::redirect($redirect_url);
+        exit;
+    }
+ exit;
+    $course = Course::from($_POST['course']);
     $publisher = Publisher::from($_POST['publisher']);
-    if ($_POST['auther']!=="" && $_POST['isbn']!=="" && $_POST['name']!=="" && $_POST['version']!==""
-                                                                            && $_POST['class']!==""){
-        try {
-                $_POST['isbn'] = Book::find($_POST['isbn']);
-                var_dump($_POST['isbn']);
-                exit;
-            } catch (Exception $e) {
-                echo $e->getMessage();
-            }
-        $book = Book::create(
+
+    $book = Book::create(
         $publisher,
         $_POST['auther'],
         $_POST['isbn'],
         '',
-        $_POST['name']
+        $_POST['name'],
         '',
         $_POST['remark'],
         '',
-        $_POST['version']);
-        $course = Course::from($_POST['course']);
-        if ($_POST['sample']){
-            $sample = '1';
-        } else {
-            $sample = '';
-        }
-        Coursebook::create($course,$book,$sample);
-    }
+        $_POST['version']
+    );
+
+    $sample = ($_POST['sample']) ? '1' : '';
+    Coursebook::create($course, $book, $sample);
     $url = Router::toUrl("home/course/{$_POST['course']}");
     Router::redirect($url);
 }
+
+
+
+
+

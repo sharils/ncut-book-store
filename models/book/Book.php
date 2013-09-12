@@ -27,11 +27,11 @@ class Book
             :type,
             :version
         ) ";
-
+    private static $ISBN_SELECTION ="SELECT * FROM `book` WHERE `isbn` LIKE :isbn";
     private static $KEYWORD_SELECTION =" SELECT * FROM `book`
         WHERE `id` LIKE :KW
         OR `author` LIKE :KW
-        OR `isbn` LIKE :KW
+        OR `isbn` LIKE :isbn
         OR `market_price` LIKE :KW
         OR `name` LIKE :KW
         OR `price` LIKE :KW
@@ -94,7 +94,7 @@ class Book
             array(
                 ':KW' => "%$keyword%",
                 ':KW' => "%$keyword%",
-                ':KW' => "%$keyword%",
+                ':isbn' => $keyword,
                 ':KW' => "%$keyword%",
                 ':KW' => "%$keyword%",
                 ':KW' => "%$keyword%",
@@ -106,7 +106,20 @@ class Book
         );
         return self::refine($result);
     }
-
+    public static function findIsbn($isbn)
+    {
+        $result = Database::execute(
+            self::$ISBN_SELECTION,
+            array(
+                ':isbn' => $isbn,
+            )
+        );
+        if(empty($result)){
+            return FALSE;
+        }
+        $books = self::refine($result);
+        return $books[0];
+    }
     public static function from($id)
     {
         $result = Database::execute(
