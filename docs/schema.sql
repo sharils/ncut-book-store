@@ -1,7 +1,7 @@
 -- phpMyAdmin SQL Dump
 -- version 2.10.3
 -- http://www.phpmyadmin.net
--- 
+--
 -- 主機: localhost
 -- 建立日期: Aug 28, 2013, 02:18 PM
 -- 伺服器版本: 5.0.51
@@ -9,15 +9,15 @@
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
--- 
+--
 -- 資料庫: `test`
--- 
+--
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `admin`
--- 
+--
 
 CREATE TABLE `admin` (
   `user_id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -30,17 +30,17 @@ CREATE TABLE `admin` (
   UNIQUE KEY `sn` (`sn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `admin`
--- 
+--
 
 INSERT INTO `admin` VALUES (0x33323733383931333931, 0x61646d696e, 0x61646d696e407961686f6f2e636f6d2e747777, '', 0x30393131313233313131, 0x3132333431);
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `blacklist`
--- 
+--
 
 CREATE TABLE `blacklist` (
   `user_id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -49,16 +49,16 @@ CREATE TABLE `blacklist` (
   KEY `black_user_id` (`black_user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `blacklist`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `book`
--- 
+--
 
 CREATE TABLE `book` (
   `id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -76,16 +76,16 @@ CREATE TABLE `book` (
   KEY `publisher_id` (`publisher_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `book`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `clerk`
--- 
+--
 
 CREATE TABLE `clerk` (
   `user_id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -98,16 +98,16 @@ CREATE TABLE `clerk` (
   UNIQUE KEY `sn` (`sn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
 
--- 
+--
 -- 列出以下資料庫的數據： `clerk`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `course`
--- 
+--
 
 CREATE TABLE `course` (
   `id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -120,16 +120,16 @@ CREATE TABLE `course` (
   KEY `teacher_user_id` (`teacher_user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `course`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `course_book`
--- 
+--
 
 CREATE TABLE `course_book` (
   `course_id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -138,16 +138,16 @@ CREATE TABLE `course_book` (
   PRIMARY KEY  (`course_id`,`book_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `course_book`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `message`
--- 
+--
 
 CREATE TABLE `message` (
   `id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -160,16 +160,16 @@ CREATE TABLE `message` (
   KEY `receiver_user_id` (`receiver_user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `message`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `publisher`
--- 
+--
 
 CREATE TABLE `publisher` (
   `id` char(10) collate utf8_unicode_ci NOT NULL default '0',
@@ -182,16 +182,16 @@ CREATE TABLE `publisher` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `publisher`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `shop_book`
--- 
+--
 
 CREATE TABLE `shop_book` (
   `book_id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -200,16 +200,16 @@ CREATE TABLE `shop_book` (
   PRIMARY KEY  (`book_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `shop_book`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `shop_order`
--- 
+--
 
 CREATE TABLE `shop_order` (
   `id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -218,16 +218,16 @@ CREATE TABLE `shop_order` (
   KEY `clerk_user_id` (`clerk_user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `shop_order`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `shop_order_detail`
--- 
+--
 
 CREATE TABLE `shop_order_detail` (
   `id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -238,16 +238,16 @@ CREATE TABLE `shop_order_detail` (
   KEY `book_id` (`book_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
 
--- 
+--
 -- 列出以下資料庫的數據： `shop_order_detail`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `student`
--- 
+--
 
 CREATE TABLE `student` (
   `user_id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -262,34 +262,15 @@ CREATE TABLE `student` (
   PRIMARY KEY  (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `student`
--- 
-
-
--- --------------------------------------------------------
-
--- 
--- 資料表格式： `student_course`
--- 
-
-CREATE TABLE `student_course` (
-  `student_user_id` char(10) collate utf8_unicode_ci NOT NULL,
-  `course_id` char(10) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`student_user_id`),
-  KEY `course_id` (`course_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
-
--- 
--- 列出以下資料庫的數據： `student_course`
--- 
-
+--
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `student_order`
--- 
+--
 
 CREATE TABLE `student_order` (
   `id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -303,16 +284,16 @@ CREATE TABLE `student_order` (
   KEY `clerk_user_id` (`clerk_user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `student_order`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `student_order_detail`
--- 
+--
 
 CREATE TABLE `student_order_detail` (
   `id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -323,16 +304,16 @@ CREATE TABLE `student_order_detail` (
   KEY `book_id` (`book_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
 
--- 
+--
 -- 列出以下資料庫的數據： `student_order_detail`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `teacher`
--- 
+--
 
 CREATE TABLE `teacher` (
   `user_id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -345,16 +326,16 @@ CREATE TABLE `teacher` (
   UNIQUE KEY `sn` (`sn`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
 
--- 
+--
 -- 列出以下資料庫的數據： `teacher`
--- 
+--
 
 
 -- --------------------------------------------------------
 
--- 
+--
 -- 資料表格式： `user`
--- 
+--
 
 CREATE TABLE `user` (
   `id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -364,8 +345,8 @@ CREATE TABLE `user` (
   UNIQUE KEY `user_id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 
+--
 -- 列出以下資料庫的數據： `user`
--- 
+--
 
 INSERT INTO `user` VALUES (0x33323733383931333931, 0x626448376d6e474a3373747151, 0x6264646464336431626136343130353964333637);
