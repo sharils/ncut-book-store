@@ -253,10 +253,10 @@ CREATE TABLE `student` (
   `user_id` char(10) collate utf8_unicode_ci NOT NULL,
   `sn` char(8) collate utf8_unicode_ci NOT NULL,
   `email` varchar(50) collate utf8_unicode_ci NOT NULL,
-  `class` enum('') collate utf8_unicode_ci NOT NULL,
+  `class` enum('a', 'b', 'c') collate utf8_unicode_ci NOT NULL,
   `department` varchar(50) collate utf8_unicode_ci NOT NULL,
   `name` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
-  `type` enum('') collate utf8_unicode_ci NOT NULL,
+  `type` enum('1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b') collate utf8_unicode_ci NOT NULL,
   `phone` char(10) collate utf8_unicode_ci NOT NULL,
   `year` int(4) NOT NULL,
   PRIMARY KEY  (`user_id`)
