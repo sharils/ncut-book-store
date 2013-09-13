@@ -1,5 +1,9 @@
 <?php
+require_once "models/user/User.php";
 $resource = Router::resource();
+$user = User::from($_SESSION['user_id']);
+$role = $user->role();
+
 require_once "views/welcome/above.php";
 require_once "views/welcome/ul_top.php";
 require_once "views/welcome/account.php";
