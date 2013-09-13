@@ -12,7 +12,7 @@
     <?php endif;?>
     <form action="<?= Router::toUrl('controllers/user/create_or_update.php') ?>"  method="post">
         <?php if ($account === TRUE): ?>
-            <h3>個人資料</h3>
+            <h3><?= $diff['status'].Create::$title[0]?></h3>
         <?php endif;?>
         <table class="table table-bordered center">
             <input class="form-control" name="id" type="hidden" value="<?= $id ?>"/>
