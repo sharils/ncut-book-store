@@ -2,6 +2,7 @@
 class Student
 {
     private static $DELETION ="DELETE FROM `student` WHERE `user_id` = :id";
+    private static $FIND_SELECTION ="SELECT * FROM `student`";
     private static $FROM_SELECTION = "SELECT * FROM `student`
         WHERE `user_id` = :id";
     private static $INSERTION = "INSERT INTO `student` (
@@ -74,6 +75,12 @@ class Student
             $phone,
             $year
         );
+    }
+
+    public static function find()
+    {
+        $selected = Database::execute(self::$FIND_SELECTION);
+        return self::refine($selected);
     }
 
     public static function from($user)
@@ -178,15 +185,6 @@ class Student
             return $this->sn;
         } else {
             return $this->sn = $sn;
-        }
-    }
-
-    public function team($team = NULL)
-    {
-        if ($team === NULL) {
-            return $this->team;
-        } else {
-            return $this->team = $team;
         }
     }
 

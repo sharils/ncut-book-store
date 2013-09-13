@@ -17,7 +17,6 @@ if (in_array('', $_POST)) {
     );
     $url = Router::toUrl('home/publisher/new');
 } else if ($_POST['pwd'] === $_POST['confirmpassword']) {
-    $_POST = $_POST;
     $admin = Admin::from(User::from($_SESSION['user_id']));
     if ($_POST['role'] === 'Teacher') {
         $admin->create_user(

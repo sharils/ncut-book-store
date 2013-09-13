@@ -1,6 +1,11 @@
 <?php
 class Create
 {
+    public static $active= [
+            'clerk' => '',
+            'student' => '',
+            'teacher' => '',
+        ];
     public static $args;
     public static $role;
     public static $title;
