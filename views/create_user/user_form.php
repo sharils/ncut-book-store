@@ -3,8 +3,17 @@
     <?php if (null !== Notice::get()): ?>
         <div class="alert alert-danger"><?=Notice::get()?></div>
     <?php endif; ?>
+    <?php if ($account === FALSE): ?>
+        <ul class="nav nav-tabs">
+            <li class="<?= $active['clerk'] ?>"><a href="<?= Router::toUrl('home/clerk/new')?>">員生社</a></li>
+            <li class="<?= $active['student'] ?>"><a href="<?= Router::toUrl('home/student/new')?>">學生</a></li>
+            <li class="<?= $active['teacher'] ?>"><a href="<?= Router::toUrl('home/teacher/new')?>">老師</a></li>
+        </ul>
+    <?php endif;?>
     <form action="<?= Router::toUrl('controllers/user/create_or_update.php') ?>"  method="post">
-        <h3><?=$diff['status'] . Create::$title[0]?></h3>
+        <?php if ($account === TRUE): ?>
+            <h3>個人資料</h3>
+        <?php endif;?>
         <table class="table table-bordered center">
             <input class="form-control" name="id" type="hidden" value="<?= $id ?>"/>
             <input class="form-control" name="role" type="hidden" value="<?= Create::$title[1] ?>"/>

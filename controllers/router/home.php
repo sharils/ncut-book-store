@@ -36,16 +36,12 @@ switch ($role) {
             require_once "views/course/course_creation.php";
             break;
         }
-        if ($resource === 'clerk/new') {
+        if ($resource2 === 'new' || $resource2 === 'modify') {
             require_once "views/create_user/user_form.php";
             break;
         }
-        if ($resource === 'student/new') {
-            require_once "views/create_user/user_form.php";
-            break;
-        }
-        if ($resource === 'teacher/new') {
-            require_once "views/create_user/user_form.php ";
+        if ($resource2 === 'list') {
+            require_once "views/create_user/list.php";
             break;
         }
     case 'clerk':
