@@ -19,6 +19,8 @@ if ($role === 'modify'){
     $user = User::from($resource);
     $role = $user->role();
     $account = TRUE;
+} elseif($role === 'publisher') {
+    $account = TRUE;
 }
 
 Create::$role();
@@ -39,6 +41,7 @@ if ($resource !== 'new') {
             $edit_role = $user->toRole();
             break;
         case 'publisher':
+            $account = TRUE;
             $edit_role = Publisher::from($resource);
             $flag = ['name', 'account'];
             break;
@@ -47,6 +50,7 @@ if ($resource !== 'new') {
             break;
     }
 
+    //將要給view的資料重新整理放入陣列
     foreach ($args as $key => &$value) {
         if ($key === 'class') {
             $value[2] = $edit_role->type();

@@ -11,8 +11,9 @@
                 <?php foreach ($args as $v): ?>
                     <td><?= $v[0] ?></td>
                 <?php endforeach; ?>
-
-                <td>功能</td>
+                <?php if ($user_role === 'admin'): ?>
+                    <td>功能</td>
+                <?php endif; ?>
             </tr>
             <?php foreach ($rows as $row): ?>
                 <tr>
@@ -20,14 +21,17 @@
                         <?php $k = ($k === 'class') ? 'type' : $k; ?>
                         <td><?= $row->$k() ?></td>
                     <?php endforeach; ?>
-                    <td>
-                        <button class="btn btn-warning" name="update" value="<?= $row->id()?>">
-                            修改
-                        </button>
-                        <button class="btn btn-danger" name="delete" value="<?= $row->id()?>">
-                            刪除
-                        </button>
-                    </td>
+                    <?php if ($user_role === 'admin'): ?>
+                        <td>
+                            <button class="btn btn-warning" name="update" value="<?= $row->id()?>">
+                                修改
+                            </button>
+                            <button class="btn btn-danger" name="delete" value="<?= $row->id()?>">
+                                刪除
+                            </button>
+                        </td>
+                    <?php endif; ?>
+
                 </tr>
             <?php endforeach; ?>
         </table>

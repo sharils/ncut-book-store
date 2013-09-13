@@ -11,7 +11,7 @@ class Create
     public static $title;
     public static function clerk()
     {
-        self::$title = ['員生社', 'Clerk'];
+        self::$title = ['個人資料', 'Clerk'];
         self::$args = [
             'sn'                => ['帳號', 'text', NULL],
             'pwd'               => ['密碼', 'password', NULL],
@@ -39,7 +39,7 @@ class Create
 
     public static function student()
     {
-        self::$title = ['學生', 'Student'];
+        self::$title = ['個人資料', 'Student'];
         self::$args = [
             'sn'                => ['帳號', 'text', NULL],
             'pwd'               => ['密碼', 'password', NULL],
@@ -56,7 +56,7 @@ class Create
 
     public static function teacher()
     {
-        self::$title = ['老師', 'Teacher'];
+        self::$title = ['個人資料', 'Teacher'];
         self::$args = [
             'sn'                => ['帳號', 'text', NULL],
             'pwd'               => ['密碼', 'password', NULL],
