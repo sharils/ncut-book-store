@@ -39,6 +39,25 @@ INSERT INTO `admin` VALUES (0x33323733383931333931, 0x61646d696e, 0x61646d696e40
 -- --------------------------------------------------------
 
 --
+-- 資料表格式： `announce`
+--
+CREATE TABLE `announce` (
+  `id` char(10) collate utf8_unicode_ci NOT NULL,
+  `user_id` char(10) collate utf8_unicode_ci NOT NULL,
+  `date` datetime NOT NULL,
+  `title` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `message` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 列出以下資料庫的數據： `announce`
+--
+
+
+-- --------------------------------------------------------
+
+--
 -- 資料表格式： `blacklist`
 --
 
