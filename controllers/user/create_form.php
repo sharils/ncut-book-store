@@ -32,7 +32,7 @@ class Create
             'person'    => ['負責人', 'text', NULL],
             'phone'     => ['連絡電話', 'text', NULL],
             'email'     => ['信箱', 'text', NULL],
-            'phone_ext' => ['傳真號碼', 'text', NULL],
+            'fax' => ['傳真號碼', 'text', NULL],
             'account'   => ['匯款帳戶', 'text', NULL]
        ];
     }

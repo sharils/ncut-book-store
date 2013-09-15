@@ -10,10 +10,10 @@ if (in_array('', $_POST)) {
         $_POST['email'],
         $_POST['account'],
         $_POST['address'],
+        $_POST['fax'],
         $_POST['name'],
         $_POST['person'],
-        $_POST['phone'],
-        $_POST['phone_ext']
+        $_POST['phone']
     );
     $url = Router::toUrl('home/publisher/new');
 } else if ($_POST['pwd'] === $_POST['confirmpassword']) {

@@ -20,7 +20,7 @@
                     <td><?= $publisher->phone() ?></td>
                     <td><?= $publisher->email() ?></td>
                     <td><?= $publisher->account() ?></td>
-                    <td><?= $publisher->phone_ext() ?></td>
+                    <td><?= $publisher->fax() ?></td>
                     <td>
                          <button class="btn btn-warning" name="update" value="<?= $publisher->id() ?>">
                         修改

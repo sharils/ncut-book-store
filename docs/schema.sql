@@ -200,6 +200,7 @@ CREATE TABLE `publisher` (
   `email` varchar(50) collate utf8_unicode_ci NOT NULL,
   `account` char(50) collate utf8_unicode_ci NOT NULL,
   `address` varchar(50) collate utf8_unicode_ci NOT NULL,
+  `fax` char(10) collate utf8_unicode_ci NOT NULL,
   `name` char(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `person` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `phone` char(10) collate utf8_unicode_ci NOT NULL,
