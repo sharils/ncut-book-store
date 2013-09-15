@@ -1,10 +1,16 @@
 <?php
 chdir('..');
 require_once 'vendor/autoload.php';
+require_once 'models/container/Container.php';
 require_once 'models/database/Database.php';
 require_once 'models/router/Router.php';
 require_once 'models/router/Notice.php';
 require_once 'models/router/Parameter.php';
+
+use ncut_book_store\Container;
+
+Container::settings(parse_ini_file('settings/ncut-book-store.ini', true));
+
 Database::initialise('localhost', 'root', '123456', 'ncut');
 
 session_start();
