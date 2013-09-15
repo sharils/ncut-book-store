@@ -32,7 +32,6 @@ class Router
     private static function below()
     {
         ?>
-</div>
 </body>
 </html>
         <?php
@@ -161,11 +160,13 @@ class Router
         if ($mime === 'text/html') {
             self::above();
         }
+
         header("Content-type: $mime");
+        require_once $handler_path;
+
         if ($mime === 'text/html') {
             self::below();
         }
-        require_once $handler_path;
     }
 
     public static function toUrl($path)
