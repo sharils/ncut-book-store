@@ -1,5 +1,6 @@
 <?php
 chdir('..');
+require_once 'vendor/autoload.php';
 require_once 'models/database/Database.php';
 require_once 'models/router/Router.php';
 require_once 'models/router/Notice.php';
