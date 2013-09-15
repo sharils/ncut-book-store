@@ -7,8 +7,6 @@ We need to allow a student to see all orders he has.
 
 This page must pass the W3C Markup Validation Service. http://validator.w3.org/
 
-Style is not our concern at this moment.
-
 Student Order Detail
 --------------------
 We need to allow an user to see the detail about an order.
@@ -39,7 +37,6 @@ A student can:
 A student can:
 
 - See the detail of the order
-- Unsubmit the order.
 
 ### processing ###
 
