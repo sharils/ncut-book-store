@@ -162,7 +162,9 @@ class Router
         }
 
         header("Content-type: $mime");
-        require_once $handler_path;
+        call_user_func(function () {
+            require_once func_get_arg(0);
+        }, $handler_path);
 
         if ($mime === 'text/html') {
             self::below();
