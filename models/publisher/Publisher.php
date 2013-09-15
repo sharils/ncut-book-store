@@ -7,28 +7,28 @@ class Publisher
             `email`,
             `account`,
             `address`,
+            `fax`,
             `name`,
             `person`,
-            `phone`,
-            `phone_ext`
+            `phone`
         ) VALUE (
             :id,
             :email,
             :account,
             :address,
+            :fax,
             :name,
             :person,
-            :phone,
-            :phone_ext
+            :phone
         )";
     private static $FIND_SELECTION = "SELECT * FROM `publisher`";
     private static $FROM_SELECTION = "SELECT * FROM `publisher` WHERE `id` = :id";
     private static $UPDATE= "UPDATE `publisher`
         SET `email` = :email,
         `address` = :address,
+        `fax` = :fax,
         `person` = :person,
-        `phone` = :phone,
-        `phone_ext` = :phone_ext
+        `phone` = :phone
         WHERE `id` = :id";
 
     private $account;
@@ -38,9 +38,9 @@ class Publisher
     private $name;
     private $person;
     private $phone;
-    private $phone_ext;
+    private $fax;
 
-    public static function create($email, $account, $address, $name, $person, $phone, $phone_ext)
+    public static function create($email, $account, $address, $fax, $name, $person, $phone)
     {
         $id = time();
         Database::execute(
@@ -50,10 +50,10 @@ class Publisher
                 ':email' => $email,
                 ':account' => $account,
                 ':address' => $address,
+                ':fax' => $fax,
                 ':name' => $name,
                 ':person' => $person,
-                ':phone' => $phone,
-                ':phone_ext' => $phone_ext
+                ':phone' => $phone
             )
         );
         return new self(
@@ -61,10 +61,10 @@ class Publisher
             $email,
             $account,
             $address,
+            $fax,
             $name,
             $person,
-            $phone,
-            $phone_ext
+            $phone
         );
     }
 
@@ -97,10 +97,10 @@ class Publisher
                 $row['email'],
                 $row['account'],
                 $row['address'],
+                $row['fax'],
                 $row['name'],
                 $row['person'],
-                $row['phone'],
-                $row['phone_ext']
+                $row['phone']
             );
         }
         return $publishers;
@@ -120,16 +120,16 @@ class Publisher
         }
     }
 
-    private function __construct($id, $email, $account, $address, $name, $person, $phone, $phone_ext)
+    private function __construct($id, $email, $account, $address, $fax, $name, $person, $phone)
     {
         $this->account = $account;
         $this->address = $address;
         $this->email = $email;
+        $this->fax = $fax;
         $this->id = $id;
         $this->name = $name;
         $this->person = $person;
         $this->phone = $phone;
-        $this->phone_ext = $phone_ext;
     }
 
     public function delete()
@@ -148,6 +148,15 @@ class Publisher
             return $this->email;
         } else {
             return $this->email = $email;
+        }
+    }
+
+    public function fax($fax = NULL)
+    {
+        if ($fax === NULL) {
+            return $this->fax;
+        } else {
+            return $this->fax = $fax;
         }
     }
 
@@ -179,15 +188,6 @@ class Publisher
         }
     }
 
-    public function phone_ext($phone_ext = NULL)
-    {
-        if ($phone_ext === NULL) {
-            return $this->phone_ext;
-        } else {
-            return $this->phone_ext = $phone_ext;
-        }
-    }
-
     public function update()
     {
         Database::execute(
@@ -195,9 +195,9 @@ class Publisher
             array(
                 ':email' => $this->email,
                 ':address' => $this->address,
+                ':fax' => $this->fax,
                 ':person' => $this->person,
                 ':phone' => $this->phone,
-                ':phone_ext' => $this->phone_ext,
                 ':id' => $this->id
             )
         );
