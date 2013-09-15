@@ -70,7 +70,7 @@ switch ($role) {
             require_once "views/student_order/listing.php";
             break;
         }
-        if ($resource1 === 'order' && $resource2 === 'ok' ) {
+        if ($resource1 === 'order' && $resource2 === 'ok') {
             require_once "views/student_order/confirmation.php";
             break;
         }
@@ -78,8 +78,12 @@ switch ($role) {
             require_once "views/student_order/cart.php";
             break;
         }
-        if ($resource1 === 'order' && $resource2 != NULL ) {
+        if ($resource1 === 'order' && $resource2 != NULL) {
             require_once "views/student_order/detail.php";
+            break;
+        }
+        if ($resource2 === 'search') {
+            require_once "views/search/search.php";
             break;
         }
         break;

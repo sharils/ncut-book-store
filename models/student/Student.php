@@ -9,45 +9,45 @@ class Student
             `user_id`,
             `sn`,
             `email`,
-            `class`,
             `department`,
+            `group`,
             `name`,
-            `type`,
+            `system`,
             `phone`,
             `year`
         ) VALUE (
             :id,
             :sn,
             :email,
-            :class,
             :department,
+            :group,
             :name,
-            :type,
+            :system,
             :phone,
             :year
         )";
     private static $UPDATE = "UPDATE `student` SET
             `sn` = :sn,
             `email` = :email,
-            `class` = :class,
             `department` = :department,
+            `group` = :group,
             `name` = :name,
-            `type` = :type,
+            `system` = :system,
             `phone` = :phone,
             `year` = :year
         WHERE `user_id` = :id";
 
-    private $class;
     private $department;
     private $email;
+    private $group;
     private $id;
     private $name;
     private $phone;
     private $sn;
-    private $type;
+    private $system;
     private $year;
 
-    public static function create($user, $sn, $email, $class, $department, $name, $type, $phone, $year)
+    public static function create($user, $sn, $email, $group, $department, $name, $system, $phone, $year)
     {
         Database::execute(
             self::$INSERTION,
@@ -55,10 +55,10 @@ class Student
                 ':id' => $user->id(),
                 ':sn' => $sn,
                 ':email' => $email,
-                ':class' => $class,
                 ':department' => $department,
+                ':group' => $group,
                 ':name' => $name,
-                ':type' => $type,
+                ':system' => $system,
                 ':phone' => $phone,
                 ':year' => $year
             )
@@ -68,10 +68,10 @@ class Student
             $user->id(),
             $sn,
             $email,
-            $class,
             $department,
+            $group,
             $name,
-            $type,
+            $system,
             $phone,
             $year
         );
@@ -104,10 +104,10 @@ class Student
                 $row['user_id'],
                 $row['sn'],
                 $row['email'],
-                $row['class'],
                 $row['department'],
+                $row['group'],
                 $row['name'],
-                $row['type'],
+                $row['system'],
                 $row['phone'],
                 $row['year']
             );
@@ -115,16 +115,16 @@ class Student
         return $students;
     }
 
-    private function __construct($id, $sn, $email, $class, $department, $name, $type, $phone, $year)
+    private function __construct($id, $sn, $email, $department, $group, $name, $system, $phone, $year)
     {
-        $this->class = $class;
         $this->department = $department;
         $this->email = $email;
+        $this->group = $group;
         $this->id = $id;
         $this->name = $name;
         $this->phone = $phone;
         $this->sn = $sn;
-        $this->type = $type;
+        $this->system = $system;
         $this->year = $year;
     }
 
@@ -153,6 +153,15 @@ class Student
             return $this->email;
         } else {
             return $this->email = $email;
+        }
+    }
+
+    public function group($group = NULL)
+    {
+        if ($group === NULL) {
+            return $this->group;
+        } else {
+            return $this->group = $group;
         }
     }
 
@@ -188,12 +197,12 @@ class Student
         }
     }
 
-    public function type($class = NULL)
+    public function system($system = NULL)
     {
-        if ($class === NULL) {
-            return $this->class;
+        if ($system === NULL) {
+            return $this->system;
         } else {
-            return $this->class = $class;
+            return $this->system = $system;
         }
     }
 
@@ -204,10 +213,10 @@ class Student
             array (
                 ':sn' =>  $this->sn,
                 ':email' =>  $this->email,
-                ':class' =>  $this->class,
                 ':department' =>  $this->department,
+                ':group' =>  $this->group,
                 ':name' =>  $this->name,
-                ':type' =>  $this->type,
+                ':system' =>  $this->system,
                 ':phone' =>  $this->phone,
                 ':year' =>  $this->year,
                 ':id' => $this->id

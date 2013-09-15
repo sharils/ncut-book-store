@@ -17,4 +17,5 @@ $rows = $B_role::find();
 Create::$role();
 
 $args = Create::$args;
+$drop = ['department', 'group', 'system'];
 unset($args['pwd'],$args['confirmpassword']);
