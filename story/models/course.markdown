@@ -6,6 +6,10 @@ Course create(Teacher teacher, String type, String name, String year)
 This static method inserts a record into the course table and returns a course
 object representing the record.
 
+Courses find(Array $fields)
+---------------------------
+This static method returns an array of courses that match the conditions.
+
 Courses find(Student student)
 -----------------------------
 This static method returns an array of courses that the student takes.
