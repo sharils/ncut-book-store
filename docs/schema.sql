@@ -133,7 +133,11 @@ CREATE TABLE `course` (
   `sn` char(10) collate utf8_unicode_ci NOT NULL,
   `teacher_user_id` char(10) collate utf8_unicode_ci NOT NULL,
   `type` enum('required','optional') collate utf8_unicode_ci NOT NULL,
+  `department` enum('me', 'cme', 'rac', 'cc', 'ae', 'csie', 'ddm', 'la', 'ba', 'iem', 'im', 'dlim', 'ee', 'dee') collate utf8_unicode_ci NOT NULL,
+  `grade` enum('1','2','3','4') collate utf8_unicode_ci NOT NULL,
+  `group` enum('a', 'b', 'c') collate utf8_unicode_ci NOT NULL,
   `name` char(50) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `system` enum('1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b') collate utf8_unicode_ci NOT NULL,
   `year` int(4) NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `teacher_user_id` (`teacher_user_id`)
@@ -275,8 +279,8 @@ CREATE TABLE `student` (
   `class` enum('a', 'b', 'c') collate utf8_unicode_ci NOT NULL,
   `department` varchar(50) collate utf8_unicode_ci NOT NULL,
   `name` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
-  `type` enum('1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b') collate utf8_unicode_ci NOT NULL,
   `phone` char(10) collate utf8_unicode_ci NOT NULL,
+  `type` enum('1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b') collate utf8_unicode_ci NOT NULL,
   `year` int(4) NOT NULL,
   PRIMARY KEY  (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
