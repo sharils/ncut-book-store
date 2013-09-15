@@ -18,11 +18,6 @@ class Parameter
         'dee' => ['電子工程系(所)', '子']
     ];
 
-    public static $type = [
-        'required' => '必修',
-        'optional' => '選修'
-    ];
-
     public static $grade = [
         '1' => ['一年級', '一'],
         '2' => ['二年級', '二'],
@@ -36,6 +31,21 @@ class Parameter
         'c' => '丙'
     ];
 
+    public static $semester = [
+        '1' => '第一學期',
+        '2' => '第二學期'
+    ];
+
+    public static $status = [
+        'shopping' => '購買',
+        'cancel' => '取消訂單',
+        'submitted' => '送出訂單',
+        'processing' => '處理中',
+        'ordered' => '訂單',
+        'shipping' => '進貨中',
+        'arrived' => '取貨',
+    ];
+
     public static $system = [
         '1a' => ['日二技', '二'],
         '1b' => ['日四技', '四'],
@@ -47,13 +57,8 @@ class Parameter
         '3b' => ['進專', '專二', '雙軌' ],
     ];
 
-    public static $status = [
-        'shopping' => '購買',
-        'cancel' => '取消訂單',
-        'submitted' => '送出訂單',
-        'processing' => '處理中',
-        'ordered' => '訂單',
-        'shipping' => '進貨中',
-        'arrived' => '取貨',
+    public static $type = [
+        'required' => '必修',
+        'optional' => '選修'
     ];
 }

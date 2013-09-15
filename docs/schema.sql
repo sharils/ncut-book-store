@@ -138,6 +138,7 @@ CREATE TABLE `course` (
   `group` enum('a', 'b', 'c') collate utf8_unicode_ci NOT NULL,
   `name` char(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `system` enum('1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b') collate utf8_unicode_ci NOT NULL,
+  `semester` enum('1','2') collate utf8_unicode_ci NOT NULL,
   `year` int(4) NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `teacher_user_id` (`teacher_user_id`)

@@ -14,14 +14,24 @@ Class Course
             `teacher_user_id`,
             `sn`,
             `type`,
+            `department`,
+            `grade`,
+            `group`,
             `name`,
+            `system`,
+            'semester',
             `year`
         ) VALUE (
             :id,
             :teacher_id,
             :sn,
             :type,
+            :department,
+            :grade,
+            :group,
             :name,
+            :system,
+            'semester',
             :year
         )";
 
@@ -32,7 +42,7 @@ Class Course
     private $type;
     private $year;
 
-    public static function create(Teacher $teacher, $sn, $type, $name, $year)
+    public static function create(Teacher $teacher, $sn, $type, $department, $grade, $group, $name, $system, $semester, $year)
     {
         $course_id = time();
         Database::execute(
@@ -42,11 +52,16 @@ Class Course
                 ':teacher_id' => $teacher->id(),
                 ':sn' => $sn,
                 ':type' => $type,
+                ':department' => $department,
+                ':grade' => $grade,
+                ':group' => $group,
                 ':name' => $name,
+                ':system' => $system,
+                ':semester' => $semester,
                 ':year' => $year
             )
         );
-        return new self($course_id, $teacher, $sn, $type, $name, $year);
+        return new self($course_id, $teacher, $sn, $type, $department, $grade, $group, $name, $system, $semester, $year);
     }
     public static function findCourse($sn_or_name)
     {
@@ -83,20 +98,30 @@ Class Course
                 $teacher,
                 $row['sn'],
                 $row['type'],
+                $row['department'],
+                $row['grade'],
+                $row['group'],
                 $row['name'],
+                $row['system'],
+                $row['semester'],
                 $row['year']
             );
         }
         return $courses;
     }
 
-    private function __construct($id, $teacher, $sn, $type, $name, $year)
+    private function __construct($id, $teacher, $sn, $type, $department, $grade, $group, $name, $system, $semester, $year)
     {
         $this->course_id = $id;
         $this->teacher = $teacher;
         $this->sn = $sn;
         $this->type = $type;
+        $this->department = $department;
+        $this->grade = $grade;
+        $this->group = $group;
         $this->name = $name;
+        $this->system = $system;
+        $this->semester = $semester;
         $this->year = $year;
     }
 
@@ -125,13 +150,19 @@ Class Course
         return self::refine($result);
     }
 
-    public function toArray()
+    public function department()
     {
-        return array(
-            'name' => $this->name,
-            'type' => $this->type,
-            'year' => $this->year
-        );
+        return $this->department;
+    }
+
+    public function grade()
+    {
+        return $this->grade;
+    }
+
+    public function group()
+    {
+        return $this->group;
     }
 
     public function id()
@@ -147,6 +178,16 @@ Class Course
     public function sn()
     {
         return $this->sn;
+    }
+
+    public function system()
+    {
+        return $this->system;
+    }
+
+    public function semester()
+    {
+        return $this->semester;
     }
 
     public function teacher()
