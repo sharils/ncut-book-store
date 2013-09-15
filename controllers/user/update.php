@@ -26,7 +26,6 @@ if (in_array('', $_POST)) {
     $args = Create::$args;
     unset($args['pwd'], $args['confirmpassword']);
     foreach ($args as $k => $v) {
-        $k = ($k === 'class') ? 'type' : $k;
         $user_role->$k($_POST[$k]);
     }
     $user_role->update();

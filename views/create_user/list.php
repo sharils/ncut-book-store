@@ -8,7 +8,7 @@
     <form action="<?= Router::toUrl('controllers/user/update_or_delete.php') ?>"  method="post">
         <table class="table table-bordered center">
             <tr>
-                <?php foreach ($args as $v): ?>
+                <?php foreach ($args as $k => $v): ?>
                     <td><?= $v[0] ?></td>
                 <?php endforeach; ?>
                 <?php if ($user_role === 'admin'): ?>
@@ -18,8 +18,15 @@
             <?php foreach ($rows as $row): ?>
                 <tr>
                     <?php foreach ($args as $k => $v_arg): ?>
-                        <?php $k = ($k === 'class') ? 'type' : $k; ?>
-                        <td><?= $row->$k() ?></td>
+                        <?php
+                            if(in_array($k, $drop)){
+                                $array = Parameter::${$k};
+                                $str = ($k === 'group') ?  $array[$row->$k()] : $array[$row->$k()][0];
+                            } else {
+                                $str = $row->$k();
+                            }
+                        ?>
+                        <td><?= $str ?></td>
                     <?php endforeach; ?>
                     <?php if ($user_role === 'admin'): ?>
                         <td>

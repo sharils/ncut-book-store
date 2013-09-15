@@ -1,4 +1,5 @@
 <?php require_once 'controllers/user/user_form.php'; ?>
+<?php require_once 'views/course/Method.php'; ?>
 <div class ="col-lg-9 col-sm-9 center">
     <?php if (null !== Notice::get()): ?>
         <div class="alert alert-danger"><?=Notice::get()?></div>
@@ -24,7 +25,12 @@
                     <div class="form-group">
                         <label class="col-lg-5 col-sm-5 control-label"><?= $value[0] ?></label>
                         <div class="col-lg-5 col-sm-5">
-                            <input class="form-control" <?= $disabled ?> name="<?= $key ?>" type="<?= $value[1] ?>" value="<?= $value[2] ?>"/>
+                            <?php $position = ($key === 'group') ? Null : 0 ?>
+                            <?php if(in_array($key, $drop)): ?>
+                                <?php Method::select($key, Parameter::${$key}, $position, $value[2], $disabled);?>
+                            <?php else: ?>
+                                <input class="form-control" <?= $disabled ?> name="<?= $key ?>" type="<?= $value[1] ?>" value="<?= $value[2] ?>"/>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>

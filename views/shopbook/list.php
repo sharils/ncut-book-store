@@ -1,6 +1,6 @@
 <?php require_once 'controllers/shopbook/list.php'; ?>
 <div class ="col-lg-9 col-sm-9">
-    <form action="<?= Router::toUrl('controllers/shopbook/change_shelf.php'); ?>" method="post">
+   <form action="<?= Router::toUrl('controllers/shopbook/change_shelf.php'); ?>" method="post">
         <table class="center table table-bordered">
             <tr class="active">
                 <th>ISBN</th>
@@ -28,7 +28,7 @@
                     <td><?= $shopbook->number() ?></td>
                     <td><?= ($shopbook->shelf() == true) ? '上架中' : '下架中' ?></td>
                     <td>
-                        <button class="btn btn-warning" name="id" value="<?= $shopbook->book()->id() ?>">
+                        <button class="btn btn-warning" name="shelf" value="<?= $shopbook->book()->id() ?>">
                             修改狀態
                         </button>
                     </td>

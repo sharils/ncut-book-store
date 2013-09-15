@@ -36,10 +36,10 @@ if (in_array('', $_POST)) {
             $_POST['pwd'],
             $_POST['sn'],
             $_POST['email'],
-            $_POST['class'],
+            $_POST['group'],
             $_POST['department'],
             $_POST['name'],
-            $_POST['type'],
+            $_POST['system'],
             $_POST['phone'],
             $_POST['year']
         );

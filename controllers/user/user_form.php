@@ -10,6 +10,7 @@ $account = FALSE;
 $active = Create::$active;
 $active[$role] = 'active';
 $diff = ['status' => '新增', 'class' => 'btn-primary'];
+$drop = ['department', 'group', 'system'];
 $flag = [];
 $id = NULL;
 
@@ -33,10 +34,10 @@ if ($resource !== 'new') {
             unset($args['pwd'], $args['confirmpassword']);
             if ($resource2 === NULL) {
                 $user = User::from($resource);
-                $flag = ['sn', 'name', 'phone', 'phone_ext', 'class', 'department', 'year', 'type'];
+                $flag = ['sn', 'name', 'phone', 'phone_ext', 'department', 'group', 'year', 'system'];
             } else {
+                $flag =[];
                 $user = User::from($resource2);
-                $flag = [];
             }
             $edit_role = $user->toRole();
             break;
@@ -52,9 +53,7 @@ if ($resource !== 'new') {
 
     //將要給view的資料重新整理放入陣列
     foreach ($args as $key => &$value) {
-        if ($key === 'class') {
-            $value[2] = $edit_role->type();
-        } else if ($key !== 'role') {
+        if ($key !== 'role') {
             $value[2] = $edit_role->$key();
         }
     }

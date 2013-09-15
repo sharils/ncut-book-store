@@ -47,9 +47,9 @@ class Create
             'name'              => ['姓名', 'text', NULL],
             'email'             => ['信箱', 'text', NULL],
             'phone'             => ['電話', 'text', NULL],
-            'class'             => ['班級', 'text', NULL],
+            'group'             => ['班級', 'text', NULL],
             'department'        => ['科系', 'text', NULL],
-            'type'              => ['學制', 'text', NULL],
+            'system'              => ['學制', 'text', NULL],
             'year'              => ['入學年', 'text', NULL]
        ];
     }
