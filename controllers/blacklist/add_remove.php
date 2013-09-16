@@ -10,5 +10,5 @@ if(isset($_POST['add_user'])) {
 if(isset($_POST['remove_user'])) {
     $blacklist->remove(user::find($_POST['remove_user']));
 }
-$url = Router::toUrl('message/blacklist');
+$url = Router::toUrl("message/blacklist");
 Router::redirect($url);

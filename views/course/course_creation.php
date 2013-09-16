@@ -15,9 +15,9 @@ require_once 'controllers/course/select_list.php';
             <th>學年度</th>
             <td><input class="form-control" name="year" type="text" /></td>
             <th>學期</th>
-            <td><?php Method::select('semester',Parameter::$semester); ?></td>
+            <td><?php Method::select('semester', Parameter::$semester, 0); ?></td>
             <th>學制</th>
-            <td><?php Method::select('system',Parameter::$system, 0); ?></td>
+            <td><?php Method::select('system', Parameter::$system, 0); ?></td>
         </tr>
         <tr>
             <th>課程代碼</th>
@@ -25,7 +25,7 @@ require_once 'controllers/course/select_list.php';
             <th>課程名稱</th>
             <td><input class="form-control" name="name" type="text" /></td>
             <th>必/選修</th>
-            <td><?php Method::select('type',Parameter::$type); ?></td>
+            <td><?php Method::select('type', Parameter::$type); ?></td>
         </tr>
         <tr>
         <th colspan="2">授課教師</th>
@@ -36,11 +36,11 @@ require_once 'controllers/course/select_list.php';
         </tr>
         <tr colspan="6">
             <th>科系</th>
-            <td><?php Method::select('department',Parameter::$department, 0); ?></td>
+            <td><?php Method::select('department', Parameter::$department, 0); ?></td>
             <th>年級</th>
-            <td><?php Method::select('grade',Parameter::$grade, 0); ?></td>
+            <td><?php Method::select('grade', Parameter::$grade, 0); ?></td>
             <th>班級</th>
-            <td><?php Method::select('group',Parameter::$group); ?></td>
+            <td><?php Method::select('group', Parameter::$group); ?></td>
         </tr>
     </table>
     <div>

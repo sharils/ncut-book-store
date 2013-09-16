@@ -32,8 +32,8 @@ class Parameter
     ];
 
     public static $semester = [
-        '1' => '第一學期',
-        '2' => '第二學期'
+        '1' => ['第一學期', '上'],
+        '2' => ['第二學期', '下']
     ];
 
     public static $status = [
@@ -54,11 +54,21 @@ class Parameter
         '2b' => ['夜四技', '職四'],
         '2c' => ['夜二專', '職'],
         '3a' => ['進修學院', '院二'],
-        '3b' => ['進專', '專二', '雙軌' ],
+        '3b' => ['進專', '專二、雙軌']
     ];
 
     public static $type = [
         'required' => '必修',
         'optional' => '選修'
     ];
+
+    public static function before($arg_name, $before = ['' => ['ALL', 'ALL', 'ALL']])
+    {
+        return array_merge($before, self::${$arg_name});
+    }
+
+    public static function after($arg_name, $after)
+    {
+        return array_merge(self::${$arg_name}, $after);
+    }
 }

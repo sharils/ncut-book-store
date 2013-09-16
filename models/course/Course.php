@@ -3,12 +3,10 @@ require_once 'models/user/User.php';
 require_once 'models/teacher/Teacher.php';
 Class Course
 {
-    private static $FROM_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";
-    private static $FIND_COURSE_SELECTION ="SELECT * FROM `course`
-        WHERE  `sn` = :sn OR `name` = :name";
     private static $DELETION = "DELETE FROM `course` WHERE `id` = :id";
-    private static $FIND_SELECTION = "SELECT * FROM `course`
-        WHERE  `teacher_user_id` = :teacher_id";
+    private static $FACTOR;
+    private static $FIND_SELECTION ="SELECT * FROM `course`";
+    private static $FROM_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";
     private static $INSERTION = "INSERT INTO `course`(
             `id`,
             `teacher_user_id`,
@@ -19,7 +17,7 @@ Class Course
             `group`,
             `name`,
             `system`,
-            'semester',
+            `semester`,
             `year`
         ) VALUE (
             :id,
@@ -31,7 +29,7 @@ Class Course
             :group,
             :name,
             :system,
-            'semester',
+            :semester,
             :year
         )";
 
@@ -63,17 +61,18 @@ Class Course
         );
         return new self($course_id, $teacher, $sn, $type, $department, $grade, $group, $name, $system, $semester, $year);
     }
-    public static function findCourse($sn_or_name)
+
+    public static function find($search_factor)
     {
+        $where = self::getWhere($search_factor);
         $result = Database::execute(
-            self::$FIND_COURSE_SELECTION,
-            array(
-                ':sn' => $sn_or_name,
-                ':name' => $sn_or_name,
-            )
+            self::$FIND_SELECTION.$where,
+            self::$FACTOR
         );
-        $courses = self::refine($result);
-        return $courses[0];
+        if(empty($result)){
+            return FALSE;
+        }
+        return self::refine($result);
     }
 
     public static function from($course_id)
@@ -86,6 +85,18 @@ Class Course
         );
         $courses = self::refine($result);
         return $courses[0];
+    }
+
+    private static function getWhere($search_factor)
+    {
+        $args = [];
+        $where = "WHERE 1";
+        foreach($search_factor as $key => $value) {
+            $where.=" AND `$key` LIKE :$key";
+            $args[":$key"] = "%$value%";
+        }
+        self::$FACTOR = $args;
+        return $where;
     }
 
     private static function refine($result)
@@ -127,7 +138,7 @@ Class Course
 
     public function books()
     {
-        return CourseBook::find($this);
+        return CourseBook::findCourse($this);
     }
 
     public function delete()
@@ -138,16 +149,6 @@ Class Course
                 ':id' => $this->course_id
             )
         );
-    }
-    public static function find($teacher)
-    {
-        $result = Database::execute(
-            self::$FIND_SELECTION,
-            array(
-                ':teacher_id' => $teacher->id()
-            )
-        );
-        return self::refine($result);
     }
 
     public function department()

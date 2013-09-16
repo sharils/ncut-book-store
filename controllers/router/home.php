@@ -83,7 +83,7 @@ switch ($role) {
             break;
         }
         if ($resource2 === 'search') {
-            require_once "views/search/search.php";
+            require_once "views/search/list.php";
             break;
         }
         break;

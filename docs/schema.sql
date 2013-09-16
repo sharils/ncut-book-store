@@ -325,7 +325,7 @@ CREATE TABLE `student_order_detail` (
   `student_order_id` char(10) collate utf8_unicode_ci NOT NULL,
   `book_id` char(10) collate utf8_unicode_ci NOT NULL,
   `num` int(4) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY  (`student_order_id`,`book_id`),
   KEY `book_id` (`book_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
 

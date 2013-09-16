@@ -9,6 +9,6 @@ if (in_array('', $_POST)) {
     Router::redirect($redirect_url);
 } else {
     $teacher = Teacher::from(User::from($_POST['teacher_id']));
-    Course::create($teacher, $_POST['sn'], $_POST['type'], $_POST['department'], $_POST['grade'], $_POST['group'], $_POST['name'], $_POST['system'], $_POST['year']);
+    Course::create($teacher, $_POST['sn'], $_POST['type'], $_POST['department'], $_POST['grade'], $_POST['group'], $_POST['name'], $_POST['system'], $_POST['semester'], $_POST['year']);
     Router::redirect(Router::toUrl("home/course"));
 }
