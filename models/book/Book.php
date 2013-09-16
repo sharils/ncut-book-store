@@ -3,6 +3,8 @@ require_once 'models/publisher/Publisher.php';
 class Book
 {
     private static $DELETION = " DELETE FROM `book` WHERE `id` = :id ";
+    private static $FACTOR;
+    private static $FIND_SELECTION ="SELECT * FROM `book`";
     private static $ID_SELECTION = " SELECT * FROM `book` WHERE `id` = :id ";
     private static $INSERTION = " INSERT INTO `book` (
             `id`,
@@ -28,17 +30,6 @@ class Book
             :version
         ) ";
     private static $ISBN_SELECTION ="SELECT * FROM `book` WHERE `isbn` LIKE :isbn";
-    private static $KEYWORD_SELECTION =" SELECT * FROM `book`
-        WHERE `id` LIKE :KW
-        OR `author` LIKE :KW
-        OR `isbn` LIKE :isbn
-        OR `market_price` LIKE :KW
-        OR `name` LIKE :KW
-        OR `price` LIKE :KW
-        OR `publisher_id` LIKE :KW
-        OR `remark` LIKE :KW
-        OR `type` LIKE :KW
-        OR `version` LIKE :KW ";
 
     private static $UPDATE = " UPDATE `book`
         SET `publisher_id` = :publisher_id
@@ -87,25 +78,19 @@ class Book
         );
     }
 
-    public static function find($keyword)
+    public static function find($search_factor)
     {
+        $where = self::getWhere($search_factor);
         $result = Database::execute(
-            self::$KEYWORD_SELECTION,
-            array(
-                ':KW' => "%$keyword%",
-                ':KW' => "%$keyword%",
-                ':isbn' => $keyword,
-                ':KW' => "%$keyword%",
-                ':KW' => "%$keyword%",
-                ':KW' => "%$keyword%",
-                ':KW' => "%$keyword%",
-                ':KW' => "%$keyword%",
-                ':KW' => "%$keyword%",
-                ':KW' => "%$keyword%",
-            )
+            self::$FIND_SELECTION.$where,
+            self::$FACTOR
         );
+        if(empty($result)){
+            return FALSE;
+        }
         return self::refine($result);
     }
+
     public static function findIsbn($isbn)
     {
         $result = Database::execute(
@@ -130,6 +115,18 @@ class Book
         );
         $books = self::refine($result);
         return $books[0];
+    }
+
+    private static function getWhere($search_factor)
+    {
+        $args = [];
+        $where = "WHERE 1";
+        foreach($search_factor as $key => $value) {
+            $where.=" AND `$key` LIKE :$key";
+            $args[":$key"] = "%$value%";
+        }
+        self::$FACTOR = $args;
+        return $where;
     }
 
     private static function refine($rows)

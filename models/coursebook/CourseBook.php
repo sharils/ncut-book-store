@@ -6,8 +6,11 @@ Class CourseBook
     private static $DELETION = "DELETE FROM `course_book`
         WHERE `book_id` = :book_id
         AND `course_id` = :course_id ";
-    private static $FIND_SELECTION = "SELECT * FROM `course_book`
+    private static $FIND_BOOK_SELECTION = "SELECT * FROM `course_book`
+        WHERE `book_id` = :book_id";
+    private static $FIND_COURSE_SELECTION = "SELECT * FROM `course_book`
         WHERE `course_id` = :course_id";
+    private static $FIND_ALL_SELECTION = "SELECT * FROM `course_book`";
     private static $FROM_SELECTION = "SELECT * FROM `course_book`
         WHERE `course_id` = :course_id
         AND `book_id` = :book_id";
@@ -42,13 +45,32 @@ Class CourseBook
         return new self($book, $course, $sample);
     }
 
-    public static function find($course)
+    public static function findBook($book)
     {
         $result = Database::execute(
-            self::$FIND_SELECTION,
+            self::$FIND_BOOK_SELECTION,
+            array(
+                ':book_id' => $book->id()
+            )
+        );
+        return self::refine($result);
+    }
+
+    public static function findCourse($course)
+    {
+        $result = Database::execute(
+            self::$FIND_COURSE_SELECTION,
             array(
                 ':course_id' => $course->id()
             )
+        );
+        return self::refine($result);
+    }
+
+    public static function findAll()
+    {
+        $result = Database::execute(
+            self::$FIND_ALL_SELECTION
         );
         return self::refine($result);
     }
@@ -93,7 +115,7 @@ Class CourseBook
         $this->sample = $sample;
     }
 
-    private function course()
+    public function course()
     {
         return $this->course;
     }

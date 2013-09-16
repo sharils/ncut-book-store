@@ -58,7 +58,7 @@ class StudentOrder
         return self::refine($result);
     }
 
-    public static function findcart(Student $student)
+    public static function findCart(Student $student)
     {
         $result = Database::execute(
             self::$FINDCART_SELECTION,
