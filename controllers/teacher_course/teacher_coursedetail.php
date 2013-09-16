@@ -6,5 +6,5 @@ require_once 'models/user/User.php';
 require_once 'models/book/Book.php';
 $id = Router::resource(1);
 $course = Course::from($id);
-$coursebooks = CourseBook::find($course);
+$coursebooks = CourseBook::findCourse($course);
 

@@ -29,7 +29,7 @@ if (isset($_POST['add_book'])) {
         Router::redirect($redirect_url);
         exit;
     }
- exit;
+
     $course = Course::from($_POST['course']);
     $publisher = Publisher::from($_POST['publisher']);
 

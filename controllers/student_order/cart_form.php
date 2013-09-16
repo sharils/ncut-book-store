@@ -1,16 +1,17 @@
 <?php
 require_once 'models/studentorderdetail/StudentOrderDetail.php';
 
-foreach ($_POST['number'] as $value) {
-    if ($value <= 0) {
-        $url = Notice::addTo('送出失敗：數量不可小於等於零！','home/order/cart');
-        $redirect_url = Router::toUrl($url);
-        Router::redirect($redirect_url);
-        exit;
-    }
-}
+if (!isset($_POST['delete'])) {
 
-if (empty($_POST['delete'])) {
+    foreach ($_POST['number'] as $value) {
+        if ($value <= 0) {
+            $url = Notice::addTo('送出失敗：數量不可小於等於零！','home/order/cart');
+            $redirect_url = Router::toUrl($url);
+            Router::redirect($redirect_url);
+            exit;
+        }
+    }
+
     foreach ($_POST['number'] as $key => $value) {
         $detail = StudentOrderDetail::from($key);
         $detail->number($value);
