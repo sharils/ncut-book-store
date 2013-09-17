@@ -4,7 +4,7 @@ class Book
 {
     private static $DELETION = " DELETE FROM `book` WHERE `id` = :id ";
     private static $FACTOR;
-    private static $FIND_SELECTION ="SELECT * FROM `book`";
+    private static $FIND_SELECTION ="SELECT book.* FROM `book`";
     private static $ID_SELECTION = " SELECT * FROM `book` WHERE `id` = :id ";
     private static $INSERTION = " INSERT INTO `book` (
             `id`,
