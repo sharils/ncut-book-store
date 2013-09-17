@@ -1,6 +1,7 @@
 <?php
 class Method
 {
+    private static $mask = [1,2,3,4,5];
     public static function select($name, $args, $postion = NULL, $save_value = NULL, $disabled = TRUE)
     {
         ?>
@@ -8,7 +9,7 @@ class Method
         <?php foreach($args as $key => $value): ?>
             <?php $value = ($postion === NULL) ? $value : $value[$postion]; ?>
             <?php $selected = ($save_value === $key) ? 'selected' : ''?>
-            <?php $key = ($key >= 0 && $key !== '') ? $key+1 : $key?>
+            <?php $key = (in_array($key, self::$mask)) ? $key+1 : $key?>
             <option value="<?= $key ?>" <?= $selected ?>><?= $value ?></option>
         <?php endforeach; ?>
         </select>

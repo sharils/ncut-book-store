@@ -36,6 +36,11 @@ class Parameter
         '2' => ['第二學期', '下']
     ];
 
+    public static $shelf = [
+        TRUE => '上架中',
+        FALSE => '下架中'
+    ];
+
     public static $status = [
         'shopping' => '購買',
         'cancel' => '取消訂單',

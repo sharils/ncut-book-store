@@ -57,7 +57,13 @@ require_once 'views/course/Method.php';
                     <th><?= $coursebook->book()->publisher()->name() ?></th>
                     <th><?= $coursebook->book()->marketprice() ?></th>
                     <th><?= $coursebook->book()->price() ?></th>
-                    <th><button class="btn btn-warning" name="book_id" value="<?= $coursebook->book()->id() ?>">放入購物車</button></th>
+                    <th>
+                        <?php if($role === 'student'): ?>
+                            <button class="btn btn-warning" name="book_id" value="<?= $coursebook->book()->id() ?>"><?= $button[1] ?></button>
+                        <?php else: ?>
+                            <a class="btn btn-warning" href="<?= Router::toUrl("home/book/{$coursebook->book()->id()}")?>">修改書籍</a>
+                        <?php endif; ?>
+                    </th>
                 </tr>
             <?php endforeach; ?>
        </form>

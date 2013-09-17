@@ -26,11 +26,12 @@
                     <td><?= $shopbook->book()->marketPrice() ?></td>
                     <td><?= $shopbook->book()->price() ?></td>
                     <td><?= $shopbook->number() ?></td>
-                    <td><?= ($shopbook->shelf() == true) ? '上架中' : '下架中' ?></td>
                     <td>
-                        <button class="btn btn-warning" name="shelf" value="<?= $shopbook->book()->id() ?>">
-                            修改狀態
-                        </button>
+                        <button class="btn btn-info" name="shelf" value="<?= $shopbook->book()->id() ?>">
+                            <?= Parameter::$shelf[$shopbook->shelf()] ?>
+                        </button></td>
+                    <td>                        
+                        <a class="btn btn-warning" href="<?= Router::toUrl("home/book/{$shopbook->book()->id()}")?>">修改書籍</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
