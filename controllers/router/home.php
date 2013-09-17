@@ -65,6 +65,15 @@ switch ($role) {
             require_once "views/create_user/list.php";
             break;
         }
+        if ($resource2 === 'search') {
+            require_once "views/search/list.php";
+            break;
+        }
+        if ($resource1 === 'book') {
+            require_once "views/shopbook/detail.php";
+            break;
+        }
+        break;
     case 'student':
         if ($resource === 'order' && $resource2 === NULL) {
             require_once "views/student_order/listing.php";

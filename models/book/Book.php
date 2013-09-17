@@ -32,7 +32,10 @@ class Book
     private static $ISBN_SELECTION ="SELECT * FROM `book` WHERE `isbn` LIKE :isbn";
 
     private static $UPDATE = " UPDATE `book`
-        SET `publisher_id` = :publisher_id
+        SET `publisher_id` = :publisher_id,
+            `market_price` = :market_price,
+            `price` = :price,
+            `remark` = :remark
         WHERE `id` = :id ";
 
     private $author;
@@ -188,9 +191,13 @@ class Book
         return $this->isbn;
     }
 
-    public function marketPrice()
+    public function marketPrice($market_price =NULL)
     {
-        return $this->market_price;
+        if ($market_price === NULL) {
+            return $this->market_price;
+        } else {
+            return $this->market_price = $market_price;
+        }
     }
 
     public function name()
@@ -198,19 +205,31 @@ class Book
         return $this->name;
     }
 
-    public function price()
+    public function price($price = NULL)
     {
-        return $this->price;
+        if ($price === NULL) {
+            return $this->price;
+        } else {
+            return $this->price = $price;
+        }
     }
 
-    public function publisher()
+    public function publisher($publisher = NULL)
     {
-        return $this->publisher;
+        if ($publisher === NULL) {
+            return $this->publisher;
+        } else {
+            return $this->publisher = $publisher;
+        }
     }
 
-    public function remark()
+    public function remark($remark = NULL)
     {
-        return $this->remark;
+        if ($remark === NULL) {
+            return $this->remark;
+        } else {
+            return $this->remark = $remark;
+        }
     }
 
     public function type()
@@ -223,7 +242,10 @@ class Book
         Database::execute(
             self::$UPDATE,
             array(
-                ':publisher_id' => $publisher_id,
+                ':publisher_id' => $this->publisher()->id(),
+                ':market_price' => $this->market_price,
+                ':price' => $this->price,
+                ':remark' => $this->remark,
                 ':id' => $this->id()
             )
         );

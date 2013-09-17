@@ -2,7 +2,10 @@
 require_once 'models/book/Book.php';
 require_once 'models/course/Course.php';
 require_once 'models/coursebook/CourseBook.php';
+require_once 'models/user/User.php';
 
+$user = User::from($_SESSION['user_id']);
+$role = $user->role();
 $page = Router::resource('0');
 $active = [
     'book' => '',
@@ -10,6 +13,7 @@ $active = [
     'course' => ''
 ];
 $active[$page] = 'active';
+$button = ($role === 'clerk') ? ['book', '修改書籍'] : ['cart', '放入購物車'];
 $coursebooks = [];
 $selected = TRUE;
 
