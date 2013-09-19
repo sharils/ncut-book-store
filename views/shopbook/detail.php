@@ -42,8 +42,20 @@ require_once 'views/course/Method.php';
                 <td colspan="3">
                     <?= Method::select('publisher', $args, NULL, $book->publisher()->id()) ?>
                 </td>
+                <th>庫存</th>
+                <td>
+                    <input class="form-control" name="number" type="text" value="<?= $shopbook->number() ?>"/>
+                </td>
+                <th>狀態</th>
+                <td>
+                    <button class="btn <?= Parameter::$shelf[$shopbook->shelf()][1] ?>" name="shelf" value="<?= $shopbook->book()->id() ?>">
+                        <?= Parameter::$shelf[$shopbook->shelf()][0] ?>
+                    </button>
+                </td>
+            </tr>
+            <tr>
                 <th>備註</th>
-                <td colspan="3">
+                <td colspan="7">
                     <input class="form-control" name="remark" type="text" value="<?= $book->remark() ?>"/>
                 </td>
             </tr>

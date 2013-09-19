@@ -34,7 +34,8 @@
                     <td>
                         <button class="btn <?= Parameter::$shelf[$shopbook->shelf()][1] ?>" name="shelf" value="<?= $shopbook->book()->id() ?>">
                             <?= Parameter::$shelf[$shopbook->shelf()][0] ?>
-                        </button></td>
+                        </button>
+                    </td>
                     <td>
                         <a class="btn btn-warning" href="<?= Router::toUrl("home/book/{$shopbook->book()->id()}")?>">修改書籍</a>
                     </td>
