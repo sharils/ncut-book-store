@@ -57,7 +57,7 @@ switch ($role) {
             require_once "views/create_user/user_form.php";
             break;
         }
-        if ($resource === 'shop_book') {
+        if ($resource1 === 'shop_book') {
             require_once "views/shopbook/list.php";
             break;
         }
