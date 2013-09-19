@@ -111,6 +111,7 @@ class ShopBook
 
     public function update()
     {
+        var_dump($this->shelf);
         Database::execute(
             self::$UPDATE,
             array(

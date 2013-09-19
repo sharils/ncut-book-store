@@ -37,8 +37,8 @@ class Parameter
     ];
 
     public static $shelf = [
-        TRUE => '上架中',
-        FALSE => '下架中'
+        TRUE => ['上架中', 'btn-info'],
+        FALSE => ['下架中', 'btn-danger']
     ];
 
     public static $status = [
