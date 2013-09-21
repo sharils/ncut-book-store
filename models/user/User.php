@@ -73,6 +73,9 @@ class User
     {
         $user = new self();
         $data = $user->getRole($id_or_sn);
+        if ($data === NULL) {
+            return NULL;
+        }
         $user->id = $data['id'];
         $user->role = $data['role'];
         return $user;
@@ -103,15 +106,8 @@ class User
             throw new Exception('修改失敗：輸入的舊密碼有誤');
         };
 
-        $new_pwd = Password::create($new_password);
-        Database::execute(
-            self::$UPDATE,
-            array(
-                ':pwd' => $new_pwd->password(),
-                ':id' => $this->id,
-                ':salt' => $new_pwd->salt()
-            )
-        );
+        $this->resetPassword($new_password);
+
     }
 
     public function delete()
@@ -142,11 +138,25 @@ class User
                 );
             }
         }
+        return NULL;
     }
 
     public function id()
     {
         return $this->id;
+    }
+
+    public function resetPassword($password)
+    {
+        $new_pwd = Password::create($password);
+        Database::execute(
+            self::$UPDATE,
+            array(
+                ':pwd' => $new_pwd->password(),
+                ':id' => $this->id,
+                ':salt' => $new_pwd->salt()
+            )
+        );
     }
 
     public function role()

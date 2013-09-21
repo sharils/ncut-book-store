@@ -32,6 +32,8 @@ Router::map(function ($handler, $resource) {
         case 'controllers':
         case 'vendor':
             return "$handler/$resource";
+        case 'forgot':
+            return 'views/login/forgot.php';
     }
 
     if (!isset($_SESSION['user_id'])) {
