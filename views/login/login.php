@@ -19,6 +19,7 @@
     </p>
     <div>
         <input class="btn btn-primary" type="submit" value="登入"/>
+        <a class="btn btn-warning" href="<?=Router::toUrl('forgot')?>">忘記密碼</a>
     </div>
 </form>
 </div>

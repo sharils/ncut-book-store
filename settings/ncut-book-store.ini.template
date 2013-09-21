@@ -1,0 +1,14 @@
+[mail]
+; Set the from email e.g. from[0] = 'alice@example.com';
+from[0] = '';
+; Set the from name e.g. from[1] = 'Alice Boy';
+from[1] = '';
+; Set host to access the SMTP server e.g. host = 'smtp.example.com';
+host = '';
+; Set the password to access the SMTP server e.g. password = 'car';
+password = '';
+; Set the port to access the SMTP server e.g. port = 587;
+port = -1;
+; Set the username to access the SMTP server e.g. username =
+; 'alice@example.com';
+username = '';
