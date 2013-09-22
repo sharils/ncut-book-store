@@ -100,7 +100,8 @@ class Publisher
                 $row['fax'],
                 $row['name'],
                 $row['person'],
-                $row['phone']
+                $row['phone'],
+                $row['fax']
             );
         }
         return $publishers;

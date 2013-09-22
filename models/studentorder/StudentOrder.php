@@ -11,6 +11,8 @@ class StudentOrder
         AND `status` = :status";
     private static $FROM_SELECTION = "SELECT * FROM `student_order`
         WHERE `id` = :id";
+    private static $GETALL_SELECTION = "SELECT * FROM `student_order`
+        WHERE `status` = :status";
     private static $INSERTION = "INSERT INTO `student_order` (
             `id`,
             `student_user_id`,
@@ -96,7 +98,6 @@ class StudentOrder
 
             $suser = Student::from(USER::from($row['student_user_id']));
             $cuser = NULL ;
-
             if (!empty($row['clerk_user_id'])) {
                 $cuser = Clerk::from(USER::from($row['clerk_user_id']));
             }
@@ -136,6 +137,17 @@ class StudentOrder
         } else {
             return $this->date = $date;
         }
+    }
+
+    public static function getStatus($status)
+    {
+        $result = Database::execute(
+            self::$GETALL_SELECTION,
+            array(
+                ':status' => $status
+            )
+        );
+        return self::refine($result);
     }
 
     public function id()

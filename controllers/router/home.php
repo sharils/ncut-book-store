@@ -10,6 +10,7 @@ $role = $user->role();
 $resource = Router::resource();
 $resource1 = Router::resource('0');
 $resource2 = Router::resource('1');
+$resource3 = Router::resource('2');
 
 switch ($role) {
     case 'admin':
@@ -71,6 +72,14 @@ switch ($role) {
         }
         if ($resource1 === 'book') {
             require_once "views/shopbook/detail.php";
+            break;
+        }
+        if ($resource1 === 'order' && $resource2 !== NULL && $resource3 === NULL) {
+            require_once "views/clerk/order_list.php";
+            break;
+        }
+        if ($resource1 === 'order' && $resource3 !== NULL) {
+            require_once "views/clerk/order_detail.php";
             break;
         }
         break;

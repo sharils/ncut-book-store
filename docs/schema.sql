@@ -1,4 +1,4 @@
--- phpMyAdmin SQL Dump
+﻿-- phpMyAdmin SQL Dump
 -- version 2.10.3
 -- http://www.phpmyadmin.net
 --
@@ -290,7 +290,6 @@ CREATE TABLE `student` (
 --
 -- 列出以下資料庫的數據： `student`
 --
-
 -- --------------------------------------------------------
 
 --
