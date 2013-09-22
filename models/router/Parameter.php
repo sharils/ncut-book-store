@@ -42,13 +42,14 @@ class Parameter
     ];
 
     public static $status = [
-        'shopping' => '購買',
-        'cancel' => '取消訂單',
-        'submitted' => '送出訂單',
-        'processing' => '處理中',
-        'ordered' => '訂單',
-        'shipping' => '進貨中',
-        'arrived' => '取貨',
+        'shopping' => '交易中',
+        'cancel' => '訂單已取消',
+        'submitted' => '訂單成立',
+        'processing' => '待確認',
+        'ordered' => '備貨中',
+        'shipping' => '待付款',
+        'arrived' => '完成交易',
+        'arrived' => '訂單已退貨',
     ];
 
     public static $system = [
