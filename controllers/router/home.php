@@ -30,7 +30,6 @@ switch ($role) {
         break;
 }
 require_once "views/welcome/ul_under.php";
-
 switch ($role) {
     case 'admin':
         if ($resource === 'course') {
@@ -108,6 +107,10 @@ switch ($role) {
     case 'teacher':
         if ($resource === 'course_book') {
             require_once "views/teacher_course/teacher_courselisting.php";
+            break;
+        }
+        if ($resource === NULL) {
+            require_once "views/teacher_course/notice.php";
             break;
         }
         if ($resource2 === 'new') {
