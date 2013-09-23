@@ -28,6 +28,7 @@ Create::$role();
 $args = Create::$args;
 if ($resource !== 'new') {
     switch ($role) {
+        case 'admin':
         case 'clerk':
         case 'student':
         case 'teacher':

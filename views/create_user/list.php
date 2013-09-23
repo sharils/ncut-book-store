@@ -4,6 +4,7 @@
         <li class="<?= $active['clerk'] ?>"><a href="<?= Router::toUrl('home/clerk/list')?>">員生社</a></li>
         <li class="<?= $active['student'] ?>"><a href="<?= Router::toUrl('home/student/list')?>">學生</a></li>
         <li class="<?= $active['teacher'] ?>"><a href="<?= Router::toUrl('home/teacher/list')?>">老師</a></li>
+        <li class="<?= $active['admin'] ?>"><a href="<?= Router::toUrl('home/admin/list')?>">管理者</a></li>
     </ul>
     <form action="<?= Router::toUrl('controllers/user/update_or_delete.php') ?>"  method="post">
         <table class="table table-bordered center">

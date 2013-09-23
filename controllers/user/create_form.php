@@ -9,6 +9,20 @@ class Create
     public static $args;
     public static $role;
     public static $title;
+    public static function admin()
+    {
+        self::$title = ['管理者', 'Admin'];
+        self::$args = [
+            'sn'                => ['帳號', 'text', NULL],
+            'pwd'               => ['密碼', 'password', NULL],
+            'confirmpassword'   => ['確認密碼', 'password', NULL],
+            'name'              => ['姓名', 'text', NULL],
+            'email'             => ['信箱', 'text', NULL],
+            'phone'             => ['電話', 'text', NULL],
+            'phone_ext'         => ['分機號碼', 'text', NULL]
+       ];
+    }
+
     public static function clerk()
     {
         self::$title = ['個人資料', 'Clerk'];

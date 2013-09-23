@@ -9,6 +9,7 @@
             <li class="<?= $active['clerk'] ?>"><a href="<?= Router::toUrl('home/clerk/new')?>">員生社</a></li>
             <li class="<?= $active['student'] ?>"><a href="<?= Router::toUrl('home/student/new')?>">學生</a></li>
             <li class="<?= $active['teacher'] ?>"><a href="<?= Router::toUrl('home/teacher/new')?>">老師</a></li>
+            <li class="<?= $active['admin'] ?>"><a href="<?= Router::toUrl('home/admin/new')?>">管理者</a></li>
         </ul>
     <?php endif;?>
     <form action="<?= Router::toUrl('controllers/user/create_or_update.php') ?>"  method="post">
