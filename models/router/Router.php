@@ -23,7 +23,7 @@ class Router
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Style-Type" content="text/css">
 <!-- Bootstrap core CSS -->
-<link href="<?= Router::toUrl("vendor/css/bootstrap.css")?>" rel="stylesheet" >
+<link href="<?= Router::toUrl("vendor/bootstrap/css/bootstrap.css")?>" rel="stylesheet" >
 </head>
 <body>
         <?php
