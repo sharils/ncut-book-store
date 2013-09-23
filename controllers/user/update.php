@@ -19,7 +19,7 @@ if (in_array('', $_POST)) {
     $url = Notice::addTo('修改失敗：不允許空值存入！', $str);
     $url = Router::toUrl($url);
 
-} else if($role === 'admin') {
+} else if ($role === 'admin') {
     $user = User::from($_POST['id']);
     $user_role = $user->toRole();
     Create::$post_role();
@@ -32,6 +32,7 @@ if (in_array('', $_POST)) {
     $url = Router::toUrl("home/{$post_role}/list");
 } else {
     switch ($_POST['role']) {
+        case 'Admin':
         case 'Clerk':
         case 'Student':
         case 'Teacher':
