@@ -11,7 +11,7 @@ use ncut_book_store\Container;
 
 Container::settings(parse_ini_file('settings/ncut-book-store.ini', true));
 
-Database::initialise('localhost', 'root', '123456', 'ncut');
+Database::initialise('localhost', 'root', '123456', 'ncut-book-store');
 
 session_start();
 
