@@ -26,7 +26,7 @@ class Message
 
     public static function create(User $sender, User $receiver, $content)
     {
-        $id = time();
+        $id = Database::getRandomId();
         $date = date("Y-m-d H:i:s");
         Database::execute(
             self::$INSERTION,

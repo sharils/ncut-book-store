@@ -55,7 +55,7 @@ class User
     {
         $pwd = Password::create($password);
         $user = new self();
-        $id = time();
+        $id = Database::getRandomId();
         $user->id = $id;
 
         Database::execute(

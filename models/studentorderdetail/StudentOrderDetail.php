@@ -30,7 +30,7 @@ class StudentOrderDetail
 
     public static function create(StudentOrder $student_order, Book $book, $number = 0)
     {
-        $id = time();
+        $id = Database::getRandomId();
         Database::execute(
             self::$INSERTION,
             array(

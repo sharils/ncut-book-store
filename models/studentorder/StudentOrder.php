@@ -36,7 +36,7 @@ class StudentOrder
 
     public static function create(Student $student)
     {
-        $id = time();
+        $id = Database::getRandomId();
         $date = date("Y-m-d H:i:s");
         Database::execute(
             self::$INSERTION,

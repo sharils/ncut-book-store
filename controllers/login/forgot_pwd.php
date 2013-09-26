@@ -10,7 +10,7 @@ if ($user === NULL) {
 
 $role_user = $user->toRole();
 if ($role_user->email() === $_POST['email']){
-    $rand = time();
+    $rand = Database::getRandomId();
     $user->resetPassword($rand);
     require_once 'controllers/login/send_pwd.php';
     $url = Router::toUrl('forgot');

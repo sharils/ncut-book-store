@@ -42,7 +42,7 @@ SQL;
 
     public static function create(User $sender, User $receiver, $content)
     {
-        $id = time();
+        $id = Database::getRandomId();
 
         $message = new self($id, $sender, $receiver, $content);
 

@@ -42,7 +42,7 @@ Class Course
 
     public static function create(Teacher $teacher, $sn, $type, $department, $grade, $group, $name, $system, $semester, $year)
     {
-        $course_id = time();
+        $course_id = Database::getRandomId();
         Database::execute(
             self::$INSERTION,
             array(

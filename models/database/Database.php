@@ -14,4 +14,9 @@ class Database
         $result->execute($exe);
         return $result->fetchall();
     }
+
+    public static function getRandomId()
+    {
+        return time();
+    }
 }

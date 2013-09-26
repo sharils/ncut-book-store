@@ -29,7 +29,7 @@ class Announce
 
     public static function create(User $user, $title, $message)
     {
-        $id = time();
+        $id = Database::getRandomId();
         $date = date("Y-m-d H:i:s");
         Database::execute(
             self::$INSERTION,

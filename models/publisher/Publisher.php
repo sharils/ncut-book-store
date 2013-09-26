@@ -42,7 +42,7 @@ class Publisher
 
     public static function create($email, $account, $address, $fax, $name, $person, $phone)
     {
-        $id = time();
+        $id = Database::getRandomId();
         Database::execute(
             self::$INSERTION,
             array(

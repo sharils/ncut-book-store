@@ -51,7 +51,7 @@ class Book
 
     public static function create(Publisher $publisher, $author, $isbn, $market_price, $name, $price, $remark, $type, $version)
     {
-        $id = time();
+        $id = Database::getRandomId();
         Database::execute(
             self::$INSERTION,
             array(
