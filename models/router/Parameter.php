@@ -49,7 +49,6 @@ class Parameter
         'ordered' => '備貨中',
         'shipping' => '待付款',
         'arrived' => '完成交易',
-        'arrived' => '訂單已退貨',
     ];
 
     public static $system = [
