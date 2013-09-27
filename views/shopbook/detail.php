@@ -12,51 +12,51 @@ require_once 'views/course/Method.php';
                 <th>書名</th>
                 <td colspan="3">
                     <input name="id" type="hidden" value="<?= $book->id() ?>"/>
-                    <input class="form-control" disabled name="name" type="text" value="<?= $book->name() ?>"/>
+                    <input class="form-control" disabled name="name" type="text" value="<?= htmlspecialchars($book->name()) ?>"/>
                 </td>
                 <th>版本</th>
                 <td>
-                    <input class="form-control" disabled name="version" type="text" value="<?= $book->version() ?>"/>
+                    <input class="form-control" disabled name="version" type="text" value="<?= htmlspecialchars($book->version()) ?>"/>
                 </td>
                 <th>作者</th>
                 <td>
-                    <input class="form-control" disabled name="author" type="text" value="<?= $book->author() ?>"/>
+                    <input class="form-control" disabled name="author" type="text" value="<?= htmlspecialchars($book->author()) ?>"/>
                 </td>
             </tr>
             <tr>
                 <th>ISBN</th>
                 <td colspan="3">
-                    <input class="form-control" disabled name="isbn" type="text" value="<?= $book->isbn() ?>"/>
+                    <input class="form-control" disabled name="isbn" type="text" value="<?= htmlspecialchars($book->isbn()) ?>"/>
                 </td>
                 <th>定價</th>
                 <td>
-                    <input class="form-control" name="market_price" type="text" value="<?= $book->marketPrice() ?>"/>
+                    <input class="form-control" name="market_price" type="text" value="<?= htmlspecialchars($book->marketPrice()) ?>"/>
                 </td>
                 <th>售價</th>
                 <td>
-                    <input class="form-control" name="price" type="text" value="<?= $book->price() ?>"/>
+                    <input class="form-control" name="price" type="text" value="<?= htmlspecialchars($book->price()) ?>"/>
                 </td>
             </tr>
             <tr>
                 <th>廠商</th>
                 <td colspan="3">
-                    <?= Method::select('publisher', $args, NULL, $book->publisher()->id()) ?>
+                    <?= Method::select('publisher', $args, NULL, htmlspecialchars($book->publisher()->id())) ?>
                 </td>
                 <th>庫存</th>
                 <td>
-                    <input class="form-control" name="number" type="text" value="<?= $shopbook->number() ?>"/>
+                    <input class="form-control" name="number" type="text" value="<?= htmlspecialchars($shopbook->number()) ?>"/>
                 </td>
                 <th>狀態</th>
                 <td>
-                    <button class="btn <?= Parameter::$shelf[$shopbook->shelf()][1] ?>" name="shelf" value="<?= $shopbook->book()->id() ?>">
-                        <?= Parameter::$shelf[$shopbook->shelf()][0] ?>
+                    <button class="btn <?= Parameter::$shelf[$shopbook->shelf()][1] ?>" name="shelf" value="<?= htmlspecialchars($shopbook->book()->id()) ?>">
+                        <?= htmlspecialchars(Parameter::$shelf[$shopbook->shelf()][0]) ?>
                     </button>
                 </td>
             </tr>
             <tr>
                 <th>備註</th>
                 <td colspan="7">
-                    <input class="form-control" name="remark" type="text" value="<?= $book->remark() ?>"/>
+                    <input class="form-control" name="remark" type="text" value="<?= htmlspecialchars($book->remark()) ?>"/>
                 </td>
             </tr>
         </table>
@@ -79,21 +79,25 @@ require_once 'views/course/Method.php';
         <?php foreach($coursebooks as $coursebook): ?>
             <tr>
                 <td><?=
-                        $coursebook->course()->year().
-                        Parameter::$semester[$coursebook->course()->semester()][1];
+                        htmlspecialchars(
+                            $coursebook->course()->year().
+                            Parameter::$semester[$coursebook->course()->semester()][1];
+                        )
                     ?>
                 </td>
                 <td>
                     <?=
-                        Parameter::$system[$coursebook->course()->system()][1].
-                        Parameter::$department[$coursebook->course()->department()][1].
-                        Parameter::$grade[$coursebook->course()->grade()][1].
-                        Parameter::$group[$coursebook->course()->group()];
+                        htmlspecialchars(
+                            Parameter::$system[$coursebook->course()->system()][1].
+                            Parameter::$department[$coursebook->course()->department()][1].
+                            Parameter::$grade[$coursebook->course()->grade()][1].
+                            Parameter::$group[$coursebook->course()->group()];
+                        )
                     ?>
                 </td>
-                <td><?=Parameter::$type[$coursebook->course()->type()];?></td>
-                <td><?=$coursebook->course()->name()?></td>
-                <td><?=$coursebook->course()->teacher()->name()?></td>
+                <td><?= htmlspecialchars(Parameter::$type[$coursebook->course()->type()];) ?></td>
+                <td><?= htmlspecialchars($coursebook->course()->name()) ?></td>
+                <td><?= htmlspecialchars($coursebook->course()->teacher()->name()) ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

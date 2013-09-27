@@ -6,15 +6,15 @@
         </tr>
         <tr>
             <th>寄件人</th>
-            <td><?= $message->sender()->toRole()->sn() ?></td>
+            <td><?= htmlspecialchars($message->sender()->toRole()->sn()) ?></td>
             <th>時間</th>
-            <td><?= $message->date() ?></td>
+            <td><?= htmlspecialchars($message->date()) ?></td>
         </tr>
         <tr>
             <th colspan="4">內容</th>
         </tr>
         <tr>
-            <td colspan="4"><?= $message->content() ?></td>
+            <td colspan="4"><?= htmlspecialchars($message->content()) ?></td>
         </tr>
     </table>
 </div>

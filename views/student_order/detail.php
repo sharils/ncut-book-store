@@ -17,15 +17,15 @@ require_once 'controllers/Method.php';
         </tr>
         <?php foreach ($student_order_details as $student_order_detail): ?>
             <tr>
-                <td><?= $student_order_detail->id() ?></td>
-                <td><?= $student_order_detail->book()->isbn() ?></td>
-                <td><?= $student_order_detail->book()->name() ?></td>
-                <td><?= $student_order_detail->book()->version() ?></td>
-                <td><?= $student_order_detail->book()->type() ?></td>
-                <td><?= $student_order_detail->book()->author() ?></td>
-                <td><?= $student_order_detail->book()->publisher()->name() ?></td>
-                <td><?= $student_order_detail->book()->price() ?></td>
-                <td><?= $student_order_detail->number() ?></td>
+                <td><?= htmlspecialchars($student_order_detail->id()) ?></td>
+                <td><?= htmlspecialchars($student_order_detail->book()->isbn()) ?></td>
+                <td><?= htmlspecialchars($student_order_detail->book()->name()) ?></td>
+                <td><?= htmlspecialchars($student_order_detail->book()->version()) ?></td>
+                <td><?= htmlspecialchars($student_order_detail->book()->type()) ?></td>
+                <td><?= htmlspecialchars($student_order_detail->book()->author()) ?></td>
+                <td><?= htmlspecialchars($student_order_detail->book()->publisher()->name()) ?></td>
+                <td><?= htmlspecialchars($student_order_detail->book()->price()) ?></td>
+                <td><?= htmlspecialchars($student_order_detail->number()) ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

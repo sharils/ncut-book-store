@@ -14,11 +14,11 @@ require_once 'controllers/teacher_course/teacher_coursedetail.php';
         </tr>
         <?php foreach( $coursebooks as $coursebook ): ?>
             <tr>
-                <td><?= $coursebook->book()->name(); ?></td>
-                <td><?= $coursebook->book()->version() ?></td>
-                <td><?= $coursebook->book()->isbn(); ?></td>
-                <td><?= $coursebook->book()->author() ?></td>
-                <td><button class="btn btn-danger" name="remove_book" value="<?= $coursebook->book()->id() ?>">刪除書籍</button></td>
+                <td><?= htmlspecialchars($coursebook->book()->name()); ?></td>
+                <td><?= htmlspecialchars($coursebook->book()->version()); ?></td>
+                <td><?= htmlspecialchars($coursebook->book()->isbn()); ?></td>
+                <td><?= htmlspecialchars($coursebook->book()->author()) ?></td>
+                <td><button class="btn btn-danger" name="remove_book" value="<?= htmlspecialchars($coursebook->book()->id()) ?>">刪除書籍</button></td>
             </tr>
          <?php endforeach; ?>
     </table>

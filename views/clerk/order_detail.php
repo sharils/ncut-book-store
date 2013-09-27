@@ -18,12 +18,12 @@ require_once 'views/course/Method.php';
         </tr>
         <?php foreach( $orderdetails as $orderdetail ): ?>
             <tr>
-                <td><?= $orderdetail->id(); ?></td>
-                <td><?= $orderdetail->book()->name(); ?></td>
-                <td><?= $orderdetail->book()->isbn(); ?></td>
-                <td><?= $orderdetail->book()->version() ?></td>
-                <td><?= $orderdetail->number(); ?></td>
-                <td><?= $orderdetail->book()->price(); ?></td>
+                <td><?= htmlspecialchars($orderdetail->id()); ?></td>
+                <td><?= htmlspecialchars($orderdetail->book()->name()); ?></td>
+                <td><?= htmlspecialchars($orderdetail->book()->isbn()); ?></td>
+                <td><?= htmlspecialchars($orderdetail->book()->version()) ?></td>
+                <td><?= htmlspecialchars($orderdetail->number()); ?></td>
+                <td><?= htmlspecialchars($orderdetail->book()->price()); ?></td>
                 <td><?php Method::select('status',Parameter::$status); ?></td>
             </tr>
     <?php endforeach; ?>

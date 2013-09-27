@@ -24,13 +24,13 @@
                 <?php foreach ($args as $key => $value): ?>
                     <?php $disabled = (in_array($key, $flag))? 'disabled ' : '' ?>
                     <div class="form-group">
-                        <label class="col-lg-5 col-sm-5 control-label"><?= $value[0] ?></label>
+                        <label class="col-lg-5 col-sm-5 control-label"><?= htmlspecialchars($value[0]) ?></label>
                         <div class="col-lg-5 col-sm-5">
                             <?php $position = ($key === 'group') ? Null : 0 ?>
                             <?php if(in_array($key, $drop)): ?>
                                 <?php Method::select($key, Parameter::${$key}, $position, $value[2], $disabled);?>
                             <?php else: ?>
-                                <input class="form-control" <?= $disabled ?> name="<?= $key ?>" type="<?= $value[1] ?>" value="<?= $value[2] ?>"/>
+                                <input class="form-control" <?= $disabled ?> name="<?= $key ?>" type="<?= $value[1] ?>" value="<?= htmlspecialchars($value[2]) ?>"/>
                             <?php endif; ?>
                         </div>
                     </div>

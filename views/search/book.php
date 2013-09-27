@@ -10,15 +10,15 @@
 
 <div class="col-lg-4 col-sm-4">
     <label>書名</label>
-    <input class="form-control" name="name" type="text" value="<?=$_GET['name']?>" />
+    <input class="form-control" name="name" type="text" value="<?=htmlspecialchars($_GET['name'])?>" />
 </div>
 <div class="col-lg-4 col-sm-4">
     <label>ISBN</label>
-    <input class="form-control" name="isbn" type="text"  value="<?=$_GET['isbn']?>" />
+    <input class="form-control" name="isbn" type="text"  value="<?=htmlspecialchars($_GET['isbn'])?>" />
 </div>
 <div class="col-lg-2 col-sm-2">
     <label>作者</label>
-    <input class="form-control" name="author" type="text" value="<?=$_GET['author']?>" />
+    <input class="form-control" name="author" type="text" value="<?=htmlspecialchars($_GET['author'])?>" />
 </div>
 <div class="col-lg-1 col-sm-1">
     </br>
