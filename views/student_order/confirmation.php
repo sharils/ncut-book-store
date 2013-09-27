@@ -13,13 +13,13 @@
             </tr>
             <tr>
                 <th>總金額</th>
-                <td><?= $total ?></td>
+                <td><?= htmlspecialchars($total) ?></td>
             </tr>
         </table>
         <div>
             <a class="btn btn-success" href="<?= Router::toUrl("home/order/cart"); ?>">返回</a>
             <input class="btn btn-success" type="submit" value="確認"/>
-            <input name="id" type="hidden" value="<?= $order->id() ?>"/>
+            <input name="id" type="hidden" value="<?= htmlspecialchars($order->id()) ?>"/>
             <input name="date" type="hidden" value="<?= date("Y-m-d H:i") ?>"/>
         </div>
     </form>

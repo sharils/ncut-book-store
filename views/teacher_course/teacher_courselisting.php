@@ -10,7 +10,7 @@ require_once 'controllers/teacher_course/teacher_courselisting.php';
     </tr>
     <?php foreach( $courses as $course ): ?>
         <tr>
-            <td><a href="<?= Router::toUrl("home/course/{$course->id()}"); ?>"><?= $course->name(); ?></a></td>
+            <td><a href="<?= Router::toUrl("home/course/{$course->id()}"); ?>"><?= htmlspecialchars($course->name()); ?></a></td>
             <td><?= $course->type(); ?></td>
             <td><?= $course->year(); ?></td>
         </tr>

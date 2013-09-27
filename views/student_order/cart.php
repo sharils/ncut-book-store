@@ -19,15 +19,15 @@
             </tr>
             <?php foreach($student_order_details as $arg): ?>
                 <tr>
-                    <td><?= $arg->book()->isbn() ?></td>
-                    <td><?= $arg->book()->name() ?></td>
-                    <td><?= $arg->book()->version() ?></td>
-                    <td><?= $arg->book()->type() ?></td>
-                    <td><?= $arg->book()->author() ?></td>
-                    <td><?= $arg->book()->publisher()->name() ?></td>
-                    <td><?= $arg->book()->price() ?></td>
-                    <td><input name="number[<?= $arg->id()?>]" type="text" value="<?= $arg->number() ?>"/></td>
-                    <td><button class="btn btn-danger" name="delete[]" value="<?= $arg->id()?>">刪除</button></td>
+                    <td><?= htmlspecialchars($arg->book()->isbn()) ?></td>
+                    <td><?= htmlspecialchars($arg->book()->name()) ?></td>
+                    <td><?= htmlspecialchars($arg->book()->version()) ?></td>
+                    <td><?= htmlspecialchars($arg->book()->type()) ?></td>
+                    <td><?= htmlspecialchars($arg->book()->author()) ?></td>
+                    <td><?= htmlspecialchars($arg->book()->publisher()->name()) ?></td>
+                    <td><?= htmlspecialchars($arg->book()->price()) ?></td>
+                    <td><input name="number[<?= $arg->id()?>]" type="text" value="<?= htmlspecialchars($arg->number())?>"/></td>
+                    <td><button class="btn btn-danger" name="delete[]" value="<?= htmlspecialchars($arg->id())?>">刪除</button></td>
                 </tr>
             <?php endforeach; ?>
             <tr>

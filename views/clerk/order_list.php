@@ -19,10 +19,10 @@ require_once 'views/course/Method.php';
             </tr>
             <?php foreach( $orders as $order ): ?>
             <tr>
-                <td><?= $order->id(); ?></td>
-                <td><?= $order->date(); ?></td>
-                <td><?= $order->student()->name(); ?></td>
-                <td><?= $order->status(); ?></td>
+                <td><?= htmlspecialchars($order->id()); ?></td>
+                <td><?= htmlspecialchars($order->date()); ?></td>
+                <td><?= htmlspecialchars($order->student()->name()); ?></td>
+                <td><?= htmlspecialchars($order->status()); ?></td>
                 <td><a class="btn btn-info" href="<?= Router::toUrl("home/order/{$order->status()}/{$order->id()}"); ?>">詳細資料</a></td>
             </tr>
             <?php endforeach; ?>

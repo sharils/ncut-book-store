@@ -7,8 +7,8 @@
         </tr>
         <?php foreach($black_users as $black_user): ?>
             <tr>
-                <td><?= $black_user->toRole()->sn() ?></td>
-                <td><?= $black_user->toRole()->name() ?></td>
+                <td><?= htmlspecialchars($black_user->toRole()->sn()) ?></td>
+                <td><?= htmlspecialchars($black_user->toRole()->name()) ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

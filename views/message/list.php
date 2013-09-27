@@ -13,12 +13,12 @@
         </tr>
         <?php foreach($messageslist as $message): ?>
             <tr>
-                <td><?= $flag ? $message->sender()->toRole()->sn() : $message->receiver()->toRole()->sn() ?></td>
-                <td><?= $message->content() ?></td>
-                <td><?= $message->date() ?></td>
+                <td><?= htmlspecialchars($flag ? $message->sender()->toRole()->sn() : $message->receiver()->toRole()->sn()) ?></td>
+                <td><?= htmlspecialchars($message->content()) ?></td>
+                <td><?= htmlspecialchars($message->date()) ?></td>
                 <td>
                     <a class="btn btn-info" href="<?= Router::toUrl("message/{$message->id()}"); ?>">查閱</a>
-                    <button class="btn btn-danger" name="id" value="<?= $message->id() ?>">刪除</button>
+                    <button class="btn btn-danger" name="id" value="<?= htmlspecialchars($message->id()) ?>">刪除</button>
                 </td>
             </tr>
         <?php endforeach; ?>

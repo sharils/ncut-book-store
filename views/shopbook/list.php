@@ -22,18 +22,18 @@
             </tr>
             <?php foreach($shopbooks as $shopbook): ?>
                 <tr>
-                    <td><?= $shopbook->book()->isbn() ?></td>
-                    <td><?= $shopbook->book()->name() ?></td>
-                    <td><?= $shopbook->book()->version() ?></td>
-                    <td><?= $shopbook->book()->type() ?></td>
-                    <td><?= $shopbook->book()->author() ?></td>
-                    <td><?= $shopbook->book()->publisher()->name() ?></td>
-                    <td><?= $shopbook->book()->marketPrice() ?></td>
-                    <td><?= $shopbook->book()->price() ?></td>
-                    <td><?= $shopbook->number() ?></td>
+                    <td><?= htmlspecialchars($shopbook->book()->isbn()) ?></td>
+                    <td><?= htmlspecialchars($shopbook->book()->name()) ?></td>
+                    <td><?= htmlspecialchars($shopbook->book()->version()) ?></td>
+                    <td><?= htmlspecialchars($shopbook->book()->type()) ?></td>
+                    <td><?= htmlspecialchars($shopbook->book()->author()) ?></td>
+                    <td><?= htmlspecialchars($shopbook->book()->publisher()->name()) ?></td>
+                    <td><?= htmlspecialchars($shopbook->book()->marketPrice()) ?></td>
+                    <td><?= htmlspecialchars($shopbook->book()->price()) ?></td>
+                    <td><?= htmlspecialchars($shopbook->number()) ?></td>
                     <td>
-                        <button class="btn <?= Parameter::$shelf[$shopbook->shelf()][1] ?>" name="shelf" value="<?= $shopbook->book()->id() ?>">
-                            <?= Parameter::$shelf[$shopbook->shelf()][0] ?>
+                        <button class="btn <?= Parameter::$shelf[$shopbook->shelf()][1] ?>" name="shelf" value="<?= htmlspecialchars($shopbook->book()->id()) ?>">
+                            <?= htmlspecialchars(Parameter::$shelf[$shopbook->shelf()][0]) ?>
                         </button>
                     </td>
                     <td>

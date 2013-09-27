@@ -14,11 +14,11 @@ require_once 'views/course/Method.php';
             <th colspan="6">教科用書登記表</th>
         <tr>
             <th>課程名稱</th>
-            <td><?= $course->name(); ?></td>
+            <td><?= htmlspecialchars($course->name()); ?></td>
             <th>必選修</th>
-            <td><?= $course->type(); ?></td>
+            <td><?= htmlspecialchars($course->type()); ?></td>
             <th>學制</th>
-            <td><?= $course->year(); ?></td>
+            <td><?= htmlspecialchars($course->year()); ?></td>
         </tr>
         <tr>
             <th>書籍名稱</th>

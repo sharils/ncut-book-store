@@ -10,7 +10,7 @@
         <table class="table table-bordered center">
             <tr>
                 <?php foreach ($args as $k => $v): ?>
-                    <td><?= $v[0] ?></td>
+                    <td><?= htmlspecialchars($v[0]) ?></td>
                 <?php endforeach; ?>
                 <?php if ($user_role === 'admin'): ?>
                     <td>功能</td>
@@ -27,14 +27,14 @@
                                 $str = $row->$k();
                             }
                         ?>
-                        <td><?= $str ?></td>
+                        <td><?= htmlspecialchars($str) ?></td>
                     <?php endforeach; ?>
                     <?php if ($user_role === 'admin'): ?>
                         <td>
-                            <button class="btn btn-warning" name="update" value="<?= $row->id()?>">
+                            <button class="btn btn-warning" name="update" value="<?= htmlspecialchars($row->id())?>">
                                 修改
                             </button>
-                            <button class="btn btn-danger" name="delete" value="<?= $row->id()?>">
+                            <button class="btn btn-danger" name="delete" value="<?= htmlspecialchars($row->id())?>">
                                 刪除
                             </button>
                         </td>

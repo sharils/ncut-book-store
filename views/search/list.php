@@ -37,29 +37,33 @@ require_once 'views/course/Method.php';
             <?php foreach($coursebooks as $coursebook): ?>
                 <tr>
                     <th><?=
-                            $coursebook->course()->year().
-                            Parameter::$semester[$coursebook->course()->semester()][1];
+                            htmlspecialchars(
+                                $coursebook->course()->year().
+                                Parameter::$semester[$coursebook->course()->semester()][1]
+                            );
                         ?>
                     </th>
                     <th>
                         <?=
-                            Parameter::$system[$coursebook->course()->system()][1].
-                            Parameter::$department[$coursebook->course()->department()][1].
-                            Parameter::$grade[$coursebook->course()->grade()][1].
-                            Parameter::$group[$coursebook->course()->group()];
+                            htmlspecialchars(
+                                Parameter::$system[$coursebook->course()->system()][1].
+                                Parameter::$department[$coursebook->course()->department()][1].
+                                Parameter::$grade[$coursebook->course()->grade()][1].
+                                Parameter::$group[$coursebook->course()->group()]
+                            );
                         ?>
                     </th>
-                    <th><?= $coursebook->course()->name() ?></th>
-                    <th><?= $coursebook->course()->teacher()->name() ?></th>
-                    <th><?= $coursebook->book()->name() .'('.$coursebook->book()->version().')' ?></th>
-                    <th><?= $coursebook->book()->author() ?></th>
-                    <th><?= $coursebook->book()->isbn() ?></th>
-                    <th><?= $coursebook->book()->publisher()->name() ?></th>
-                    <th><?= $coursebook->book()->marketprice() ?></th>
-                    <th><?= $coursebook->book()->price() ?></th>
+                    <th><?= htmlspecialchars($coursebook->course()->name()) ?></th>
+                    <th><?= htmlspecialchars($coursebook->course()->teacher()->name()) ?></th>
+                    <th><?= htmlspecialchars($coursebook->book()->name() .'('.$coursebook->book()->version().')') ?></th>
+                    <th><?= htmlspecialchars($coursebook->book()->author()) ?></th>
+                    <th><?= htmlspecialchars($coursebook->book()->isbn()) ?></th>
+                    <th><?= htmlspecialchars($coursebook->book()->publisher()->name()) ?></th>
+                    <th><?= htmlspecialchars($coursebook->book()->marketprice()) ?></th>
+                    <th><?= htmlspecialchars($coursebook->book()->price()) ?></th>
                     <th>
                         <?php if($role === 'student'): ?>
-                            <button class="btn btn-warning" name="book_id" value="<?= $coursebook->book()->id() ?>"><?= $button[1] ?></button>
+                            <button class="btn btn-warning" name="book_id" value="<?= $coursebook->book()->id() ?>"><?= htmlspecialchars($button[1]) ?></button>
                         <?php else: ?>
                             <a class="btn btn-warning" href="<?= Router::toUrl("home/book/{$coursebook->book()->id()}")?>">修改書籍</a>
                         <?php endif; ?>

@@ -14,18 +14,18 @@
             </tr>
             <?php foreach ($publishers as $publisher): ?>
                 <tr>
-                    <td><?= $publisher->name() ?></td>
-                    <td><?= $publisher->address() ?></td>
-                    <td><?= $publisher->person() ?></td>
-                    <td><?= $publisher->phone() ?></td>
-                    <td><?= $publisher->email() ?></td>
-                    <td><?= $publisher->account() ?></td>
-                    <td><?= $publisher->fax() ?></td>
+                    <td><?= htmlspecialchars($publisher->name()) ?></td>
+                    <td><?= htmlspecialchars($publisher->address()) ?></td>
+                    <td><?= htmlspecialchars($publisher->person()) ?></td>
+                    <td><?= htmlspecialchars($publisher->phone()) ?></td>
+                    <td><?= htmlspecialchars($publisher->email()) ?></td>
+                    <td><?= htmlspecialchars($publisher->account()) ?></td>
+                    <td><?= htmlspecialchars($publisher->fax()) ?></td>
                     <td>
-                         <button class="btn btn-warning" name="update" value="<?= $publisher->id() ?>">
+                         <button class="btn btn-warning" name="update" value="<?= htmlspecialchars($publisher->id()) ?>">
                         修改
                         </button>
-                        <button class="btn btn-danger" name="delete" value="<?= $publisher->id() ?>">
+                        <button class="btn btn-danger" name="delete" value="<?= htmlspecialchars($publisher->id()) ?>">
                         刪除
                         </button>
                     </td>
