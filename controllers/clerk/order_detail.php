@@ -7,7 +7,9 @@ require_once 'models/user/User.php';
 
 $id = Router::resource(2);
 $order = studentorder::from($id);
+$clerk = clerk::from($order->clerk());
 $orderdetails = StudentOrderDetail::find($order);
+$save_valu = $order->status();
 $total = 0;
 foreach( $orderdetails as $orderdetail )
 {
