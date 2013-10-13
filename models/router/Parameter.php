@@ -26,6 +26,7 @@ class Parameter
     ];
 
     public static $group = [
+        'd' => '選',
         'a' => '甲',
         'b' => '乙',
         'c' => '丙'

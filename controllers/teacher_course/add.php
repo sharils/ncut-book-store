@@ -1,6 +1,7 @@
 <?php
 require_once 'models/course/Course.php';
 require_once 'models/coursebook/CourseBook.php';
+require_once 'models/shopbook/Shopbook.php';
 require_once 'models/teacher/Teacher.php';
 require_once 'models/user/User.php';
 require_once 'models/book/Book.php';
@@ -33,6 +34,7 @@ if (isset($_POST['add_book'])) {
     $course = Course::from($_POST['course']);
     $publisher = Publisher::from($_POST['publisher']);
 
+
     $book = Book::create(
         $publisher,
         $_POST['auther'],
@@ -47,11 +49,7 @@ if (isset($_POST['add_book'])) {
 
     $sample = ($_POST['sample']) ? '1' : '';
     Coursebook::create($course, $book, $sample);
+    Shopbook::create($book, 0, '');
     $url = Router::toUrl("home/course/{$_POST['course']}");
     Router::redirect($url);
 }
-
-
-
-
-

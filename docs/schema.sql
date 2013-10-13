@@ -135,7 +135,7 @@ CREATE TABLE `course` (
   `type` enum('required','optional') collate utf8_unicode_ci NOT NULL,
   `department` enum('me', 'cme', 'rac', 'cc', 'ae', 'csie', 'ddm', 'la', 'ba', 'iem', 'im', 'dlim', 'ee', 'dee') collate utf8_unicode_ci NOT NULL,
   `grade` enum('1','2','3','4') collate utf8_unicode_ci NOT NULL,
-  `group` enum('a', 'b', 'c') collate utf8_unicode_ci NOT NULL,
+  `group` enum('a', 'b', 'c','d') collate utf8_unicode_ci NOT NULL,
   `name` char(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `system` enum('1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b') collate utf8_unicode_ci NOT NULL,
   `semester` enum('1','2') collate utf8_unicode_ci NOT NULL,
