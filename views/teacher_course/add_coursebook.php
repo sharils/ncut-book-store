@@ -17,8 +17,12 @@ require_once 'views/course/Method.php';
             <td><?= htmlspecialchars($course->name()); ?></td>
             <th>必選修</th>
             <td><?= htmlspecialchars($course->type()); ?></td>
-            <th>學制</th>
-            <td><?= htmlspecialchars($course->year()); ?></td>
+            <th>學年度</th>
+            <td><?= htmlspecialchars(
+                    $course->year().
+                    Parameter::$semester[$course->semester()][1]
+                ); ?>
+            </td>
         </tr>
         <tr>
             <th>書籍名稱</th>
@@ -34,7 +38,16 @@ require_once 'views/course/Method.php';
             <th>出版社/代理商</th>
             <td><?php Method::select('publisher',$args); ?></td>
             <th>上課班級</th>
-            <td><input class="form-control" type="text" name="class"/></td>
+            <td>
+                <?=
+                    htmlspecialchars(
+                        Parameter::$system[$course->system()][1].
+                        Parameter::$department[$course->department()][1].
+                        Parameter::$grade[$course->grade()][1].
+                        Parameter::$group[$course->group()]
+                    );
+                ?>
+            </td>
         </tr>
         <tr>
             <td colspan="6"><label  class="checkbox-inline">

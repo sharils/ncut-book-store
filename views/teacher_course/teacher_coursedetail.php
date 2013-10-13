@@ -18,7 +18,9 @@ require_once 'controllers/teacher_course/teacher_coursedetail.php';
                 <td><?= htmlspecialchars($coursebook->book()->version()); ?></td>
                 <td><?= htmlspecialchars($coursebook->book()->isbn()); ?></td>
                 <td><?= htmlspecialchars($coursebook->book()->author()) ?></td>
-                <td><button class="btn btn-danger" name="remove_book" value="<?= htmlspecialchars($coursebook->book()->id()) ?>">刪除書籍</button></td>
+                <td>
+                    <button class="btn btn-danger" name="remove_book" value="<?= htmlspecialchars($coursebook->book()->id()) ?>">刪除書籍</button>
+                </td>
             </tr>
          <?php endforeach; ?>
     </table>
