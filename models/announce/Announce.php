@@ -1,4 +1,6 @@
 <?php
+require_once 'models/clerk/Clerk.php';
+require_once 'models/user/User.php';
 class Announce
 {
     private static $DELETION = "DELETE FROM `announce` WHERE `id` = :id";
@@ -8,7 +10,6 @@ class Announce
             `date`,
             `title`,
             `message`
-
         ) VALUE (
             :id,
             :user_id,
@@ -16,18 +17,20 @@ class Announce
             :title,
             :message
         )";
+    private static $FIND_SELECTION ="SELECT * FROM `announce` ORDER BY `date` DESC";
     private static $FROM_SELECTION = "SELECT * FROM `announce` WHERE `id` = :id";
     private static $UPDATE = "UPDATE `announce`
-        SET `title` = :title,
+        SET `user_id` = :user_id,
+            `title` = :title,
             `message` = :message
         WHERE `id` = :id ";
-;
+
     private $date;
-    private $id
+    private $id;
     private $message;
     private $title;
-
-    public static function create(User $user, $title, $message)
+    private $user;
+    public static function create(clerk $user, $title, $message)
     {
         $id = Database::getRandomId();
         $date = date("Y-m-d H:i:s");
@@ -41,7 +44,15 @@ class Announce
                 ':message' => $message
             ]
         );
-        return new self($id, $date, $title, $meesage);
+    }
+
+    public static function find()
+    {
+        $selected = Database::execute(
+            self::$FIND_SELECTION
+        );
+
+        return self::refine($selected);
     }
 
     public static function from($id)
@@ -59,22 +70,26 @@ class Announce
     {
         $announces = array();
         foreach ($selected as $result) {
+            $user = Clerk::from(User::from($result['user_id']));
+
             $announces[] = new self(
                 $result['id'],
                 $result['date'],
                 $result['title'],
-                $result['message']
+                $result['message'],
+                $user
             );
         }
         return $announces;
     }
 
-    private function __construct($id, $date, $title, $message)
+    private function __construct($id, $date, $title, $message, clerk $user)
     {
         $this->id = $id;
         $this->date = $date;
         $this->title = $title;
         $this->message = $message;
+        $this->user = $user;
     }
 
     public function date()
@@ -113,11 +128,20 @@ class Announce
         }
     }
 
+    public function user($user = NULL)
+    {
+        if ($user === NULL) {
+            return $this->user;
+        } else {
+            return $this->user = $user;
+        }
+    }
     public function update()
     {
         Database::execute(
-            self::$DELETION,
+            self::$UPDATE,
             [
+                ':user_id' => $this->user->id(),
                 ':title' => $this->title,
                 ':message' => $this->message,
                 ':id' => $this->id

@@ -46,7 +46,7 @@ CREATE TABLE `announce` (
   `user_id` char(10) collate utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   `title` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
-  `message` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `message` text collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
