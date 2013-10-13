@@ -1,3 +1,4 @@
+<?php require_once 'controllers/announce/list.php' ?>
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
@@ -22,6 +23,7 @@
 </div>
 <div class="jumbotron">
   <div class="container">
-    <h1>Hello, testing!</h1>
+    <h2><?= htmlspecialchars($announces[0]->title())?></h2>
+    <?= $announces[0]->message()?>
   </div>
 </div>

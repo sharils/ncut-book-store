@@ -1,5 +1,5 @@
 <?php require_once 'controllers/publisher/list.php'; ?>
-<div class ="col-lg-9 col-sm-9">
+<div class ="col-lg-9 col-sm-9 center">
     <form action="<?= Router::toUrl('controllers/publisher/delete_or_update.php') ?>" method="post">
         <table class="center table table-bordered">
             <tr class="active">
@@ -32,5 +32,10 @@
                 </tr>
             <?php endforeach; ?>
         </table>
+        <p>
+            <a class="btn btn-primary" name="add_book" href="<?= Router::toUrl("home/publisher/new/")?>">
+                建立出版社
+            </a>
+        </p>
     </form>
 </div>

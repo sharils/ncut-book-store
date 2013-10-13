@@ -49,6 +49,14 @@ switch ($role) {
             break;
         }
     case 'clerk':
+        if ($resource === 'announce') {
+            require_once "views/announce/list.php";
+            break;
+        }
+        if ($resource === 'announce/new' OR $resource1 === 'announce') {
+            require_once "views/announce/modify.php";
+            break;
+        }
         if ($resource === 'publisher/new') {
             require_once "views/create_user/user_form.php";
             break;
