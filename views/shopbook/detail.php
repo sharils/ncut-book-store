@@ -81,8 +81,8 @@ require_once 'views/course/Method.php';
                 <td><?=
                         htmlspecialchars(
                             $coursebook->course()->year().
-                            Parameter::$semester[$coursebook->course()->semester()][1];
-                        )
+                            Parameter::$semester[$coursebook->course()->semester()][1]
+                        );
                     ?>
                 </td>
                 <td>
@@ -91,11 +91,11 @@ require_once 'views/course/Method.php';
                             Parameter::$system[$coursebook->course()->system()][1].
                             Parameter::$department[$coursebook->course()->department()][1].
                             Parameter::$grade[$coursebook->course()->grade()][1].
-                            Parameter::$group[$coursebook->course()->group()];
-                        )
+                            Parameter::$group[$coursebook->course()->group()]
+                        );
                     ?>
                 </td>
-                <td><?= htmlspecialchars(Parameter::$type[$coursebook->course()->type()];) ?></td>
+                <td><?= htmlspecialchars(Parameter::$type[$coursebook->course()->type()]); ?></td>
                 <td><?= htmlspecialchars($coursebook->course()->name()) ?></td>
                 <td><?= htmlspecialchars($coursebook->course()->teacher()->name()) ?></td>
             </tr>

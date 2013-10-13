@@ -11,7 +11,6 @@
                 <th>ISBN</th>
                 <th>書名</th>
                 <th>版本</th>
-                <th>種類</th>
                 <th>作者</th>
                 <th>出版社</th>
                 <th>原價</th>
@@ -25,7 +24,6 @@
                     <td><?= htmlspecialchars($shopbook->book()->isbn()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->name()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->version()) ?></td>
-                    <td><?= htmlspecialchars($shopbook->book()->type()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->author()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->publisher()->name()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->marketPrice()) ?></td>

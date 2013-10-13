@@ -62,7 +62,7 @@ Class Course
         return new self($course_id, $teacher, $sn, $type, $department, $grade, $group, $name, $system, $semester, $year);
     }
 
-    public static function find($search_factor)
+    public static function find($search_factor = [])
     {
         $where = self::getWhere($search_factor);
         $result = Database::execute(

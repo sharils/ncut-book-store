@@ -36,6 +36,10 @@ switch ($role) {
             require_once "views/course/course_creation.php";
             break;
         }
+        if ($resource === 'course/list') {
+            require_once "views/course/list.php";
+            break;
+        }
         if ($resource2 === 'new' || $resource2 === 'modify') {
             require_once "views/create_user/user_form.php";
             break;
