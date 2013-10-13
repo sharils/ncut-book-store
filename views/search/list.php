@@ -36,7 +36,8 @@ require_once 'views/course/Method.php';
             <div><input name="page" type="hidden" value="<?=$page?>"/></div>
             <?php foreach($coursebooks as $coursebook): ?>
                 <tr>
-                    <th><?=
+                    <th>
+                        <?=
                             htmlspecialchars(
                                 $coursebook->course()->year().
                                 Parameter::$semester[$coursebook->course()->semester()][1]
