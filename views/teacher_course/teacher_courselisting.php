@@ -30,7 +30,7 @@ require_once 'controllers/teacher_course/teacher_courselisting.php';
                 ?>
             </td>
             <td><a href="<?= Router::toUrl("home/course/{$course->id()}"); ?>"><?= htmlspecialchars($course->name()); ?></a></td>
-            <td><?= $course->type(); ?></td>
+            <td><?= htmlspecialchars(Parameter::$type[$course->type()]) ?></td>
         </tr>
     <?php endforeach; ?>
 </table>
