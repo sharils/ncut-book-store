@@ -68,9 +68,12 @@ if (isset($_POST['course'])) {
 
     }
 
-
     Coursebook::create($course, $book, $sample);
-    Shopbook::create($book, 0, '');
+
+    if (Book::findIsbn($book->isbn()) === FALSE) {
+        Shopbook::create($book, 0, '');
+    }
+
     $url = Router::toUrl("home/course/{$_POST['course']}");
     Router::redirect($url);
 }
