@@ -1,4 +1,5 @@
 <?php
+require_once 'models/course/Course.php';
 class Student
 {
     private static $DELETION ="DELETE FROM `student` WHERE `user_id` = :id";
@@ -36,6 +37,12 @@ class Student
             `phone` = :phone,
             `year` = :year
         WHERE `user_id` = :id";
+
+    private static $FIND_COURSE ="SELECT `course`.id FROM `course`
+        INNER JOIN student ON `course`.`department` = `student`.`department` AND
+        `course`.`group` = `student`.`group` AND `student`.`system` = `course`.`system`
+        AND date_format(now(),'%Y') - `student`.`year` = `course`.`grade` WHERE user_id = :id
+        GROUP BY `course`.`id`";
 
     private $department;
     private $email;
@@ -154,6 +161,21 @@ class Student
         } else {
             return $this->email = $email;
         }
+    }
+
+    public function getCourses()
+    {
+        $result = Database::execute(
+            self::$FIND_COURSE,
+            array (
+                ':id' => $this->id
+            )
+        );
+        $courses = [];
+        foreach ($result as $row) {
+            $courses[] = Course::from($row['id']);
+        }
+        return $courses;
     }
 
     public function group($group = NULL)

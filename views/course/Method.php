@@ -1,7 +1,6 @@
 <?php
 class Method
 {
-    private static $mask = [1,2,3,4,5];
     public static function select($name, $args, $postion = NULL, $save_value = NULL, $disabled = TRUE)
     {
         ?>
