@@ -115,6 +115,7 @@ switch ($role) {
             require_once "views/search/list.php";
             break;
         }
+        require_once "views/search/student.php";
         break;
     case 'teacher':
         if ($resource === 'course_book') {
