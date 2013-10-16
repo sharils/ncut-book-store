@@ -60,5 +60,29 @@ require_once 'views/course/Method.php';
         </tr>
     </table>
     <p><button class="btn btn-primary" type="submit" name="add_book" value="">新增書籍</button></p>
+    <table class="table table-bordered center">
+        <tr class="active">
+            <th colspan="6">歷史書單</th>
+        </tr>
+        <tr>
+            <th><label>功能</label></th>
+            <th><label>課程名稱</label></th>
+            <th><label>書籍名稱</label></th>
+            <th><label>出版社</label></th>
+            <th><label>版本</label></th>
+            <th><label>作者</label></th>
+        </tr>
+        <?php foreach($historybooks as $historybook): ?>
+            <tr>
+            </label>
+                <td><button class="btn btn-default" name="history" value="<?= htmlspecialchars($historybook->book()->id()); ?>">新增</button></td>
+                <td><label><?= htmlspecialchars($historybook->course()->name()); ?></label></td>
+                <td><label><?= htmlspecialchars($historybook->book()->name()); ?></label></td>
+                <td><label><?= htmlspecialchars($historybook->book()->publisher()->name()); ?></label></td>
+                <td><label><?= htmlspecialchars($historybook->book()->version()); ?></label></td>
+                <td><label><?= htmlspecialchars($historybook->book()->author()); ?></label></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>
 </form>
 </div>

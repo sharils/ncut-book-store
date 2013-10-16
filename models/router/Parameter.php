@@ -68,9 +68,11 @@ class Parameter
         'optional' => '選修'
     ];
 
-    public static function before($arg_name, $before = ['' => ['ALL', 'ALL', 'ALL']])
+    public static function before($arg_name, $before = ['' => ['ALL', 'ALL', 'ALL'] , '1'=>[] ])
     {
-        return array_merge($before, self::${$arg_name});
+        $A = array_merge($before, self::${$arg_name});
+        unset($A['0']);
+        return $A;
     }
 
     public static function after($arg_name, $after)

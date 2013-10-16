@@ -1,13 +1,10 @@
 <?php
-require_once 'models/book/Book.php';
-require_once 'models/student/Student.php';
 require_once 'models/studentorder/StudentOrder.php';
 require_once 'models/studentorderdetail/StudentOrderDetail.php';
-require_once 'models/user/User.php';
 
 $id = Router::resource(2);
 $order = studentorder::from($id);
-$clerk = clerk::from($order->clerk());
+$clerk = ($order->clerk() == NULL) ? '' : $order->clerk()->id();
 $orderdetails = StudentOrderDetail::find($order);
 $save_valu = $order->status();
 $total = 0;

@@ -11,11 +11,11 @@ require_once 'views/course/Method.php';
             <th colspan="6">訂單資料</th>
         <tr>
             <th>訂單編號</th>
-            <td><?= $order->id(); ?></td>
+            <td><?= htmlspecialchars($order->id()); ?></td>
             <th>訂購日期</th>
-            <td><?= $order->date(); ?></td>
+            <td><?= htmlspecialchars($order->date()); ?></td>
             <th>購買者</th>
-            <td><?= $order->student()->name(); ?></td>
+            <td><?= htmlspecialchars($order->student()->name()); ?></td>
         </tr>
         <tr class="active">
             <th colspan="6">訂單明細</th>
@@ -43,7 +43,7 @@ require_once 'views/course/Method.php';
 
         <tr>
             <td colspan="1"> 負責人</td>
-            <td colspan="2"><?= $clerk->name(); ?></td>
+            <td colspan="2"><?= $clerk; ?></td>
             <td colspan="2"> 訂單管理</td>
             <td colspan="1" name="status"><?= Method::select('status', Parameter::$status,null,$save_valu);?></td>
         </tr>
