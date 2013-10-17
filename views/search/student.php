@@ -16,7 +16,8 @@ require_once 'views/course/Method.php';
             <th>出版社</th>
             <th>定價</th>
             <th>售價</th>
-            <th><label class="btn btn-default">全選</label></th>
+            <th><label class="btn btn-default" name="allclick">全選</label>
+            </th>
         </tr>
             <div><input name="page" type="hidden" value="<?=$page?>"/></div>
             <?php foreach($course_books as $coursebook): ?>
@@ -48,7 +49,7 @@ require_once 'views/course/Method.php';
                     <th><?= htmlspecialchars($coursebook->book()->marketprice()) ?></th>
                     <th><?= htmlspecialchars($coursebook->book()->price()) ?></th>
                     <th>
-                        <input  name="book_id[]" type="checkbox" value="<?= $coursebook->book()->id() ?>"/>
+                        <input class="allClick" name="book_id[]" type="checkbox" value="<?= $coursebook->book()->id() ?>"/>
                     </th>
                 </tr>
             <?php endforeach; ?>
@@ -56,3 +57,16 @@ require_once 'views/course/Method.php';
         <input class="btn btn-warning" type="submit" value="放入購物車">
    </form>
 </div>
+
+<script>
+$(function(){
+    $('label[name=allclick]').on('click',function(){
+        if($('.allClick').attr("checked")){
+            $('.allClick').removeAttr("checked");
+        }else{
+            $('.allClick').attr("checked","true");
+        };
+    });
+
+});
+</script>

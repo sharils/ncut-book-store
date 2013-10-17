@@ -24,6 +24,8 @@ class Router
 <meta http-equiv="Content-Style-Type" content="text/css">
 <!-- Bootstrap core CSS -->
 <link href="<?= Router::toUrl("vendor/bootstrap/css/bootstrap.css")?>" rel="stylesheet" >
+<script type="text/javascript" src="<?= Router::toUrl("vendor/js/jquery-1.10.2.js")?>"></script>
+
 </head>
 <body>
         <?php
