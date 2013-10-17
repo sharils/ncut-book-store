@@ -24,6 +24,9 @@ require_once 'controllers/teacher_course/teacher_coursedetail.php';
                 </tr>
              <?php endforeach; ?>
         </table>
-        <p><a class="btn btn-primary" name="add_book" href="<?= Router::toUrl("home/course_book/new/{$objcourse->id()}")?>">新增書籍</a></p>
+        <p>
+            <a class="btn btn-primary" name="add_book" href="<?= Router::toUrl("home/course_book/new/{$objcourse->id()}")?>">新增書籍</a>
+            <a class="btn btn-primary" href="<?= Router::toUrl("home/course_book")?>">返回</a>
+        </p>
     </form>
 </div>

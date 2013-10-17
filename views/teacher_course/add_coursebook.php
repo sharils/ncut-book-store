@@ -59,7 +59,10 @@ require_once 'views/course/Method.php';
             <td colspan="5"><textarea class="form-control" rows="3" cols="20" name="remark"></textarea></td>
         </tr>
     </table>
-    <p><button class="btn btn-primary" type="submit" name="add_book" value="">新增書籍</button></p>
+    <p>
+        <button class="btn btn-primary" type="submit" name="add_book" value="">新增書籍</button>
+        <a class="btn btn-primary" href="<?= Router::toUrl("home/course/{$course->id()}")?>">返回</a>
+    </p>
     <table class="table table-bordered center">
         <tr class="active">
             <th colspan="6">歷史書單</th>
