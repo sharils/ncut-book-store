@@ -28,6 +28,7 @@ class Publisher
         `address` = :address,
         `fax` = :fax,
         `person` = :person,
+        `account` = :account,
         `phone` = :phone
         WHERE `id` = :id";
 
@@ -107,9 +108,13 @@ class Publisher
         return $publishers;
     }
 
-    public function account()
+    public function account($account = NULL)
     {
-        return $this->account;
+        if ($account === NULL) {
+            return $this->account;
+        } else {
+            return $this->account = $account;
+        }
     }
 
     public function address($address = NULL)
@@ -198,6 +203,7 @@ class Publisher
                 ':address' => $this->address,
                 ':fax' => $this->fax,
                 ':person' => $this->person,
+                ':account' => $this->account,
                 ':phone' => $this->phone,
                 ':id' => $this->id
             )

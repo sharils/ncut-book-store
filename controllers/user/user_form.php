@@ -45,7 +45,7 @@ if ($resource !== 'new') {
         case 'publisher':
             $account = TRUE;
             $edit_role = Publisher::from($resource);
-            $flag = ['name', 'account'];
+            $flag = ['name'];
             break;
         default:
             Router::notFound();

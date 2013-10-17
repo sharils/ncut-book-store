@@ -48,6 +48,7 @@ if (in_array('', $_POST)) {
             $edit_role->person($_POST['person']);
             $edit_role->phone($_POST['phone']);
             $edit_role->fax($_POST['fax']);
+            $edit_role->account($_POST['account']);
             $edit_role->update();
             $url = Router::toUrl("home/publisher/{$_POST['id']}");
             break;
