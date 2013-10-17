@@ -25,12 +25,11 @@ if (isset($id)) {
 
 if (isset($_POST['course'])) {
     $course = Course::from($_POST['course']);
-    $sample ='';
+    $sample = (isset($_POST['sample'])) ? '1' : '';
 
     //按下新增扭
     if (isset($_POST['add_book'])){
         unset($_POST['add_book']);
-        $_POST['remark'] = ' ';
         if (in_array('', $_POST)) {
             $url = Notice::addTo('新增失敗：不允許空值存入！',"home/course_book/new/{$_POST['course']}");
             $redirect_url = Router::toUrl($url);
@@ -60,7 +59,7 @@ if (isset($_POST['course'])) {
             $_POST['version']
         );
 
-        $sample = ($_POST['sample']) ? '1' : '';
+        Shopbook::create($book, 0, '');
 
     } elseif(isset($_POST['history'])) {
 
@@ -69,11 +68,6 @@ if (isset($_POST['course'])) {
     }
 
     Coursebook::create($course, $book, $sample);
-
-    if (Book::findIsbn($book->isbn()) === FALSE) {
-        Shopbook::create($book, 0, '');
-    }
-
     $url = Router::toUrl("home/course/{$_POST['course']}");
     Router::redirect($url);
 }

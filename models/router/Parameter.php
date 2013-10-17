@@ -45,17 +45,20 @@ class Parameter
     public static $status = [
         'shopping' => '交易中',
         'cancel' => '訂單已取消',
-        'submitted' => '訂單成立',
-        'processing' => '待確認',
-        'ordered' => '備貨中',
-        'shipping' => '待付款',
-        'arrived' => '完成交易',
+        'submitted' => '待處理',
+        'processing' => '處理中',
+        'arrived' => '可取貨',
+        'return' => '退書',
+        'finished ' => '完成'
+        // 'shipping' => '進貨',
+        // 'ordered' => '備貨中'
     ];
 
     public static $system = [
         '1a' => ['日二技', '二'],
         '1b' => ['日四技', '四'],
         '1c' => ['日二專', '專二'],
+        '1d' => ['日研', '研'],
         '2a' => ['夜二技(技專)', '職二'],
         '2b' => ['夜四技', '職四'],
         '2c' => ['夜二專', '職'],
