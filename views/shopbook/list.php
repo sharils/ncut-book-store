@@ -8,16 +8,21 @@
    <form action="<?= Router::toUrl('controllers/shopbook/change_shelf.php'); ?>" method="post">
         <table class="center table table-bordered">
             <tr class="active">
-                <th>ISBN</th>
-                <th>書名</th>
-                <th>版本</th>
-                <th>作者</th>
-                <th>出版社</th>
-                <th>原價</th>
-                <th>售價</th>
-                <th>數量</th>
-                <th>狀態</th>
-                <th>功能</th>
+                <th rowspan="2">ISBN</th>
+                <th rowspan="2">書名</th>
+                <th rowspan="2">版本</th>
+                <th rowspan="2">作者</th>
+                <th rowspan="2">出版社</th>
+                <th rowspan="2">原價</th>
+                <th rowspan="2">售價</th>
+                <th rowspan="2">庫存量</th>
+                <th colspan="2">需求量</th>
+                <th rowspan="2">狀態</th>
+                <th rowspan="2">功能</th>
+            </tr>
+            <tr class="active">
+                <th>學生</th>
+                <th>老師</th>
             </tr>
             <?php foreach($shopbooks as $shopbook): ?>
                 <tr>
@@ -29,6 +34,8 @@
                     <td><?= htmlspecialchars($shopbook->book()->marketPrice()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->price()) ?></td>
                     <td><?= htmlspecialchars($shopbook->number()) ?></td>
+                    <td><?= htmlspecialchars($shopbook->book()->getStudentNeed()) ?></td>
+                    <td><?= htmlspecialchars($shopbook->book()->getTeacherNeed()) ?></td>
                     <td>
                         <button class="btn <?= Parameter::$shelf[$shopbook->shelf()][1] ?>" name="shelf" value="<?= htmlspecialchars($shopbook->book()->id()) ?>">
                             <?= htmlspecialchars(Parameter::$shelf[$shopbook->shelf()][0]) ?>

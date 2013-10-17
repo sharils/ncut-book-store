@@ -5,6 +5,11 @@ class Book
     private static $DELETION = " DELETE FROM `book` WHERE `id` = :id ";
     private static $FACTOR;
     private static $FIND_SELECTION ="SELECT book.* FROM `book`";
+    private static $FIND_STUDENT_NEED ="SELECT sum(`num`) as `sum` FROM `student_order`
+        INNER JOIN `student_order_detail` ON `student_order`.`id` = `student_order_detail`.`student_order_id`
+        WHERE (`status` = 'submitted'  or  `status`  = 'processing') AND `book_id` = :book_id";
+    private static $FIND_TEACHER_NEED = "SELECT count(*) as `count`
+        FROM `course_book`  WHERE `sample` = '1' AND `book_id` = :book_id";
     private static $ID_SELECTION = " SELECT * FROM `book` WHERE `id` = :id ";
     private static $INSERTION = " INSERT INTO `book` (
             `id`,
@@ -118,6 +123,30 @@ class Book
         );
         $books = self::refine($result);
         return $books[0];
+    }
+
+    public function getStudentNeed()
+    {
+        $selected = Database::execute(
+            self::$FIND_STUDENT_NEED,
+            array(
+                ':book_id' => $this->id
+            )
+        );
+        $num = $selected[0]['sum'];
+        $num = ($selected[0]['sum'] === NULL) ? 0 : $num;
+        return $num;
+    }
+
+    public function getTeacherNeed()
+    {
+        $selected = Database::execute(
+            self::$FIND_TEACHER_NEED,
+            array(
+                ':book_id' => $this->id
+            )
+        );
+        return $selected[0]['count'];
     }
 
     private static function getWhere($search_factor)
