@@ -51,6 +51,7 @@ require_once 'views/course/Method.php';
                     <button class="btn <?= Parameter::$shelf[$shopbook->shelf()][1] ?>" name="shelf" value="<?= htmlspecialchars($shopbook->book()->id()) ?>">
                         <?= htmlspecialchars(Parameter::$shelf[$shopbook->shelf()][0]) ?>
                     </button>
+                    <button class="btn btn-danger" name="delete" value="">刪除</button>
                 </td>
             </tr>
             <tr>
@@ -62,6 +63,9 @@ require_once 'views/course/Method.php';
         </table>
         <div>
             <input class="btn btn-warning" type="submit" value="修改"/>
+
+            <a class="btn btn-default" href="<?= Router::toUrl("home/shop_book/")?>">返回</a>
+
         </div>
     </form>
     <hr>
