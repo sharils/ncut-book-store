@@ -1,6 +1,6 @@
 <?php
 require_once 'models/clerk/clerk.php';
-class Method
+class Contro_Method
 {
     public static function selectList($role)
     {
