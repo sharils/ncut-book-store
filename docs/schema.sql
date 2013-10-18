@@ -302,7 +302,7 @@ CREATE TABLE `student_order` (
   `clerk_user_id` char(10) collate utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
   `outdate` int(10) NOT NULL,
-  `status` enum('shopping','submitted','processing','ordered','shipping','arrived') collate utf8_unicode_ci NOT NULL,
+  `status` enum('shopping','submitted','processing','ordered','shipping','arrived','return','cancel', 'finished') collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `student_user_id` (`student_user_id`),
   KEY `clerk_user_id` (`clerk_user_id`)
@@ -324,6 +324,7 @@ CREATE TABLE `student_order_detail` (
   `student_order_id` char(10) collate utf8_unicode_ci NOT NULL,
   `book_id` char(10) collate utf8_unicode_ci NOT NULL,
   `num` int(4) NOT NULL,
+  `remark` text collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`student_order_id`,`book_id`),
   KEY `book_id` (`book_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
