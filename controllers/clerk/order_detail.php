@@ -1,5 +1,4 @@
 <?php
-require_once 'models/clerk/Clerk.php';
 require_once 'models/shopbook/ShopBook.php';
 require_once 'models/studentorder/StudentOrder.php';
 require_once 'models/studentorderdetail/StudentOrderDetail.php';
@@ -21,7 +20,4 @@ foreach ($orderdetails as $k => $orderdetail) {
     $shopbook[$k] = ShopBook::from($orderdetail->book());
 }
 
-$clerkArgs =[];
-foreach ($clerks as $clerk ) {
-    $clerkArgs[$clerk->id()] = $clerk->name();
-}
+$clerkArgs = Contro_Method::selectList('Clerk');

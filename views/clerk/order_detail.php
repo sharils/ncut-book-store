@@ -1,4 +1,5 @@
 <?php
+require_once 'controllers/Method.php';
 require_once 'controllers/course/select_list.php';
 require_once 'controllers/clerk/order_detail.php';
 require_once 'views/course/Method.php';

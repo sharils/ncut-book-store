@@ -17,14 +17,14 @@ require_once 'controllers/Method.php';
                 <td><?= $student_order->id() ?></td>
                 <td><?= date("Y-m-d H:i", strtotime(htmlspecialchars($student_order->date()))) ?></td>
                 <td>
-                    <?= htmlspecialchars(($student_order->clerk() === NULL) ? '' : Method::selectList('Clerk')[$student_order->clerk()->id()]) ?>
+                    <?= htmlspecialchars(($student_order->clerk() === NULL) ? '' : Contro_Method::selectList('Clerk')[$student_order->clerk()->id()]) ?>
                 </td>
                 <td><?= htmlspecialchars(Parameter::$status[$student_order->status()]) ?></td>
                 <td>
                     <a class="btn btn-info" href="<?= Router::toUrl("home/order/{$student_order->id()}"); ?>">詳細</a>
                     <?php if ($student_order->status() === 'submitted'): ?>
                         <button class="btn btn-danger" name="cancel_id" value="<?= htmlspecialchars($student_order->id()) ?>">取消訂單</button>
-                    <?php elseif($student_order->status() === 'finished'): ?>
+                    <?php elseif($student_order->status() === 'finished' || $student_order->status() === 'return' ): ?>
                         <a class="btn btn-danger" href="<?= Router::toUrl("home/return/{$student_order->id()}"); ?>">退書申請</a>
                     <?php endif;?>
                 </td>
