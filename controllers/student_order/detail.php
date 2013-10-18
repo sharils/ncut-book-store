@@ -12,3 +12,6 @@ foreach( $student_order_details as $orderdetail )
     $number = $orderdetail->number();
     $total += ($price * $number);
 }
+
+$status = $studentorder->status();
+$disabled = ($status === 'return') ? 'disabled' : '';

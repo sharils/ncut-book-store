@@ -24,7 +24,7 @@ class StudentOrderDetail
         )";
     private static $UPDATE = "UPDATE `student_order_detail`
         SET `num` = :num,
-        `remark` = :remark`
+        `remark` = :remark
         WHERE `id` = :id";
 
     private $book;
@@ -144,11 +144,12 @@ class StudentOrderDetail
     {
         Database::execute(
             self::$UPDATE,
-            array(
+            [
                 ':num' => $this->number,
                 ':remark' => $this->remark,
                 ':id' => $this->id
-            )
+
+            ]
         );
     }
 }

@@ -3,7 +3,9 @@ require_once 'controllers/student_order/detail.php';
 require_once 'controllers/Method.php';
 ?>
 <div class ="col-lg-9 col-sm-9 center">
+    <div class="alert alert-info">退書理由：請務必著名數量、原因！</div>
     <form action="<?= Router::toUrl('controllers/student_order/return.php') ?>"  method="post">
+    <input name='id' type='hidden' value='<?= htmlspecialchars($studentorder->id()); ?>'/>
     <table class="center table table-bordered">
         <tr class="active">
             <th colspan="6">訂單主檔（狀態：
@@ -35,7 +37,7 @@ require_once 'controllers/Method.php';
                 <td><?= htmlspecialchars($order_detail->book()->author()) ?></td>
                 <td><?= htmlspecialchars($order_detail->number()) ?></td>
                 <td colspan="2">
-                    <input class="form-control" name="remark[<?=$order_detail->id()?>]"
+                    <input class="form-control" <?=$disabled?> name="remark[<?=$order_detail->id()?>]"
                         value="<?= htmlspecialchars($order_detail->remark()) ?>" type="text"/>
                 </td>
             </tr>
