@@ -13,22 +13,27 @@ class StudentOrderDetail
             `student_order_id`,
             `id`,
             `book_id`,
-            `num`
+            `num`,
+            `remark`
         ) VALUE (
             :student_order_id,
             :id,
             :book_id,
-            :num
+            :num,
+            :remark
         )";
-    private static $UPDATE = "UPDATE `student_order_detail` SET `num` = :num
+    private static $UPDATE = "UPDATE `student_order_detail`
+        SET `num` = :num,
+        `remark` = :remark`
         WHERE `id` = :id";
 
     private $book;
     private $id;
     private $number;
+    private $remark;
     private $student_order;
 
-    public static function create(StudentOrder $student_order, Book $book, $number = 0)
+    public static function create(StudentOrder $student_order, Book $book, $number = 0 ,$remark = '')
     {
         $id = Database::getRandomId();
         Database::execute(
@@ -37,10 +42,11 @@ class StudentOrderDetail
                 ':student_order_id' => $student_order->id(),
                 ':id' => $id,
                 ':book_id' => $book->id(),
-                ':num' => $number
+                ':num' => $number,
+                ':remark' => $remark
             )
         );
-        return new self($student_order, $id, $book, $number);
+        return new self($student_order, $id, $book, $number, $remark);
     }
 
     public static function find(StudentOrder $student_order)
@@ -78,17 +84,19 @@ class StudentOrderDetail
                 $student_order,
                 $row['id'],
                 $book,
-                $row['num']
+                $row['num'],
+                $row['remark']
             );
         }
         return $student_order_details;
     }
 
-    private function __construct($student_order, $id, $book, $number)
+    private function __construct($student_order, $id, $book, $number, $remark)
     {
         $this->book = $book;
         $this->id = $id;
         $this->number = $number;
+        $this->remark = $remark;
         $this->student_order = $student_order;
     }
 
@@ -119,7 +127,14 @@ class StudentOrderDetail
             return $this->number = $number;
         }
     }
-
+    public function remark($remark=NULL)
+    {
+        if ($remark === NULL) {
+            return $this->remark;
+        } else {
+            return $this->remark = $remark;
+        }
+    }
     public function student_order()
     {
         return $this->student_order;
@@ -130,8 +145,9 @@ class StudentOrderDetail
         Database::execute(
             self::$UPDATE,
             array(
-                ':num' => $this->number(),
-                ':id' => $this->id()
+                ':num' => $this->number,
+                ':remark' => $this->remark,
+                ':id' => $this->id
             )
         );
     }

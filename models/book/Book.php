@@ -7,7 +7,7 @@ class Book
     private static $FIND_SELECTION ="SELECT book.* FROM `book`";
     private static $FIND_STUDENT_NEED ="SELECT sum(`num`) as `sum` FROM `student_order`
         INNER JOIN `student_order_detail` ON `student_order`.`id` = `student_order_detail`.`student_order_id`
-        WHERE (`status` = 'submitted'  or  `status`  = 'processing') AND `book_id` = :book_id";
+        WHERE (`status` = 'submitted'  or  `status`  = 'processing' or `status` = 'return') AND `book_id` = :book_id";
     private static $FIND_TEACHER_NEED = "SELECT count(*) as `count`
         FROM `course_book`  WHERE `sample` = '1' AND `book_id` = :book_id";
     private static $ID_SELECTION = " SELECT * FROM `book` WHERE `id` = :id ";

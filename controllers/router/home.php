@@ -111,6 +111,10 @@ switch ($role) {
             require_once "views/student_order/detail.php";
             break;
         }
+        if ($resource1 === 'return' && $resource2 != NULL) {
+            require_once "views/student_order/return.php";
+            break;
+        }
         if ($resource2 === 'search') {
             require_once "views/search/list.php";
             break;
