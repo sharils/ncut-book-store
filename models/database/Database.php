@@ -17,6 +17,6 @@ class Database
 
     public static function getRandomId()
     {
-        return time();
+        return time() + rand(1,10000);
     }
 }

@@ -40,7 +40,8 @@ class Student
 
     private static $FIND_COURSE ="SELECT `course`.id FROM `course`
         INNER JOIN student ON `course`.`department` = `student`.`department` AND
-        `course`.`group` = `student`.`group` AND `student`.`system` = `course`.`system`
+        (`course`.`group` = `student`.`group` OR `course`.`group` = 'd') AND
+        `student`.`system` = `course`.`system`
         AND date_format(now(),'%Y') - `student`.`year` = `course`.`grade` WHERE user_id = :id
         GROUP BY `course`.`id`";
 
