@@ -14,11 +14,11 @@
     <label>年度</label>
     <input class="form-control" name="year" type="text" value="<?=htmlspecialchars($_GET['year'])?>" />
 </div>
-<div class="col-lg-2 col-sm-2">
+<div class="col">
     <label>學期</label>
     <?php Method::select('semester', Parameter::before('semester'), 0, htmlspecialchars($_GET['semester'])); ?>
 </div>
-<div class="col-lg-2 col-sm-2">
+<div class="col">
     <label>必選修</label>
     <?php Method::select('type', Parameter::before('type', ['' => 'ALL']), NULL, htmlspecialchars($_GET['type'])); ?>
 </div>

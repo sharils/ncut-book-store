@@ -1,10 +1,10 @@
 <?php require_once 'controllers/course/list.php';?>
-<div class ="col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
     <?php if (null !== Notice::get()): ?>
         <div class="alert alert-danger"><?=Notice::get()?></div>
     <?php endif; ?>
     <form action="<?= Router::toUrl('controllers/course/delete.php') ?>"  method="post">
-        <table class="table table-bordered center">
+        <table class="table center">
             <tr>
                 <th><label>學年度</label></th>
                 <th><label>課程代碼</label></th>

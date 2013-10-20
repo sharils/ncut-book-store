@@ -1,7 +1,7 @@
 <?php require_once 'controllers/student_order/confirmation.php'; ?>
-<div class ="col-lg-9 col-sm-9">
+<div class ="col-9 center">
     <form action ="<?= Router::toUrl('controllers/student_order/confirmation_form.php') ?>" method="post">
-        <table class="center table table-bordered">
+        <table class="table center">
             <tr class="active">
                 <th colspan="2">訂單金額最後確認</th>
             </tr>

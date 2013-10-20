@@ -2,12 +2,12 @@
 require_once 'Method.php';
 require_once 'controllers/course/select_list.php';
 ?>
-<div class ="col-lg-9 col-sm-9">
+<div class ="col-9 center">
 <?php if (null !== Notice::get()): ?>
     <div class="alert alert-danger"><?=Notice::get()?></div>
 <?php endif; ?>
 <form action="<?= Router::toUrl("controllers/course/course_creation.php")?>" method="post">
-    <table class="center table table-bordered">
+    <table class="table center">
         <tr class="active">
             <th colspan="6">課程建立</th>
         </tr>
@@ -28,8 +28,8 @@ require_once 'controllers/course/select_list.php';
             <td><?php Method::select('type', Parameter::$type); ?></td>
         </tr>
         <tr>
-        <th colspan="2">授課教師</th>
-            <td colspan="4"><?php Method::select('teacher_id',$args); ?></td>
+            <th colspan="3">授課教師</th>
+            <td colspan="3"><?php Method::select('teacher_id',$args); ?></td>
         <tr>
             <th colspan="6">授課班級</th>
         </tr>

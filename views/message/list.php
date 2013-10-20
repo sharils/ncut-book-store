@@ -1,7 +1,7 @@
 <?php require_once 'controllers/message/listing.php'; ?>
-<div class ="col-lg-9 col-sm-9">
+<div class ="col-9 center">
     <form action="<?= Router::toUrl('controllers/message/delete.php') ?>" method="post">
-        <table class="center table table-bordered">
+        <table class="table center">
         <tr class="active">
             <th colspan="4">訊息列表</th>
         </tr>

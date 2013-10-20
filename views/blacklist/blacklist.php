@@ -1,6 +1,6 @@
 <?php require_once 'controllers/blacklist/listing.php'; ?>
-<div class ="col-lg-9 col-sm-9">
-    <table class="center table table-bordered">
+<div class ="col-9 center">
+    <table class="table center">
         <tr class="active">
             <th>帳號</th>
             <th>名稱</th>

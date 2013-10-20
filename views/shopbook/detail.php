@@ -2,9 +2,9 @@
 require_once 'controllers/shopbook/detail.php';
 require_once 'views/course/Method.php';
 ?>
-<div class ="col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
     <form action="<?= Router::toUrl('controllers/shopbook/update.php')?>" method="post">
-        <table class="center table table-bordered">
+        <table class="table center">
             <tr class="active">
                 <th colspan="8">修改書籍資料</th>
             </tr>
@@ -69,7 +69,7 @@ require_once 'views/course/Method.php';
         </div>
     </form>
     <hr>
-    <table class="center table table-bordered">
+    <table class="table center">
         <tr class="active">
             <th colspan="5">使用此書課程的課程列表</th>
         </tr>

@@ -2,7 +2,7 @@
 require_once 'controllers/search/list.php';
 require_once 'views/course/Method.php';
 ?>
-<div class ="col-lg-9 col-sm-9">
+<div class ="col-9 center">
     <?php if ($selected === FALSE): ?>
         <div class="alert alert-danger"><?=$msg?></div>
     <?php endif; ?>
@@ -11,7 +11,7 @@ require_once 'views/course/Method.php';
         <li class="<?= $active['course'] ?>"><a href="<?= Router::toUrl('home/course/search')?>">依課程</a></li>
         <li class="<?= $active['book'] ?>"><a href="<?= Router::toUrl('home/book/search')?>">依書籍</a></li>
     </ul>
-    <table class="center table table-bordered">
+    <table class="table center">
         <form action="<?= Router::toUrl("home/{$page}/search"); ?>" class="form-horizontal" method="get">
             <tr>
                 <td colspan="11">

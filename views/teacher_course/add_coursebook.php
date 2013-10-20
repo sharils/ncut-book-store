@@ -3,13 +3,13 @@ require_once 'controllers/teacher_course/add.php';
 require_once 'controllers/teacher_course/select_list.php';
 require_once 'views/course/Method.php';
 ?>
-<div class ="col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
 <?php if (null !== Notice::get()): ?>
     <div class="alert alert-danger"><?=Notice::get()?></div>
 <?php endif; ?>
 <form action="<?= Router::toUrl("controllers/teacher_course/add.php")?>" method="post">
     <div><input name="course" type="hidden" value="<?= $course->id(); ?>"/></div>
-    <table class="table table-bordered center">
+    <table class="table center">
         <tr class="active">
             <th colspan="6">教科用書登記表</th>
         <tr>
@@ -63,7 +63,7 @@ require_once 'views/course/Method.php';
         <button class="btn btn-primary" type="submit" name="add_book" value="">新增書籍</button>
         <a class="btn btn-primary" href="<?= Router::toUrl("home/course/{$course->id()}")?>">返回</a>
     </p>
-    <table class="table table-bordered center">
+    <table class="table center">
         <tr class="active">
             <th colspan="6">歷史書單</th>
         </tr>

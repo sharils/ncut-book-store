@@ -1,8 +1,8 @@
 <?php
 require_once 'controllers/teacher_course/teacher_courselisting.php';
 ?>
-<div class ="col-lg-9 col-sm-9 center">
-    <table class="table table-bordered center">
+<div class ="col-9 center">
+    <table class="table center">
         <tr class="active">
             <th><label>學年度</label></th>
             <th><label>班級</label></th>
