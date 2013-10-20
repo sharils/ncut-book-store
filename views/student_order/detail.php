@@ -2,8 +2,8 @@
 require_once 'controllers/student_order/detail.php';
 require_once 'controllers/Method.php';
 ?>
-<div class ="col-lg-9 col-sm-9 center">
-    <table class="center table table-bordered">
+<div class ="col-9 center">
+    <table class="table center">
         <tr class="active">
             <th colspan="9">訂單主檔（狀態：<?= htmlspecialchars(Parameter::$status[$studentorder->status()]); ?>）</th>
         </tr>

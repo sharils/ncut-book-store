@@ -1,7 +1,7 @@
 <?php require_once 'controllers/publisher/list.php'; ?>
-<div class ="col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
     <form action="<?= Router::toUrl('controllers/publisher/delete_or_update.php') ?>" method="post">
-        <table class="center table table-bordered">
+        <table class="table center">
             <tr class="active">
                 <th>廠商名稱</th>
                 <th>地址</th>

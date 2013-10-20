@@ -4,9 +4,9 @@ require_once 'controllers/course/select_list.php';
 require_once 'controllers/clerk/order_detail.php';
 require_once 'views/course/Method.php';
 ?>
-<div class ="col-xs-9 col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
 <?php if ($order->status() === 'return'): ?>
-    <table class="table table-bordered center">
+    <table class="table center">
         <tr class="active">
             <th colspan="2">退書申請</th>
         </tr>
@@ -26,7 +26,7 @@ require_once 'views/course/Method.php';
 <?php endif; ?>
 <form action="<?= Router::toUrl("controllers/clerk/clerk_update.php")?>" method="post">
     <div><input name="course" type="hidden" value="<?= $order->id(); ?>"/></div>
-    <table class="table table-bordered center">
+    <table class="table center">
         <tr class="active">
             <th colspan="8">訂單資料</th>
         <tr>
@@ -68,7 +68,6 @@ require_once 'views/course/Method.php';
          <tfoot class="active">
             <td align="right" colspan="6">總金額</td>
             <td align="right" colspan="2">NT$ <?= $total; ?></td>
-
         <tr>
             <td colspan="2"> 負責人</td>
             <td colspan="2"><?= Method::select('clerk_id', $clerkArgs, null, $order->clerk()->id());?></td>

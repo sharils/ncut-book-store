@@ -2,7 +2,7 @@
 require_once 'controllers/clerk/order_list.php';
 require_once 'views/course/Method.php';
 ?>
-<div class ="col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
 <ul class="nav nav-tabs">
         <li class="<?= $active['submitted'] ?>"><a href="<?= Router::toUrl('home/order/submitted')?>">待處理</a></li>
         <li class="<?= $active['processing'] ?>"><a href="<?= Router::toUrl('home/order/processing')?>">處理中</a></li>
@@ -13,7 +13,7 @@ require_once 'views/course/Method.php';
 
     </ul>
     <form action="" method="post">
-        <table class="center table table-bordered">
+        <table class="table center">
             <tr class="active">
                 <th>訂單編號</th>
                 <th>訂購日期</th>

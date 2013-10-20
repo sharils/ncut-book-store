@@ -1,6 +1,6 @@
 <?php require_once 'controllers/user/user_form.php'; ?>
 <?php require_once 'views/course/Method.php'; ?>
-<div class ="col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
     <?php if (null !== Notice::get()): ?>
         <div class="alert alert-danger"><?=Notice::get()?></div>
     <?php endif; ?>
@@ -13,10 +13,10 @@
         </ul>
     <?php endif;?>
     <form action="<?= Router::toUrl('controllers/user/create_or_update.php') ?>"  method="post">
+        <table class="table center">
         <?php if ($account === TRUE): ?>
-            <h3><?= $diff['status'].Create::$title[0]?></h3>
+            <th><?= $diff['status'].Create::$title[0]?></th>
         <?php endif;?>
-        <table class="table table-bordered center">
             <input class="form-control" name="id" type="hidden" value="<?= $id ?>"/>
             <input class="form-control" name="role" type="hidden" value="<?= Create::$title[1] ?>"/>
             <tr>

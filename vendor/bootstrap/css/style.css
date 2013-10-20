@@ -1,0 +1,259 @@
+.center{
+  text-align: center;
+}
+/*====== loginp age ======*/
+.login {
+    font-family: sans-serif, 微軟正黑體;
+    margin: 150px auto 0px;
+    min-height:120px;
+    width: 500px;
+    padding: 30px;
+    box-shadow: 1px 1px 8px 1px rgba(151, 171, 204);
+    overflow: auto;
+    border-radius: 5px 5px 5px 5px;
+    border-width: 1px 0px;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+.login h2 {
+    border-bottom: 1px solid rgb(221, 221, 221);
+    color: rgb(51, 51, 51);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+fieldset {
+    clear: both;
+    display: block;
+    margin: 0px;
+    position: relative;
+    border: 0px none;
+    padding: 0px;
+}
+.field-group {
+    position: relative;
+    margin: 1px 0px;
+    width: 100%;
+    padding: 4px 0px 4px 145px;
+    clear: both;
+    -moz-box-sizing:border-box;
+}
+.field-group > label {
+    float: left;
+    margin-left: -145px;
+    padding: 5px 0px 0px;
+    position: relative;
+    text-align: right;
+    width: 130px;
+    word-wrap:break-word;
+    color: rgb(51, 51, 51);
+}
+
+.field-group .form-control {
+    max-width: 250px;
+}
+.form-control {
+    width: 90%;
+}
+.sign {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid rgb(246, 156, 156);
+    border-radius: 4px 4px 4px 4px;
+}
+.error {
+    background: none no-repeat scroll 0px rgb(255, 232, 232);
+    clear: both;
+    text-align: center;
+    color: rgb(208, 68, 55);
+    display: block;
+    margin: 5px 0px 0px;
+    box-shadow: inset 0 0 0px red;
+}
+#header {
+    background-color: rgb(36, 82, 127);
+    padding: 1px 5px;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px 0px rgb(95, 107, 127);
+    -moz-box-sizing:border-box;
+}
+#header h2 {
+    padding: 0% 20% 0% 37%;
+}
+#header h4 {
+    padding: 0% 20% 0% 45%;
+}
+/*====== main pag ======*/
+/* tital */
+.tital {
+    background-color: rgb(36, 82, 127);
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0 5px 0px rgb(95, 107, 127);
+}
+.tital .navbar-toggle {
+  background-color: rgb(36, 82, 127);
+}
+.tital .navbar-toggle .icon-bar {
+  background-color: rgb(255, 255, 255);
+}
+.tital .navbar-toggle:hover, .tital .navbar-toggle:focus {
+    background-color: rgb(36, 82, 127);
+    box-shadow: 0 0 5px 0px rgb(133, 233, 255);
+}
+/* function column */
+.function {
+  width: 150px;
+  min-height: 190px;
+  text-align: center;
+  padding: 5px;
+  /*margin-bottom: 20px;*/
+  background-color: rgb(36, 82, 127);
+  border: 1px solid rgb(30, 69, 107);
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.col {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  float: left;
+}
+.col-9 {
+  width: 85%;
+  position: relative;
+  float: left;
+}
+*.search {
+    background: none repeat scroll 0% 0% rgb(87, 118, 148);
+    padding: 2px;
+    position: absolute;
+    right: 50%;
+    margin: 6px;
+    margin-right: -450px;
+    width: 240px;
+    height: 40px;
+    overflow: hidden;
+    border: 1px solid rgb(153, 153, 153);
+    border-radius: 6px 6px 6px 6px;
+}
+*.search .search-text {
+    background: none repeat scroll 0% 0% transparent;
+    border: medium none;
+    color: rgb(221, 221, 221);
+    padding: 6px;
+    width: 190px;
+}
+
+/*.search-text:hover {
+    background: #115A82;
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
+    position: relative;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    line-height: 1.4;
+}
+.search-text:focus {
+    background: #115A8;
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
+    position: relative;
+    display: inline-block;
+    line-height: 1.4;
+
+}*/
+*.search-button {
+    top: 0px;
+    width: 37px;
+    height: 30px;
+    background: url("image/search-2.png") no-repeat scroll right 0px;
+    border-width: medium medium medium 1px;
+    border-style: none none none solid;
+    border-color: -moz-use-text-color -moz-use-text-color -moz-use-text-color rgb(153, 153, 153);
+    -moz-border-top-color: none;
+    -moz-border-right-color: none;
+    -moz-border-bottom-color: none;
+    -moz-border-left-color: none;
+    border-image: none;
+}
+
+/*.search:hover {
+    background: #115A82;
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
+    position: relative;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    line-height: 1.4;
+}
+.search:focus {
+    background: #115A8;
+    outline: 0px none;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
+    position: relative;
+    display: inline-block;
+    line-height: 1.4;
+
+}
+*/
+.nav > li > a {
+    background-color: rgb(36, 82, 127);
+    color: rgb(189, 212, 255);
+}
+.nav > li > a:hover {
+    background-color: rgb(36, 82, 127);
+    color: rgb(58, 131, 203);
+
+}
+.navbar > .container .navbar-brand {
+    margin-left: -15px;
+    font-weight: 900;
+    color: rgb(87, 118, 148);
+
+
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover {
+    background-color: rgba(255, 255, 255, 0.75);
+}
+.nav-tabs > li {
+   width: 100px;
+   text-align: center;
+}
+.nav-tabs > li > a:hover {
+    border-color: transparent;
+}
+td {
+    font-family: sans-serif, 微軟正黑體;
+    margin: 150px auto 0px;
+    min-height:120px;
+    width: 500px;
+    padding: 30px;
+    overflow: none;
+    border-width: 1px 0px;
+    background-color: rgba(255, 255, 255, 0.75);
+    -moz-box-sizing:border-box;
+}
+.table > tbody > tr.active > th, th {
+    background-color: rgb(87, 118, 148);
+    color: rgb(255, 255, 255);
+}
+.table tbody > tr > th {
+    font-size: 16px;
+    text-shadow: 0px 1px 0px rgb(36, 82, 127), 1px 2px 2px rgb(51, 68, 85);
+    background-color: rgb(87, 118, 148);
+    color: rgb(255, 255, 255);
+}
+.table tbody > tr > td, .table tbody > tr > th {
+    vertical-align: middle;
+}
+.table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td {
+    border: 1px solid rgba(255, 255, 255, 0.75);
+}
+
+tr > td >label {
+    font-weight: normal;
+}
+body {
+    background: none repeat scroll 0% 0% rgb(189, 212, 255);
+    /*background: none repeat scroll 0% 0% rgb(255, 254, 153);*/
+
+}

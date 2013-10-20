@@ -1,5 +1,5 @@
 <div class="container col-sm-offset-4 col-sm-3 col-lg-4">
-    <form action="<?= Router::toUrl("controllers/login/forgot_pwd.php")?>" class="form-signin" method="post">
+    <form class="login" action="<?= Router::toUrl("controllers/login/forgot_pwd.php")?>" class="form-signin" method="post">
         <h2 class="form-signin-heading center">忘記密碼</h2>
         <?php if (null !== Notice::get()): ?>
             <div class="alert alert-danger"><?=Notice::get()?></div>
@@ -10,7 +10,7 @@
             <input class="form-control" name="sn" placeholder="帳號" type="text" autofocus/>
             <input class="form-control" name="email" placeholder="信箱" type="text"/>
         </p>
-        <div>
+        <div class="center">
             <input class="btn btn-primary" type="submit" value="送出"/>
             <a class="btn btn-warning" href="<?=Router::toUrl('')?>">返回</a>
         </div>

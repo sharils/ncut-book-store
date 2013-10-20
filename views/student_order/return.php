@@ -2,11 +2,11 @@
 require_once 'controllers/student_order/detail.php';
 require_once 'controllers/Method.php';
 ?>
-<div class ="col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
     <div class="alert alert-info">退書理由：請務必著名數量、原因！</div>
     <form action="<?= Router::toUrl('controllers/student_order/return.php') ?>"  method="post">
     <input name='id' type='hidden' value='<?= htmlspecialchars($studentorder->id()); ?>'/>
-    <table class="center table table-bordered">
+    <table class="table center">
         <tr class="active">
             <th colspan="6">訂單主檔（狀態：
                 <?= htmlspecialchars(Parameter::$status[$studentorder->status()]); ?>）

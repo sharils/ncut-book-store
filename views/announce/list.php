@@ -1,8 +1,8 @@
 <?php require_once 'controllers/announce/list.php';?>
-<div class ="col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
     <div class="alert alert-info">本系統以時間最新者優先公告</div>
     <form action="<?= Router::toUrl('controllers/announce/delete.php') ?>"  method="post">
-        <table class="table table-bordered center">
+        <table class="table center">
             <tr>
                 <th><label>時間</label></th>
                 <th><label>標題</label></th>

@@ -1,5 +1,5 @@
 <?php require_once 'controllers/user/list.php';?>
-<div class ="col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
     <ul class="nav nav-tabs">
         <li class="<?= $active['clerk'] ?>"><a href="<?= Router::toUrl('home/clerk/list')?>">員生社</a></li>
         <li class="<?= $active['student'] ?>"><a href="<?= Router::toUrl('home/student/list')?>">學生</a></li>
@@ -7,13 +7,13 @@
         <li class="<?= $active['admin'] ?>"><a href="<?= Router::toUrl('home/admin/list')?>">管理者</a></li>
     </ul>
     <form action="<?= Router::toUrl('controllers/user/update_or_delete.php') ?>"  method="post">
-        <table class="table table-bordered center">
+        <table class="table center">
             <tr>
                 <?php foreach ($args as $k => $v): ?>
-                    <td><?= htmlspecialchars($v[0]) ?></td>
+                    <th><?= htmlspecialchars($v[0]) ?></th>
                 <?php endforeach; ?>
                 <?php if ($user_role === 'admin'): ?>
-                    <td>功能</td>
+                    <th>功能</th>
                 <?php endif; ?>
             </tr>
             <?php foreach ($rows as $row): ?>

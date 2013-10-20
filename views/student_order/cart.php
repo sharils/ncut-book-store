@@ -1,11 +1,11 @@
 <?php require_once 'controllers/student_order/cart.php'; ?>
-<div class ="col-lg-9 col-sm-9">
+<div class ="col-9 center">
 <?php if ($student_order !== NULL): ?>
     <?php if (null !== Notice::get()): ?>
         <div class="alert alert-danger"><?=Notice::get()?></div>
     <?php endif; ?>
     <form action="<?= Router::toUrl('controllers/student_order/cart_form.php') ?>" method="post">
-        <table class="center table table-bordered">
+        <table class="table center">
             <tr class="active">
                 <th>ISBN</th>
                 <th>書名</th>

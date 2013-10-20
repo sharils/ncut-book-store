@@ -1,10 +1,10 @@
 <?php
 require_once 'controllers/teacher_course/teacher_coursedetail.php';
 ?>
-<div class ="col-lg-9 col-sm-9 center">
+<div class ="col-9 center">
     <form action="<?= Router::toUrl("controllers/teacher_course/remove.php")?>" method="post">
         <div><input name="course" type="hidden" value="<?= $objcourse->id(); ?>"/></div>
-        <table class="table table-bordered center">
+        <table class="table center">
             <tr class="active">
                 <th><label>書籍名稱</label></th>
                 <th><label>版本</label></th>
