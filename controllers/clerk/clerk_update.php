@@ -10,6 +10,6 @@ if (isset($_POST['update'])) {
     $order->status($_POST['status']);
     $order->clerk($clerk);
     $order->update();
-    $url = Router::toUrl("home/order/{$order->status()}/{$order->id()}");
+    $url = Router::toUrl("home/order/{$order->status()}");
     Router::redirect($url);
 }

@@ -1,4 +1,3 @@
-
 <?php require_once 'controllers/announce/list.php' ?>
 <header class="navbar tital navbar-fixed-top bs-docs-nav" role="banner">
 <div class="navbar tital navbar-fixed-top">

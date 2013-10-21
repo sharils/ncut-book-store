@@ -207,7 +207,8 @@ fieldset {
 .navbar > .container .navbar-brand {
     margin-left: -15px;
     font-weight: 900;
-    color: rgb(87, 118, 148);
+    color: rgb(255, 255, 255);
+    /*color: rgb(87, 118, 148);*/
 
 
 }
