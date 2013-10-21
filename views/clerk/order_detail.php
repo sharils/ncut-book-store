@@ -70,7 +70,7 @@ require_once 'views/course/Method.php';
             <td align="right" colspan="2">NT$ <?= $total; ?></td>
         <tr>
             <td colspan="2"> 負責人</td>
-            <td colspan="2"><?= Method::select('clerk_id', $clerkArgs, null, $order->clerk()->id());?></td>
+            <td colspan="2"><?= Method::select('clerk_id', $clerkArgs, null, $clerk_id);?></td>
             <td colspan="2"> 訂單管理</td>
             <td colspan="2" name="status"><?= Method::select('status', Parameter::$status,null,$save_valu);?></td>
         </tr>

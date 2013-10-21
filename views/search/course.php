@@ -16,11 +16,11 @@
 </div>
 <div class="col">
     <label>學期</label>
-    <?php Method::select('semester', Parameter::before('semester'), 0, htmlspecialchars($_GET['semester'])); ?>
+    <?php Method::select('semester', Parameter::before('semester'), 2, htmlspecialchars($_GET['semester'])); ?>
 </div>
-<div class="col">
+<div class="col-lg-2 col-sm-2">
     <label>必選修</label>
-    <?php Method::select('type', Parameter::before('type', ['' => 'ALL']), NULL, htmlspecialchars($_GET['type'])); ?>
+    <?php Method::select('type', Parameter::before('type', ['' => 'All　']), NULL, htmlspecialchars($_GET['type'])); ?>
 </div>
 <div class="col-lg-3 col-sm-3">
     <label>課程名稱</label>

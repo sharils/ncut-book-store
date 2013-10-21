@@ -19,22 +19,23 @@ class Parameter
     ];
 
     public static $grade = [
-        '1' => ['一年級', '一'],
-        '2' => ['二年級', '二'],
-        '3' => ['三年級', '三'],
-        '4' => ['四年級', '四']
+        '1' => ['一年級', '一', '一　'],
+        '2' => ['二年級', '二', '二　'],
+        '3' => ['三年級', '三', '三　'],
+        '4' => ['四年級', '四', '四　' ]
     ];
 
     public static $group = [
-        'd' => '選',
+        'e' => '選',
         'a' => '甲',
         'b' => '乙',
-        'c' => '丙'
+        'c' => '丙',
+        'd' => '丁'
     ];
 
     public static $semester = [
-        '1' => ['第一學期', '上'],
-        '2' => ['第二學期', '下']
+        '1' => ['第一學期', '上', '上　'],
+        '2' => ['第二學期', '下', '下　']
     ];
 
     public static $shelf = [
@@ -71,7 +72,7 @@ class Parameter
         'optional' => '選修'
     ];
 
-    public static function before($arg_name, $before = ['' => ['ALL', 'ALL', 'ALL'] , '1'=>[] ])
+    public static function before($arg_name, $before = ['' => ['All', 'All', 'All'] , '1'=>[] ])
     {
         $A = array_merge($before, self::${$arg_name});
         unset($A['0']);

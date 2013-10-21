@@ -4,6 +4,7 @@ require_once 'models/studentorder/StudentOrder.php';
 require_once 'models/studentorderdetail/StudentOrderDetail.php';
 $id = Router::resource(2);
 $order = studentorder::from($id);
+$clerk_id = ($order->clerk() === NULL) ? '' : $order->clerk()->id();
 $clerks = Clerk::find();
 $orderdetails = StudentOrderDetail::find($order);
 $save_valu = $order->status();
