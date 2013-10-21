@@ -13,11 +13,11 @@ require_once 'views/course/Method.php';
         <tr class="active">
             <th colspan="6">教科用書登記表</th>
         <tr>
-            <th>課程名稱</th>
+            <th width="9%">課程名稱</th>
             <td><?= htmlspecialchars($course->name()); ?></td>
-            <th>必選修</th>
-            <td><?= htmlspecialchars($course->type()); ?></td>
-            <th>學年度</th>
+            <th width="9%">必選修</th>
+            <td><?= htmlspecialchars(Parameter::$type[$course->type()]); ?></td>
+            <th width="9%">學年度</th>
             <td><?= htmlspecialchars(
                     $course->year().
                     Parameter::$semester[$course->semester()][1]
