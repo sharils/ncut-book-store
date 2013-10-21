@@ -22,15 +22,15 @@ require_once 'views/course/Method.php';
             <div><input name="page" type="hidden" value="<?=$page?>"/></div>
             <?php foreach($course_books as $coursebook): ?>
                 <tr>
-                    <th>
+                    <td>
                         <?=
                             htmlspecialchars(
                                 $coursebook->course()->year().
                                 Parameter::$semester[$coursebook->course()->semester()][1]
                             );
                         ?>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <?=
                             htmlspecialchars(
                                 Parameter::$system[$coursebook->course()->system()][1].
@@ -39,18 +39,18 @@ require_once 'views/course/Method.php';
                                 Parameter::$group[$coursebook->course()->group()]
                             );
                         ?>
-                    </th>
-                    <th><?= htmlspecialchars($coursebook->course()->name()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->course()->teacher()->name()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->name() .'('.$coursebook->book()->version().')') ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->author()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->isbn()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->publisher()->name()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->marketprice()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->price()) ?></th>
-                    <th>
+                    </td>
+                    <td><?= htmlspecialchars($coursebook->course()->name()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->course()->teacher()->name()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->name() .'('.$coursebook->book()->version().')') ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->author()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->isbn()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->publisher()->name()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->marketprice()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->price()) ?></td>
+                    <td>
                         <input class="allClick" name="book_id[]" type="checkbox" value="<?= $coursebook->book()->id() ?>"/>
-                    </th>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </table>

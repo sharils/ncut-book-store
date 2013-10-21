@@ -8,11 +8,11 @@
    <form action="<?= Router::toUrl('controllers/shopbook/change_shelf.php'); ?>" method="post">
         <table class="table center">
             <tr class="active">
+                <th rowspan="2" width="7%">出版社</th>
                 <th rowspan="2">ISBN</th>
                 <th rowspan="2">書名</th>
                 <th rowspan="2">版本</th>
                 <th rowspan="2">作者</th>
-                <th rowspan="2">出版社</th>
                 <th rowspan="2">原價</th>
                 <th rowspan="2">售價</th>
                 <th rowspan="2">庫存量</th>
@@ -26,11 +26,11 @@
             </tr>
             <?php foreach($shopbooks as $shopbook): ?>
                 <tr>
+                    <td><?= htmlspecialchars($shopbook->book()->publisher()->name()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->isbn()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->name()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->version()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->author()) ?></td>
-                    <td><?= htmlspecialchars($shopbook->book()->publisher()->name()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->marketPrice()) ?></td>
                     <td><?= htmlspecialchars($shopbook->book()->price()) ?></td>
                     <td><?= htmlspecialchars($shopbook->number()) ?></td>

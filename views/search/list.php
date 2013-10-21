@@ -36,15 +36,15 @@ require_once 'views/course/Method.php';
             <div><input name="page" type="hidden" value="<?=$page?>"/></div>
             <?php foreach($coursebooks as $coursebook): ?>
                 <tr>
-                    <th>
+                    <td>
                         <?=
                             htmlspecialchars(
                                 $coursebook->course()->year().
                                 Parameter::$semester[$coursebook->course()->semester()][1]
                             );
                         ?>
-                    </th>
-                    <th>
+                    </td>
+                    <td>
                         <?=
                             htmlspecialchars(
                                 Parameter::$system[$coursebook->course()->system()][1].
@@ -53,22 +53,22 @@ require_once 'views/course/Method.php';
                                 Parameter::$group[$coursebook->course()->group()]
                             );
                         ?>
-                    </th>
-                    <th><?= htmlspecialchars($coursebook->course()->name()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->course()->teacher()->name()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->name() .'('.$coursebook->book()->version().')') ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->author()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->isbn()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->publisher()->name()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->marketprice()) ?></th>
-                    <th><?= htmlspecialchars($coursebook->book()->price()) ?></th>
-                    <th>
+                    </td>
+                    <td><?= htmlspecialchars($coursebook->course()->name()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->course()->teacher()->name()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->name() .'('.$coursebook->book()->version().')') ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->author()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->isbn()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->publisher()->name()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->marketprice()) ?></td>
+                    <td><?= htmlspecialchars($coursebook->book()->price()) ?></td>
+                    <td>
                         <?php if($role === 'student'): ?>
                             <button class="btn btn-warning" name="book_id" value="<?= $coursebook->book()->id() ?>"><?= htmlspecialchars($button[1]) ?></button>
                         <?php else: ?>
                             <a class="btn btn-warning" href="<?= Router::toUrl("home/book/{$coursebook->book()->id()}")?>">修改書籍</a>
                         <?php endif; ?>
-                    </th>
+                    </td>
                 </tr>
             <?php endforeach; ?>
        </form>

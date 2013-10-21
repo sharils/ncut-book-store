@@ -4,9 +4,9 @@
         <table class="table center">
             <tr class="active">
                 <th>廠商名稱</th>
-                <th>地址</th>
+                <th width="15%">地址</th>
                 <th>負責人</th>
-                 <th>連絡電話</th>
+                <th>連絡電話</th>
                 <th>信箱</th>
                 <th>匯款帳戶</th>
                 <th>傳真電話</th>

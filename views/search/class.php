@@ -18,7 +18,7 @@
     </div>
     <div class="col">
         <label>學期</label>
-        <?php Method::select('semester', Parameter::before('semester'), 0, htmlspecialchars($_GET['semester'])); ?>
+        <?php Method::select('semester', Parameter::before('semester'), 2, htmlspecialchars($_GET['semester'])); ?>
     </div>
     <div class="col">
         <label>學制</label>
@@ -30,11 +30,11 @@
     </div>
     <div class="col">
         <label>年級</label>
-        <?php Method::select('grade', Parameter::before('grade'), 1, htmlspecialchars($_GET['grade'])); ?>
+        <?php Method::select('grade', Parameter::before('grade'), 2, htmlspecialchars($_GET['grade'])); ?>
     </div>
-    <div class="col">
+    <div class="col-lg-2 col-sm-2">
         <label>班級</label>
-        <?php Method::select('group', Parameter::before('group', ['' => 'ALL']), NULL, htmlspecialchars($_GET['group'])); ?>
+        <?php Method::select('group', Parameter::before('group', ['' => 'All']), NULL, htmlspecialchars($_GET['group'])); ?>
     </div>
     <div class="col">
         </br>

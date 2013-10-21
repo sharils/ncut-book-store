@@ -6,11 +6,11 @@ require_once 'views/course/Method.php';
     <form action="<?= Router::toUrl('controllers/shopbook/update.php')?>" method="post">
         <table class="table center">
             <tr class="active">
-                <th colspan="8">修改書籍資料</th>
+                <th colspan="6">修改書籍資料</th>
             </tr>
             <tr>
                 <th>書名</th>
-                <td colspan="3">
+                <td>
                     <input name="id" type="hidden" value="<?= $book->id() ?>"/>
                     <input class="form-control" disabled name="name" type="text" value="<?= htmlspecialchars($book->name()) ?>"/>
                 </td>
@@ -25,7 +25,7 @@ require_once 'views/course/Method.php';
             </tr>
             <tr>
                 <th>ISBN</th>
-                <td colspan="3">
+                <td>
                     <input class="form-control" disabled name="isbn" type="text" value="<?= htmlspecialchars($book->isbn()) ?>"/>
                 </td>
                 <th>定價</th>
@@ -39,7 +39,7 @@ require_once 'views/course/Method.php';
             </tr>
             <tr>
                 <th>廠商</th>
-                <td colspan="3">
+                <td>
                     <?= Method::select('publisher', $args, NULL, htmlspecialchars($book->publisher()->id())) ?>
                 </td>
                 <th>庫存</th>
