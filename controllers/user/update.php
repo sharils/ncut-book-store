@@ -38,6 +38,7 @@ if (in_array('', $_POST)) {
         case 'Teacher':
             $user_role = $user->toRole();
             $user_role->email($_POST['email']);
+            $user_role->phone($_POST['phone']);
             $user_role->update();
             $url = Router::toUrl("account/modify");
             break;

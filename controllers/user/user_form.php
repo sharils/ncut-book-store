@@ -35,7 +35,7 @@ if ($resource !== 'new') {
             unset($args['pwd'], $args['confirmpassword']);
             if ($resource2 === NULL) {
                 $user = User::from($resource);
-                $flag = ['sn', 'name', 'phone', 'phone_ext', 'department', 'group', 'year', 'system'];
+                $flag = ['sn', 'name', 'phone_ext', 'department', 'group', 'year', 'system'];
             } else {
                 $flag =[];
                 $user = User::from($resource2);
