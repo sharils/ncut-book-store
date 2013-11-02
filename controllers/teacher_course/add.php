@@ -9,15 +9,18 @@ $id = Router::resource(2);
 
 //Load顯示時
 if (isset($id)) {
+    $arr = [];
     $historybooks = [];
     $teacher_id = $_SESSION['user_id'];
     $courses = Course::find(['teacher_user_id' => $teacher_id]);
+
     foreach ($courses as $course) {
         $course_books = CourseBook::findCourse($course);
-
         foreach($course_books as $course_book){
-
-            $historybooks[] = $course_book;
+            if(!in_array($course_book->book()->id(), $arr)){
+                $arr[] = $course_book->book()->id();
+                $historybooks[] = $course_book;
+            }
         }
     }
     $course = Course::from($id);
@@ -29,6 +32,7 @@ if (isset($_POST['course'])) {
 
     //按下新增扭
     if (isset($_POST['add_book'])){
+        $_POST['remark'] = (empty($_POST['remark'])) ? '　' : $_POST['remark'];
         unset($_POST['add_book']);
         if (in_array('', $_POST)) {
             $url = Notice::addTo('新增失敗：不允許空值存入！',"home/course_book/new/{$_POST['course']}");
