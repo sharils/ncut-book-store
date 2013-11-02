@@ -24,7 +24,7 @@
           <a href="<?=Router::toUrl('account/update')?>">個人資料</a>
         </li>
       </ul>
-      <div class="search">
+      <!-- <div class="search">
         <input class="search-text" type="text" placeholder="search">
         <input class="search-button" type="button">
       </div><!-- /input-group -->

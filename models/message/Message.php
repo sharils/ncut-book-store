@@ -24,7 +24,7 @@ class Message
     private $user_receiver;
     private $user_sender;
 
-    public static function create(User $sender, User $receiver, $content)
+    public static function create($sender, $receiver, $content)
     {
         $id = Database::getRandomId();
         $date = date("Y-m-d H:i:s");
