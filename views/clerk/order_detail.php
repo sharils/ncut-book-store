@@ -69,15 +69,22 @@ require_once 'views/course/Method.php';
             <td align="right" colspan="6">總金額</td>
             <td align="right" colspan="2">NT$ <?= $total; ?></td>
         <tr>
-            <td colspan="2"> 負責人</td>
+            <td> 負責人</td>
             <td colspan="2"><?= Method::select('clerk_id', $clerkArgs, null, $clerk_id);?></td>
-            <td colspan="2"> 訂單管理</td>
-            <td colspan="2" name="status"><?= Method::select('status', Parameter::$status,null,$save_valu);?></td>
+            <td> 訂單管理</td>
+            <td colspan="2" name="status">
+                <?= Method::select('status', Parameter::$status,null,$save_valu);?>
+            </td>
+            <td colspan="2" >
+                <button class="btn btn-success" name="update" value="<?= $order->id() ?>">修改</button>
+                <?php if ($order->status() === 'return'): ?>
+                    <button class="btn btn-warning" name="return" value="<?= $order->id() ?>">通知取貨</button>
+                <?php endif; ?>
+            </td>
         </tr>
         </tfoot>
     </table>
     <div>
-        <button class="btn btn-success" name="update" value="<?= $order->id() ?>">修改</button>
         <a class="btn btn-default" name="update" href="<?= Router::toUrl("home/order/{$order->status()}"); ?>">返回</a>
     </div>
 </form>
