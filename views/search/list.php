@@ -73,4 +73,5 @@ require_once 'views/course/Method.php';
             <?php endforeach; ?>
        </form>
     </table>
+    <?php Page::getPage()?>
 </div>

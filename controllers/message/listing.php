@@ -28,3 +28,4 @@ if ($page === 'sent') {
         $messageslist = $badlist;
     }
 }
+$messageslist = Page::getLimit($messageslist);

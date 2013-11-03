@@ -25,6 +25,7 @@ $search_factor = array_filter($_GET, "removeEmpty");
 
 //判斷是不是有按下SEARCH
 if (!empty($search_factor)){
+    unset($search_factor['p']);
     switch ($page){
         case 'book':
             $find = 'findBook';
@@ -63,3 +64,4 @@ if ($selected === TRUE && $role === 'student') {
 } else {
     $coursebooks = $course_books;
 }
+$coursebooks = Page::getLimit($coursebooks);
