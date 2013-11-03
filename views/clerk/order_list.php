@@ -32,4 +32,5 @@ require_once 'views/course/Method.php';
             <?php endforeach; ?>
         </table>
     </form>
+    <?php Page::getPage()?>
 </div>

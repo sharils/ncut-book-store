@@ -48,4 +48,5 @@
             <?php endforeach; ?>
         </table>
     </form>
+    <?php Page::getPage()?>
 </div>

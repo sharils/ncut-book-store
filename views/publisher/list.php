@@ -38,4 +38,5 @@
             </a>
         </p>
     </form>
+    <?php Page::getPage()?>
 </div>

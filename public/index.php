@@ -6,6 +6,7 @@ require_once 'models/database/Database.php';
 require_once 'models/router/Router.php';
 require_once 'models/router/Notice.php';
 require_once 'models/router/Parameter.php';
+require_once 'models/router/Page.php';
 
 use ncut_book_store\Container;
 

@@ -20,3 +20,4 @@ if ($status !== '') {
 } else {
     $shopbooks = $shop_books;
 }
+$shopbooks = Page::getLimit($shopbooks);

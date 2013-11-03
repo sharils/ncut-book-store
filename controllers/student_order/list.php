@@ -10,3 +10,4 @@ foreach ($stu_orders as $stu_order) {
         $student_orders[] = $stu_order;
     }
 }
+$student_orders = Page::getLimit($student_orders);

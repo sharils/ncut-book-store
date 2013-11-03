@@ -32,9 +32,9 @@
         <label>年級</label>
         <?php Method::select('grade', Parameter::before('grade'), 2, htmlspecialchars($_GET['grade'])); ?>
     </div>
-    <div class="col-lg-2 col-sm-2">
+    <div class="col">
         <label>班級</label>
-        <?php Method::select('group', Parameter::before('group', ['' => 'All']), NULL, htmlspecialchars($_GET['group'])); ?>
+        <?php Method::select('group', Parameter::before('group', ['' => 'All　']), NULL, htmlspecialchars($_GET['group'])); ?>
     </div>
     <div class="col">
         </br>

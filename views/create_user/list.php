@@ -39,9 +39,9 @@
                             </button>
                         </td>
                     <?php endif; ?>
-
                 </tr>
             <?php endforeach; ?>
         </table>
     </form>
+    <?php Page::getPage()?>;
 </div>

@@ -14,6 +14,7 @@ $B_role = ucfirst($role);
 $active[$role] = 'active';
 
 $rows = $B_role::find();
+$rows = Page::getLimit($rows);
 Create::$role();
 
 $args = Create::$args;
