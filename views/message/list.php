@@ -26,3 +26,15 @@
     </form>
     <?php Page::getPage()?>
 </div>
+<script>
+$(function(){
+    $('.btn-danger').on('click',function(){
+        if(confirm("您確定刪除此訊息嗎?"))
+        {
+            return true;
+        }else{
+            return false;
+        }
+    });
+});
+</script>
