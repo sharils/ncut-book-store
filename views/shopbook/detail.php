@@ -107,3 +107,15 @@ require_once 'views/course/Method.php';
     </table>
     </form>
 </div>
+<script>
+$(function(){
+    $('button[name=delete]').on('click',function(){
+        if(confirm("您確定刪除此書籍嗎?"))
+        {
+            return true;
+        }else{
+            return false;
+        }
+    });
+});
+</script>

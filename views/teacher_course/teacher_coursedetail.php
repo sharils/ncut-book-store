@@ -30,3 +30,15 @@ require_once 'controllers/teacher_course/teacher_coursedetail.php';
         </p>
     </form>
 </div>
+<script>
+$(function(){
+    $('.btn-danger').on('click',function(){
+        if(confirm("您確定刪除此筆資料嗎?"))
+        {
+            return true;
+        }else{
+            return false;
+        }
+    });
+});
+</script>

@@ -10,7 +10,6 @@
                 <th>ISBN</th>
                 <th>書名</th>
                 <th>版本</th>
-                <th>種類</th>
                 <th>作者</th>
                 <th>出版社</th>
                 <th>售價</th>
@@ -22,7 +21,6 @@
                     <td><?= htmlspecialchars($arg->book()->isbn()) ?></td>
                     <td><?= htmlspecialchars($arg->book()->name()) ?></td>
                     <td><?= htmlspecialchars($arg->book()->version()) ?></td>
-                    <td><?= htmlspecialchars($arg->book()->type()) ?></td>
                     <td><?= htmlspecialchars($arg->book()->author()) ?></td>
                     <td><?= htmlspecialchars($arg->book()->publisher()->name()) ?></td>
                     <td><?= htmlspecialchars($arg->book()->price()) ?></td>
@@ -40,3 +38,15 @@
     <div class="alert alert-info">目前沒有購物車 ........</div>
 <?php endif; ?>
 </div>
+<script>
+$(function(){
+    $('.btn-danger').on('click',function(){
+        if(confirm("您確定刪除此筆資料嗎?"))
+        {
+            return true;
+        }else{
+            return false;
+        }
+    });
+});
+</script>
