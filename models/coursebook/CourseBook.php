@@ -134,7 +134,7 @@ Class CourseBook
     public function sample($needed = NULL)
     {
         if ($needed === NULL) {
-            return $this->sample == false ? false : true;
+            return ($this->sample === '') ? false : true;
         } else {
             return $this->sample = $needed;
         }

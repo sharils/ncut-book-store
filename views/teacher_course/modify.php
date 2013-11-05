@@ -1,5 +1,5 @@
 <?php
-require_once 'controllers/teacher_course/add.php';
+require_once 'controllers/teacher_course/page_modify.php';
 require_once 'controllers/teacher_course/select_list.php';
 require_once 'views/course/Method.php';
 ?>
@@ -7,8 +7,11 @@ require_once 'views/course/Method.php';
 <?php if (null !== Notice::get()): ?>
     <div class="alert alert-danger"><?=Notice::get()?></div>
 <?php endif; ?>
-<form action="<?= Router::toUrl("controllers/teacher_course/add.php")?>" method="post">
-    <div><input name="course" type="hidden" value="<?= $course->id(); ?>"/></div>
+<form action="<?= Router::toUrl("controllers/teacher_course/modify.php")?>" method="post">
+    <div>
+        <input name="course" type="hidden" value="<?= $course->id(); ?>"/>
+        <input name="book" type="hidden" value="<?= $cb['id']; ?>"/>
+    </div>
     <table class="table center">
         <tr class="active">
             <th colspan="6">教科用書登記表</th>
@@ -26,15 +29,15 @@ require_once 'views/course/Method.php';
         </tr>
         <tr>
             <th>書籍名稱</th>
-            <td><input class="form-control" type="text" name="name"/></td>
+            <td><input class="form-control" type="text" name="name" value="<?= $cb['name']?>"/></td>
             <th>版本</th>
-            <td><input class="form-control" type="text" name="version"/></td>
+            <td><input class="form-control" type="text" name="version" value="<?= $cb['version']?>"/></td>
             <th>書號/ISBN</th>
-            <td><input class="form-control" type="text" name="isbn"/></td>
+            <td><input class="form-control" type="text" name="isbn" value="<?= $cb['isbn']?>"/></td>
         </tr>
         <tr>
             <th>作者</th>
-            <td><input class="form-control" type="text" name="auther"/></td>
+            <td><input class="form-control" type="text" name="author" value="<?= $cb['author']?>"/></td>
             <th>出版社/代理商</th>
             <td><?php Method::select('publisher',$args); ?></td>
             <th>上課班級</th>
@@ -51,16 +54,16 @@ require_once 'views/course/Method.php';
         </tr>
         <tr>
             <td colspan="6"><label  class="checkbox-inline">
-                <input  class="checkbox-inline" type="checkbox" name="sample" value="true">需要樣書</label>
+                <input  class="checkbox-inline" type="checkbox" name="sample" value="true" <?=$cb['sample']?>>需要樣書</label>
             </td>
         </tr>
         <tr>
             <th>備註</th>
-            <td colspan="5"><textarea class="form-control" rows="3" cols="20" name="remark"></textarea></td>
+            <td colspan="5"><textarea class="form-control" rows="3" cols="20" name="remark"><?= $cb['remark']?></textarea></td>
         </tr>
     </table>
     <p>
-        <button class="btn btn-primary" type="submit" name="add_book" value="">新增書籍</button>
+        <input class="btn btn-primary" type="submit" value="送出"/>
         <a class="btn btn-primary" href="<?= Router::toUrl("home/course/{$course->id()}")?>">返回</a>
     </p>
     <table class="table center">
