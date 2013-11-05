@@ -39,6 +39,7 @@
                     <td><?= htmlspecialchars(Parameter::$type[$course->type()]);?></td>
                     <td><?= htmlspecialchars($course->teacher()->name());?></td>
                     <td>
+                        <a class="btn btn-warning" href="<?= Router::toUrl("home/course/{$course->id()}")?>">修改</a>
                         <button class="btn btn-danger" name="remove_course" value="<?= htmlspecialchars($course->id()) ?>">
                             刪除
                         </button>

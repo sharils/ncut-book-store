@@ -64,7 +64,7 @@ require_once 'views/course/Method.php';
         <div>
             <input class="btn btn-warning" type="submit" value="修改"/>
 
-            <a class="btn btn-default" href="<?= Router::toUrl("home/shop_book/")?>">返回</a>
+            <a class="btn btn-default" href="<?= Router::toUrl("home/shop_book")?>">返回</a>
 
         </div>
     </form>

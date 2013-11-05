@@ -38,9 +38,13 @@ class Book
 
     private static $UPDATE = " UPDATE `book`
         SET `publisher_id` = :publisher_id,
+            `author` = :author,
+            `isbn` = :isbn,
             `market_price` = :market_price,
+            `name` = :name,
             `price` = :price,
-            `remark` = :remark
+            `remark` = :remark,
+            `version` = :version
         WHERE `id` = :id ";
 
     private $author;
@@ -181,9 +185,13 @@ class Book
         return $books;
     }
 
-    public function author()
+    public function author($author =NULL)
     {
-        return $this->author;
+        if ($author === NULL) {
+            return $this->author;
+        } else {
+            return $this->author = $author;
+        }
     }
 
     private function __construct($publisher, $author, $id, $isbn, $market_price, $name, $price, $remark, $type, $version)
@@ -215,9 +223,13 @@ class Book
         return $this->id;
     }
 
-    public function isbn()
+    public function isbn($isbn =NULL)
     {
-        return $this->isbn;
+        if ($isbn === NULL) {
+            return $this->isbn;
+        } else {
+            return $this->isbn = $isbn;
+        }
     }
 
     public function marketPrice($market_price =NULL)
@@ -229,9 +241,13 @@ class Book
         }
     }
 
-    public function name()
+    public function name($name = NULL)
     {
-        return $this->name;
+        if ($name === NULL) {
+            return $this->name;
+        } else {
+            return $this->name = $name;
+        }
     }
 
     public function price($price = NULL)
@@ -272,16 +288,24 @@ class Book
             self::$UPDATE,
             array(
                 ':publisher_id' => $this->publisher()->id(),
+                ':author' => $this->author,
+                ':isbn' => $this->isbn,
                 ':market_price' => $this->market_price,
+                ':name' => $this->name,
                 ':price' => $this->price,
                 ':remark' => $this->remark,
+                ':version' => $this->version,
                 ':id' => $this->id()
             )
         );
     }
 
-    public function version()
+    public function version($version = NULL)
     {
-        return $this->version;
+        if ($version === NULL) {
+            return $this->version;
+        } else {
+            return $this->version = $version;
+        }
     }
 }

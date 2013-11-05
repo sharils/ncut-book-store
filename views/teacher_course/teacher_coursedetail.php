@@ -19,7 +19,8 @@ require_once 'controllers/teacher_course/teacher_coursedetail.php';
                     <td><?= htmlspecialchars($coursebook->book()->isbn()); ?></td>
                     <td><?= htmlspecialchars($coursebook->book()->author()) ?></td>
                     <td>
-                        <button class="btn btn-danger" name="remove_book" value="<?= htmlspecialchars($coursebook->book()->id()) ?>">刪除書籍</button>
+                        <a class="btn btn-warning" href="<?= Router::toUrl("home/course_book/{$coursebook->book()->id()}/{$coursebook->course()->id()}")?>">修改</a>
+                        <button class="btn btn-danger" name="remove_book" value="<?= htmlspecialchars($coursebook->book()->id()) ?>">刪除</button>
                     </td>
                 </tr>
              <?php endforeach; ?>

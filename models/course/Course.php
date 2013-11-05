@@ -32,6 +32,18 @@ Class Course
             :semester,
             :year
         )";
+    private static $UPDATE="UPDATE `course` SET
+            `sn` = :sn,
+            `teacher_user_id` = :teacher,
+            `type` = :type,
+            `department` = :department,
+            `grade` = :grade,
+            `group` = :group,
+            `name` = :name,
+            `system` = :system,
+            `semester` = :semester,
+            `year` = :year
+        WHERE `id` = :id";
 
     private $course_id;
     private $name;
@@ -149,21 +161,34 @@ Class Course
                 ':id' => $this->course_id
             )
         );
+
     }
 
-    public function department()
+    public function department($department = NULL)
     {
-        return $this->department;
+        if ($department === NULL) {
+            return $this->department;
+        } else {
+            return $this->department = $department;
+        }
     }
 
-    public function grade()
+    public function grade($grade = NULL)
     {
-        return $this->grade;
+        if ($grade === NULL) {
+            return $this->grade;
+        } else {
+            return $this->grade = $grade;
+        }
     }
 
-    public function group()
+    public function group($group = NULL)
     {
-        return $this->group;
+        if ($group === NULL) {
+            return $this->group;
+        } else {
+            return $this->group = $group;
+        }
     }
 
     public function id()
@@ -171,38 +196,86 @@ Class Course
         return $this->course_id;
     }
 
-    public function name()
+    public function name($name = NULL)
     {
-        return $this->name;
+        if ($name === NULL) {
+            return $this->name;
+        } else {
+            return $this->name = $name;
+        }
     }
 
-    public function sn()
+    public function sn($sn = NULL)
     {
-        return $this->sn;
+        if ($sn === NULL) {
+            return $this->sn;
+        } else {
+            return $this->sn = $sn;
+        }
     }
 
-    public function system()
+    public function system($system = NULL)
     {
-        return $this->system;
+        if ($system === NULL) {
+            return $this->system;
+        } else {
+            return $this->system = $system;
+        }
     }
 
-    public function semester()
+    public function semester($semester = NULL)
     {
-        return $this->semester;
+        if ($semester === NULL) {
+            return $this->semester;
+        } else {
+            return $this->semester = $semester;
+        }
     }
 
-    public function teacher()
+    public function teacher($teacher = NULL)
     {
-        return $this->teacher;
+        if ($teacher === NULL) {
+            return $this->teacher;
+        } else {
+            return $this->teacher = $teacher;
+        }
     }
 
-    public function type()
+    public function type($type = NULL)
     {
-        return $this->type;
+        if ($type === NULL) {
+            return $this->type;
+        } else {
+            return $this->type = $type;
+        }
     }
 
-    public function year()
+    public function update()
     {
-        return $this->year;
+        Database::execute(
+            self::$UPDATE,
+            array(
+                ':sn' => $this->sn,
+                ':teacher' => $this->teacher->id(),
+                ':type' => $this->type,
+                ':department' => $this->department,
+                ':grade' => $this->grade,
+                ':group' => $this->group,
+                ':name' => $this->name,
+                ':system' => $this->system,
+                ':semester' => $this->semester,
+                ':year' => $this->year,
+                ':id' => $this->id()
+            )
+        );
+    }
+
+    public function year($year = NULL)
+    {
+        if ($year === NULL) {
+            return $this->year;
+        } else {
+            return $this->year = $year;
+        }
     }
 }

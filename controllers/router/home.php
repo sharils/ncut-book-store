@@ -29,15 +29,17 @@ switch ($role) {
         return Router::notFound();
         break;
 }
+
 require_once "views/welcome/ul_under.php";
+
 switch ($role) {
     case 'admin':
-        if ($resource === 'course') {
-            require_once "views/course/course_creation.php";
-            break;
-        }
         if ($resource === 'course/list') {
             require_once "views/course/list.php";
+            break;
+        }
+        if ($resource1 === 'course') {
+            require_once "views/course/course_creation.php";
             break;
         }
         if ($resource2 === 'new' || $resource2 === 'modify') {
@@ -49,6 +51,7 @@ switch ($role) {
             break;
         }
     case 'clerk':
+
         if ($resource === 'announce') {
             require_once "views/announce/list.php";
             break;
@@ -130,12 +133,12 @@ switch ($role) {
             require_once "views/teacher_course/notice.php";
             break;
         }
-        if ($resource2 === 'new') {
-            require_once "views/teacher_course/add_coursebook.php";
-            break;
-        }
         if ($resource1 === 'course') {
             require_once "views/teacher_course/teacher_coursedetail.php";
+            break;
+        }
+        if ($resource2 !== NULL || $resource1 === 'course_book') {
+            require_once "views/teacher_course/modify.php";
             break;
         }
         break;
