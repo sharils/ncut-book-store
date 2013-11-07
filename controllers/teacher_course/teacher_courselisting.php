@@ -6,3 +6,6 @@ require_once 'models/user/User.php';
 $id = $_SESSION['user_id'];
 $teacher = Teacher::from(User::from($id));
 $courses = Course::find(['teacher_user_id' => $teacher->id()]);
+if($courses === FALSE){
+    $courses = [];
+}
