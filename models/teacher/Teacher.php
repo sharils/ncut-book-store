@@ -18,6 +18,7 @@ class Teacher
             :phone_ext
         )";
     private static $FIND_SELECTION = "SELECT * FROM `teacher`";
+    private static $FIND_SN = "SELECT * FROM `teacher` WHERE `sn` = :sn";
     private static $FROM_SELECTION = "SELECT * FROM `teacher`
         WHERE `user_id` = :id";
     private static $UPDATE = "UPDATE `teacher` SET
@@ -57,6 +58,24 @@ class Teacher
         $result = Database::execute(self::$FIND_SELECTION);
 
         return self::refine($result);
+    }
+
+    public static function findSn($sn)
+    {
+        $result = Database::execute(
+            self::$FIND_SN,
+            array(
+                ':sn' =>$sn
+            )
+        );
+
+        if (empty($result)) {
+            return FALSE;
+        } else {
+            $teachers = self::refine($result);
+            return $teachers[0];
+        }
+
     }
 
     public static function from($user)
