@@ -50,6 +50,10 @@ switch ($role) {
             require_once "views/create_user/list.php";
             break;
         }
+        if ($resource === 'upload') {
+            require_once "views/upload/upload.php";
+            break;
+        }
     case 'clerk':
 
         if ($resource === 'announce') {
