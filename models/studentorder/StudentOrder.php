@@ -5,14 +5,14 @@ require_once 'models/user/User.php';
 class StudentOrder
 {
     private static $FIND_SELECTION = "SELECT * FROM `student_order`
-        WHERE `student_user_id` = :student_id";
+        WHERE `student_user_id` = :student_id ORDER BY `date` DESC";
     private static $FINDCART_SELECTION ="SELECT * FROM `student_order`
         WHERE `student_user_id` = :student_id
-        AND `status` = :status";
+        AND `status` = :status ORDER BY `date` DESC";
     private static $FROM_SELECTION = "SELECT * FROM `student_order`
-        WHERE `id` = :id";
+        WHERE `id` = :id ORDER BY `date` DESC";
     private static $GETALL_SELECTION = "SELECT * FROM `student_order`
-        WHERE `status` = :status";
+        WHERE `status` = :status ORDER BY `date` DESC";
     private static $INSERTION = "INSERT INTO `student_order` (
             `id`,
             `student_user_id`,
