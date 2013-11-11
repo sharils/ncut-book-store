@@ -5,6 +5,24 @@ require_once 'controllers/teacher_course/teacher_coursedetail.php';
     <form action="<?= Router::toUrl("controllers/teacher_course/remove.php")?>" method="post">
         <div><input name="course" type="hidden" value="<?= $objcourse->id(); ?>"/></div>
         <table class="table center">
+            <tr>
+                <th colspan="5">課程用書</th>
+            </tr>
+            <tr>
+                <th>班級</th>
+                <td>
+                    <?=
+                        htmlspecialchars(
+                            Parameter::$system[$objcourse->system()][1].
+                            Parameter::$department[$objcourse->department()][1].
+                            Parameter::$grade[$objcourse->grade()][1].
+                            Parameter::$group[$objcourse->group()]
+                        );
+                    ?>
+                </td>
+                <th>課程</th>
+                <td colspan="2"><?= htmlspecialchars($objcourse->name()); ?></td>
+            </tr>
             <tr class="active">
                 <th><label>書籍名稱</label></th>
                 <th><label>版本</label></th>

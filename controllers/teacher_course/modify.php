@@ -16,7 +16,17 @@ if (isset($_POST['course'])) {
         $book = Book::from($_POST['history']);
         Coursebook::create($course, $book, $sample);
 
-    } else {
+    } else if (isset($_POST['delete'])) {
+
+        $b_id = $_POST['delete'];
+        $c_id = $_POST[$b_id];
+        $book = Book::from($b_id);
+        $course = Course::from($c_id);
+        $del_cb = Coursebook::from($course, $book);
+        $del_cb->delete();
+        $url = Router::toUrl("home/course/{$c_id}");
+
+    }else {
 
         $_POST['book'] = (empty($_POST['book'])) ? '　' : $_POST['book'];
         $_POST['remark'] = (empty($_POST['remark'])) ? '　' : $_POST['remark'];
@@ -28,7 +38,7 @@ if (isset($_POST['course'])) {
             $redirect_url = Router::toUrl($url);
             Router::redirect($redirect_url);
             exit;
-        }else if ($_POST['book'] === ''){
+        }else if ($_POST['book'] === '　'){
 
             $book = Book::create(
                 $publisher,

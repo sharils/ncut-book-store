@@ -81,7 +81,11 @@ require_once 'views/course/Method.php';
         <?php foreach($historybooks as $historybook): ?>
             <tr>
             </label>
-                <td><button class="btn btn-default" name="history" value="<?= htmlspecialchars($historybook->book()->id()); ?>">新增</button></td>
+                <td>
+                    <input name="<?= htmlspecialchars($historybook->book()->id()); ?>" type="hidden" value="<?= htmlspecialchars($historybook->course()->id()); ?>"/>
+                    <button class="btn btn-success" name="history" value="<?= htmlspecialchars($historybook->book()->id()); ?>">新增</button>
+                    <button class="btn btn-danger" name="delete" value="<?= htmlspecialchars($historybook->book()->id()); ?>">刪除</button>
+                </td>
                 <td><label><?= htmlspecialchars($historybook->course()->name()); ?></label></td>
                 <td><label><?= htmlspecialchars($historybook->book()->name()); ?></label></td>
                 <td><label><?= htmlspecialchars($historybook->book()->publisher()->name()); ?></label></td>
