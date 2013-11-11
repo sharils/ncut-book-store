@@ -23,8 +23,10 @@ if (in_array('', $_POST)) {
         foreach ($post as $k => $v) {
             $course->$k($v);
         }
+        $course->teacher($teacher);
         $course->update();
-        $url = Router::toUrl("home/course/{$id}");
+        $url = Notice::addTo('success', "home/course/{$id}");
+        $url = Router::toUrl($url);
     }
 
 }

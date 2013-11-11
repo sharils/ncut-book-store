@@ -45,7 +45,7 @@ class Message
     {
         $messages = array();
         $selected = Database::execute(
-            "SELECT * FROM `message` WHERE `$field` = :find_user",
+            "SELECT * FROM `message` WHERE `$field` = :find_user ORDER BY `date` DESC",
             array(
                 ':find_user' => $user->id()
             )

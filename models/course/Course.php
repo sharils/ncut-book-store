@@ -77,6 +77,7 @@ Class Course
     public static function find($search_factor = [])
     {
         $where = self::getWhere($search_factor);
+        $where .= ' ORDER BY `grade`';
         $result = Database::execute(
             self::$FIND_SELECTION.$where,
             self::$FACTOR
