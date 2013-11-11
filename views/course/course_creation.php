@@ -5,7 +5,11 @@ require_once 'controllers/course/select_list.php';
 ?>
 <div class ="col-9 center">
 <?php if (null !== Notice::get()): ?>
-    <div class="alert alert-danger"><?=Notice::get()?></div>
+    <?php if (Notice::get() === 'success'): ?>
+        <div class="alert alert-success">資料儲存成功</div>
+    <?php else: ?>
+        <div class="alert alert-danger"><?=Notice::get()?></div>
+    <?php endif; ?>
 <?php endif; ?>
 <form action="<?= Router::toUrl("controllers/course/course_creation.php")?>" method="post">
     <input name="id" type="hidden" value="<?= $course['id']?>"/>

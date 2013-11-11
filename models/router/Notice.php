@@ -17,4 +17,5 @@ class Notice
     {
         self::$notice = $notice();
     }
+
 }
