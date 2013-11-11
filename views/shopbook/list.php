@@ -1,7 +1,7 @@
 <?php require_once 'controllers/shopbook/list.php'; ?>
 <div class ="col-9 center">
     <ul class="nav nav-tabs">
-        <li class="<?= $active[''] ?>"><a href="<?= Router::toUrl('home/shop_book/')?>">全部</a></li>
+        <li class="<?= $active[''] ?>"><a href="<?= Router::toUrl('home/shop_book')?>">全部</a></li>
         <li class="<?= $active['on'] ?>"><a href="<?= Router::toUrl('home/shop_book/on')?>">上架</a></li>
         <li class="<?= $active['off'] ?>"><a href="<?= Router::toUrl('home/shop_book/off')?>">下架</a></li>
     </ul>
