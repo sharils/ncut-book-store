@@ -10,7 +10,7 @@ $publisher = Publisher::from($_POST['publisher']);
 if(isset($_POST['delete'])){
     $shopbook->delete();
     $book->delete();
-    $url = Router::toUrl('home/shop_book/');
+    $url = Router::toUrl('home/shop_book');
 } else {
     if (isset($_POST['shelf'])) {
         $shopbook->shelf(!$shopbook->shelf());
