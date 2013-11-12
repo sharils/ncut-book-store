@@ -40,19 +40,24 @@ if (isset($_POST['course'])) {
             exit;
         }else if ($_POST['book'] === '　'){
 
-            $book = Book::create(
-                $publisher,
-                $_POST['author'],
-                $_POST['isbn'],
-                '',
-                $_POST['name'],
-                '',
-                $_POST['remark'],
-                '',
-                $_POST['version']
-            );
+            $isbn = $_POST['isbn'];
+            if(Book::findIsbn($isbn) === FALSE){
+                $book = Book::create(
+                    $publisher,
+                    $_POST['author'],
+                    $isbn,
+                    '',
+                    $_POST['name'],
+                    '',
+                    $_POST['remark'],
+                    '',
+                    $_POST['version']
+                );
+            } else {
+                $book = Book::findIsbn($isbn);
+                Shopbook::create($book, 0, '');
+            }
 
-            Shopbook::create($book, 0, '');
             Coursebook::create($course, $book, $sample);
         } else {
 
