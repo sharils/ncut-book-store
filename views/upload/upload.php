@@ -25,10 +25,11 @@
         </div>
         <div class="form-group">
             <div class="col-sm-6">
-                <span class="label label-danger">匯入資料種類需為Excel檔(副檔名.xls)！</span>
-                <input class="btn btn-success" type="submit" value="匯入">
+                <span class="alert alert-danger message">匯入檔案種類需為Excel檔(副檔名.xls)！</span>
             </div>
         </div>
+        <input class="btn btn-success" type="submit" value="匯入">
+
 
 
     </form>

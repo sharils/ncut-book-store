@@ -38,6 +38,6 @@
     </div>
     <div class="col">
         </br>
-        <input class="btn btn-success" type="submit" value="搜尋"/>
+        <input class="btn btn-primary" type="submit" value="搜尋"/>
     </div>
 </div>

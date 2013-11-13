@@ -32,6 +32,6 @@
 </div>
 <div class="form-group col-lg-1 col-sm-1">
     </br>
-    <input class="btn btn-success" type="submit" value="搜尋"/>
+    <input class="btn btn-primary" type="submit" value="搜尋"/>
 </div>
 

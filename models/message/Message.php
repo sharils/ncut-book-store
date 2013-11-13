@@ -27,6 +27,7 @@ class Message
     public static function create($sender, $receiver, $content)
     {
         $id = Database::getRandomId();
+        date_default_timezone_set('Asia/Taipei');
         $date = date("Y-m-d H:i:s");
         Database::execute(
             self::$INSERTION,

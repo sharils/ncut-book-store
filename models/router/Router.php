@@ -26,6 +26,7 @@ class Router
 <link href="<?= Router::toUrl("vendor/bootstrap/css/bootstrap.css")?>" rel="stylesheet" >
 <script type="text/javascript" src="<?= Router::toUrl("vendor/js/jquery-1.10.2.js")?>"></script>
 <script type="text/javascript" src="<?= Router::toUrl("vendor/bootstrap/js/bootstrap.min.js")?>"></script>
+<link href="<?= Router::toUrl("vendor/bootstrap/css/font-awesome.min.css")?>" rel="stylesheet" >
 <link href="<?= Router::toUrl("vendor/bootstrap/css/style.css")?>" rel="stylesheet" >
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
