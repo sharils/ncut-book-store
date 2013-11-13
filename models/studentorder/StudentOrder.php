@@ -37,6 +37,7 @@ class StudentOrder
     public static function create(Student $student)
     {
         $id = Database::getRandomId();
+        date_default_timezone_set('Asia/Taipei');
         $date = date("Y-m-d H:i:s");
         Database::execute(
             self::$INSERTION,

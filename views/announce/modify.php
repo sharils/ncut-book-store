@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div>
-                        <input class="btn btn-success" type="submit" value="送出"/>
+                        <input class="btn btn-default" type="submit" value="送出"/>
                         <a class="btn btn-success" href="<?= Router::toUrl("home/announce")?>">
                             返回
                         </a>
