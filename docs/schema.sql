@@ -1,22 +1,22 @@
-ï»¿-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 2.10.3
 -- http://www.phpmyadmin.net
 --
--- ä¸»æ©Ÿ: localhost
--- å»ºç«‹æ—¥æœŸ: Aug 28, 2013, 02:18 PM
--- ä¼ºæœå™¨ç‰ˆæœ¬: 5.0.51
--- PHP ç‰ˆæœ¬: 5.2.6
+-- ¥D¾÷: localhost
+-- «Ø¥ß¤é´Á: Aug 28, 2013, 02:18 PM
+-- ¦øªA¾¹ª©¥»: 5.0.51
+-- PHP ª©¥»: 5.2.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- è³‡æ–™åº«: `test`
+-- ¸ê®Æ®w: `test`
 --
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `admin`
+-- ¸ê®Æªí®æ¦¡¡G `admin`
 --
 
 CREATE TABLE `admin` (
@@ -31,7 +31,7 @@ CREATE TABLE `admin` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `admin`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `admin`
 --
 
 INSERT INTO `admin` VALUES (0x33323733383931333931, 0x61646d696e, 0x61646d696e407961686f6f2e636f6d2e747777, '', 0x30393131313233313131, 0x3132333431);
@@ -39,7 +39,7 @@ INSERT INTO `admin` VALUES (0x33323733383931333931, 0x61646d696e, 0x61646d696e40
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `announce`
+-- ¸ê®Æªí®æ¦¡¡G `announce`
 --
 CREATE TABLE `announce` (
   `id` char(10) collate utf8_unicode_ci NOT NULL,
@@ -51,14 +51,14 @@ CREATE TABLE `announce` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `announce`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `announce`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `blacklist`
+-- ¸ê®Æªí®æ¦¡¡G `blacklist`
 --
 
 CREATE TABLE `blacklist` (
@@ -69,14 +69,14 @@ CREATE TABLE `blacklist` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `blacklist`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `blacklist`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `book`
+-- ¸ê®Æªí®æ¦¡¡G `book`
 --
 
 CREATE TABLE `book` (
@@ -85,7 +85,7 @@ CREATE TABLE `book` (
   `author` varchar(50) collate utf8_unicode_ci NOT NULL,
   `isbn` char(30) collate utf8_unicode_ci NOT NULL,
   `market_price` int(4) NOT NULL,
-  `name` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
+  `name` varchar(100) character set utf8 collate utf8_unicode_ci NOT NULL,
   `price` int(4) NOT NULL,
   `remark` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `type` char(50) collate utf8_unicode_ci NOT NULL,
@@ -96,14 +96,14 @@ CREATE TABLE `book` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `book`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `book`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `clerk`
+-- ¸ê®Æªí®æ¦¡¡G `clerk`
 --
 
 CREATE TABLE `clerk` (
@@ -118,14 +118,14 @@ CREATE TABLE `clerk` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `clerk`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `clerk`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `course`
+-- ¸ê®Æªí®æ¦¡¡G `course`
 --
 
 CREATE TABLE `course` (
@@ -135,7 +135,7 @@ CREATE TABLE `course` (
   `type` enum('required','optional') collate utf8_unicode_ci NOT NULL,
   `department` enum('me', 'cme', 'rac', 'cc', 'ae', 'csie', 'ddm', 'la', 'ba', 'iem', 'im', 'dlim', 'ee', 'dee') collate utf8_unicode_ci NOT NULL,
   `grade` enum('1','2','3','4') collate utf8_unicode_ci NOT NULL,
-  `group` enum('a', 'b', 'c','d') collate utf8_unicode_ci NOT NULL,
+  `group` enum('a', 'b', 'c','d','e') collate utf8_unicode_ci NOT NULL,
   `name` char(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `system` enum('1a', '1b', '1c', '1d', '2a', '2b', '2c', '3a', '3b') collate utf8_unicode_ci NOT NULL,
   `semester` enum('1','2') collate utf8_unicode_ci NOT NULL,
@@ -145,14 +145,14 @@ CREATE TABLE `course` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `course`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `course`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `course_book`
+-- ¸ê®Æªí®æ¦¡¡G `course_book`
 --
 
 CREATE TABLE `course_book` (
@@ -163,14 +163,14 @@ CREATE TABLE `course_book` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `course_book`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `course_book`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `message`
+-- ¸ê®Æªí®æ¦¡¡G `message`
 --
 
 CREATE TABLE `message` (
@@ -185,14 +185,14 @@ CREATE TABLE `message` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `message`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `message`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `publisher`
+-- ¸ê®Æªí®æ¦¡¡G `publisher`
 --
 
 CREATE TABLE `publisher` (
@@ -208,14 +208,14 @@ CREATE TABLE `publisher` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `publisher`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `publisher`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `shop_book`
+-- ¸ê®Æªí®æ¦¡¡G `shop_book`
 --
 
 CREATE TABLE `shop_book` (
@@ -226,14 +226,14 @@ CREATE TABLE `shop_book` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `shop_book`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `shop_book`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `shop_order`
+-- ¸ê®Æªí®æ¦¡¡G `shop_order`
 --
 
 CREATE TABLE `shop_order` (
@@ -244,14 +244,14 @@ CREATE TABLE `shop_order` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `shop_order`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `shop_order`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `shop_order_detail`
+-- ¸ê®Æªí®æ¦¡¡G `shop_order_detail`
 --
 
 CREATE TABLE `shop_order_detail` (
@@ -264,14 +264,14 @@ CREATE TABLE `shop_order_detail` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `shop_order_detail`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `shop_order_detail`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `student`
+-- ¸ê®Æªí®æ¦¡¡G `student`
 --
 
 CREATE TABLE `student` (
@@ -279,21 +279,21 @@ CREATE TABLE `student` (
   `sn` char(8) collate utf8_unicode_ci NOT NULL,
   `email` varchar(50) collate utf8_unicode_ci NOT NULL,
   `department` enum('me', 'cme', 'rac', 'cc', 'ae', 'csie', 'ddm', 'la', 'ba', 'iem', 'im', 'dlim', 'ee', 'dee') collate utf8_unicode_ci NOT NULL,
-  `group` enum('a', 'b', 'c') collate utf8_unicode_ci NOT NULL,
+  `group` enum('a', 'b', 'c','d') collate utf8_unicode_ci NOT NULL,
   `name` varchar(50) character set utf8 collate utf8_unicode_ci NOT NULL,
   `phone` char(10) collate utf8_unicode_ci NOT NULL,
-  `system` enum('1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b') collate utf8_unicode_ci NOT NULL,
+  `system` enum('1a', '1b', '1c', '1d', '2a', '2b', '2c', '3a', '3b') collate utf8_unicode_ci NOT NULL,
   `year` int(4) NOT NULL,
   PRIMARY KEY  (`user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `student`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `student`
 --
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `student_order`
+-- ¸ê®Æªí®æ¦¡¡G `student_order`
 --
 
 CREATE TABLE `student_order` (
@@ -301,22 +301,21 @@ CREATE TABLE `student_order` (
   `student_user_id` char(10) collate utf8_unicode_ci NOT NULL,
   `clerk_user_id` char(10) collate utf8_unicode_ci NOT NULL,
   `date` datetime NOT NULL,
-  `outdate` int(10) NOT NULL,
-  `status` enum('shopping','submitted','processing','ordered','shipping','arrived','return','cancel', 'finished') collate utf8_unicode_ci NOT NULL,
+  `status` enum('shopping','submitted','processing','ordered','shipping','arrived','return','finished','cancel') collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `student_user_id` (`student_user_id`),
   KEY `clerk_user_id` (`clerk_user_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `student_order`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `student_order`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `student_order_detail`
+-- ¸ê®Æªí®æ¦¡¡G `student_order_detail`
 --
 
 CREATE TABLE `student_order_detail` (
@@ -330,14 +329,14 @@ CREATE TABLE `student_order_detail` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `student_order_detail`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `student_order_detail`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `teacher`
+-- ¸ê®Æªí®æ¦¡¡G `teacher`
 --
 
 CREATE TABLE `teacher` (
@@ -352,14 +351,14 @@ CREATE TABLE `teacher` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=FIXED;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `teacher`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `teacher`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- è³‡æ–™è¡¨æ ¼å¼ï¼š `user`
+-- ¸ê®Æªí®æ¦¡¡G `user`
 --
 
 CREATE TABLE `user` (
@@ -371,7 +370,7 @@ CREATE TABLE `user` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- åˆ—å‡ºä»¥ä¸‹è³‡æ–™åº«çš„æ•¸æ“šï¼š `user`
+-- ¦C¥X¥H¤U¸ê®Æ®wªº¼Æ¾Ú¡G `user`
 --
 
 INSERT INTO `user` VALUES (0x33323733383931333931, 0x626448376d6e474a3373747151, 0x6264646464336431626136343130353964333637);
