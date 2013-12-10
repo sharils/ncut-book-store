@@ -5,7 +5,8 @@ Class Course
 {
     private static $DELETION = "DELETE FROM `course` WHERE `id` = :id";
     private static $FACTOR;
-    private static $FIND_SELECTION ="SELECT * FROM `course`";
+    private static $FIND_SELECTION ="SELECT * FROM course
+                    INNER JOIN teacher ON course.teacher_user_id = teacher.user_id ";
     private static $FROM_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";
     private static $INSERTION = "INSERT INTO `course`(
             `id`,
@@ -78,6 +79,7 @@ Class Course
     {
         $where = self::getWhere($search_factor);
         $where .= ' ORDER BY `grade`';
+
         $result = Database::execute(
             self::$FIND_SELECTION.$where,
             self::$FACTOR
@@ -105,9 +107,14 @@ Class Course
         $args = [];
         $where = "WHERE 1";
         foreach($search_factor as $key => $value) {
-            $where.=" AND `$key` LIKE :$key";
+            if ($key === 'teacher') {
+                $where.=" AND `teacher`.`name` LIKE :$key";
+            } else {
+                $where.=" AND `$key` LIKE :$key";
+            }
             $args[":$key"] = "%$value%";
         }
+
         self::$FACTOR = $args;
         return $where;
     }
