@@ -9,6 +9,7 @@ require_once 'models/router/Parameter.php';
 require_once 'models/router/Page.php';
 
 use ncut_book_store\Container;
+date_default_timezone_set('Asia/Taipei');
 
 Container::settings(parse_ini_file('settings/ncut-book-store.ini', true));
 $settings = Container::settings('database');

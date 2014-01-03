@@ -40,6 +40,7 @@ if (isset($_POST['course'])) {
             exit;
         }else if ($_POST['book'] === '　'){
 
+
             $isbn = $_POST['isbn'];
             if(Book::findIsbn($isbn) === FALSE){
                 $book = Book::create(
@@ -53,9 +54,9 @@ if (isset($_POST['course'])) {
                     '',
                     $_POST['version']
                 );
+                Shopbook::create($book, 0, '');
             } else {
                 $book = Book::findIsbn($isbn);
-                Shopbook::create($book, 0, '');
             }
 
             Coursebook::create($course, $book, $sample);

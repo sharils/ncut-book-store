@@ -5,7 +5,7 @@ Class Course
 {
     private static $DELETION = "DELETE FROM `course` WHERE `id` = :id";
     private static $FACTOR;
-    private static $FIND_SELECTION ="SELECT * FROM course
+    private static $FIND_SELECTION ="SELECT course.* FROM course
                     INNER JOIN teacher ON course.teacher_user_id = teacher.user_id ";
     private static $FROM_SELECTION = "SELECT * FROM `course` WHERE `id` = :id";
     private static $INSERTION = "INSERT INTO `course`(
